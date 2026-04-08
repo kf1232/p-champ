@@ -23,11 +23,19 @@ Design approach:
 
 ## Open Issue Scope
 
-Current open issues are primarily data-completion tasks (for example, `Configure Record ###`) and are intended as a focused TODO list for filling incomplete dex records.
+Open issues are used as a community task queue for incremental project improvements and data validation updates.
 
-Contribution rules:
+### Open Issue Workflow
+
+1. Pick an open issue and start work.
+2. Gather source proof for the change you are making.
+3. Implement the update in the relevant project files.
+4. Open a PR that links the issue and includes proof attachments (screenshots/snapshots).
+5. Add a clear PR description of what changed and why the attached evidence supports it.
+
+Workflow rules:
 1. This code repo is public and free to use.
-2. Open issue submissions must include proof of game data (for example, screenshot/snapshot evidence).
+2. PR submissions must include proof of game data (for example, screenshot/snapshot evidence).
 3. There is no reward beyond the satisfaction of helping complete the project.
 
 ## Local Development
