@@ -4,6 +4,8 @@ export const TYPES = {
   flying: "flying",
   fairy: "fairy",
   grass: "grass",
+  ice: "ice",
+  rock: "rock",
   electric: "electric",
   normal: "normal",
   fire: "fire",

@@ -236,6 +236,14 @@ export const MOVES = {
   psychicNoise: "psychicNoise",
   skyAttack: "skyAttack",
   superFang: "superFang",
+  ancientPower: "ancientPower",
+  auroraVeil: "auroraVeil",
+  earthPower: "earthPower",
+  freezeDry: "freezeDry",
+  icicleSpear: "icicleSpear",
+  mudShot: "mudShot",
+  rockBlast: "rockBlast",
+  zenHeadbutt: "zenHeadbutt",
 } as const;
 
 export type MoveRecord = {
@@ -483,5 +491,13 @@ export const moveObject: Record<MoveId, MoveRecord | null> = {
   [MOVES.psychicNoise]: null,
   [MOVES.skyAttack]: null,
   [MOVES.superFang]: null,
+  [MOVES.ancientPower]: null,
+  [MOVES.auroraVeil]: null,
+  [MOVES.earthPower]: null,
+  [MOVES.freezeDry]: null,
+  [MOVES.icicleSpear]: null,
+  [MOVES.mudShot]: null,
+  [MOVES.rockBlast]: null,
+  [MOVES.zenHeadbutt]: null,
 };
 
