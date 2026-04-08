@@ -4,6 +4,7 @@ export const TYPES = {
   fairy: "fairy",
   grass: "grass",
   electric: "electric",
+  normal: "normal",
   fire: "fire",
   ghost: "ghost",
 } as const;
