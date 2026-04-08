@@ -226,6 +226,16 @@ export const MOVES = {
   terrainPulse: "terrainPulse",
   uproar: "uproar",
   whirlpool: "whirlpool",
+  acrobatics: "acrobatics",
+  boomburst: "boomburst",
+  defog: "defog",
+  doubleTeam: "doubleTeam",
+  dualWingbeat: "dualWingbeat",
+  leechLife: "leechLife",
+  moonlight: "moonlight",
+  psychicNoise: "psychicNoise",
+  skyAttack: "skyAttack",
+  superFang: "superFang",
 } as const;
 
 export type MoveRecord = {
@@ -463,5 +473,15 @@ export const moveObject: Record<MoveId, MoveRecord | null> = {
   [MOVES.terrainPulse]: null,
   [MOVES.uproar]: null,
   [MOVES.whirlpool]: null,
+  [MOVES.acrobatics]: null,
+  [MOVES.boomburst]: null,
+  [MOVES.defog]: null,
+  [MOVES.doubleTeam]: null,
+  [MOVES.dualWingbeat]: null,
+  [MOVES.leechLife]: null,
+  [MOVES.moonlight]: null,
+  [MOVES.psychicNoise]: null,
+  [MOVES.skyAttack]: null,
+  [MOVES.superFang]: null,
 };
 
