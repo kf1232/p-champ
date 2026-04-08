@@ -38,7 +38,7 @@ Workflow rules:
 2. PR submissions must include proof of game data (for example, screenshot/snapshot evidence).
 3. There is no reward beyond the satisfaction of helping complete the project.
 
-## Local Development
+## Local Development Info
 
 ```bash
 npm install
