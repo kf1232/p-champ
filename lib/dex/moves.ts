@@ -1,10 +1,6 @@
 import { MOVE_CATEGORIES, MOVE_RANGES } from "./constants";
 
 export const MOVES = {
-  tackle: "tackle",
-  focus: "focus",
-  flare: "flare",
-
   gigaImpact: "gigaImpact",
   endeavor: "endeavor",
   lastResort: "lastResort",
@@ -182,24 +178,6 @@ export type MoveRecord = {
 export type MoveId = (typeof MOVES)[keyof typeof MOVES];
 
 export const moveObject: Record<MoveId, MoveRecord | null> = {
-  [MOVES.tackle]: {
-    category: MOVE_CATEGORIES.ATK,
-    power: 40,
-    accuracy: 100,
-    range: MOVE_RANGES.SINGLE_TARGET,
-  },
-  [MOVES.focus]: {
-    category: MOVE_CATEGORIES.SPATK,
-    power: 0,
-    accuracy: 100,
-    range: MOVE_RANGES.SELF,
-  },
-  [MOVES.flare]: {
-    category: MOVE_CATEGORIES.SPATK,
-    power: 60,
-    accuracy: 95,
-    range: MOVE_RANGES.ALL_OPPONENTS,
-  },
   [MOVES.gigaImpact]: null,
   [MOVES.endeavor]: null,
   [MOVES.lastResort]: null,
