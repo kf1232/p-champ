@@ -22,12 +22,6 @@ export type DexRecord = {
   forms: { base: DexForm | null } & Partial<Record<FormId, DexForm | null>>;
 };
 
-/**
- * Dex data source keyed by record id.
- *
- * Note: JS object keys are strings at runtime; we keep the type as `Record<number, ...>`
- * so consuming code can treat ids as numbers ergonomically.
- */
 export const dexObject: Record<number, DexRecord> = {
   3: {
     dexNumber: 3,
