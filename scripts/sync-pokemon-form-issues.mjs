@@ -62,7 +62,7 @@ function ensureLabels() {
       "--color",
       "5319E7",
       "--description",
-      "Issues created or maintained by sync-move-issues / sync-pokemon-form-issues",
+      "Issues created or maintained by sync-move-issues / sync-pokemon-form-issues / sync-type-issues",
       "-f",
     ]);
   } catch {
