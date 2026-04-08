@@ -1,5 +1,5 @@
 # After changes land on the default branch (e.g. merging a PR), refresh GitHub issues
-# for pending dex moves and pokemon forms so the issue list matches lib/dex/*.ts.
+# for pending dex moves, pokemon forms, and types so the issue list matches lib/dex/*.ts.
 name: Sync issues
 
 on:
@@ -35,3 +35,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run sync:pokemon-form-issues
+
+      - name: Sync type issues
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run sync:type-issues

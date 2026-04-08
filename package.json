@@ -9,6 +9,7 @@
     "lint": "eslint",
     "sync:move-issues": "node scripts/sync-move-issues.mjs",
     "sync:pokemon-form-issues": "node scripts/sync-pokemon-form-issues.mjs",
+    "sync:type-issues": "node scripts/sync-type-issues.mjs",
     "cleanup:workflow-issues": "node scripts/cleanup-workflow-issues.mjs"
   },
   "dependencies": {

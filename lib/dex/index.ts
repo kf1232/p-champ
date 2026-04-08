@@ -10,6 +10,11 @@ export type { MoveId, MoveRecord } from "./moves";
 export { expandDexRecords } from "./display";
 export type { DexDisplayEntry } from "./display";
 
-export { TYPES } from "./types";
-export type { TypeId } from "./types";
+export { TYPES, TYPE_NAMES } from "./types";
+export type {
+  TypeId,
+  TypeModifierTable,
+  TypeName,
+  TypeRecord,
+} from "./types";
 
