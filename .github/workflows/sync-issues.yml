@@ -1,0 +1,37 @@
+# After changes land on the default branch (e.g. merging a PR), refresh GitHub issues
+# for pending dex moves and pokemon forms so the issue list matches lib/dex/*.ts.
+name: Sync issues
+
+on:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync move issues
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run sync:move-issues
+
+      - name: Sync pokemon form issues
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run sync:pokemon-form-issues
