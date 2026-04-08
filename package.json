@@ -7,10 +7,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "sync:move-issues": "node scripts/sync-move-issues.mjs",
-    "sync:pokemon-form-issues": "node scripts/sync-pokemon-form-issues.mjs",
-    "sync:type-issues": "node scripts/sync-type-issues.mjs",
-    "cleanup:workflow-issues": "node scripts/cleanup-workflow-issues.mjs"
+    
+    "sync:move-issues": "node scripts/sync-move-issues.mjs --dry-run",
+    "sync:pokemon-form-issues": "node scripts/sync-pokemon-form-issues.mjs --dry-run",
+    "sync:type-issues": "node scripts/sync-type-issues.mjs --dry-run",
+    "cleanup:workflow-issues": "node scripts/cleanup-workflow-issues.mjs --dry-run",
+
+    "sync:move-issues:live": "node scripts/sync-move-issues.mjs",
+    "sync:pokemon-form-issues:live": "node scripts/sync-pokemon-form-issues.mjs",
+    "sync:type-issues:live": "node scripts/sync-type-issues.mjs",
+    "cleanup:workflow-issues:live": "node scripts/cleanup-workflow-issues.mjs"
   },
   "dependencies": {
     "next": "16.2.2",
