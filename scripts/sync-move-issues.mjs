@@ -211,7 +211,7 @@ function main() {
     const title = `Configure move: ${moveId}`;
     const body = `${marker(moveId)}
 
-\`moveObject['${moveId}']\` in \`${REL_PATH}\` is still \`null\`. Add a \`MoveRecord\` (category, power, accuracy, range) when you are ready to support this move.`;
+\`moveObject['${moveId}']\` in \`${REL_PATH}\` is still \`null\`. Add a \`MoveRecord\` (name, category, power, accuracy, range) when you are ready to support this move.`;
 
     console.log(`Create issue: ${title}`);
     if (!dryRun) {

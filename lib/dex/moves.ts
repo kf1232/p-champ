@@ -1,4 +1,5 @@
 import { MOVE_CATEGORIES, MOVE_RANGES } from "./constants";
+import type { MoveEffect } from "./moveEffects";
 
 export const MOVES = {
   gigaImpact: "gigaImpact",
@@ -244,13 +245,17 @@ export const MOVES = {
   mudShot: "mudShot",
   rockBlast: "rockBlast",
   zenHeadbutt: "zenHeadbutt",
-} as const;
+};
 
 export type MoveRecord = {
+  name: string;
   category: (typeof MOVE_CATEGORIES)[keyof typeof MOVE_CATEGORIES];
   power: number;
   accuracy: number;
   range: (typeof MOVE_RANGES)[keyof typeof MOVE_RANGES];
+  selfEffect?: readonly MoveEffect[];
+  allyEffect?: readonly MoveEffect[];
+  targetEffect?: readonly MoveEffect[];
 };
 
 export type MoveId = (typeof MOVES)[keyof typeof MOVES];
