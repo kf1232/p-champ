@@ -1,5 +1,6 @@
 export const TYPES = {
   dragon: "dragon",
+  steel: "steel",
   flying: "flying",
   fairy: "fairy",
   grass: "grass",
