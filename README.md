@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# p-champ
 
-## Getting Started
+`p-champ` is a public, free-to-use fan project for organizing and displaying battle-ready dex data.
 
-First, run the development server:
+## Published Website
+
+https://fink.social/
+
+## Project Structure and Design
+
+- `app/`: Next.js App Router pages (`/` and `/dex`) and global layout.
+- `components/`: UI screens and reusable view components.
+- `lib/dex/`: Core domain data and types.
+  - `dexObject.ts`: source-of-truth record map keyed by dex id.
+  - `moves.ts`, `types.ts`, `constants.ts`: normalized reference catalogs.
+  - `display.ts`: transforms raw records into UI-friendly display entries.
+  - `index.ts`: centralized exports for consumers.
+
+Design approach:
+- Data is modeled as typed records (`DexRecord`, `DexForm`) with explicit form variants.
+- Display logic is separated from raw data to keep UI rendering simple and predictable.
+- Incomplete entries are intentionally tracked as `null` values until verified game data is available.
+
+## Open Issue Scope
+
+Current open issues are primarily data-completion tasks (for example, `Configure Record ###`) and are intended as a focused TODO list for filling incomplete dex records.
+
+Contribution rules:
+1. This code repo is public and free to use.
+2. Open issue submissions must include proof of game data (for example, screenshot/snapshot evidence).
+3. There is no reward beyond the satisfaction of helping complete the project.
+
+## Local Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Then open `http://localhost:3000`.
