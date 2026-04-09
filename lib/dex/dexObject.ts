@@ -522,7 +522,16 @@ export const dexObject: Record<number, DexRecord> = {
   142: {
     dexNumber: 142,
     dexName: "Aerodactyl",
-    forms: { [FORM_IDS.base]: null },
+    forms: { [FORM_IDS.base]: {
+      hp: 155,
+      attack: 125,
+      defense: 85,
+      spAtk: 80,
+      spDef: 95,
+      speed: 150,
+      types: [TYPES.rock, TYPES.flying],
+      moves: []
+    } },
   },
   143: {
     dexNumber: 143,
