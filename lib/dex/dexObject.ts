@@ -62,21 +62,59 @@ export const dexObject: Record<number, DexRecord> = {
     dexNumber: 26,
     dexName: "Raichu",
     forms: {
-      [FORM_IDS.base]: null,
-      [FORM_IDS.aloan]: null,
+      [FORM_IDS.base]: {
+        hp: 135,
+        attack: 110,
+        defense: 75,
+        spAtk: 110,
+        spDef: 100,
+        speed: 130,
+        types: [TYPES.electric],
+        moves: []
+      },
+      [FORM_IDS.aloan]: {
+        hp: 135,
+        attack: 105,
+        defense: 70,
+        spAtk: 115,
+        spDef: 105,
+        speed: 130,
+        types: [TYPES.electric, TYPES.psychic],
+        moves: []
+      },
     },
   },
   36: {
     dexNumber: 36,
     dexName: "Clefable",
-    forms: { [FORM_IDS.base]: null },
+    forms: {
+      [FORM_IDS.base]: {
+        hp: 170,
+        attack: 90,
+        defense: 93,
+        spAtk: 115,
+        spDef: 110,
+        speed: 80,
+        types: [TYPES.fairy],
+        moves: []
+      },
+    },
   },
   38: {
     dexNumber: 38,
     dexName: "Ninetales",
     forms: {
       [FORM_IDS.base]: null,
-      [FORM_IDS.aloan]: null,
+      [FORM_IDS.aloan]: {
+        hp: 148,
+        attack: 87,
+        defense: 95,
+        spAtk: 101,
+        spDef: 120,
+        speed: 129,
+        types: [TYPES.ice, TYPES.fairy],
+        moves: []
+      },
     },
   },
   59: {
@@ -151,7 +189,16 @@ export const dexObject: Record<number, DexRecord> = {
           MOVES.charm,
         ],
       },
-      [FORM_IDS.hisuian]: null,
+      [FORM_IDS.hisuian]: {
+        hp: 170,
+        attack: 135,
+        defense: 100,
+        spAtk: 115,
+        spDef: 100,
+        speed: 110,
+        types: [TYPES.fire, TYPES.rock],
+        moves: []
+      },
     },
   },
   65: {
@@ -174,7 +221,16 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Slowbro",
     forms: {
       [FORM_IDS.base]: null,
-      [FORM_IDS.galarian]: null,
+      [FORM_IDS.galarian]: {
+        hp: 170,
+        attack: 120,
+        defense: 115,
+        spAtk: 120,
+        spDef: 90,
+        speed: 50,
+        types: [TYPES.poison, TYPES.psychic],
+        moves: []
+      },
     },
   },
   94: {
@@ -357,18 +413,49 @@ export const dexObject: Record<number, DexRecord> = {
   121: {
     dexNumber: 121,
     dexName: "Starmie",
-    forms: { [FORM_IDS.base]: null },
+    forms: {
+      [FORM_IDS.base]: {
+        hp: 135,
+        attack: 95,
+        defense: 105,
+        spAtk: 120,
+        spDef: 105,
+        speed: 135,
+        types: [TYPES.water, TYPES.psychic],
+        moves: []
+      },
+    },
   },
   127: {
     dexNumber: 127,
     dexName: "Pinsir",
-    forms: { [FORM_IDS.base]: null },
+    forms: {
+      [FORM_IDS.base]: {
+        hp: 140,
+        attack: 145,
+        defense: 120,
+        spAtk: 75,
+        spDef: 90,
+        speed: 105,
+        types: [TYPES.bug],
+        moves: []
+      },
+    },
   },
   128: {
     dexNumber: 128,
     dexName: "Tauros",
     forms: {
-      [FORM_IDS.base]: null,
+      [FORM_IDS.base]: {
+        hp: 150,
+        attack: 120,
+        defense: 115,
+        spAtk: 60,
+        spDef: 90,
+        speed: 130,
+        types: [TYPES.normal],
+        moves: []
+      },
       [FORM_IDS.paldeanCombat]: null,
       [FORM_IDS.paldeanFire]: null,
       [FORM_IDS.paldeanWater]: null,
@@ -387,12 +474,34 @@ export const dexObject: Record<number, DexRecord> = {
   134: {
     dexNumber: 134,
     dexName: "Vaporeon",
-    forms: { [FORM_IDS.base]: null },
+    forms: {
+      [FORM_IDS.base]: {
+        hp: 205,
+        attack: 85,
+        defense: 80,
+        spAtk: 130,
+        spDef: 115,
+        speed: 85,
+        types: [TYPES.water],
+        moves: []
+      },
+    },
   },
   135: {
     dexNumber: 135,
     dexName: "Jolteon",
-    forms: { [FORM_IDS.base]: null },
+    forms: {
+      [FORM_IDS.base]: {
+        hp: 140,
+        attack: 85,
+        defense: 80,
+        spAtk: 130,
+        spDef: 115,
+        speed: 150,
+        types: [TYPES.electric],
+        moves: []
+      },
+    },
   },
   136: {
     dexNumber: 136,

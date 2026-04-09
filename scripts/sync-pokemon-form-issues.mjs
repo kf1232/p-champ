@@ -1,7 +1,14 @@
 #!/usr/bin/env node
 /**
- * Syncs GitHub issues with `forms` entries in lib/dex/dexObject.ts that are still `null`.
- * Each top-level dex entry is `N: { ... }`; form lines use `[FORM_IDS.<key>]: null` or `{`.
+ * Syncs GitHub issues with incomplete `forms` entries in lib/dex/dexObject.ts.
+ *
+ * A form is **incomplete** when:
+ * - `[FORM_IDS.*]: null`, or
+ * - it is an object but `types` has no `TYPES.*` entries, or `moves` has no `MOVES.*` entries
+ *   (e.g. stats filled in but `moves: []`).
+ *
+ * Open issues stay open until the form is fully filled; the issue body is **updated** when the
+ * situation changes (null → partial object, or partial → different gaps).
  *
  * Requires: GitHub CLI (`gh`) authenticated for this repo.
  *
@@ -89,17 +96,99 @@ function listOpenIssues() {
 }
 
 /**
- * Pending form slots: `[FORM_IDS.x]: null` (or same on `forms: { ... }` line).
- * Item id: `${dexNumber}-${formKey}`.
+ * First `[...]` after `fieldName:` in block; returns inner text or null if unparseable.
+ */
+function arrayLiteralAfterField(block, fieldName) {
+  const re = new RegExp(`\\b${fieldName}:\\s*\\[`);
+  const mi = block.search(re);
+  if (mi === -1) return null;
+  const tail = block.slice(mi);
+  const bracketStart = tail.indexOf("[");
+  if (bracketStart === -1) return null;
+  let depth = 0;
+  for (let k = bracketStart; k < tail.length; k++) {
+    const ch = tail[k];
+    if (ch === "[") depth++;
+    else if (ch === "]") {
+      depth--;
+      if (depth === 0) return tail.slice(bracketStart + 1, k);
+    }
+  }
+  return null;
+}
+
+function arrayHasRef(inner, refPrefix) {
+  if (inner == null) return false;
+  return new RegExp(`\\b${refPrefix}\\w+`).test(inner);
+}
+
+/**
+ * Reasons why this object literal is not a complete DexForm (empty list = complete).
+ */
+function analyzeFormObjectBlock(block) {
+  const reasons = [];
+  const typesInner = arrayLiteralAfterField(block, "types");
+  const movesInner = arrayLiteralAfterField(block, "moves");
+
+  if (typesInner === null) {
+    reasons.push("Missing or invalid `types: [...]` array.");
+  } else if (!arrayHasRef(typesInner, "TYPES.")) {
+    reasons.push("`types` must include at least one `TYPES.*` reference.");
+  }
+
+  if (movesInner === null) {
+    reasons.push("Missing or invalid `moves: [...]` array.");
+  } else if (!arrayHasRef(movesInner, "MOVES.")) {
+    reasons.push("`moves` must list at least one `MOVES.*` reference (array is empty or has no move ids).");
+  }
+
+  return reasons;
+}
+
+/**
+ * From line index where `[FORM_IDS.x]: {` appears, collect brace-balanced `{...}` object text.
+ */
+function extractFormObjectBlock(lines, startLineIdx) {
+  let depth = 0;
+  let started = false;
+  const parts = [];
+  for (let j = startLineIdx; j < lines.length; j++) {
+    const L = lines[j];
+    parts.push(L);
+    for (const c of L) {
+      if (c === "{") {
+        depth++;
+        started = true;
+      } else if (c === "}") {
+        depth--;
+        if (started && depth === 0) {
+          return { block: parts.join("\n"), endLineIdx: j };
+        }
+      }
+    }
+  }
+  return {
+    block: parts.join("\n"),
+    endLineIdx: lines.length - 1,
+    unclosed: true,
+  };
+}
+
+/**
+ * Map itemId `${dex}-${formKey}` → { reasons: string[] } for every incomplete form.
  */
 function scanDexObjectFile(content) {
-  const pending = new Set();
+  /** @type {Map<string, { reasons: string[] }>} */
+  const incomplete = new Map();
   let currentDex = null;
+  const lines = content.split("\n");
   const dexLine = /^\s*(\d+):\s*\{/;
   const formEntry =
     /^\s*(?:forms:\s*\{\s*)?\[FORM_IDS\.(\w+)\]\s*:\s*(null|\{)/;
 
-  for (const line of content.split("\n")) {
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
     const mDex = line.match(dexLine);
     if (mDex) currentDex = mDex[1];
 
@@ -107,10 +196,29 @@ function scanDexObjectFile(content) {
     if (mForm && currentDex) {
       const formKey = mForm[1];
       const itemId = `${currentDex}-${formKey}`;
-      if (mForm[2] === "null") pending.add(itemId);
+      if (mForm[2] === "null") {
+        incomplete.set(itemId, {
+          reasons: [
+            "Slot is still `null` — replace with a `DexForm`: base stats, `types: [TYPES.*, …]`, and a non-empty `moves: [MOVES.*, …]` list.",
+          ],
+        });
+        i++;
+        continue;
+      }
+
+      const { block, endLineIdx, unclosed } = extractFormObjectBlock(lines, i);
+      const reasons = unclosed
+        ? [
+            "Could not parse form object (unbalanced `{` / `}`). Fix syntax, then fill `types` and `moves`.",
+          ]
+        : analyzeFormObjectBlock(block);
+      if (reasons.length > 0) incomplete.set(itemId, { reasons });
+      i = endLineIdx + 1;
+      continue;
     }
+    i++;
   }
-  return pending;
+  return incomplete;
 }
 
 function parseItemIdFromIssue(title, body) {
@@ -124,19 +232,28 @@ function parseItemIdFromIssue(title, body) {
 }
 
 function titleForItem(itemId) {
-  const i = itemId.indexOf("-");
-  const dex = itemId.slice(0, i);
-  const formKey = itemId.slice(i + 1);
+  const idx = itemId.indexOf("-");
+  const dex = itemId.slice(0, idx);
+  const formKey = itemId.slice(idx + 1);
   return `Configure Pokemon form: ${dex} (${formKey})`;
 }
 
-function bodyForItem(itemId) {
-  const i = itemId.indexOf("-");
-  const dex = itemId.slice(0, i);
-  const formKey = itemId.slice(i + 1);
+function bodyForItem(itemId, reasons) {
+  const idx = itemId.indexOf("-");
+  const dex = itemId.slice(0, idx);
+  const formKey = itemId.slice(idx + 1);
+  const bullets = reasons.map((r) => `- ${r}`).join("\n");
   return `${marker(itemId)}
 
-National dex \`#${dex}\`, form \`${formKey}\`: \`forms\` in \`${REL_PATH}\` still has \`null\` for this form. Add a \`DexForm\` (stats, types, moves).`;
+National dex \`#${dex}\`, form \`${formKey}\` in \`${REL_PATH}\` is **not finished**.
+
+${bullets}
+
+**Done when:** the slot has a full \`DexForm\` with all stats, at least one \`TYPES.*\` in \`types\`, and at least one \`MOVES.*\` in \`moves\`.`;
+}
+
+function bodiesDiffer(a, b) {
+  return (a ?? "").trim() !== (b ?? "").trim();
 }
 
 function parseArgs(argv) {
@@ -178,7 +295,7 @@ function main() {
 
   const absPath = join(REPO_ROOT, REL_PATH);
   const content = readFileSync(absPath, "utf8");
-  const pending = scanDexObjectFile(content);
+  const incomplete = scanDexObjectFile(content);
 
   ensureLabels();
   const openIssues = listOpenIssues();
@@ -208,18 +325,18 @@ function main() {
     const itemId = parseItemIdFromIssue(issue.title, issue.body);
     if (!itemId) continue;
     if (!byItem.has(itemId)) byItem.set(itemId, []);
-    byItem.get(itemId).push(issue.number);
+    byItem.get(itemId).push(issue);
   }
 
-  const toCreate = [...pending].filter((id) => {
-    const nums = byItem.get(id);
-    return !nums || nums.length === 0;
+  const toCreate = [...incomplete.keys()].filter((id) => {
+    const issues = byItem.get(id);
+    return !issues || issues.length === 0;
   });
 
   const toClose = [];
-  for (const [itemId, numbers] of byItem) {
-    numbers.sort((a, b) => a - b);
-    if (pending.has(itemId)) {
+  for (const [itemId, issues] of byItem) {
+    const numbers = issues.map((x) => x.number).sort((a, b) => a - b);
+    if (incomplete.has(itemId)) {
       for (let i = 1; i < numbers.length; i++) {
         toClose.push({ number: numbers[i], reason: "duplicate" });
       }
@@ -227,6 +344,19 @@ function main() {
       for (const n of numbers) {
         toClose.push({ number: n, reason: "completed" });
       }
+    }
+  }
+
+  /** @type {{ number: number; body: string }[]} */
+  const toUpdate = [];
+  for (const [itemId, issues] of byItem) {
+    if (!incomplete.has(itemId)) continue;
+    issues.sort((a, b) => a.number - b.number);
+    const primary = issues[0];
+    const state = incomplete.get(itemId);
+    const newBody = bodyForItem(itemId, state.reasons);
+    if (bodiesDiffer(primary.body, newBody)) {
+      toUpdate.push({ number: primary.number, body: newBody });
     }
   }
 
@@ -239,7 +369,8 @@ function main() {
       break;
     }
     const title = titleForItem(itemId);
-    const body = bodyForItem(itemId);
+    const state = incomplete.get(itemId);
+    const body = bodyForItem(itemId, state.reasons);
 
     console.log(`Create issue: ${title}`);
     if (!dryRun) {
@@ -262,6 +393,16 @@ function main() {
     createCount++;
   }
 
+  for (const { number, body } of toUpdate) {
+    console.log(`Update issue body #${number}`);
+    if (!dryRun) {
+      const dir = mkdtempSync(join(tmpdir(), "gh-form-edit-"));
+      const bodyFile = join(dir, "body.md");
+      writeFileSync(bodyFile, body, "utf8");
+      gh(["issue", "edit", String(number), "--body-file", bodyFile]);
+    }
+  }
+
   for (const { number, reason } of toClose) {
     const msg =
       reason === "duplicate"
@@ -280,8 +421,8 @@ function main() {
       : "";
   console.log(
     dryRun
-      ? `\nDry run: ${labelNote}would create ${Math.min(toCreate.length, maxCreate)} issue(s), close ${toClose.length} issue(s).`
-      : `\nDone: ${labelNote}created ${createCount} issue(s), closed ${toClose.length} issue(s).`,
+      ? `\nDry run: ${labelNote}would create ${Math.min(toCreate.length, maxCreate)} issue(s), update ${toUpdate.length} issue(s), close ${toClose.length} issue(s).`
+      : `\nDone: ${labelNote}created ${createCount} issue(s), updated ${toUpdate.length} issue(s), closed ${toClose.length} issue(s).`,
   );
 }
 
