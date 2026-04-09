@@ -506,7 +506,18 @@ export const dexObject: Record<number, DexRecord> = {
   136: {
     dexNumber: 136,
     dexName: "Flareon",
-    forms: { [FORM_IDS.base]: null },
+    forms: {
+      [FORM_IDS.base]: {
+        hp: 140,
+        attack: 150,
+        defense: 80,
+        spAtk: 115,
+        spDef: 130,
+        speed: 85,
+        types: [TYPES.fire],
+        moves: []
+      }
+    },
   },
   142: {
     dexNumber: 142,
