@@ -11,6 +11,7 @@ export const TYPE_NAMES = {
   normal: "normal",
   fire: "fire",
   ghost: "ghost",
+  poison: "poison",
 } as const;
 
 export type TypeName = (typeof TYPE_NAMES)[keyof typeof TYPE_NAMES];
@@ -77,6 +78,11 @@ export const TYPES = {
   },
   ghost: {
     typeName: TYPE_NAMES.ghost,
+    typeAtkModifier: {},
+    typeDefModifier: {},
+  },
+  poison: {
+    typeName: TYPE_NAMES.poison,
     typeAtkModifier: {},
     typeDefModifier: {},
   },
