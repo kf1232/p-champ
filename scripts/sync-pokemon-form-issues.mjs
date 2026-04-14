@@ -139,6 +139,11 @@ function hasPlaceholderStatsBlock(block) {
   return true;
 }
 
+/** Stable order, no duplicate strings (one checklist line per distinct gap). */
+function dedupeReasons(reasons) {
+  return [...new Set(reasons)];
+}
+
 /**
  * Reasons why this object literal is not a complete DexForm (empty list = complete).
  */
@@ -164,7 +169,7 @@ function analyzeFormObjectBlock(block) {
     reasons.push("`moves` must list at least one `MOVES.*` reference (array is empty or has no move ids).");
   }
 
-  return reasons;
+  return dedupeReasons(reasons);
 }
 
 /**
