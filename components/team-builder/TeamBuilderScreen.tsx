@@ -1,17 +1,34 @@
 "use client";
 
-import { useCallback, useMemo, useState, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
 
 import { useDexDisplayEntriesForSelectedGame } from "@/components/dex";
+import { useGameSelection } from "@/components/game";
 import { Navigation } from "@/components/navigation";
 import {
+  NATIONAL_VIEW_ID,
   TYPE_NAMES,
+  computeSelectorTeamMatchupPerSlot,
+  type MatchupSlotCell,
+  dexObject,
   formatDexTileDisplayName,
   getDexEntryTypeNames,
 } from "@/lib/dex";
-import type { DexDisplayEntry, FormId, TypeName } from "@/lib/dex";
+import type {
+  DexDisplayEntry,
+  DexListViewId,
+  FormId,
+  TypeName,
+} from "@/lib/dex";
 import { SITE_NAME } from "@/lib/site";
 
+import { SelectorMatchupGrid } from "./SelectorMatchupGrid";
 import { TypeBadges } from "./TypeBadges";
 
 const TEAM_BUILDER_TITLE = "Team Builder";
@@ -74,11 +91,31 @@ function parseDexEntryFromDrag(raw: string): DexDisplayEntry | null {
   }
 }
 
+/** Aligns with {@link filterDexRecordsForListView}: National allows all species; a game only species with `games[viewId]`. */
+function isTeamEntryValidForView(
+  entry: DexDisplayEntry,
+  viewId: DexListViewId,
+): boolean {
+  if (viewId === NATIONAL_VIEW_ID) return true;
+  const record = dexObject[entry.dexNumber];
+  if (!record) return false;
+  return record.games[viewId] === true;
+}
+
 export function TeamBuilderScreen() {
+  const { selectedGameId } = useGameSelection();
   const dexEntries = useDexDisplayEntriesForSelectedGame();
   const [teamSlots, setTeamSlots] = useState<(DexDisplayEntry | null)[]>(() =>
     Array.from({ length: TEAM_SIZE }, () => null),
   );
+
+  useEffect(() => {
+    setTeamSlots((prev) =>
+      prev.map((slot) =>
+        slot && !isTeamEntryValidForView(slot, selectedGameId) ? null : slot,
+      ),
+    );
+  }, [selectedGameId]);
 
   const selectorNames = useMemo(
     () =>
@@ -94,6 +131,17 @@ export function TeamBuilderScreen() {
     () => new Set(teamSlots.flatMap((s) => (s ? [s.dexNumber] : []))),
     [teamSlots],
   );
+
+  const matchupByKey = useMemo(() => {
+    const m = new Map<string, (MatchupSlotCell | null)[]>();
+    for (const row of selectorNames) {
+      m.set(
+        row.entry.key,
+        computeSelectorTeamMatchupPerSlot(row.entry, teamSlots),
+      );
+    }
+    return m;
+  }, [selectorNames, teamSlots]);
 
   const handleSlotDrop = useCallback((slotIndex: number, e: React.DragEvent) => {
     e.preventDefault();
@@ -117,6 +165,14 @@ export function TeamBuilderScreen() {
     e.dataTransfer.dropEffect = "copy";
   }, []);
 
+  const clearSlot = useCallback((slotIndex: number) => {
+    setTeamSlots((prev) => {
+      const next = [...prev];
+      next[slotIndex] = null;
+      return next;
+    });
+  }, []);
+
   return (
     <div className="flex h-dvh max-h-dvh min-h-0 flex-col overflow-hidden">
       <Navigation title={SITE_NAME} />
@@ -131,10 +187,10 @@ export function TeamBuilderScreen() {
           </p>
         </div>
 
-        <div className="mt-6 flex min-h-0 flex-1 flex-col gap-0 overflow-hidden rounded-xl border border-black/10 bg-white/40 lg:mt-8 lg:flex-row">
+        <div className="mt-6 flex min-h-0 flex-1 flex-col gap-0 overflow-hidden rounded-xl border border-black/30 bg-white/40 lg:mt-8 lg:flex-row">
           <section
             aria-label="Team workspace"
-            className="flex min-h-0 flex-1 flex-col overflow-hidden border-b border-black/10 p-4 sm:p-5 lg:w-1/3 lg:flex-none lg:border-b-0 lg:border-r"
+            className="flex min-h-0 flex-1 flex-col overflow-hidden border-b border-black/25 p-4 sm:p-5 lg:w-1/3 lg:flex-none lg:border-b-0 lg:border-r lg:border-black/25"
           >
             <h2 className="shrink-0 text-xs font-semibold uppercase tracking-widest text-black/50">
               Team
@@ -146,7 +202,7 @@ export function TeamBuilderScreen() {
               {teamSlots.map((slot, i) => (
                 <li
                   key={i}
-                  className="flex min-h-[6.25rem] flex-col rounded-lg border border-dashed border-black/20 bg-white/60 p-2"
+                  className="flex min-h-[6.25rem] flex-col rounded-lg border border-dashed border-black/45 bg-white/60 p-2"
                   aria-label={
                     slot
                       ? `Team slot ${i + 1}: ${formatDexTileDisplayName(slot.dexName, slot.formId)}`
@@ -155,9 +211,21 @@ export function TeamBuilderScreen() {
                   onDragOver={handleSlotDragOver}
                   onDrop={(e) => handleSlotDrop(i, e)}
                 >
-                  <span className="text-[10px] font-semibold tabular-nums text-black/35">
-                    {i + 1}
-                  </span>
+                  <div className="flex items-start justify-between gap-1">
+                    <span className="text-[10px] font-semibold tabular-nums text-black/35">
+                      {i + 1}
+                    </span>
+                    {slot ? (
+                      <button
+                        type="button"
+                        className="shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium text-black/45 hover:bg-red-500/10 hover:text-red-800"
+                        onClick={() => clearSlot(i)}
+                        aria-label={`Remove ${formatDexTileDisplayName(slot.dexName, slot.formId)} from slot ${i + 1}`}
+                      >
+                        Remove
+                      </button>
+                    ) : null}
+                  </div>
                   {slot ? (
                     <>
                       <p className="mt-1 line-clamp-2 text-xs font-medium leading-snug text-black">
@@ -192,7 +260,7 @@ export function TeamBuilderScreen() {
             ) : (
               <div className="mt-3 min-h-0 flex-1 overflow-y-auto overflow-x-hidden pr-1 [scrollbar-gutter:stable]">
                 <ul
-                  className="grid list-none grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-5 lg:gap-6"
+                  className="grid list-none grid-cols-3 gap-4 sm:gap-5"
                   aria-label="Pokémon available for your team"
                 >
                   {selectorNames.flatMap(({ entry, label }, i) => {
@@ -204,11 +272,17 @@ export function TeamBuilderScreen() {
                           className="col-span-full list-none"
                           aria-hidden="true"
                         >
-                          <div className="my-3 border-t border-black/10 sm:my-4" />
+                          <div className="my-3 border-t border-black/25 sm:my-4" />
                         </li>,
                       );
                     }
                     const speciesOnTeam = teamDexNumbers.has(entry.dexNumber);
+                    const matchupSlots =
+                      matchupByKey.get(entry.key) ??
+                      Array.from(
+                        { length: TEAM_SIZE },
+                        () => null as MatchupSlotCell | null,
+                      );
                     nodes.push(
                       <li
                         key={entry.key}
@@ -227,17 +301,26 @@ export function TeamBuilderScreen() {
                           e.dataTransfer.effectAllowed = "copy";
                         }}
                         className={[
-                          "flex min-h-[6.75rem] flex-col items-stretch justify-between gap-1.5 rounded-xl border border-black/10 p-2.5 text-center text-sm font-medium leading-snug select-none",
+                          "flex h-full min-h-0 flex-col gap-2 rounded-xl border border-black/35 p-2.5 text-sm font-medium leading-snug select-none sm:gap-2.5 sm:p-3",
                           speciesOnTeam
-                            ? "cursor-not-allowed border-black/5 bg-black/[0.03] text-black/35"
-                            : "cursor-grab bg-white/60 text-black hover:border-black/20 hover:bg-white/80 active:cursor-grabbing",
+                            ? "cursor-not-allowed border-black/25 bg-black/[0.03] text-black/35"
+                            : "cursor-grab bg-white/60 text-black hover:border-black/50 hover:bg-white/80 active:cursor-grabbing",
                         ].join(" ")}
                       >
-                        <span className="line-clamp-3">{label}</span>
-                        <TypeBadges
-                          typeNames={getDexEntryTypeNames(entry)}
-                          size="default"
-                        />
+                        <header className="shrink-0 text-center">
+                          <h3 className="line-clamp-3 text-sm font-semibold leading-tight text-black">
+                            {label}
+                          </h3>
+                        </header>
+                        <div className="flex min-h-0 w-full flex-1 flex-col justify-center">
+                          <SelectorMatchupGrid slots={matchupSlots} />
+                        </div>
+                        <footer className="shrink-0 flex justify-center">
+                          <TypeBadges
+                            typeNames={getDexEntryTypeNames(entry)}
+                            size="default"
+                          />
+                        </footer>
                       </li>,
                     );
                     return nodes;

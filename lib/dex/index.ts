@@ -42,6 +42,21 @@ export type { DexDisplayEntry } from "./display";
 export { TYPE_BADGE_CLASSES, formatTypeLabel } from "./typeBadgeStyles";
 
 export {
+  bestStabMultiplier,
+  computeSelectorTeamMatchupPerSlot,
+  computeSelectorTeamMatchupTotals,
+  formatEffectivenessMultiplier,
+  getDominantMatchupScore,
+  multiplierToEffectivenessTier,
+  multiplierToMatchupScore,
+  stabPrimarySecondaryMatchupScores,
+} from "./matchupScores";
+export type {
+  EffectivenessTier,
+  MatchupSlotCell,
+} from "./matchupScores";
+
+export {
   filterDexRecordsForGame,
   filterDexRecordsForListView,
 } from "./filterByGame";
