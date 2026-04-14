@@ -34,7 +34,14 @@ function getFormOrderKey(formId: string): number {
     FORM_IDS.dusk,
   ];
   const idx = ordered.indexOf(formId as (typeof ordered)[number]);
-  return idx === -1 ? Number.MAX_SAFE_INTEGER : idx;
+  if (idx !== -1) return idx;
+  if (formId.startsWith("form-")) {
+    let h = 0;
+    for (let i = 0; i < formId.length; i++)
+      h = (h * 31 + formId.charCodeAt(i)) >>> 0;
+    return 1000 + (h % 100000);
+  }
+  return Number.MAX_SAFE_INTEGER;
 }
 
 export function expandDexRecords(records: DexRecord[]): DexDisplayEntry[] {
@@ -44,7 +51,10 @@ export function expandDexRecords(records: DexRecord[]): DexDisplayEntry[] {
 
     const otherFormIds = Object.keys(forms)
       .filter((id): id is FormId => id !== FORM_IDS.base)
-      .sort((a, b) => getFormOrderKey(a) - getFormOrderKey(b));
+      .sort((a, b) => {
+        const d = getFormOrderKey(a) - getFormOrderKey(b);
+        return d !== 0 ? d : a.localeCompare(b);
+      });
 
     const nat = r.dexNumber.nat;
     const entries: DexDisplayEntry[] = [
