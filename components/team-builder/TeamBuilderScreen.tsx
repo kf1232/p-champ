@@ -4,6 +4,7 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -15,6 +16,7 @@ import {
   NATIONAL_VIEW_ID,
   TYPE_NAMES,
   computeSelectorTeamMatchupPerSlot,
+  formatTypeLabel,
   type MatchupSlotCell,
   dexObject,
   formatDexTileDisplayName,
@@ -45,6 +47,26 @@ const DEX_ENTRY_DRAG_MIME = "application/x-p-champ-dex-entry+json";
 const VALID_TYPE_NAMES = new Set<string>(
   Object.values(TYPE_NAMES) as TypeName[],
 );
+
+/** Stable order for type filter dropdowns. */
+const TYPE_NAMES_ORDERED = (Object.values(TYPE_NAMES) as TypeName[]).slice()
+  .sort((a, b) => a.localeCompare(b));
+
+function dexEntryMatchesTypeFilters(
+  entry: DexDisplayEntry,
+  filterA: TypeName | null,
+  filterB: TypeName | null,
+): boolean {
+  const required = new Set<TypeName>();
+  if (filterA) required.add(filterA);
+  if (filterB) required.add(filterB);
+  if (required.size === 0) return true;
+  const entryTypes = new Set(getDexEntryTypeNames(entry));
+  for (const t of required) {
+    if (!entryTypes.has(t)) return false;
+  }
+  return true;
+}
 
 function serializeDexEntryForDrag(entry: DexDisplayEntry): string {
   return JSON.stringify({
@@ -108,6 +130,12 @@ export function TeamBuilderScreen() {
   const [teamSlots, setTeamSlots] = useState<(DexDisplayEntry | null)[]>(() =>
     Array.from({ length: TEAM_SIZE }, () => null),
   );
+  const [typeFilterA, setTypeFilterA] = useState<TypeName | null>(null);
+  const [typeFilterB, setTypeFilterB] = useState<TypeName | null>(null);
+  const [flashSlotIndex, setFlashSlotIndex] = useState<number | null>(null);
+  const flashClearTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
 
   useEffect(() => {
     setTeamSlots((prev) =>
@@ -117,13 +145,29 @@ export function TeamBuilderScreen() {
     );
   }, [selectedGameId]);
 
+  useEffect(() => {
+    return () => {
+      if (flashClearTimeoutRef.current) {
+        clearTimeout(flashClearTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const filteredDexEntries = useMemo(
+    () =>
+      dexEntries.filter((e) =>
+        dexEntryMatchesTypeFilters(e, typeFilterA, typeFilterB),
+      ),
+    [dexEntries, typeFilterA, typeFilterB],
+  );
+
   const selectorNames = useMemo(
     () =>
-      dexEntries.map((e) => ({
+      filteredDexEntries.map((e) => ({
         entry: e,
         label: formatDexTileDisplayName(e.dexName, e.formId),
       })),
-    [dexEntries],
+    [filteredDexEntries],
   );
 
   /** National dex numbers already occupying a team slot (one form per species). */
@@ -148,17 +192,37 @@ export function TeamBuilderScreen() {
     const raw = e.dataTransfer.getData(DEX_ENTRY_DRAG_MIME);
     const entry = parseDexEntryFromDrag(raw);
     if (!entry) return;
+
+    const existingIndex = teamSlots.findIndex(
+      (s) => s !== null && s.dexNumber === entry.dexNumber,
+    );
+    const slotToFlash = existingIndex !== -1 ? existingIndex : slotIndex;
+
     setTeamSlots((prev) => {
-      const speciesTakenElsewhere = prev.some(
-        (s, j) =>
-          j !== slotIndex && s !== null && s.dexNumber === entry.dexNumber,
-      );
-      if (speciesTakenElsewhere) return prev;
       const next = [...prev];
+      const idx = next.findIndex(
+        (s) => s !== null && s.dexNumber === entry.dexNumber,
+      );
+      if (idx !== -1) {
+        next[idx] = entry;
+        return next;
+      }
       next[slotIndex] = entry;
       return next;
     });
-  }, []);
+
+    if (flashClearTimeoutRef.current) {
+      clearTimeout(flashClearTimeoutRef.current);
+    }
+    setFlashSlotIndex(null);
+    requestAnimationFrame(() => {
+      setFlashSlotIndex(slotToFlash);
+      flashClearTimeoutRef.current = setTimeout(() => {
+        setFlashSlotIndex(null);
+        flashClearTimeoutRef.current = null;
+      }, 650);
+    });
+  }, [teamSlots]);
 
   const handleSlotDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -172,6 +236,18 @@ export function TeamBuilderScreen() {
       return next;
     });
   }, []);
+
+  const clearAllTeam = useCallback(() => {
+    setTeamSlots(Array.from({ length: TEAM_SIZE }, () => null));
+  }, []);
+
+  const clearAllTypeFilters = useCallback(() => {
+    setTypeFilterA(null);
+    setTypeFilterB(null);
+  }, []);
+
+  const hasActiveTypeFilters = typeFilterA !== null || typeFilterB !== null;
+  const hasTeamMembers = teamSlots.some((s) => s !== null);
 
   return (
     <div className="flex h-dvh max-h-dvh min-h-0 flex-col overflow-hidden">
@@ -192,17 +268,17 @@ export function TeamBuilderScreen() {
             aria-label="Team workspace"
             className="flex min-h-0 flex-1 flex-col overflow-hidden border-b border-black/25 p-4 sm:p-5 lg:w-1/3 lg:flex-none lg:border-b-0 lg:border-r lg:border-black/25"
           >
-            <h2 className="shrink-0 text-xs font-semibold uppercase tracking-widest text-black/50">
-              Team
-            </h2>
             <ol
-              className="mt-3 grid min-h-0 flex-1 grid-cols-2 gap-2 overflow-y-auto pr-0.5"
+              className="grid min-h-0 flex-1 grid-cols-2 gap-2 overflow-y-auto pr-0.5"
               aria-label="Team slots"
             >
               {teamSlots.map((slot, i) => (
                 <li
                   key={i}
-                  className="flex min-h-[6.25rem] flex-col rounded-lg border border-dashed border-black/45 bg-white/60 p-2"
+                  className={[
+                    "flex min-h-[6.25rem] flex-col rounded-lg border border-dashed border-black/45 bg-white/60 p-2",
+                    flashSlotIndex === i ? "animate-team-slot-flash" : "",
+                  ].join(" ")}
                   aria-label={
                     slot
                       ? `Team slot ${i + 1}: ${formatDexTileDisplayName(slot.dexName, slot.formId)}`
@@ -244,18 +320,96 @@ export function TeamBuilderScreen() {
                 </li>
               ))}
             </ol>
+            <div className="shrink-0 border-t border-black/15 pt-3">
+              <button
+                type="button"
+                onClick={clearAllTeam}
+                disabled={!hasTeamMembers}
+                aria-label="Clear all team slots"
+                className="w-full rounded-md border border-black/25 bg-white/80 px-3 py-2 text-xs font-medium text-black/70 shadow-sm hover:bg-black/[0.04] hover:text-black disabled:cursor-not-allowed disabled:border-black/10 disabled:bg-black/[0.02] disabled:text-black/30"
+              >
+                Clear team
+              </button>
+            </div>
           </section>
 
           <section
             aria-label="Selector workspace"
             className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden p-4 sm:p-5 lg:w-2/3 lg:flex-none"
           >
-            <h2 className="shrink-0 text-xs font-semibold uppercase tracking-widest text-black/50">
-              Selector
-            </h2>
-            {selectorNames.length === 0 ? (
+            <div className="flex w-full shrink-0 flex-wrap items-end justify-end gap-2 sm:gap-3">
+              <div className="flex min-w-0 flex-col items-end gap-1">
+                <label
+                  htmlFor="team-builder-type-a"
+                  className="text-[10px] font-semibold uppercase tracking-wide text-black/45"
+                >
+                  Type 1
+                </label>
+                <select
+                  id="team-builder-type-a"
+                  value={typeFilterA ?? ""}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    const next = v === "" ? null : (v as TypeName);
+                    setTypeFilterA(next);
+                    setTypeFilterB((prev) =>
+                      prev && next && prev === next ? null : prev,
+                    );
+                  }}
+                  className="min-w-[7.5rem] max-w-full rounded-md border border-black/25 bg-white/80 px-2 py-1.5 text-right text-xs text-black shadow-sm"
+                >
+                  <option value="">Any</option>
+                  {TYPE_NAMES_ORDERED.map((t) => (
+                    <option key={t} value={t}>
+                      {formatTypeLabel(t)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="flex min-w-0 flex-col items-end gap-1">
+                <label
+                  htmlFor="team-builder-type-b"
+                  className="text-[10px] font-semibold uppercase tracking-wide text-black/45"
+                >
+                  Type 2
+                </label>
+                <select
+                  id="team-builder-type-b"
+                  value={typeFilterB ?? ""}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    setTypeFilterB(v === "" ? null : (v as TypeName));
+                  }}
+                  className="min-w-[7.5rem] max-w-full rounded-md border border-black/25 bg-white/80 px-2 py-1.5 text-right text-xs text-black shadow-sm"
+                >
+                  <option value="">Any</option>
+                  {TYPE_NAMES_ORDERED.filter((t) => t !== typeFilterA).map(
+                    (t) => (
+                      <option key={t} value={t}>
+                        {formatTypeLabel(t)}
+                      </option>
+                    ),
+                  )}
+                </select>
+              </div>
+              <button
+                type="button"
+                onClick={clearAllTypeFilters}
+                disabled={!hasActiveTypeFilters}
+                aria-label="Clear type filters"
+                className="rounded-md border border-black/25 bg-white/80 px-2.5 py-1.5 text-xs font-medium text-black/70 shadow-sm hover:bg-black/[0.04] hover:text-black disabled:cursor-not-allowed disabled:border-black/10 disabled:bg-black/[0.02] disabled:text-black/30"
+              >
+                Clear all filters
+              </button>
+            </div>
+            {dexEntries.length === 0 ? (
               <p className="mt-3 shrink-0 text-sm text-black/50">
                 No Pokémon match the current game filter.
+              </p>
+            ) : filteredDexEntries.length === 0 ? (
+              <p className="mt-3 shrink-0 text-sm text-black/50">
+                No Pokémon match the selected types. Choose &quot;Any&quot; or
+                different types to see more.
               </p>
             ) : (
               <div className="mt-3 min-h-0 flex-1 overflow-y-auto overflow-x-hidden pr-1 [scrollbar-gutter:stable]">
@@ -286,13 +440,12 @@ export function TeamBuilderScreen() {
                     nodes.push(
                       <li
                         key={entry.key}
-                        draggable={!speciesOnTeam}
+                        draggable
                         title={
                           speciesOnTeam
-                            ? "This species is already on your team (one form per Pokémon)."
+                            ? "Species on your team — drop on any slot to change its form in the slot it already occupies."
                             : undefined
                         }
-                        aria-disabled={speciesOnTeam}
                         onDragStart={(e) => {
                           e.dataTransfer.setData(
                             DEX_ENTRY_DRAG_MIME,
@@ -302,9 +455,8 @@ export function TeamBuilderScreen() {
                         }}
                         className={[
                           "flex h-full min-h-0 flex-col gap-2 rounded-xl border border-black/35 p-2.5 text-sm font-medium leading-snug select-none sm:gap-2.5 sm:p-3",
-                          speciesOnTeam
-                            ? "cursor-not-allowed border-black/25 bg-black/[0.03] text-black/35"
-                            : "cursor-grab bg-white/60 text-black hover:border-black/50 hover:bg-white/80 active:cursor-grabbing",
+                          "cursor-grab bg-white/60 text-black hover:border-black/50 hover:bg-white/80 active:cursor-grabbing",
+                          speciesOnTeam ? "ring-1 ring-inset ring-amber-500/35" : "",
                         ].join(" ")}
                       >
                         <header className="shrink-0 text-center">

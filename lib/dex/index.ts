@@ -46,6 +46,7 @@ export {
   computeSelectorTeamMatchupPerSlot,
   computeSelectorTeamMatchupTotals,
   formatEffectivenessMultiplier,
+  getBestStabMatchupBreakdown,
   getDominantMatchupScore,
   multiplierToEffectivenessTier,
   multiplierToMatchupScore,

@@ -1,5 +1,6 @@
 import type { DexDisplayEntry } from "./display";
 import { getDexEntryTypeNames } from "./display";
+import { formatTypeLabel } from "./typeBadgeStyles";
 import { TYPES } from "./types";
 import type { TypeName } from "./types";
 
@@ -29,6 +30,42 @@ export function bestStabMultiplier(
   return Math.max(
     ...attackTypes.map((a) => dualTypeAttackMultiplier(a, defendTypes)),
   );
+}
+
+function formatDefenderTypesLabel(defendTypes: readonly TypeName[]): string {
+  if (defendTypes.length === 0) return "—";
+  return defendTypes.map((t) => formatTypeLabel(t)).join(" / ");
+}
+
+/**
+ * Best STAB option (same tie-break as {@link bestStabMultiplier}) with a human line:
+ * `Rock > Fire / Flying = 4×` (defender typings are merged via product).
+ */
+export function getBestStabMatchupBreakdown(
+  attackTypes: readonly TypeName[],
+  defendTypes: readonly TypeName[],
+): { multiplier: number; explanation: string } {
+  if (attackTypes.length === 0) {
+    return {
+      multiplier: 1,
+      explanation: `— > ${formatDefenderTypesLabel(defendTypes)} = 1×`,
+    };
+  }
+  const rated = attackTypes.map((type) => ({
+    type,
+    m: dualTypeAttackMultiplier(type, defendTypes),
+  }));
+  rated.sort((a, b) => {
+    if (b.m !== a.m) return b.m - a.m;
+    return a.type.localeCompare(b.type);
+  });
+  const best = rated[0]!;
+  const atk = formatTypeLabel(best.type);
+  const def = formatDefenderTypesLabel(defendTypes);
+  return {
+    multiplier: best.m,
+    explanation: `${atk} > ${def} = ${formatEffectivenessMultiplier(best.m)}`,
+  };
 }
 
 /** UI band for raw type effectiveness (matches main-series multipliers). */
@@ -95,7 +132,9 @@ export function stabPrimarySecondaryMatchupScores(
 /** Raw best-STAB multipliers for one team member vs one selector species (per team slot). */
 export type MatchupSlotCell = {
   atkMultiplier: number;
+  atkExplanation: string;
   defMultiplier: number;
+  defExplanation: string;
 };
 
 /**
@@ -109,9 +148,13 @@ export function computeSelectorTeamMatchupPerSlot(
   return teamSlots.map((slot) => {
     if (!slot) return null;
     const teamTypes = getDexEntryTypeNames(slot);
+    const atk = getBestStabMatchupBreakdown(teamTypes, selTypes);
+    const def = getBestStabMatchupBreakdown(selTypes, teamTypes);
     return {
-      atkMultiplier: bestStabMultiplier(teamTypes, selTypes),
-      defMultiplier: bestStabMultiplier(selTypes, teamTypes),
+      atkMultiplier: atk.multiplier,
+      atkExplanation: atk.explanation,
+      defMultiplier: def.multiplier,
+      defExplanation: def.explanation,
     };
   });
 }

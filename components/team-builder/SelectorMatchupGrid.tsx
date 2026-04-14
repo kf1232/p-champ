@@ -1,6 +1,5 @@
 import type { MatchupSlotCell } from "@/lib/dex";
 import {
-  formatEffectivenessMultiplier,
   multiplierToEffectivenessTier,
   type EffectivenessTier,
 } from "@/lib/dex";
@@ -20,17 +19,16 @@ const TIER_SWATCH: Record<EffectivenessTier, string> = {
 
 function TierSwatch({
   tier,
-  m,
-  label,
+  explanation,
 }: {
   tier: EffectivenessTier;
-  m: number;
-  label: "atk" | "def";
+  /** Full math line, e.g. "Rock > Fire Flying = 4×" */
+  explanation: string;
 }) {
   return (
     <span
       className={`block h-full min-h-0 flex-1 ${TIER_SWATCH[tier]}`}
-      title={`${label === "atk" ? "Attack" : "Defense"} ${formatEffectivenessMultiplier(m)}`}
+      title={explanation}
     />
   );
 }
@@ -42,7 +40,7 @@ function TierSwatch({
 export function SelectorMatchupGrid({ slots }: SelectorMatchupGridProps) {
   const labelParts = slots.map((cell, i) =>
     cell
-      ? `slot ${i + 1} attack ${formatEffectivenessMultiplier(cell.atkMultiplier)} defense ${formatEffectivenessMultiplier(cell.defMultiplier)}`
+      ? `slot ${i + 1} attack ${cell.atkExplanation}; defense ${cell.defExplanation}`
       : `slot ${i + 1} empty`,
   );
 
@@ -67,18 +65,16 @@ export function SelectorMatchupGrid({ slots }: SelectorMatchupGridProps) {
             <div
               className="flex h-4 w-full max-w-[5.5rem] items-stretch overflow-hidden rounded border border-black/30"
               role="img"
-              aria-label={`Attack ${formatEffectivenessMultiplier(cell.atkMultiplier)}, defense ${formatEffectivenessMultiplier(cell.defMultiplier)}`}
+              aria-label={`Attack: ${cell.atkExplanation}. Defense: ${cell.defExplanation}`}
             >
               <TierSwatch
                 tier={multiplierToEffectivenessTier(cell.atkMultiplier)}
-                m={cell.atkMultiplier}
-                label="atk"
+                explanation={cell.atkExplanation}
               />
               <span className="w-px shrink-0 bg-black/40" aria-hidden />
               <TierSwatch
                 tier={multiplierToEffectivenessTier(cell.defMultiplier)}
-                m={cell.defMultiplier}
-                label="def"
+                explanation={cell.defExplanation}
               />
             </div>
           ) : (
