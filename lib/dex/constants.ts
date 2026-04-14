@@ -33,7 +33,9 @@ export const FORM_IDS = {
   dusk: "dusk",
 } as const;
 
-export type FormId = (typeof FORM_IDS)[keyof typeof FORM_IDS];
+export type FormId =
+  | (typeof FORM_IDS)[keyof typeof FORM_IDS]
+  | `form-${string}`;
 
 export const MOVE_CATEGORIES = {
   SPATK: "SPATK",
