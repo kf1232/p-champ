@@ -32,7 +32,7 @@ export type { MoveId, MoveRecord } from "./moves";
 export { moveEffectObject } from "./moveEffects";
 export type { MoveEffect, MoveEffectRecord } from "./moveEffects";
 
-export { expandDexRecords } from "./display";
+export { expandDexRecords, formatDexTileDisplayName } from "./display";
 export type { DexDisplayEntry } from "./display";
 
 export {
