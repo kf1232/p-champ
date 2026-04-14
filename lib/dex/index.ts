@@ -1,4 +1,10 @@
-export { dexObject, getDexIds } from "./dexObject";
+export {
+  DEX_FORM_STATS_TODO,
+  DEX_STAT_TODO,
+  dexObject,
+  getDexIds,
+  isDexFormStatsTodo,
+} from "./dexObject";
 export type { DexForm, DexRecord } from "./dexObject";
 
 export {
