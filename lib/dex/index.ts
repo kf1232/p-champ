@@ -32,8 +32,14 @@ export type { MoveId, MoveRecord } from "./moves";
 export { moveEffectObject } from "./moveEffects";
 export type { MoveEffect, MoveEffectRecord } from "./moveEffects";
 
-export { expandDexRecords, formatDexTileDisplayName } from "./display";
+export {
+  expandDexRecords,
+  formatDexTileDisplayName,
+  getDexEntryTypeNames,
+} from "./display";
 export type { DexDisplayEntry } from "./display";
+
+export { TYPE_BADGE_CLASSES, formatTypeLabel } from "./typeBadgeStyles";
 
 export {
   filterDexRecordsForGame,

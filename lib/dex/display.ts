@@ -1,6 +1,7 @@
 import { FORM_IDS } from "./constants";
 import type { FormId } from "./constants";
 import type { DexForm, DexRecord } from "./dexObject";
+import type { TypeName } from "./types";
 
 function capitalizeWord(word: string): string {
   if (word.length <= 1) return word.toUpperCase();
@@ -102,7 +103,20 @@ export type DexDisplayEntry = {
   dexName: string;
   formId: FormId;
   form?: DexForm;
+  /**
+   * Typings when `form` is missing (e.g. team slot restored from drag payload).
+   * Otherwise use `form.types`.
+   */
+  typeNames?: TypeName[];
 };
+
+/** Resolved typings for UI: from `form.types` or cached `typeNames`. */
+export function getDexEntryTypeNames(entry: DexDisplayEntry): TypeName[] {
+  if (entry.form?.types?.length) {
+    return entry.form.types.map((t) => t.typeName);
+  }
+  return entry.typeNames ?? [];
+}
 
 function getFormOrderKey(formId: string): number {
   const ordered = [

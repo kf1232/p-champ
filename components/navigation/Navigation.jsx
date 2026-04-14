@@ -12,6 +12,7 @@ export default function Navigation({ title = SITE_NAME }) {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isDex = pathname === "/dex";
+  const isTeamBuilder = pathname === "/team-builder";
   const { selectedGameId, setSelectedGameId } = useGameSelection();
 
   return (
@@ -46,6 +47,16 @@ export default function Navigation({ title = SITE_NAME }) {
               aria-current={isDex ? "page" : undefined}
             >
               Dex
+            </Link>
+            <Link
+              href="/team-builder"
+              className={[
+                "text-sm font-medium",
+                isTeamBuilder ? "text-black" : "text-black/70 hover:text-black",
+              ].join(" ")}
+              aria-current={isTeamBuilder ? "page" : undefined}
+            >
+              Team Builder
             </Link>
           </nav>
 
