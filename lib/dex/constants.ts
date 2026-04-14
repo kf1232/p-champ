@@ -1,3 +1,16 @@
+export const GAME_IDS = {
+  CHAMPIONS: "CHAMPIONS",
+} as const;
+
+export type GameId = (typeof GAME_IDS)[keyof typeof GAME_IDS];
+
+/** All valid game ids; derived from `GAME_IDS` so new games are registered in one place. */
+export const VALID_GAMES: readonly GameId[] = Object.values(GAME_IDS);
+
+export const GAME_LABELS: Record<GameId, string> = {
+  [GAME_IDS.CHAMPIONS]: "Champions",
+};
+
 export const FORM_IDS = {
   base: "base",
   aloan: "aloan",

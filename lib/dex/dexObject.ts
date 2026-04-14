@@ -1,5 +1,5 @@
-import { FORM_IDS } from "./constants";
-import type { FormId } from "./constants";
+import { FORM_IDS, GAME_IDS } from "./constants";
+import type { FormId, GameId } from "./constants";
 import { MOVES } from "./moves";
 import type { MoveId } from "./moves";
 import { TYPES } from "./types";
@@ -17,50 +17,60 @@ export type DexForm = {
 };
 
 export type DexRecord = {
-  dexNumber: number;
+  dexNumber: { nat: number };
   dexName: string;
+  games: Record<GameId, boolean>;
   forms: { base: DexForm | null } & Partial<Record<FormId, DexForm | null>>;
 };
 
 export const dexObject: Record<number, DexRecord> = {
   3: {
-    dexNumber: 3,
+    dexNumber: { nat: 3 },
+    
     dexName: "Venusaur",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   6: {
-    dexNumber: 6,
+    dexNumber: { nat: 6 },
     dexName: "Charizard",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   9: {
-    dexNumber: 9,
+    dexNumber: { nat: 9 },
     dexName: "Blastoise",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   15: {
-    dexNumber: 15,
+    dexNumber: { nat: 15 },
     dexName: "Beedrill",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   18: {
-    dexNumber: 18,
+    dexNumber: { nat: 18 },
     dexName: "Pidgeot",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   24: {
-    dexNumber: 24,
+    dexNumber: { nat: 24 },
     dexName: "Arbok",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   25: {
-    dexNumber: 25,
+    dexNumber: { nat: 25 },
     dexName: "Pikachu",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   26: {
-    dexNumber: 26,
+    dexNumber: { nat: 26 },
     dexName: "Raichu",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 135,
@@ -85,8 +95,9 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   36: {
-    dexNumber: 36,
+    dexNumber: { nat: 36 },
     dexName: "Clefable",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 170,
@@ -101,8 +112,9 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   38: {
-    dexNumber: 38,
+    dexNumber: { nat: 38 },
     dexName: "Ninetales",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: null,
       [FORM_IDS.aloan]: {
@@ -118,8 +130,9 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   59: {
-    dexNumber: 59,
+    dexNumber: { nat: 59 },
     dexName: "Arcanine",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 165,
@@ -202,23 +215,27 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   65: {
-    dexNumber: 65,
+    dexNumber: { nat: 65 },
     dexName: "Alakazam",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   68: {
-    dexNumber: 68,
+    dexNumber: { nat: 68 },
     dexName: "Machamp",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   71: {
-    dexNumber: 71,
+    dexNumber: { nat: 71 },
     dexName: "Victreebel",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   80: {
-    dexNumber: 80,
+    dexNumber: { nat: 80 },
     dexName: "Slowbro",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: null,
       [FORM_IDS.galarian]: {
@@ -234,8 +251,9 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   94: {
-    dexNumber: 94,
+    dexNumber: { nat: 94 },
     dexName: "Gengar",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 135,
@@ -327,8 +345,9 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   115: {
-    dexNumber: 115,
+    dexNumber: { nat: 115 },
     dexName: "Kangaskhan",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 180,
@@ -411,8 +430,9 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   121: {
-    dexNumber: 121,
+    dexNumber: { nat: 121 },
     dexName: "Starmie",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 135,
@@ -427,8 +447,9 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   127: {
-    dexNumber: 127,
+    dexNumber: { nat: 127 },
     dexName: "Pinsir",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 140,
@@ -443,8 +464,9 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   128: {
-    dexNumber: 128,
+    dexNumber: { nat: 128 },
     dexName: "Tauros",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 150,
@@ -462,18 +484,21 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   130: {
-    dexNumber: 130,
+    dexNumber: { nat: 130 },
     dexName: "Gyarados",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   132: {
-    dexNumber: 132,
+    dexNumber: { nat: 132 },
     dexName: "Ditto",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   134: {
-    dexNumber: 134,
+    dexNumber: { nat: 134 },
     dexName: "Vaporeon",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 205,
@@ -488,8 +513,9 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   135: {
-    dexNumber: 135,
+    dexNumber: { nat: 135 },
     dexName: "Jolteon",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 140,
@@ -504,8 +530,9 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   136: {
-    dexNumber: 136,
+    dexNumber: { nat: 136 },
     dexName: "Flareon",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 140,
@@ -520,8 +547,9 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   142: {
-    dexNumber: 142,
+    dexNumber: { nat: 142 },
     dexName: "Aerodactyl",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 155,
@@ -536,8 +564,9 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   143: {
-    dexNumber: 143,
+    dexNumber: { nat: 143 },
     dexName: "Snorlax",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 235,
@@ -552,8 +581,9 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   149: {
-    dexNumber: 149,
+    dexNumber: { nat: 149 },
     dexName: "Dragonite",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 166,
@@ -652,31 +682,36 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   154: {
-    dexNumber: 154,
+    dexNumber: { nat: 154 },
     dexName: "Meganium",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   157: {
-    dexNumber: 157,
+    dexNumber: { nat: 157 },
     dexName: "Typhlosion",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: null,
       [FORM_IDS.hisuian]: null,
     },
   },
   160: {
-    dexNumber: 160,
+    dexNumber: { nat: 160 },
     dexName: "Feraligatr",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   168: {
-    dexNumber: 168,
+    dexNumber: { nat: 168 },
     dexName: "Ariados",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   181: {
-    dexNumber: 181,
+    dexNumber: { nat: 181 },
     dexName: "Ampharos",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 165,
@@ -759,261 +794,312 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   184: {
-    dexNumber: 184,
+    dexNumber: { nat: 184 },
     dexName: "Azumarill",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   186: {
-    dexNumber: 186,
+    dexNumber: { nat: 186 },
     dexName: "Politoed",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   196: {
-    dexNumber: 196,
+    dexNumber: { nat: 196 },
     dexName: "Espeon",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   197: {
-    dexNumber: 197,
+    dexNumber: { nat: 197 },
     dexName: "Umbreon",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   199: {
-    dexNumber: 199,
+    dexNumber: { nat: 199 },
     dexName: "Slowking",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: null,
       [FORM_IDS.galarian]: null,
     },
   },
   205: {
-    dexNumber: 205,
+    dexNumber: { nat: 205 },
     dexName: "Forretress",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   208: {
-    dexNumber: 208,
+    dexNumber: { nat: 208 },
     dexName: "Steelix",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   212: {
-    dexNumber: 212,
+    dexNumber: { nat: 212 },
     dexName: "Scizor",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   214: {
-    dexNumber: 214,
+    dexNumber: { nat: 214 },
     dexName: "Heracross",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   227: {
-    dexNumber: 227,
+    dexNumber: { nat: 227 },
     dexName: "Skarmory",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   229: {
-    dexNumber: 229,
+    dexNumber: { nat: 229 },
     dexName: "Houndoom",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   248: {
-    dexNumber: 248,
+    dexNumber: { nat: 248 },
     dexName: "Tyranitar",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   279: {
-    dexNumber: 279,
+    dexNumber: { nat: 279 },
     dexName: "Pelipper",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   282: {
-    dexNumber: 282,
+    dexNumber: { nat: 282 },
     dexName: "Gardevoir",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   302: {
-    dexNumber: 302,
+    dexNumber: { nat: 302 },
     dexName: "Sableye",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   306: {
-    dexNumber: 306,
+    dexNumber: { nat: 306 },
     dexName: "Aggron",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   308: {
-    dexNumber: 308,
+    dexNumber: { nat: 308 },
     dexName: "Medicham",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   310: {
-    dexNumber: 310,
+    dexNumber: { nat: 310 },
     dexName: "Manectric",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   319: {
-    dexNumber: 319,
+    dexNumber: { nat: 319 },
     dexName: "Sharpedo",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   323: {
-    dexNumber: 323,
+    dexNumber: { nat: 323 },
     dexName: "Camerupt",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   324: {
-    dexNumber: 324,
+    dexNumber: { nat: 324 },
     dexName: "Torkoal",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   334: {
-    dexNumber: 334,
+    dexNumber: { nat: 334 },
     dexName: "Altaria",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   350: {
-    dexNumber: 350,
+    dexNumber: { nat: 350 },
     dexName: "Milotic",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   351: {
-    dexNumber: 351,
+    dexNumber: { nat: 351 },
     dexName: "Castform",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   354: {
-    dexNumber: 354,
+    dexNumber: { nat: 354 },
     dexName: "Banette",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   358: {
-    dexNumber: 358,
+    dexNumber: { nat: 358 },
     dexName: "Chimecho",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   359: {
-    dexNumber: 359,
+    dexNumber: { nat: 359 },
     dexName: "Absol",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   362: {
-    dexNumber: 362,
+    dexNumber: { nat: 362 },
     dexName: "Glalie",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   389: {
-    dexNumber: 389,
+    dexNumber: { nat: 389 },
     dexName: "Torterra",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   392: {
-    dexNumber: 392,
+    dexNumber: { nat: 392 },
     dexName: "Infernape",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   395: {
-    dexNumber: 395,
+    dexNumber: { nat: 395 },
     dexName: "Empoleon",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   405: {
-    dexNumber: 405,
+    dexNumber: { nat: 405 },
     dexName: "Luxray",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   407: {
-    dexNumber: 407,
+    dexNumber: { nat: 407 },
     dexName: "Roserade",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   409: {
-    dexNumber: 409,
+    dexNumber: { nat: 409 },
     dexName: "Rampardos",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   411: {
-    dexNumber: 411,
+    dexNumber: { nat: 411 },
     dexName: "Bastiodon",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   428: {
-    dexNumber: 428,
+    dexNumber: { nat: 428 },
     dexName: "Lopunny",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   442: {
-    dexNumber: 442,
+    dexNumber: { nat: 442 },
     dexName: "Spiritomb",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   445: {
-    dexNumber: 445,
+    dexNumber: { nat: 445 },
     dexName: "Garchomp",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   448: {
-    dexNumber: 448,
+    dexNumber: { nat: 448 },
     dexName: "Lucario",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   450: {
-    dexNumber: 450,
+    dexNumber: { nat: 450 },
     dexName: "Hippowdon",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   454: {
-    dexNumber: 454,
+    dexNumber: { nat: 454 },
     dexName: "Toxicroak",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   460: {
-    dexNumber: 460,
+    dexNumber: { nat: 460 },
     dexName: "Abomasnow",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   461: {
-    dexNumber: 461,
+    dexNumber: { nat: 461 },
     dexName: "Weavile",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   464: {
-    dexNumber: 464,
+    dexNumber: { nat: 464 },
     dexName: "Rhyperior",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   470: {
-    dexNumber: 470,
+    dexNumber: { nat: 470 },
     dexName: "Leafeon",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   471: {
-    dexNumber: 471,
+    dexNumber: { nat: 471 },
     dexName: "Glaceon",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   472: {
-    dexNumber: 472,
+    dexNumber: { nat: 472 },
     dexName: "Gliscor",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   473: {
-    dexNumber: 473,
+    dexNumber: { nat: 473 },
     dexName: "Mamoswine",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   475: {
-    dexNumber: 475,
+    dexNumber: { nat: 475 },
     dexName: "Gallade",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   478: {
-    dexNumber: 478,
+    dexNumber: { nat: 478 },
     dexName: "Froslass",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   479: {
-    dexNumber: 479,
+    dexNumber: { nat: 479 },
     dexName: "Rotom",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: null,
       [FORM_IDS.heat]: null,
@@ -1024,66 +1110,78 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   497: {
-    dexNumber: 497,
+    dexNumber: { nat: 497 },
     dexName: "Serperior",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   500: {
-    dexNumber: 500,
+    dexNumber: { nat: 500 },
     dexName: "Emboar",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   503: {
-    dexNumber: 503,
+    dexNumber: { nat: 503 },
     dexName: "Samurott",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: null,
       [FORM_IDS.hisuian]: null,
     },
   },
   505: {
-    dexNumber: 505,
+    dexNumber: { nat: 505 },
     dexName: "Watchog",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   510: {
-    dexNumber: 510,
+    dexNumber: { nat: 510 },
     dexName: "Liepard",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   512: {
-    dexNumber: 512,
+    dexNumber: { nat: 512 },
     dexName: "Simisage",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   514: {
-    dexNumber: 514,
+    dexNumber: { nat: 514 },
     dexName: "Simisear",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   516: {
-    dexNumber: 516,
+    dexNumber: { nat: 516 },
     dexName: "Simipour",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   530: {
-    dexNumber: 530,
+    dexNumber: { nat: 530 },
     dexName: "Excadrill",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   531: {
-    dexNumber: 531,
+    dexNumber: { nat: 531 },
     dexName: "Audino",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   534: {
-    dexNumber: 534,
+    dexNumber: { nat: 534 },
     dexName: "Conkeldurr",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   547: {
-    dexNumber: 547,
+    dexNumber: { nat: 547 },
     dexName: "Whimsicott",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 135,
@@ -1149,167 +1247,198 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   553: {
-    dexNumber: 553,
+    dexNumber: { nat: 553 },
     dexName: "Krookodile",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   563: {
-    dexNumber: 563,
+    dexNumber: { nat: 563 },
     dexName: "Cofagrigus",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   569: {
-    dexNumber: 569,
+    dexNumber: { nat: 569 },
     dexName: "Garbodor",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   571: {
-    dexNumber: 571,
+    dexNumber: { nat: 571 },
     dexName: "Zoroark",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: null,
       [FORM_IDS.hisuian]: null,
     },
   },
   579: {
-    dexNumber: 579,
+    dexNumber: { nat: 579 },
     dexName: "Reuniclus",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   584: {
-    dexNumber: 584,
+    dexNumber: { nat: 584 },
     dexName: "Vanilluxe",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   587: {
-    dexNumber: 587,
+    dexNumber: { nat: 587 },
     dexName: "Emolga",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   609: {
-    dexNumber: 609,
+    dexNumber: { nat: 609 },
     dexName: "Chandelure",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   614: {
-    dexNumber: 614,
+    dexNumber: { nat: 614 },
     dexName: "Beartic",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   618: {
-    dexNumber: 618,
+    dexNumber: { nat: 618 },
     dexName: "Stunfisk",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: null,
       [FORM_IDS.galarian]: null,
     },
   },
   623: {
-    dexNumber: 623,
+    dexNumber: { nat: 623 },
     dexName: "Golurk",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   635: {
-    dexNumber: 635,
+    dexNumber: { nat: 635 },
     dexName: "Hydreigon",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   637: {
-    dexNumber: 637,
+    dexNumber: { nat: 637 },
     dexName: "Volcarona",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   652: {
-    dexNumber: 652,
+    dexNumber: { nat: 652 },
     dexName: "Chesnaught",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   655: {
-    dexNumber: 655,
+    dexNumber: { nat: 655 },
     dexName: "Delphox",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   658: {
-    dexNumber: 658,
+    dexNumber: { nat: 658 },
     dexName: "Greninja",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   660: {
-    dexNumber: 660,
+    dexNumber: { nat: 660 },
     dexName: "Diggersby",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   663: {
-    dexNumber: 663,
+    dexNumber: { nat: 663 },
     dexName: "Talonflame",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   666: {
-    dexNumber: 666,
+    dexNumber: { nat: 666 },
     dexName: "Vivillon",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   670: {
-    dexNumber: 670,
+    dexNumber: { nat: 670 },
     dexName: "Floette",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   671: {
-    dexNumber: 671,
+    dexNumber: { nat: 671 },
     dexName: "Florges",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   675: {
-    dexNumber: 675,
+    dexNumber: { nat: 675 },
     dexName: "Pangoro",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   676: {
-    dexNumber: 676,
+    dexNumber: { nat: 676 },
     dexName: "Furfrou",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   678: {
-    dexNumber: 678,
+    dexNumber: { nat: 678 },
     dexName: "Meowstic",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: null,
       [FORM_IDS.female]: null,
     },
   },
   681: {
-    dexNumber: 681,
+    dexNumber: { nat: 681 },
     dexName: "Aegislash",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   683: {
-    dexNumber: 683,
+    dexNumber: { nat: 683 },
     dexName: "Aromatisse",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   685: {
-    dexNumber: 685,
+    dexNumber: { nat: 685 },
     dexName: "Slurpuff",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   693: {
-    dexNumber: 693,
+    dexNumber: { nat: 693 },
     dexName: "Clawitzer",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   695: {
-    dexNumber: 695,
+    dexNumber: { nat: 695 },
     dexName: "Heliolisk",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   697: {
-    dexNumber: 697,
+    dexNumber: { nat: 697 },
     dexName: "Tyrantrum",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   699: {
-    dexNumber: 699,
+    dexNumber: { nat: 699 },
     dexName: "Aurorus",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 198,
@@ -1380,8 +1509,9 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   700: {
-    dexNumber: 700,
+    dexNumber: { nat: 700 },
     dexName: "Sylveon",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 170,
@@ -1452,36 +1582,42 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   701: {
-    dexNumber: 701,
+    dexNumber: { nat: 701 },
     dexName: "Hawlucha",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   702: {
-    dexNumber: 702,
+    dexNumber: { nat: 702 },
     dexName: "Dedenne",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   706: {
-    dexNumber: 706,
+    dexNumber: { nat: 706 },
     dexName: "Goodra",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: null,
       [FORM_IDS.hisuian]: null,
     },
   },
   707: {
-    dexNumber: 707,
+    dexNumber: { nat: 707 },
     dexName: "Klefki",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   709: {
-    dexNumber: 709,
+    dexNumber: { nat: 709 },
     dexName: "Trevenant",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   711: {
-    dexNumber: 711,
+    dexNumber: { nat: 711 },
     dexName: "Gourgeist",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: null,
       [FORM_IDS.medium]: null,
@@ -1491,16 +1627,18 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   713: {
-    dexNumber: 713,
+    dexNumber: { nat: 713 },
     dexName: "Avalugg",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: null,
       [FORM_IDS.hisuian]: null,
     },
   },
   715: {
-    dexNumber: 715,
+    dexNumber: { nat: 715 },
     dexName: "Noivern",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 160,
@@ -1579,36 +1717,42 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   724: {
-    dexNumber: 724,
+    dexNumber: { nat: 724 },
     dexName: "Decidueye",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: null,
       [FORM_IDS.hisuian]: null,
     },
   },
   727: {
-    dexNumber: 727,
+    dexNumber: { nat: 727 },
     dexName: "Incineroar",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   730: {
-    dexNumber: 730,
+    dexNumber: { nat: 730 },
     dexName: "Primarina",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   733: {
-    dexNumber: 733,
+    dexNumber: { nat: 733 },
     dexName: "Toucannon",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   740: {
-    dexNumber: 740,
+    dexNumber: { nat: 740 },
     dexName: "Crabominable",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   745: {
-    dexNumber: 745,
+    dexNumber: { nat: 745 },
     dexName: "Lycanroc",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: null,
       [FORM_IDS.midnight]: null,
@@ -1616,166 +1760,198 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   748: {
-    dexNumber: 748,
+    dexNumber: { nat: 748 },
     dexName: "Toxapex",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   750: {
-    dexNumber: 750,
+    dexNumber: { nat: 750 },
     dexName: "Mudsdale",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   752: {
-    dexNumber: 752,
+    dexNumber: { nat: 752 },
     dexName: "Araquanid",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   758: {
-    dexNumber: 758,
+    dexNumber: { nat: 758 },
     dexName: "Salazzle",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   763: {
-    dexNumber: 763,
+    dexNumber: { nat: 763 },
     dexName: "Tsareena",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   765: {
-    dexNumber: 765,
+    dexNumber: { nat: 765 },
     dexName: "Oranguru",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   766: {
-    dexNumber: 766,
+    dexNumber: { nat: 766 },
     dexName: "Passimian",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   778: {
-    dexNumber: 778,
+    dexNumber: { nat: 778 },
     dexName: "Mimikyu",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   780: {
-    dexNumber: 780,
+    dexNumber: { nat: 780 },
     dexName: "Drampa",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   784: {
-    dexNumber: 784,
+    dexNumber: { nat: 784 },
     dexName: "Kommo O",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   823: {
-    dexNumber: 823,
+    dexNumber: { nat: 823 },
     dexName: "Corviknight",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   841: {
-    dexNumber: 841,
+    dexNumber: { nat: 841 },
     dexName: "Flapple",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   842: {
-    dexNumber: 842,
+    dexNumber: { nat: 842 },
     dexName: "Appletun",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   844: {
-    dexNumber: 844,
+    dexNumber: { nat: 844 },
     dexName: "Sandaconda",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   855: {
-    dexNumber: 855,
+    dexNumber: { nat: 855 },
     dexName: "Polteageist",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   858: {
-    dexNumber: 858,
+    dexNumber: { nat: 858 },
     dexName: "Hatterene",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   866: {
-    dexNumber: 866,
+    dexNumber: { nat: 866 },
     dexName: "Mr Rime",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   867: {
-    dexNumber: 867,
+    dexNumber: { nat: 867 },
     dexName: "Runerigus",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   869: {
-    dexNumber: 869,
+    dexNumber: { nat: 869 },
     dexName: "Alcremie",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   877: {
-    dexNumber: 877,
+    dexNumber: { nat: 877 },
     dexName: "Morpeko",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   887: {
-    dexNumber: 887,
+    dexNumber: { nat: 887 },
     dexName: "Dragapult",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   899: {
-    dexNumber: 899,
+    dexNumber: { nat: 899 },
     dexName: "Wyrdeer",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   900: {
-    dexNumber: 900,
+    dexNumber: { nat: 900 },
     dexName: "Kleavor",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   902: {
-    dexNumber: 902,
+    dexNumber: { nat: 902 },
     dexName: "Basculegion",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: null,
       [FORM_IDS.female]: null,
     },
   },
   903: {
-    dexNumber: 903,
+    dexNumber: { nat: 903 },
     dexName: "Sneasler",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   908: {
-    dexNumber: 908,
+    dexNumber: { nat: 908 },
     dexName: "Meowscarada",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   911: {
-    dexNumber: 911,
+    dexNumber: { nat: 911 },
     dexName: "Skeledirge",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   914: {
-    dexNumber: 914,
+    dexNumber: { nat: 914 },
     dexName: "Quaquaval",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   925: {
-    dexNumber: 925,
+    dexNumber: { nat: 925 },
     dexName: "Maushold",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   934: {
-    dexNumber: 934,
+    dexNumber: { nat: 934 },
     dexName: "Garganacl",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   936: {
-    dexNumber: 936,
+    dexNumber: { nat: 936 },
     dexName: "Armarouge",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   937: {
-    dexNumber: 937,
+    dexNumber: { nat: 937 },
     dexName: "Ceruledge",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 150,
@@ -1846,58 +2022,69 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   939: {
-    dexNumber: 939,
+    dexNumber: { nat: 939 },
     dexName: "Bellibolt",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   952: {
-    dexNumber: 952,
+    dexNumber: { nat: 952 },
     dexName: "Scovillain",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   956: {
-    dexNumber: 956,
+    dexNumber: { nat: 956 },
     dexName: "Espathra",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   959: {
-    dexNumber: 959,
+    dexNumber: { nat: 959 },
     dexName: "Tinkaton",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   964: {
-    dexNumber: 964,
+    dexNumber: { nat: 964 },
     dexName: "Palafin",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   968: {
-    dexNumber: 968,
+    dexNumber: { nat: 968 },
     dexName: "Orthworm",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   970: {
-    dexNumber: 970,
+    dexNumber: { nat: 970 },
     dexName: "Glimmora",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   981: {
-    dexNumber: 981,
+    dexNumber: { nat: 981 },
     dexName: "Farigiraf",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   983: {
-    dexNumber: 983,
+    dexNumber: { nat: 983 },
     dexName: "Kingambit",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   1013: {
-    dexNumber: 1013,
+    dexNumber: { nat: 1013 },
     dexName: "Sinistcha",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
   1018: {
-    dexNumber: 1018,
+    dexNumber: { nat: 1018 },
     dexName: "Archaludon",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
       [FORM_IDS.base]: {
         hp: 165,
@@ -1964,8 +2151,9 @@ export const dexObject: Record<number, DexRecord> = {
     },
   },
   1019: {
-    dexNumber: 1019,
+    dexNumber: { nat: 1019 },
     dexName: "Hydrapple",
+    games: { [GAME_IDS.CHAMPIONS]: true },
     forms: { [FORM_IDS.base]: null },
   },
 };

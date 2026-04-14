@@ -46,10 +46,11 @@ export function expandDexRecords(records: DexRecord[]): DexDisplayEntry[] {
       .filter((id): id is FormId => id !== FORM_IDS.base)
       .sort((a, b) => getFormOrderKey(a) - getFormOrderKey(b));
 
+    const nat = r.dexNumber.nat;
     const entries: DexDisplayEntry[] = [
       {
-        key: String(r.dexNumber),
-        dexNumber: r.dexNumber,
+        key: String(nat),
+        dexNumber: nat,
         dexName: r.dexName,
         formId: FORM_IDS.base,
         form: base ?? undefined,
@@ -59,8 +60,8 @@ export function expandDexRecords(records: DexRecord[]): DexDisplayEntry[] {
     for (const formId of otherFormIds) {
       const form = forms[formId];
       entries.push({
-        key: `${r.dexNumber}-${formId}`,
-        dexNumber: r.dexNumber,
+        key: `${nat}-${formId}`,
+        dexNumber: nat,
         dexName: r.dexName,
         formId,
         form: form ?? undefined,

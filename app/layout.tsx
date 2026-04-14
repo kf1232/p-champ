@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { GameSelectionProvider } from "@/components/game";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 
 import "./globals.css";
@@ -19,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <GameSelectionProvider>{children}</GameSelectionProvider>
+      </body>
     </html>
   );
 }
