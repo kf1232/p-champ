@@ -1,4 +1,4 @@
-import { FORM_IDS } from "@/lib/dex";
+import { DEX_STAT_TODO, FORM_IDS } from "@/lib/dex";
 import type { DexDisplayEntry } from "@/lib/dex";
 
 type DexRecordPlaceholderProps = {
@@ -6,12 +6,12 @@ type DexRecordPlaceholderProps = {
 };
 
 function statLine(label: string, value: number | undefined) {
+  const display =
+    value === undefined || value === DEX_STAT_TODO ? "—" : value;
   return (
     <div className="flex items-baseline justify-between gap-2">
       <div className="text-xs font-medium text-black/50">{label}</div>
-      <div className="text-xs font-semibold text-black/80">
-        {value ?? "—"}
-      </div>
+      <div className="text-xs font-semibold text-black/80">{display}</div>
     </div>
   );
 }

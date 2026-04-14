@@ -11,6 +11,24 @@ export const GAME_LABELS: Record<GameId, string> = {
   [GAME_IDS.CHAMPIONS]: "Champions",
 };
 
+/**
+ * Dex list filter: full national dex (no `games` filter), or a single release
+ * (`games[gameId] === true` only).
+ */
+export const NATIONAL_VIEW_ID = "NATIONAL" as const;
+
+export type DexListViewId = GameId | typeof NATIONAL_VIEW_ID;
+
+export const DEX_LIST_VIEW_IDS: readonly DexListViewId[] = [
+  NATIONAL_VIEW_ID,
+  ...VALID_GAMES,
+];
+
+export const DEX_LIST_VIEW_LABELS: Record<DexListViewId, string> = {
+  [NATIONAL_VIEW_ID]: "National",
+  ...GAME_LABELS,
+};
+
 export const FORM_IDS = {
   base: "base",
   aloan: "aloan",

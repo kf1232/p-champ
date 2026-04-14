@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { useGameSelection } from "@/components/game";
-import { GAME_LABELS, VALID_GAMES } from "@/lib/dex";
+import { DEX_LIST_VIEW_IDS, DEX_LIST_VIEW_LABELS } from "@/lib/dex";
 
 import { SITE_NAME } from "@/lib/site";
 
@@ -56,13 +56,13 @@ export default function Navigation({ title = SITE_NAME }) {
               value={selectedGameId}
               onChange={(e) => {
                 const v = e.target.value;
-                if (VALID_GAMES.includes(v)) setSelectedGameId(v);
+                if (DEX_LIST_VIEW_IDS.includes(v)) setSelectedGameId(v);
               }}
               aria-label="Active game filter"
             >
-              {VALID_GAMES.map((id) => (
+              {DEX_LIST_VIEW_IDS.map((id) => (
                 <option key={id} value={id}>
-                  {GAME_LABELS[id]}
+                  {DEX_LIST_VIEW_LABELS[id]}
                 </option>
               ))}
             </select>
