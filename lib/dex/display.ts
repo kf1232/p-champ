@@ -1,6 +1,100 @@
 import { FORM_IDS } from "./constants";
 import type { FormId } from "./constants";
 import type { DexForm, DexRecord } from "./dexObject";
+import type { TypeName } from "./types";
+
+function capitalizeWord(word: string): string {
+  if (word.length <= 1) return word.toUpperCase();
+  const lower = word.toLowerCase();
+  return lower.charAt(0).toUpperCase() + lower.slice(1);
+}
+
+/**
+ * Human-readable label for a dex tile (species + form), e.g. "Mega Charizard X",
+ * "Alolan Raichu", "Heat Rotom".
+ */
+export function formatDexTileDisplayName(dexName: string, formId: FormId): string {
+  if (formId === FORM_IDS.base) return dexName;
+
+  const regional: Partial<Record<FormId, string>> = {
+    [FORM_IDS.aloan]: `Alolan ${dexName}`,
+    [FORM_IDS.galarian]: `Galarian ${dexName}`,
+    [FORM_IDS.hisuian]: `Hisuian ${dexName}`,
+    [FORM_IDS.paldeanCombat]: `Paldean Combat ${dexName}`,
+    [FORM_IDS.paldeanFire]: `Paldean Fire ${dexName}`,
+    [FORM_IDS.paldeanWater]: `Paldean Water ${dexName}`,
+    [FORM_IDS.heat]: `Heat ${dexName}`,
+    [FORM_IDS.wash]: `Wash ${dexName}`,
+    [FORM_IDS.frost]: `Frost ${dexName}`,
+    [FORM_IDS.fan]: `Fan ${dexName}`,
+    [FORM_IDS.grass]: `Mow ${dexName}`,
+    [FORM_IDS.female]: `Female ${dexName}`,
+    [FORM_IDS.small]: `Small ${dexName}`,
+    [FORM_IDS.medium]: `Average ${dexName}`,
+    [FORM_IDS.large]: `Large ${dexName}`,
+    [FORM_IDS.jumbo]: `Super ${dexName}`,
+    [FORM_IDS.midnight]: `Midnight ${dexName}`,
+    [FORM_IDS.dusk]: `Dusk ${dexName}`,
+  };
+  const regionalLabel = regional[formId];
+  if (regionalLabel !== undefined) return regionalLabel;
+
+  if (!formId.startsWith("form-")) {
+    return dexName;
+  }
+
+  const slug = formId.slice("form-".length);
+
+  if (slug.startsWith("mega-")) {
+    const rest = slug.slice("mega-".length);
+    const parts = rest.split("-").filter(Boolean);
+    if (parts.length >= 2) {
+      const last = parts[parts.length - 1]!.toLowerCase();
+      if (last === "x" || last === "y") {
+        const species = parts
+          .slice(0, -1)
+          .map(capitalizeWord)
+          .join(" ");
+        return `Mega ${species} ${last.toUpperCase()}`;
+      }
+    }
+    return `Mega ${parts.map(capitalizeWord).join(" ")}`;
+  }
+
+  if (slug.startsWith("primal-")) {
+    const species = slug
+      .slice("primal-".length)
+      .split("-")
+      .map(capitalizeWord)
+      .join(" ");
+    return `Primal ${species}`;
+  }
+
+  if (slug.startsWith("partner-")) {
+    return `Partner ${dexName}`;
+  }
+
+  if (slug.startsWith("paldean-")) {
+    const tail = slug.slice("paldean-".length);
+    return `Paldean ${tail.split("-").map(capitalizeWord).join(" ")}`;
+  }
+
+  if (slug === "sunny-form" || slug === "rainy-form" || slug === "snowy-form") {
+    const w = slug === "sunny-form" ? "Sunny" : slug === "rainy-form" ? "Rainy" : "Snowy";
+    return `${w} ${dexName}`;
+  }
+
+  const humanized = slug
+    .split("-")
+    .map((w) => {
+      if (w === "forme") return "Forme";
+      if (w === "form") return "Form";
+      return capitalizeWord(w);
+    })
+    .join(" ");
+
+  return `${humanized} ${dexName}`;
+}
 
 export type DexDisplayEntry = {
   /** Unique key used for rendering and future routing. */
@@ -9,7 +103,20 @@ export type DexDisplayEntry = {
   dexName: string;
   formId: FormId;
   form?: DexForm;
+  /**
+   * Typings when `form` is missing (e.g. team slot restored from drag payload).
+   * Otherwise use `form.types`.
+   */
+  typeNames?: TypeName[];
 };
+
+/** Resolved typings for UI: from `form.types` or cached `typeNames`. */
+export function getDexEntryTypeNames(entry: DexDisplayEntry): TypeName[] {
+  if (entry.form?.types?.length) {
+    return entry.form.types.map((t) => t.typeName);
+  }
+  return entry.typeNames ?? [];
+}
 
 function getFormOrderKey(formId: string): number {
   const ordered = [

@@ -60,7 +60,7 @@ export const dexObject: Record<number, DexRecord> = {
   1: {
     dexNumber: { nat: 1 },
     dexName: "Bulbasaur",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.poison], moves: [] },
     },
@@ -68,7 +68,7 @@ export const dexObject: Record<number, DexRecord> = {
   2: {
     dexNumber: { nat: 2 },
     dexName: "Ivysaur",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.poison], moves: [] },
     },
@@ -85,7 +85,7 @@ export const dexObject: Record<number, DexRecord> = {
   4: {
     dexNumber: { nat: 4 },
     dexName: "Charmander",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -93,7 +93,7 @@ export const dexObject: Record<number, DexRecord> = {
   5: {
     dexNumber: { nat: 5 },
     dexName: "Charmeleon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -111,7 +111,7 @@ export const dexObject: Record<number, DexRecord> = {
   7: {
     dexNumber: { nat: 7 },
     dexName: "Squirtle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -119,7 +119,7 @@ export const dexObject: Record<number, DexRecord> = {
   8: {
     dexNumber: { nat: 8 },
     dexName: "Wartortle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -136,7 +136,7 @@ export const dexObject: Record<number, DexRecord> = {
   10: {
     dexNumber: { nat: 10 },
     dexName: "Caterpie",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -144,7 +144,7 @@ export const dexObject: Record<number, DexRecord> = {
   11: {
     dexNumber: { nat: 11 },
     dexName: "Metapod",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -152,7 +152,7 @@ export const dexObject: Record<number, DexRecord> = {
   12: {
     dexNumber: { nat: 12 },
     dexName: "Butterfree",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.flying], moves: [] },
     },
@@ -160,7 +160,7 @@ export const dexObject: Record<number, DexRecord> = {
   13: {
     dexNumber: { nat: 13 },
     dexName: "Weedle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.poison], moves: [] },
     },
@@ -168,7 +168,7 @@ export const dexObject: Record<number, DexRecord> = {
   14: {
     dexNumber: { nat: 14 },
     dexName: "Kakuna",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.poison], moves: [] },
     },
@@ -185,7 +185,7 @@ export const dexObject: Record<number, DexRecord> = {
   16: {
     dexNumber: { nat: 16 },
     dexName: "Pidgey",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -193,7 +193,7 @@ export const dexObject: Record<number, DexRecord> = {
   17: {
     dexNumber: { nat: 17 },
     dexName: "Pidgeotto",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -210,7 +210,7 @@ export const dexObject: Record<number, DexRecord> = {
   19: {
     dexNumber: { nat: 19 },
     dexName: "Rattata",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.normal], moves: [] },
@@ -219,7 +219,7 @@ export const dexObject: Record<number, DexRecord> = {
   20: {
     dexNumber: { nat: 20 },
     dexName: "Raticate",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.normal], moves: [] },
@@ -228,7 +228,7 @@ export const dexObject: Record<number, DexRecord> = {
   21: {
     dexNumber: { nat: 21 },
     dexName: "Spearow",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -236,7 +236,7 @@ export const dexObject: Record<number, DexRecord> = {
   22: {
     dexNumber: { nat: 22 },
     dexName: "Fearow",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -244,7 +244,7 @@ export const dexObject: Record<number, DexRecord> = {
   23: {
     dexNumber: { nat: 23 },
     dexName: "Ekans",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison], moves: [] },
     },
@@ -278,7 +278,7 @@ export const dexObject: Record<number, DexRecord> = {
   27: {
     dexNumber: { nat: 27 },
     dexName: "Sandshrew",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.steel], moves: [] },
@@ -287,7 +287,7 @@ export const dexObject: Record<number, DexRecord> = {
   28: {
     dexNumber: { nat: 28 },
     dexName: "Sandslash",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.steel], moves: [] },
@@ -296,7 +296,7 @@ export const dexObject: Record<number, DexRecord> = {
   29: {
     dexNumber: { nat: 29 },
     dexName: "Nidoran♀",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison], moves: [] },
     },
@@ -304,7 +304,7 @@ export const dexObject: Record<number, DexRecord> = {
   30: {
     dexNumber: { nat: 30 },
     dexName: "Nidorina",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison], moves: [] },
     },
@@ -312,7 +312,7 @@ export const dexObject: Record<number, DexRecord> = {
   31: {
     dexNumber: { nat: 31 },
     dexName: "Nidoqueen",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.ground], moves: [] },
     },
@@ -320,7 +320,7 @@ export const dexObject: Record<number, DexRecord> = {
   32: {
     dexNumber: { nat: 32 },
     dexName: "Nidoran♂",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison], moves: [] },
     },
@@ -328,7 +328,7 @@ export const dexObject: Record<number, DexRecord> = {
   33: {
     dexNumber: { nat: 33 },
     dexName: "Nidorino",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison], moves: [] },
     },
@@ -336,7 +336,7 @@ export const dexObject: Record<number, DexRecord> = {
   34: {
     dexNumber: { nat: 34 },
     dexName: "Nidoking",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.ground], moves: [] },
     },
@@ -344,7 +344,7 @@ export const dexObject: Record<number, DexRecord> = {
   35: {
     dexNumber: { nat: 35 },
     dexName: "Clefairy",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy], moves: [] },
     },
@@ -360,7 +360,7 @@ export const dexObject: Record<number, DexRecord> = {
   37: {
     dexNumber: { nat: 37 },
     dexName: "Vulpix",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice], moves: [] },
@@ -378,7 +378,7 @@ export const dexObject: Record<number, DexRecord> = {
   39: {
     dexNumber: { nat: 39 },
     dexName: "Jigglypuff",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.fairy], moves: [] },
     },
@@ -386,7 +386,7 @@ export const dexObject: Record<number, DexRecord> = {
   40: {
     dexNumber: { nat: 40 },
     dexName: "Wigglytuff",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.fairy], moves: [] },
     },
@@ -394,7 +394,7 @@ export const dexObject: Record<number, DexRecord> = {
   41: {
     dexNumber: { nat: 41 },
     dexName: "Zubat",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.flying], moves: [] },
     },
@@ -402,7 +402,7 @@ export const dexObject: Record<number, DexRecord> = {
   42: {
     dexNumber: { nat: 42 },
     dexName: "Golbat",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.flying], moves: [] },
     },
@@ -410,7 +410,7 @@ export const dexObject: Record<number, DexRecord> = {
   43: {
     dexNumber: { nat: 43 },
     dexName: "Oddish",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.poison], moves: [] },
     },
@@ -418,7 +418,7 @@ export const dexObject: Record<number, DexRecord> = {
   44: {
     dexNumber: { nat: 44 },
     dexName: "Gloom",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.poison], moves: [] },
     },
@@ -426,7 +426,7 @@ export const dexObject: Record<number, DexRecord> = {
   45: {
     dexNumber: { nat: 45 },
     dexName: "Vileplume",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.poison], moves: [] },
     },
@@ -434,7 +434,7 @@ export const dexObject: Record<number, DexRecord> = {
   46: {
     dexNumber: { nat: 46 },
     dexName: "Paras",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.grass], moves: [] },
     },
@@ -442,7 +442,7 @@ export const dexObject: Record<number, DexRecord> = {
   47: {
     dexNumber: { nat: 47 },
     dexName: "Parasect",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.grass], moves: [] },
     },
@@ -450,7 +450,7 @@ export const dexObject: Record<number, DexRecord> = {
   48: {
     dexNumber: { nat: 48 },
     dexName: "Venonat",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.poison], moves: [] },
     },
@@ -458,7 +458,7 @@ export const dexObject: Record<number, DexRecord> = {
   49: {
     dexNumber: { nat: 49 },
     dexName: "Venomoth",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.poison], moves: [] },
     },
@@ -466,7 +466,7 @@ export const dexObject: Record<number, DexRecord> = {
   50: {
     dexNumber: { nat: 50 },
     dexName: "Diglett",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.steel], moves: [] },
@@ -475,7 +475,7 @@ export const dexObject: Record<number, DexRecord> = {
   51: {
     dexNumber: { nat: 51 },
     dexName: "Dugtrio",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.steel], moves: [] },
@@ -484,7 +484,7 @@ export const dexObject: Record<number, DexRecord> = {
   52: {
     dexNumber: { nat: 52 },
     dexName: "Meowth",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark], moves: [] },
@@ -494,7 +494,7 @@ export const dexObject: Record<number, DexRecord> = {
   53: {
     dexNumber: { nat: 53 },
     dexName: "Persian",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark], moves: [] },
@@ -503,7 +503,7 @@ export const dexObject: Record<number, DexRecord> = {
   54: {
     dexNumber: { nat: 54 },
     dexName: "Psyduck",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -511,7 +511,7 @@ export const dexObject: Record<number, DexRecord> = {
   55: {
     dexNumber: { nat: 55 },
     dexName: "Golduck",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -519,7 +519,7 @@ export const dexObject: Record<number, DexRecord> = {
   56: {
     dexNumber: { nat: 56 },
     dexName: "Mankey",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -527,7 +527,7 @@ export const dexObject: Record<number, DexRecord> = {
   57: {
     dexNumber: { nat: 57 },
     dexName: "Primeape",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -535,7 +535,7 @@ export const dexObject: Record<number, DexRecord> = {
   58: {
     dexNumber: { nat: 58 },
     dexName: "Growlithe",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
       [FORM_IDS.hisuian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.rock], moves: [] },
@@ -629,7 +629,7 @@ export const dexObject: Record<number, DexRecord> = {
   60: {
     dexNumber: { nat: 60 },
     dexName: "Poliwag",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -637,7 +637,7 @@ export const dexObject: Record<number, DexRecord> = {
   61: {
     dexNumber: { nat: 61 },
     dexName: "Poliwhirl",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -645,7 +645,7 @@ export const dexObject: Record<number, DexRecord> = {
   62: {
     dexNumber: { nat: 62 },
     dexName: "Poliwrath",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.fighting], moves: [] },
     },
@@ -653,7 +653,7 @@ export const dexObject: Record<number, DexRecord> = {
   63: {
     dexNumber: { nat: 63 },
     dexName: "Abra",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -661,7 +661,7 @@ export const dexObject: Record<number, DexRecord> = {
   64: {
     dexNumber: { nat: 64 },
     dexName: "Kadabra",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -678,7 +678,7 @@ export const dexObject: Record<number, DexRecord> = {
   66: {
     dexNumber: { nat: 66 },
     dexName: "Machop",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -686,7 +686,7 @@ export const dexObject: Record<number, DexRecord> = {
   67: {
     dexNumber: { nat: 67 },
     dexName: "Machoke",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -702,7 +702,7 @@ export const dexObject: Record<number, DexRecord> = {
   69: {
     dexNumber: { nat: 69 },
     dexName: "Bellsprout",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.poison], moves: [] },
     },
@@ -710,7 +710,7 @@ export const dexObject: Record<number, DexRecord> = {
   70: {
     dexNumber: { nat: 70 },
     dexName: "Weepinbell",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.poison], moves: [] },
     },
@@ -727,7 +727,7 @@ export const dexObject: Record<number, DexRecord> = {
   72: {
     dexNumber: { nat: 72 },
     dexName: "Tentacool",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.poison], moves: [] },
     },
@@ -735,7 +735,7 @@ export const dexObject: Record<number, DexRecord> = {
   73: {
     dexNumber: { nat: 73 },
     dexName: "Tentacruel",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.poison], moves: [] },
     },
@@ -743,7 +743,7 @@ export const dexObject: Record<number, DexRecord> = {
   74: {
     dexNumber: { nat: 74 },
     dexName: "Geodude",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.ground], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.electric], moves: [] },
@@ -752,7 +752,7 @@ export const dexObject: Record<number, DexRecord> = {
   75: {
     dexNumber: { nat: 75 },
     dexName: "Graveler",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.ground], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.electric], moves: [] },
@@ -761,7 +761,7 @@ export const dexObject: Record<number, DexRecord> = {
   76: {
     dexNumber: { nat: 76 },
     dexName: "Golem",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.ground], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.electric], moves: [] },
@@ -770,7 +770,7 @@ export const dexObject: Record<number, DexRecord> = {
   77: {
     dexNumber: { nat: 77 },
     dexName: "Ponyta",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
       [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
@@ -779,7 +779,7 @@ export const dexObject: Record<number, DexRecord> = {
   78: {
     dexNumber: { nat: 78 },
     dexName: "Rapidash",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
       [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.fairy], moves: [] },
@@ -788,7 +788,7 @@ export const dexObject: Record<number, DexRecord> = {
   79: {
     dexNumber: { nat: 79 },
     dexName: "Slowpoke",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.psychic], moves: [] },
       [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
@@ -807,7 +807,7 @@ export const dexObject: Record<number, DexRecord> = {
   81: {
     dexNumber: { nat: 81 },
     dexName: "Magnemite",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.steel], moves: [] },
     },
@@ -815,7 +815,7 @@ export const dexObject: Record<number, DexRecord> = {
   82: {
     dexNumber: { nat: 82 },
     dexName: "Magneton",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.steel], moves: [] },
     },
@@ -823,7 +823,7 @@ export const dexObject: Record<number, DexRecord> = {
   83: {
     dexNumber: { nat: 83 },
     dexName: "Farfetch'd",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
       [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
@@ -832,7 +832,7 @@ export const dexObject: Record<number, DexRecord> = {
   84: {
     dexNumber: { nat: 84 },
     dexName: "Doduo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -840,7 +840,7 @@ export const dexObject: Record<number, DexRecord> = {
   85: {
     dexNumber: { nat: 85 },
     dexName: "Dodrio",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -848,7 +848,7 @@ export const dexObject: Record<number, DexRecord> = {
   86: {
     dexNumber: { nat: 86 },
     dexName: "Seel",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -856,7 +856,7 @@ export const dexObject: Record<number, DexRecord> = {
   87: {
     dexNumber: { nat: 87 },
     dexName: "Dewgong",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ice], moves: [] },
     },
@@ -864,7 +864,7 @@ export const dexObject: Record<number, DexRecord> = {
   88: {
     dexNumber: { nat: 88 },
     dexName: "Grimer",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.dark], moves: [] },
@@ -873,7 +873,7 @@ export const dexObject: Record<number, DexRecord> = {
   89: {
     dexNumber: { nat: 89 },
     dexName: "Muk",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.dark], moves: [] },
@@ -882,7 +882,7 @@ export const dexObject: Record<number, DexRecord> = {
   90: {
     dexNumber: { nat: 90 },
     dexName: "Shellder",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -890,7 +890,7 @@ export const dexObject: Record<number, DexRecord> = {
   91: {
     dexNumber: { nat: 91 },
     dexName: "Cloyster",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ice], moves: [] },
     },
@@ -898,7 +898,7 @@ export const dexObject: Record<number, DexRecord> = {
   92: {
     dexNumber: { nat: 92 },
     dexName: "Gastly",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost, TYPES.poison], moves: [] },
     },
@@ -906,7 +906,7 @@ export const dexObject: Record<number, DexRecord> = {
   93: {
     dexNumber: { nat: 93 },
     dexName: "Haunter",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost, TYPES.poison], moves: [] },
     },
@@ -1008,7 +1008,7 @@ export const dexObject: Record<number, DexRecord> = {
   95: {
     dexNumber: { nat: 95 },
     dexName: "Onix",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.ground], moves: [] },
     },
@@ -1016,7 +1016,7 @@ export const dexObject: Record<number, DexRecord> = {
   96: {
     dexNumber: { nat: 96 },
     dexName: "Drowzee",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -1024,7 +1024,7 @@ export const dexObject: Record<number, DexRecord> = {
   97: {
     dexNumber: { nat: 97 },
     dexName: "Hypno",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -1032,7 +1032,7 @@ export const dexObject: Record<number, DexRecord> = {
   98: {
     dexNumber: { nat: 98 },
     dexName: "Krabby",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -1040,7 +1040,7 @@ export const dexObject: Record<number, DexRecord> = {
   99: {
     dexNumber: { nat: 99 },
     dexName: "Kingler",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -1048,7 +1048,7 @@ export const dexObject: Record<number, DexRecord> = {
   100: {
     dexNumber: { nat: 100 },
     dexName: "Voltorb",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
       [FORM_IDS.hisuian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.grass], moves: [] },
@@ -1057,7 +1057,7 @@ export const dexObject: Record<number, DexRecord> = {
   101: {
     dexNumber: { nat: 101 },
     dexName: "Electrode",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
       [FORM_IDS.hisuian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.grass], moves: [] },
@@ -1066,7 +1066,7 @@ export const dexObject: Record<number, DexRecord> = {
   102: {
     dexNumber: { nat: 102 },
     dexName: "Exeggcute",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.psychic], moves: [] },
     },
@@ -1074,7 +1074,7 @@ export const dexObject: Record<number, DexRecord> = {
   103: {
     dexNumber: { nat: 103 },
     dexName: "Exeggutor",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.psychic], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.dragon], moves: [] },
@@ -1083,7 +1083,7 @@ export const dexObject: Record<number, DexRecord> = {
   104: {
     dexNumber: { nat: 104 },
     dexName: "Cubone",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground], moves: [] },
     },
@@ -1091,7 +1091,7 @@ export const dexObject: Record<number, DexRecord> = {
   105: {
     dexNumber: { nat: 105 },
     dexName: "Marowak",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground], moves: [] },
       [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.ghost], moves: [] },
@@ -1100,7 +1100,7 @@ export const dexObject: Record<number, DexRecord> = {
   106: {
     dexNumber: { nat: 106 },
     dexName: "Hitmonlee",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -1108,7 +1108,7 @@ export const dexObject: Record<number, DexRecord> = {
   107: {
     dexNumber: { nat: 107 },
     dexName: "Hitmonchan",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -1116,7 +1116,7 @@ export const dexObject: Record<number, DexRecord> = {
   108: {
     dexNumber: { nat: 108 },
     dexName: "Lickitung",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -1124,7 +1124,7 @@ export const dexObject: Record<number, DexRecord> = {
   109: {
     dexNumber: { nat: 109 },
     dexName: "Koffing",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison], moves: [] },
     },
@@ -1132,7 +1132,7 @@ export const dexObject: Record<number, DexRecord> = {
   110: {
     dexNumber: { nat: 110 },
     dexName: "Weezing",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison], moves: [] },
       [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.fairy], moves: [] },
@@ -1141,7 +1141,7 @@ export const dexObject: Record<number, DexRecord> = {
   111: {
     dexNumber: { nat: 111 },
     dexName: "Rhyhorn",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.rock], moves: [] },
     },
@@ -1149,7 +1149,7 @@ export const dexObject: Record<number, DexRecord> = {
   112: {
     dexNumber: { nat: 112 },
     dexName: "Rhydon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.rock], moves: [] },
     },
@@ -1157,7 +1157,7 @@ export const dexObject: Record<number, DexRecord> = {
   113: {
     dexNumber: { nat: 113 },
     dexName: "Chansey",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -1165,7 +1165,7 @@ export const dexObject: Record<number, DexRecord> = {
   114: {
     dexNumber: { nat: 114 },
     dexName: "Tangela",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -1258,7 +1258,7 @@ export const dexObject: Record<number, DexRecord> = {
   116: {
     dexNumber: { nat: 116 },
     dexName: "Horsea",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -1266,7 +1266,7 @@ export const dexObject: Record<number, DexRecord> = {
   117: {
     dexNumber: { nat: 117 },
     dexName: "Seadra",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -1274,7 +1274,7 @@ export const dexObject: Record<number, DexRecord> = {
   118: {
     dexNumber: { nat: 118 },
     dexName: "Goldeen",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -1282,7 +1282,7 @@ export const dexObject: Record<number, DexRecord> = {
   119: {
     dexNumber: { nat: 119 },
     dexName: "Seaking",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -1290,7 +1290,7 @@ export const dexObject: Record<number, DexRecord> = {
   120: {
     dexNumber: { nat: 120 },
     dexName: "Staryu",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -1306,7 +1306,7 @@ export const dexObject: Record<number, DexRecord> = {
   122: {
     dexNumber: { nat: 122 },
     dexName: "Mr. Mime",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.fairy], moves: [] },
       [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.psychic], moves: [] },
@@ -1315,7 +1315,7 @@ export const dexObject: Record<number, DexRecord> = {
   123: {
     dexNumber: { nat: 123 },
     dexName: "Scyther",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.flying], moves: [] },
     },
@@ -1323,7 +1323,7 @@ export const dexObject: Record<number, DexRecord> = {
   124: {
     dexNumber: { nat: 124 },
     dexName: "Jynx",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.psychic], moves: [] },
     },
@@ -1331,7 +1331,7 @@ export const dexObject: Record<number, DexRecord> = {
   125: {
     dexNumber: { nat: 125 },
     dexName: "Electabuzz",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -1339,7 +1339,7 @@ export const dexObject: Record<number, DexRecord> = {
   126: {
     dexNumber: { nat: 126 },
     dexName: "Magmar",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -1367,7 +1367,7 @@ export const dexObject: Record<number, DexRecord> = {
   129: {
     dexNumber: { nat: 129 },
     dexName: "Magikarp",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -1384,7 +1384,7 @@ export const dexObject: Record<number, DexRecord> = {
   131: {
     dexNumber: { nat: 131 },
     dexName: "Lapras",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ice], moves: [] },
     },
@@ -1400,7 +1400,7 @@ export const dexObject: Record<number, DexRecord> = {
   133: {
     dexNumber: { nat: 133 },
     dexName: "Eevee",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
       "form-partner-eevee": { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
@@ -1433,7 +1433,7 @@ export const dexObject: Record<number, DexRecord> = {
   137: {
     dexNumber: { nat: 137 },
     dexName: "Porygon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -1441,7 +1441,7 @@ export const dexObject: Record<number, DexRecord> = {
   138: {
     dexNumber: { nat: 138 },
     dexName: "Omanyte",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.water], moves: [] },
     },
@@ -1449,7 +1449,7 @@ export const dexObject: Record<number, DexRecord> = {
   139: {
     dexNumber: { nat: 139 },
     dexName: "Omastar",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.water], moves: [] },
     },
@@ -1457,7 +1457,7 @@ export const dexObject: Record<number, DexRecord> = {
   140: {
     dexNumber: { nat: 140 },
     dexName: "Kabuto",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.water], moves: [] },
     },
@@ -1465,7 +1465,7 @@ export const dexObject: Record<number, DexRecord> = {
   141: {
     dexNumber: { nat: 141 },
     dexName: "Kabutops",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.water], moves: [] },
     },
@@ -1490,7 +1490,7 @@ export const dexObject: Record<number, DexRecord> = {
   144: {
     dexNumber: { nat: 144 },
     dexName: "Articuno",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.flying], moves: [] },
       [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.flying], moves: [] },
@@ -1499,7 +1499,7 @@ export const dexObject: Record<number, DexRecord> = {
   145: {
     dexNumber: { nat: 145 },
     dexName: "Zapdos",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.flying], moves: [] },
       [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting, TYPES.flying], moves: [] },
@@ -1508,7 +1508,7 @@ export const dexObject: Record<number, DexRecord> = {
   146: {
     dexNumber: { nat: 146 },
     dexName: "Moltres",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.flying], moves: [] },
       [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.flying], moves: [] },
@@ -1517,7 +1517,7 @@ export const dexObject: Record<number, DexRecord> = {
   147: {
     dexNumber: { nat: 147 },
     dexName: "Dratini",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon], moves: [] },
     },
@@ -1525,7 +1525,7 @@ export const dexObject: Record<number, DexRecord> = {
   148: {
     dexNumber: { nat: 148 },
     dexName: "Dragonair",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon], moves: [] },
     },
@@ -1634,7 +1634,7 @@ export const dexObject: Record<number, DexRecord> = {
   150: {
     dexNumber: { nat: 150 },
     dexName: "Mewtwo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
       "form-mega-mewtwo-x": { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.fighting], moves: [] },
@@ -1644,7 +1644,7 @@ export const dexObject: Record<number, DexRecord> = {
   151: {
     dexNumber: { nat: 151 },
     dexName: "Mew",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -1652,7 +1652,7 @@ export const dexObject: Record<number, DexRecord> = {
   152: {
     dexNumber: { nat: 152 },
     dexName: "Chikorita",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -1660,7 +1660,7 @@ export const dexObject: Record<number, DexRecord> = {
   153: {
     dexNumber: { nat: 153 },
     dexName: "Bayleef",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -1676,7 +1676,7 @@ export const dexObject: Record<number, DexRecord> = {
   155: {
     dexNumber: { nat: 155 },
     dexName: "Cyndaquil",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -1684,7 +1684,7 @@ export const dexObject: Record<number, DexRecord> = {
   156: {
     dexNumber: { nat: 156 },
     dexName: "Quilava",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -1701,7 +1701,7 @@ export const dexObject: Record<number, DexRecord> = {
   158: {
     dexNumber: { nat: 158 },
     dexName: "Totodile",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -1709,7 +1709,7 @@ export const dexObject: Record<number, DexRecord> = {
   159: {
     dexNumber: { nat: 159 },
     dexName: "Croconaw",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -1725,7 +1725,7 @@ export const dexObject: Record<number, DexRecord> = {
   161: {
     dexNumber: { nat: 161 },
     dexName: "Sentret",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -1733,7 +1733,7 @@ export const dexObject: Record<number, DexRecord> = {
   162: {
     dexNumber: { nat: 162 },
     dexName: "Furret",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -1741,7 +1741,7 @@ export const dexObject: Record<number, DexRecord> = {
   163: {
     dexNumber: { nat: 163 },
     dexName: "Hoothoot",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -1749,7 +1749,7 @@ export const dexObject: Record<number, DexRecord> = {
   164: {
     dexNumber: { nat: 164 },
     dexName: "Noctowl",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -1757,7 +1757,7 @@ export const dexObject: Record<number, DexRecord> = {
   165: {
     dexNumber: { nat: 165 },
     dexName: "Ledyba",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.flying], moves: [] },
     },
@@ -1765,7 +1765,7 @@ export const dexObject: Record<number, DexRecord> = {
   166: {
     dexNumber: { nat: 166 },
     dexName: "Ledian",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.flying], moves: [] },
     },
@@ -1773,7 +1773,7 @@ export const dexObject: Record<number, DexRecord> = {
   167: {
     dexNumber: { nat: 167 },
     dexName: "Spinarak",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.poison], moves: [] },
     },
@@ -1789,7 +1789,7 @@ export const dexObject: Record<number, DexRecord> = {
   169: {
     dexNumber: { nat: 169 },
     dexName: "Crobat",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.flying], moves: [] },
     },
@@ -1797,7 +1797,7 @@ export const dexObject: Record<number, DexRecord> = {
   170: {
     dexNumber: { nat: 170 },
     dexName: "Chinchou",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.electric], moves: [] },
     },
@@ -1805,7 +1805,7 @@ export const dexObject: Record<number, DexRecord> = {
   171: {
     dexNumber: { nat: 171 },
     dexName: "Lanturn",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.electric], moves: [] },
     },
@@ -1813,7 +1813,7 @@ export const dexObject: Record<number, DexRecord> = {
   172: {
     dexNumber: { nat: 172 },
     dexName: "Pichu",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -1821,7 +1821,7 @@ export const dexObject: Record<number, DexRecord> = {
   173: {
     dexNumber: { nat: 173 },
     dexName: "Cleffa",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy], moves: [] },
     },
@@ -1829,7 +1829,7 @@ export const dexObject: Record<number, DexRecord> = {
   174: {
     dexNumber: { nat: 174 },
     dexName: "Igglybuff",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.fairy], moves: [] },
     },
@@ -1837,7 +1837,7 @@ export const dexObject: Record<number, DexRecord> = {
   175: {
     dexNumber: { nat: 175 },
     dexName: "Togepi",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy], moves: [] },
     },
@@ -1845,7 +1845,7 @@ export const dexObject: Record<number, DexRecord> = {
   176: {
     dexNumber: { nat: 176 },
     dexName: "Togetic",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy, TYPES.flying], moves: [] },
     },
@@ -1853,7 +1853,7 @@ export const dexObject: Record<number, DexRecord> = {
   177: {
     dexNumber: { nat: 177 },
     dexName: "Natu",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.flying], moves: [] },
     },
@@ -1861,7 +1861,7 @@ export const dexObject: Record<number, DexRecord> = {
   178: {
     dexNumber: { nat: 178 },
     dexName: "Xatu",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.flying], moves: [] },
     },
@@ -1869,7 +1869,7 @@ export const dexObject: Record<number, DexRecord> = {
   179: {
     dexNumber: { nat: 179 },
     dexName: "Mareep",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -1877,7 +1877,7 @@ export const dexObject: Record<number, DexRecord> = {
   180: {
     dexNumber: { nat: 180 },
     dexName: "Flaaffy",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -1970,7 +1970,7 @@ export const dexObject: Record<number, DexRecord> = {
   182: {
     dexNumber: { nat: 182 },
     dexName: "Bellossom",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -1978,7 +1978,7 @@ export const dexObject: Record<number, DexRecord> = {
   183: {
     dexNumber: { nat: 183 },
     dexName: "Marill",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.fairy], moves: [] },
     },
@@ -1994,7 +1994,7 @@ export const dexObject: Record<number, DexRecord> = {
   185: {
     dexNumber: { nat: 185 },
     dexName: "Sudowoodo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock], moves: [] },
     },
@@ -2010,7 +2010,7 @@ export const dexObject: Record<number, DexRecord> = {
   187: {
     dexNumber: { nat: 187 },
     dexName: "Hoppip",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.flying], moves: [] },
     },
@@ -2018,7 +2018,7 @@ export const dexObject: Record<number, DexRecord> = {
   188: {
     dexNumber: { nat: 188 },
     dexName: "Skiploom",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.flying], moves: [] },
     },
@@ -2026,7 +2026,7 @@ export const dexObject: Record<number, DexRecord> = {
   189: {
     dexNumber: { nat: 189 },
     dexName: "Jumpluff",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.flying], moves: [] },
     },
@@ -2034,7 +2034,7 @@ export const dexObject: Record<number, DexRecord> = {
   190: {
     dexNumber: { nat: 190 },
     dexName: "Aipom",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2042,7 +2042,7 @@ export const dexObject: Record<number, DexRecord> = {
   191: {
     dexNumber: { nat: 191 },
     dexName: "Sunkern",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -2050,7 +2050,7 @@ export const dexObject: Record<number, DexRecord> = {
   192: {
     dexNumber: { nat: 192 },
     dexName: "Sunflora",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -2058,7 +2058,7 @@ export const dexObject: Record<number, DexRecord> = {
   193: {
     dexNumber: { nat: 193 },
     dexName: "Yanma",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.flying], moves: [] },
     },
@@ -2066,7 +2066,7 @@ export const dexObject: Record<number, DexRecord> = {
   194: {
     dexNumber: { nat: 194 },
     dexName: "Wooper",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ground], moves: [] },
       "form-paldean-wooper": { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.ground], moves: [] },
@@ -2075,7 +2075,7 @@ export const dexObject: Record<number, DexRecord> = {
   195: {
     dexNumber: { nat: 195 },
     dexName: "Quagsire",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ground], moves: [] },
     },
@@ -2099,7 +2099,7 @@ export const dexObject: Record<number, DexRecord> = {
   198: {
     dexNumber: { nat: 198 },
     dexName: "Murkrow",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.flying], moves: [] },
     },
@@ -2116,7 +2116,7 @@ export const dexObject: Record<number, DexRecord> = {
   200: {
     dexNumber: { nat: 200 },
     dexName: "Misdreavus",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost], moves: [] },
     },
@@ -2124,7 +2124,7 @@ export const dexObject: Record<number, DexRecord> = {
   201: {
     dexNumber: { nat: 201 },
     dexName: "Unown",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -2132,7 +2132,7 @@ export const dexObject: Record<number, DexRecord> = {
   202: {
     dexNumber: { nat: 202 },
     dexName: "Wobbuffet",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -2140,7 +2140,7 @@ export const dexObject: Record<number, DexRecord> = {
   203: {
     dexNumber: { nat: 203 },
     dexName: "Girafarig",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.psychic], moves: [] },
     },
@@ -2148,7 +2148,7 @@ export const dexObject: Record<number, DexRecord> = {
   204: {
     dexNumber: { nat: 204 },
     dexName: "Pineco",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -2164,7 +2164,7 @@ export const dexObject: Record<number, DexRecord> = {
   206: {
     dexNumber: { nat: 206 },
     dexName: "Dunsparce",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2172,7 +2172,7 @@ export const dexObject: Record<number, DexRecord> = {
   207: {
     dexNumber: { nat: 207 },
     dexName: "Gligar",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.flying], moves: [] },
     },
@@ -2189,7 +2189,7 @@ export const dexObject: Record<number, DexRecord> = {
   209: {
     dexNumber: { nat: 209 },
     dexName: "Snubbull",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy], moves: [] },
     },
@@ -2197,7 +2197,7 @@ export const dexObject: Record<number, DexRecord> = {
   210: {
     dexNumber: { nat: 210 },
     dexName: "Granbull",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy], moves: [] },
     },
@@ -2205,7 +2205,7 @@ export const dexObject: Record<number, DexRecord> = {
   211: {
     dexNumber: { nat: 211 },
     dexName: "Qwilfish",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.poison], moves: [] },
       [FORM_IDS.hisuian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.poison], moves: [] },
@@ -2223,7 +2223,7 @@ export const dexObject: Record<number, DexRecord> = {
   213: {
     dexNumber: { nat: 213 },
     dexName: "Shuckle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.rock], moves: [] },
     },
@@ -2240,7 +2240,7 @@ export const dexObject: Record<number, DexRecord> = {
   215: {
     dexNumber: { nat: 215 },
     dexName: "Sneasel",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.ice], moves: [] },
       [FORM_IDS.hisuian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting, TYPES.poison], moves: [] },
@@ -2249,7 +2249,7 @@ export const dexObject: Record<number, DexRecord> = {
   216: {
     dexNumber: { nat: 216 },
     dexName: "Teddiursa",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2257,7 +2257,7 @@ export const dexObject: Record<number, DexRecord> = {
   217: {
     dexNumber: { nat: 217 },
     dexName: "Ursaring",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2265,7 +2265,7 @@ export const dexObject: Record<number, DexRecord> = {
   218: {
     dexNumber: { nat: 218 },
     dexName: "Slugma",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -2273,7 +2273,7 @@ export const dexObject: Record<number, DexRecord> = {
   219: {
     dexNumber: { nat: 219 },
     dexName: "Magcargo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.rock], moves: [] },
     },
@@ -2281,7 +2281,7 @@ export const dexObject: Record<number, DexRecord> = {
   220: {
     dexNumber: { nat: 220 },
     dexName: "Swinub",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.ground], moves: [] },
     },
@@ -2289,7 +2289,7 @@ export const dexObject: Record<number, DexRecord> = {
   221: {
     dexNumber: { nat: 221 },
     dexName: "Piloswine",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.ground], moves: [] },
     },
@@ -2297,7 +2297,7 @@ export const dexObject: Record<number, DexRecord> = {
   222: {
     dexNumber: { nat: 222 },
     dexName: "Corsola",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.rock], moves: [] },
       [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost], moves: [] },
@@ -2306,7 +2306,7 @@ export const dexObject: Record<number, DexRecord> = {
   223: {
     dexNumber: { nat: 223 },
     dexName: "Remoraid",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -2314,7 +2314,7 @@ export const dexObject: Record<number, DexRecord> = {
   224: {
     dexNumber: { nat: 224 },
     dexName: "Octillery",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -2322,7 +2322,7 @@ export const dexObject: Record<number, DexRecord> = {
   225: {
     dexNumber: { nat: 225 },
     dexName: "Delibird",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.flying], moves: [] },
     },
@@ -2330,7 +2330,7 @@ export const dexObject: Record<number, DexRecord> = {
   226: {
     dexNumber: { nat: 226 },
     dexName: "Mantine",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.flying], moves: [] },
     },
@@ -2346,7 +2346,7 @@ export const dexObject: Record<number, DexRecord> = {
   228: {
     dexNumber: { nat: 228 },
     dexName: "Houndour",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.fire], moves: [] },
     },
@@ -2363,7 +2363,7 @@ export const dexObject: Record<number, DexRecord> = {
   230: {
     dexNumber: { nat: 230 },
     dexName: "Kingdra",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.dragon], moves: [] },
     },
@@ -2371,7 +2371,7 @@ export const dexObject: Record<number, DexRecord> = {
   231: {
     dexNumber: { nat: 231 },
     dexName: "Phanpy",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground], moves: [] },
     },
@@ -2379,7 +2379,7 @@ export const dexObject: Record<number, DexRecord> = {
   232: {
     dexNumber: { nat: 232 },
     dexName: "Donphan",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground], moves: [] },
     },
@@ -2387,7 +2387,7 @@ export const dexObject: Record<number, DexRecord> = {
   233: {
     dexNumber: { nat: 233 },
     dexName: "Porygon2",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2395,7 +2395,7 @@ export const dexObject: Record<number, DexRecord> = {
   234: {
     dexNumber: { nat: 234 },
     dexName: "Stantler",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2403,7 +2403,7 @@ export const dexObject: Record<number, DexRecord> = {
   235: {
     dexNumber: { nat: 235 },
     dexName: "Smeargle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2411,7 +2411,7 @@ export const dexObject: Record<number, DexRecord> = {
   236: {
     dexNumber: { nat: 236 },
     dexName: "Tyrogue",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -2419,7 +2419,7 @@ export const dexObject: Record<number, DexRecord> = {
   237: {
     dexNumber: { nat: 237 },
     dexName: "Hitmontop",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -2427,7 +2427,7 @@ export const dexObject: Record<number, DexRecord> = {
   238: {
     dexNumber: { nat: 238 },
     dexName: "Smoochum",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.psychic], moves: [] },
     },
@@ -2435,7 +2435,7 @@ export const dexObject: Record<number, DexRecord> = {
   239: {
     dexNumber: { nat: 239 },
     dexName: "Elekid",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -2443,7 +2443,7 @@ export const dexObject: Record<number, DexRecord> = {
   240: {
     dexNumber: { nat: 240 },
     dexName: "Magby",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -2451,7 +2451,7 @@ export const dexObject: Record<number, DexRecord> = {
   241: {
     dexNumber: { nat: 241 },
     dexName: "Miltank",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2459,7 +2459,7 @@ export const dexObject: Record<number, DexRecord> = {
   242: {
     dexNumber: { nat: 242 },
     dexName: "Blissey",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2467,7 +2467,7 @@ export const dexObject: Record<number, DexRecord> = {
   243: {
     dexNumber: { nat: 243 },
     dexName: "Raikou",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -2475,7 +2475,7 @@ export const dexObject: Record<number, DexRecord> = {
   244: {
     dexNumber: { nat: 244 },
     dexName: "Entei",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -2483,7 +2483,7 @@ export const dexObject: Record<number, DexRecord> = {
   245: {
     dexNumber: { nat: 245 },
     dexName: "Suicune",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -2491,7 +2491,7 @@ export const dexObject: Record<number, DexRecord> = {
   246: {
     dexNumber: { nat: 246 },
     dexName: "Larvitar",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.ground], moves: [] },
     },
@@ -2499,7 +2499,7 @@ export const dexObject: Record<number, DexRecord> = {
   247: {
     dexNumber: { nat: 247 },
     dexName: "Pupitar",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.ground], moves: [] },
     },
@@ -2516,7 +2516,7 @@ export const dexObject: Record<number, DexRecord> = {
   249: {
     dexNumber: { nat: 249 },
     dexName: "Lugia",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.flying], moves: [] },
     },
@@ -2524,7 +2524,7 @@ export const dexObject: Record<number, DexRecord> = {
   250: {
     dexNumber: { nat: 250 },
     dexName: "Ho-oh",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.flying], moves: [] },
     },
@@ -2532,7 +2532,7 @@ export const dexObject: Record<number, DexRecord> = {
   251: {
     dexNumber: { nat: 251 },
     dexName: "Celebi",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.grass], moves: [] },
     },
@@ -2540,7 +2540,7 @@ export const dexObject: Record<number, DexRecord> = {
   252: {
     dexNumber: { nat: 252 },
     dexName: "Treecko",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -2548,7 +2548,7 @@ export const dexObject: Record<number, DexRecord> = {
   253: {
     dexNumber: { nat: 253 },
     dexName: "Grovyle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -2556,7 +2556,7 @@ export const dexObject: Record<number, DexRecord> = {
   254: {
     dexNumber: { nat: 254 },
     dexName: "Sceptile",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
       "form-mega-sceptile": { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.dragon], moves: [] },
@@ -2565,7 +2565,7 @@ export const dexObject: Record<number, DexRecord> = {
   255: {
     dexNumber: { nat: 255 },
     dexName: "Torchic",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -2573,7 +2573,7 @@ export const dexObject: Record<number, DexRecord> = {
   256: {
     dexNumber: { nat: 256 },
     dexName: "Combusken",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.fighting], moves: [] },
     },
@@ -2581,7 +2581,7 @@ export const dexObject: Record<number, DexRecord> = {
   257: {
     dexNumber: { nat: 257 },
     dexName: "Blaziken",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.fighting], moves: [] },
       "form-mega-blaziken": { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.fighting], moves: [] },
@@ -2590,7 +2590,7 @@ export const dexObject: Record<number, DexRecord> = {
   258: {
     dexNumber: { nat: 258 },
     dexName: "Mudkip",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -2598,7 +2598,7 @@ export const dexObject: Record<number, DexRecord> = {
   259: {
     dexNumber: { nat: 259 },
     dexName: "Marshtomp",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ground], moves: [] },
     },
@@ -2606,7 +2606,7 @@ export const dexObject: Record<number, DexRecord> = {
   260: {
     dexNumber: { nat: 260 },
     dexName: "Swampert",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ground], moves: [] },
       "form-mega-swampert": { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ground], moves: [] },
@@ -2615,7 +2615,7 @@ export const dexObject: Record<number, DexRecord> = {
   261: {
     dexNumber: { nat: 261 },
     dexName: "Poochyena",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark], moves: [] },
     },
@@ -2623,7 +2623,7 @@ export const dexObject: Record<number, DexRecord> = {
   262: {
     dexNumber: { nat: 262 },
     dexName: "Mightyena",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark], moves: [] },
     },
@@ -2631,7 +2631,7 @@ export const dexObject: Record<number, DexRecord> = {
   263: {
     dexNumber: { nat: 263 },
     dexName: "Zigzagoon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
       [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.normal], moves: [] },
@@ -2640,7 +2640,7 @@ export const dexObject: Record<number, DexRecord> = {
   264: {
     dexNumber: { nat: 264 },
     dexName: "Linoone",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
       [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.normal], moves: [] },
@@ -2649,7 +2649,7 @@ export const dexObject: Record<number, DexRecord> = {
   265: {
     dexNumber: { nat: 265 },
     dexName: "Wurmple",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -2657,7 +2657,7 @@ export const dexObject: Record<number, DexRecord> = {
   266: {
     dexNumber: { nat: 266 },
     dexName: "Silcoon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -2665,7 +2665,7 @@ export const dexObject: Record<number, DexRecord> = {
   267: {
     dexNumber: { nat: 267 },
     dexName: "Beautifly",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.flying], moves: [] },
     },
@@ -2673,7 +2673,7 @@ export const dexObject: Record<number, DexRecord> = {
   268: {
     dexNumber: { nat: 268 },
     dexName: "Cascoon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -2681,7 +2681,7 @@ export const dexObject: Record<number, DexRecord> = {
   269: {
     dexNumber: { nat: 269 },
     dexName: "Dustox",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.poison], moves: [] },
     },
@@ -2689,7 +2689,7 @@ export const dexObject: Record<number, DexRecord> = {
   270: {
     dexNumber: { nat: 270 },
     dexName: "Lotad",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.grass], moves: [] },
     },
@@ -2697,7 +2697,7 @@ export const dexObject: Record<number, DexRecord> = {
   271: {
     dexNumber: { nat: 271 },
     dexName: "Lombre",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.grass], moves: [] },
     },
@@ -2705,7 +2705,7 @@ export const dexObject: Record<number, DexRecord> = {
   272: {
     dexNumber: { nat: 272 },
     dexName: "Ludicolo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.grass], moves: [] },
     },
@@ -2713,7 +2713,7 @@ export const dexObject: Record<number, DexRecord> = {
   273: {
     dexNumber: { nat: 273 },
     dexName: "Seedot",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -2721,7 +2721,7 @@ export const dexObject: Record<number, DexRecord> = {
   274: {
     dexNumber: { nat: 274 },
     dexName: "Nuzleaf",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.dark], moves: [] },
     },
@@ -2729,7 +2729,7 @@ export const dexObject: Record<number, DexRecord> = {
   275: {
     dexNumber: { nat: 275 },
     dexName: "Shiftry",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.dark], moves: [] },
     },
@@ -2737,7 +2737,7 @@ export const dexObject: Record<number, DexRecord> = {
   276: {
     dexNumber: { nat: 276 },
     dexName: "Taillow",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -2745,7 +2745,7 @@ export const dexObject: Record<number, DexRecord> = {
   277: {
     dexNumber: { nat: 277 },
     dexName: "Swellow",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -2753,7 +2753,7 @@ export const dexObject: Record<number, DexRecord> = {
   278: {
     dexNumber: { nat: 278 },
     dexName: "Wingull",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.flying], moves: [] },
     },
@@ -2769,7 +2769,7 @@ export const dexObject: Record<number, DexRecord> = {
   280: {
     dexNumber: { nat: 280 },
     dexName: "Ralts",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.fairy], moves: [] },
     },
@@ -2777,7 +2777,7 @@ export const dexObject: Record<number, DexRecord> = {
   281: {
     dexNumber: { nat: 281 },
     dexName: "Kirlia",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.fairy], moves: [] },
     },
@@ -2794,7 +2794,7 @@ export const dexObject: Record<number, DexRecord> = {
   283: {
     dexNumber: { nat: 283 },
     dexName: "Surskit",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.water], moves: [] },
     },
@@ -2802,7 +2802,7 @@ export const dexObject: Record<number, DexRecord> = {
   284: {
     dexNumber: { nat: 284 },
     dexName: "Masquerain",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.flying], moves: [] },
     },
@@ -2810,7 +2810,7 @@ export const dexObject: Record<number, DexRecord> = {
   285: {
     dexNumber: { nat: 285 },
     dexName: "Shroomish",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -2818,7 +2818,7 @@ export const dexObject: Record<number, DexRecord> = {
   286: {
     dexNumber: { nat: 286 },
     dexName: "Breloom",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.fighting], moves: [] },
     },
@@ -2826,7 +2826,7 @@ export const dexObject: Record<number, DexRecord> = {
   287: {
     dexNumber: { nat: 287 },
     dexName: "Slakoth",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2834,7 +2834,7 @@ export const dexObject: Record<number, DexRecord> = {
   288: {
     dexNumber: { nat: 288 },
     dexName: "Vigoroth",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2842,7 +2842,7 @@ export const dexObject: Record<number, DexRecord> = {
   289: {
     dexNumber: { nat: 289 },
     dexName: "Slaking",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2850,7 +2850,7 @@ export const dexObject: Record<number, DexRecord> = {
   290: {
     dexNumber: { nat: 290 },
     dexName: "Nincada",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.ground], moves: [] },
     },
@@ -2858,7 +2858,7 @@ export const dexObject: Record<number, DexRecord> = {
   291: {
     dexNumber: { nat: 291 },
     dexName: "Ninjask",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.flying], moves: [] },
     },
@@ -2866,7 +2866,7 @@ export const dexObject: Record<number, DexRecord> = {
   292: {
     dexNumber: { nat: 292 },
     dexName: "Shedinja",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.ghost], moves: [] },
     },
@@ -2874,7 +2874,7 @@ export const dexObject: Record<number, DexRecord> = {
   293: {
     dexNumber: { nat: 293 },
     dexName: "Whismur",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2882,7 +2882,7 @@ export const dexObject: Record<number, DexRecord> = {
   294: {
     dexNumber: { nat: 294 },
     dexName: "Loudred",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2890,7 +2890,7 @@ export const dexObject: Record<number, DexRecord> = {
   295: {
     dexNumber: { nat: 295 },
     dexName: "Exploud",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2898,7 +2898,7 @@ export const dexObject: Record<number, DexRecord> = {
   296: {
     dexNumber: { nat: 296 },
     dexName: "Makuhita",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -2906,7 +2906,7 @@ export const dexObject: Record<number, DexRecord> = {
   297: {
     dexNumber: { nat: 297 },
     dexName: "Hariyama",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -2914,7 +2914,7 @@ export const dexObject: Record<number, DexRecord> = {
   298: {
     dexNumber: { nat: 298 },
     dexName: "Azurill",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.fairy], moves: [] },
     },
@@ -2922,7 +2922,7 @@ export const dexObject: Record<number, DexRecord> = {
   299: {
     dexNumber: { nat: 299 },
     dexName: "Nosepass",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock], moves: [] },
     },
@@ -2930,7 +2930,7 @@ export const dexObject: Record<number, DexRecord> = {
   300: {
     dexNumber: { nat: 300 },
     dexName: "Skitty",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2938,7 +2938,7 @@ export const dexObject: Record<number, DexRecord> = {
   301: {
     dexNumber: { nat: 301 },
     dexName: "Delcatty",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -2955,7 +2955,7 @@ export const dexObject: Record<number, DexRecord> = {
   303: {
     dexNumber: { nat: 303 },
     dexName: "Mawile",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.fairy], moves: [] },
       "form-mega-mawile": { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.fairy], moves: [] },
@@ -2964,7 +2964,7 @@ export const dexObject: Record<number, DexRecord> = {
   304: {
     dexNumber: { nat: 304 },
     dexName: "Aron",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.rock], moves: [] },
     },
@@ -2972,7 +2972,7 @@ export const dexObject: Record<number, DexRecord> = {
   305: {
     dexNumber: { nat: 305 },
     dexName: "Lairon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.rock], moves: [] },
     },
@@ -2989,7 +2989,7 @@ export const dexObject: Record<number, DexRecord> = {
   307: {
     dexNumber: { nat: 307 },
     dexName: "Meditite",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting, TYPES.psychic], moves: [] },
     },
@@ -3006,7 +3006,7 @@ export const dexObject: Record<number, DexRecord> = {
   309: {
     dexNumber: { nat: 309 },
     dexName: "Electrike",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -3023,7 +3023,7 @@ export const dexObject: Record<number, DexRecord> = {
   311: {
     dexNumber: { nat: 311 },
     dexName: "Plusle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -3031,7 +3031,7 @@ export const dexObject: Record<number, DexRecord> = {
   312: {
     dexNumber: { nat: 312 },
     dexName: "Minun",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -3039,7 +3039,7 @@ export const dexObject: Record<number, DexRecord> = {
   313: {
     dexNumber: { nat: 313 },
     dexName: "Volbeat",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -3047,7 +3047,7 @@ export const dexObject: Record<number, DexRecord> = {
   314: {
     dexNumber: { nat: 314 },
     dexName: "Illumise",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -3055,7 +3055,7 @@ export const dexObject: Record<number, DexRecord> = {
   315: {
     dexNumber: { nat: 315 },
     dexName: "Roselia",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.poison], moves: [] },
     },
@@ -3063,7 +3063,7 @@ export const dexObject: Record<number, DexRecord> = {
   316: {
     dexNumber: { nat: 316 },
     dexName: "Gulpin",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison], moves: [] },
     },
@@ -3071,7 +3071,7 @@ export const dexObject: Record<number, DexRecord> = {
   317: {
     dexNumber: { nat: 317 },
     dexName: "Swalot",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison], moves: [] },
     },
@@ -3079,7 +3079,7 @@ export const dexObject: Record<number, DexRecord> = {
   318: {
     dexNumber: { nat: 318 },
     dexName: "Carvanha",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.dark], moves: [] },
     },
@@ -3096,7 +3096,7 @@ export const dexObject: Record<number, DexRecord> = {
   320: {
     dexNumber: { nat: 320 },
     dexName: "Wailmer",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -3104,7 +3104,7 @@ export const dexObject: Record<number, DexRecord> = {
   321: {
     dexNumber: { nat: 321 },
     dexName: "Wailord",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -3112,7 +3112,7 @@ export const dexObject: Record<number, DexRecord> = {
   322: {
     dexNumber: { nat: 322 },
     dexName: "Numel",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.ground], moves: [] },
     },
@@ -3137,7 +3137,7 @@ export const dexObject: Record<number, DexRecord> = {
   325: {
     dexNumber: { nat: 325 },
     dexName: "Spoink",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -3145,7 +3145,7 @@ export const dexObject: Record<number, DexRecord> = {
   326: {
     dexNumber: { nat: 326 },
     dexName: "Grumpig",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -3153,7 +3153,7 @@ export const dexObject: Record<number, DexRecord> = {
   327: {
     dexNumber: { nat: 327 },
     dexName: "Spinda",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -3161,7 +3161,7 @@ export const dexObject: Record<number, DexRecord> = {
   328: {
     dexNumber: { nat: 328 },
     dexName: "Trapinch",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground], moves: [] },
     },
@@ -3169,7 +3169,7 @@ export const dexObject: Record<number, DexRecord> = {
   329: {
     dexNumber: { nat: 329 },
     dexName: "Vibrava",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.dragon], moves: [] },
     },
@@ -3177,7 +3177,7 @@ export const dexObject: Record<number, DexRecord> = {
   330: {
     dexNumber: { nat: 330 },
     dexName: "Flygon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.dragon], moves: [] },
     },
@@ -3185,7 +3185,7 @@ export const dexObject: Record<number, DexRecord> = {
   331: {
     dexNumber: { nat: 331 },
     dexName: "Cacnea",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -3193,7 +3193,7 @@ export const dexObject: Record<number, DexRecord> = {
   332: {
     dexNumber: { nat: 332 },
     dexName: "Cacturne",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.dark], moves: [] },
     },
@@ -3201,7 +3201,7 @@ export const dexObject: Record<number, DexRecord> = {
   333: {
     dexNumber: { nat: 333 },
     dexName: "Swablu",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -3218,7 +3218,7 @@ export const dexObject: Record<number, DexRecord> = {
   335: {
     dexNumber: { nat: 335 },
     dexName: "Zangoose",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -3226,7 +3226,7 @@ export const dexObject: Record<number, DexRecord> = {
   336: {
     dexNumber: { nat: 336 },
     dexName: "Seviper",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison], moves: [] },
     },
@@ -3234,7 +3234,7 @@ export const dexObject: Record<number, DexRecord> = {
   337: {
     dexNumber: { nat: 337 },
     dexName: "Lunatone",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.psychic], moves: [] },
     },
@@ -3242,7 +3242,7 @@ export const dexObject: Record<number, DexRecord> = {
   338: {
     dexNumber: { nat: 338 },
     dexName: "Solrock",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.psychic], moves: [] },
     },
@@ -3250,7 +3250,7 @@ export const dexObject: Record<number, DexRecord> = {
   339: {
     dexNumber: { nat: 339 },
     dexName: "Barboach",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ground], moves: [] },
     },
@@ -3258,7 +3258,7 @@ export const dexObject: Record<number, DexRecord> = {
   340: {
     dexNumber: { nat: 340 },
     dexName: "Whiscash",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ground], moves: [] },
     },
@@ -3266,7 +3266,7 @@ export const dexObject: Record<number, DexRecord> = {
   341: {
     dexNumber: { nat: 341 },
     dexName: "Corphish",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -3274,7 +3274,7 @@ export const dexObject: Record<number, DexRecord> = {
   342: {
     dexNumber: { nat: 342 },
     dexName: "Crawdaunt",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.dark], moves: [] },
     },
@@ -3282,7 +3282,7 @@ export const dexObject: Record<number, DexRecord> = {
   343: {
     dexNumber: { nat: 343 },
     dexName: "Baltoy",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.psychic], moves: [] },
     },
@@ -3290,7 +3290,7 @@ export const dexObject: Record<number, DexRecord> = {
   344: {
     dexNumber: { nat: 344 },
     dexName: "Claydol",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.psychic], moves: [] },
     },
@@ -3298,7 +3298,7 @@ export const dexObject: Record<number, DexRecord> = {
   345: {
     dexNumber: { nat: 345 },
     dexName: "Lileep",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.grass], moves: [] },
     },
@@ -3306,7 +3306,7 @@ export const dexObject: Record<number, DexRecord> = {
   346: {
     dexNumber: { nat: 346 },
     dexName: "Cradily",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.grass], moves: [] },
     },
@@ -3314,7 +3314,7 @@ export const dexObject: Record<number, DexRecord> = {
   347: {
     dexNumber: { nat: 347 },
     dexName: "Anorith",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.bug], moves: [] },
     },
@@ -3322,7 +3322,7 @@ export const dexObject: Record<number, DexRecord> = {
   348: {
     dexNumber: { nat: 348 },
     dexName: "Armaldo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.bug], moves: [] },
     },
@@ -3330,7 +3330,7 @@ export const dexObject: Record<number, DexRecord> = {
   349: {
     dexNumber: { nat: 349 },
     dexName: "Feebas",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -3357,7 +3357,7 @@ export const dexObject: Record<number, DexRecord> = {
   352: {
     dexNumber: { nat: 352 },
     dexName: "Kecleon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -3365,7 +3365,7 @@ export const dexObject: Record<number, DexRecord> = {
   353: {
     dexNumber: { nat: 353 },
     dexName: "Shuppet",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost], moves: [] },
     },
@@ -3382,7 +3382,7 @@ export const dexObject: Record<number, DexRecord> = {
   355: {
     dexNumber: { nat: 355 },
     dexName: "Duskull",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost], moves: [] },
     },
@@ -3390,7 +3390,7 @@ export const dexObject: Record<number, DexRecord> = {
   356: {
     dexNumber: { nat: 356 },
     dexName: "Dusclops",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost], moves: [] },
     },
@@ -3398,7 +3398,7 @@ export const dexObject: Record<number, DexRecord> = {
   357: {
     dexNumber: { nat: 357 },
     dexName: "Tropius",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.flying], moves: [] },
     },
@@ -3423,7 +3423,7 @@ export const dexObject: Record<number, DexRecord> = {
   360: {
     dexNumber: { nat: 360 },
     dexName: "Wynaut",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -3431,7 +3431,7 @@ export const dexObject: Record<number, DexRecord> = {
   361: {
     dexNumber: { nat: 361 },
     dexName: "Snorunt",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice], moves: [] },
     },
@@ -3448,7 +3448,7 @@ export const dexObject: Record<number, DexRecord> = {
   363: {
     dexNumber: { nat: 363 },
     dexName: "Spheal",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.water], moves: [] },
     },
@@ -3456,7 +3456,7 @@ export const dexObject: Record<number, DexRecord> = {
   364: {
     dexNumber: { nat: 364 },
     dexName: "Sealeo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.water], moves: [] },
     },
@@ -3464,7 +3464,7 @@ export const dexObject: Record<number, DexRecord> = {
   365: {
     dexNumber: { nat: 365 },
     dexName: "Walrein",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.water], moves: [] },
     },
@@ -3472,7 +3472,7 @@ export const dexObject: Record<number, DexRecord> = {
   366: {
     dexNumber: { nat: 366 },
     dexName: "Clamperl",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -3480,7 +3480,7 @@ export const dexObject: Record<number, DexRecord> = {
   367: {
     dexNumber: { nat: 367 },
     dexName: "Huntail",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -3488,7 +3488,7 @@ export const dexObject: Record<number, DexRecord> = {
   368: {
     dexNumber: { nat: 368 },
     dexName: "Gorebyss",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -3496,7 +3496,7 @@ export const dexObject: Record<number, DexRecord> = {
   369: {
     dexNumber: { nat: 369 },
     dexName: "Relicanth",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.rock], moves: [] },
     },
@@ -3504,7 +3504,7 @@ export const dexObject: Record<number, DexRecord> = {
   370: {
     dexNumber: { nat: 370 },
     dexName: "Luvdisc",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -3512,7 +3512,7 @@ export const dexObject: Record<number, DexRecord> = {
   371: {
     dexNumber: { nat: 371 },
     dexName: "Bagon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon], moves: [] },
     },
@@ -3520,7 +3520,7 @@ export const dexObject: Record<number, DexRecord> = {
   372: {
     dexNumber: { nat: 372 },
     dexName: "Shelgon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon], moves: [] },
     },
@@ -3528,7 +3528,7 @@ export const dexObject: Record<number, DexRecord> = {
   373: {
     dexNumber: { nat: 373 },
     dexName: "Salamence",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.flying], moves: [] },
       "form-mega-salamence": { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.flying], moves: [] },
@@ -3537,7 +3537,7 @@ export const dexObject: Record<number, DexRecord> = {
   374: {
     dexNumber: { nat: 374 },
     dexName: "Beldum",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.psychic], moves: [] },
     },
@@ -3545,7 +3545,7 @@ export const dexObject: Record<number, DexRecord> = {
   375: {
     dexNumber: { nat: 375 },
     dexName: "Metang",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.psychic], moves: [] },
     },
@@ -3553,7 +3553,7 @@ export const dexObject: Record<number, DexRecord> = {
   376: {
     dexNumber: { nat: 376 },
     dexName: "Metagross",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.psychic], moves: [] },
       "form-mega-metagross": { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.psychic], moves: [] },
@@ -3562,7 +3562,7 @@ export const dexObject: Record<number, DexRecord> = {
   377: {
     dexNumber: { nat: 377 },
     dexName: "Regirock",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock], moves: [] },
     },
@@ -3570,7 +3570,7 @@ export const dexObject: Record<number, DexRecord> = {
   378: {
     dexNumber: { nat: 378 },
     dexName: "Regice",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice], moves: [] },
     },
@@ -3578,7 +3578,7 @@ export const dexObject: Record<number, DexRecord> = {
   379: {
     dexNumber: { nat: 379 },
     dexName: "Registeel",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel], moves: [] },
     },
@@ -3586,7 +3586,7 @@ export const dexObject: Record<number, DexRecord> = {
   380: {
     dexNumber: { nat: 380 },
     dexName: "Latias",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.psychic], moves: [] },
       "form-mega-latias": { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.psychic], moves: [] },
@@ -3595,7 +3595,7 @@ export const dexObject: Record<number, DexRecord> = {
   381: {
     dexNumber: { nat: 381 },
     dexName: "Latios",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.psychic], moves: [] },
       "form-mega-latios": { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.psychic], moves: [] },
@@ -3604,7 +3604,7 @@ export const dexObject: Record<number, DexRecord> = {
   382: {
     dexNumber: { nat: 382 },
     dexName: "Kyogre",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
       "form-primal-kyogre": { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
@@ -3613,7 +3613,7 @@ export const dexObject: Record<number, DexRecord> = {
   383: {
     dexNumber: { nat: 383 },
     dexName: "Groudon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground], moves: [] },
       "form-primal-groudon": { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.fire], moves: [] },
@@ -3622,7 +3622,7 @@ export const dexObject: Record<number, DexRecord> = {
   384: {
     dexNumber: { nat: 384 },
     dexName: "Rayquaza",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.flying], moves: [] },
       "form-mega-rayquaza": { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.flying], moves: [] },
@@ -3631,7 +3631,7 @@ export const dexObject: Record<number, DexRecord> = {
   385: {
     dexNumber: { nat: 385 },
     dexName: "Jirachi",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.psychic], moves: [] },
     },
@@ -3639,7 +3639,7 @@ export const dexObject: Record<number, DexRecord> = {
   386: {
     dexNumber: { nat: 386 },
     dexName: "Deoxys",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
       "form-attack-forme": { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
@@ -3650,7 +3650,7 @@ export const dexObject: Record<number, DexRecord> = {
   387: {
     dexNumber: { nat: 387 },
     dexName: "Turtwig",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -3658,7 +3658,7 @@ export const dexObject: Record<number, DexRecord> = {
   388: {
     dexNumber: { nat: 388 },
     dexName: "Grotle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -3674,7 +3674,7 @@ export const dexObject: Record<number, DexRecord> = {
   390: {
     dexNumber: { nat: 390 },
     dexName: "Chimchar",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -3682,7 +3682,7 @@ export const dexObject: Record<number, DexRecord> = {
   391: {
     dexNumber: { nat: 391 },
     dexName: "Monferno",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.fighting], moves: [] },
     },
@@ -3698,7 +3698,7 @@ export const dexObject: Record<number, DexRecord> = {
   393: {
     dexNumber: { nat: 393 },
     dexName: "Piplup",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -3706,7 +3706,7 @@ export const dexObject: Record<number, DexRecord> = {
   394: {
     dexNumber: { nat: 394 },
     dexName: "Prinplup",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -3722,7 +3722,7 @@ export const dexObject: Record<number, DexRecord> = {
   396: {
     dexNumber: { nat: 396 },
     dexName: "Starly",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -3730,7 +3730,7 @@ export const dexObject: Record<number, DexRecord> = {
   397: {
     dexNumber: { nat: 397 },
     dexName: "Staravia",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -3738,7 +3738,7 @@ export const dexObject: Record<number, DexRecord> = {
   398: {
     dexNumber: { nat: 398 },
     dexName: "Staraptor",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -3746,7 +3746,7 @@ export const dexObject: Record<number, DexRecord> = {
   399: {
     dexNumber: { nat: 399 },
     dexName: "Bidoof",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -3754,7 +3754,7 @@ export const dexObject: Record<number, DexRecord> = {
   400: {
     dexNumber: { nat: 400 },
     dexName: "Bibarel",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.water], moves: [] },
     },
@@ -3762,7 +3762,7 @@ export const dexObject: Record<number, DexRecord> = {
   401: {
     dexNumber: { nat: 401 },
     dexName: "Kricketot",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -3770,7 +3770,7 @@ export const dexObject: Record<number, DexRecord> = {
   402: {
     dexNumber: { nat: 402 },
     dexName: "Kricketune",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -3778,7 +3778,7 @@ export const dexObject: Record<number, DexRecord> = {
   403: {
     dexNumber: { nat: 403 },
     dexName: "Shinx",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -3786,7 +3786,7 @@ export const dexObject: Record<number, DexRecord> = {
   404: {
     dexNumber: { nat: 404 },
     dexName: "Luxio",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -3802,7 +3802,7 @@ export const dexObject: Record<number, DexRecord> = {
   406: {
     dexNumber: { nat: 406 },
     dexName: "Budew",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.poison], moves: [] },
     },
@@ -3818,7 +3818,7 @@ export const dexObject: Record<number, DexRecord> = {
   408: {
     dexNumber: { nat: 408 },
     dexName: "Cranidos",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock], moves: [] },
     },
@@ -3834,7 +3834,7 @@ export const dexObject: Record<number, DexRecord> = {
   410: {
     dexNumber: { nat: 410 },
     dexName: "Shieldon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.steel], moves: [] },
     },
@@ -3850,7 +3850,7 @@ export const dexObject: Record<number, DexRecord> = {
   412: {
     dexNumber: { nat: 412 },
     dexName: "Burmy",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
       "form-sandy-cloak": { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
@@ -3860,7 +3860,7 @@ export const dexObject: Record<number, DexRecord> = {
   413: {
     dexNumber: { nat: 413 },
     dexName: "Wormadam",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.grass], moves: [] },
       "form-sandy-cloak": { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.ground], moves: [] },
@@ -3870,7 +3870,7 @@ export const dexObject: Record<number, DexRecord> = {
   414: {
     dexNumber: { nat: 414 },
     dexName: "Mothim",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.flying], moves: [] },
     },
@@ -3878,7 +3878,7 @@ export const dexObject: Record<number, DexRecord> = {
   415: {
     dexNumber: { nat: 415 },
     dexName: "Combee",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.flying], moves: [] },
     },
@@ -3886,7 +3886,7 @@ export const dexObject: Record<number, DexRecord> = {
   416: {
     dexNumber: { nat: 416 },
     dexName: "Vespiquen",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.flying], moves: [] },
     },
@@ -3894,7 +3894,7 @@ export const dexObject: Record<number, DexRecord> = {
   417: {
     dexNumber: { nat: 417 },
     dexName: "Pachirisu",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -3902,7 +3902,7 @@ export const dexObject: Record<number, DexRecord> = {
   418: {
     dexNumber: { nat: 418 },
     dexName: "Buizel",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -3910,7 +3910,7 @@ export const dexObject: Record<number, DexRecord> = {
   419: {
     dexNumber: { nat: 419 },
     dexName: "Floatzel",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -3918,7 +3918,7 @@ export const dexObject: Record<number, DexRecord> = {
   420: {
     dexNumber: { nat: 420 },
     dexName: "Cherubi",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -3926,7 +3926,7 @@ export const dexObject: Record<number, DexRecord> = {
   421: {
     dexNumber: { nat: 421 },
     dexName: "Cherrim",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -3934,7 +3934,7 @@ export const dexObject: Record<number, DexRecord> = {
   422: {
     dexNumber: { nat: 422 },
     dexName: "Shellos",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -3942,7 +3942,7 @@ export const dexObject: Record<number, DexRecord> = {
   423: {
     dexNumber: { nat: 423 },
     dexName: "Gastrodon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ground], moves: [] },
     },
@@ -3950,7 +3950,7 @@ export const dexObject: Record<number, DexRecord> = {
   424: {
     dexNumber: { nat: 424 },
     dexName: "Ambipom",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -3958,7 +3958,7 @@ export const dexObject: Record<number, DexRecord> = {
   425: {
     dexNumber: { nat: 425 },
     dexName: "Drifloon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost, TYPES.flying], moves: [] },
     },
@@ -3966,7 +3966,7 @@ export const dexObject: Record<number, DexRecord> = {
   426: {
     dexNumber: { nat: 426 },
     dexName: "Drifblim",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost, TYPES.flying], moves: [] },
     },
@@ -3974,7 +3974,7 @@ export const dexObject: Record<number, DexRecord> = {
   427: {
     dexNumber: { nat: 427 },
     dexName: "Buneary",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -3991,7 +3991,7 @@ export const dexObject: Record<number, DexRecord> = {
   429: {
     dexNumber: { nat: 429 },
     dexName: "Mismagius",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost], moves: [] },
     },
@@ -3999,7 +3999,7 @@ export const dexObject: Record<number, DexRecord> = {
   430: {
     dexNumber: { nat: 430 },
     dexName: "Honchkrow",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.flying], moves: [] },
     },
@@ -4007,7 +4007,7 @@ export const dexObject: Record<number, DexRecord> = {
   431: {
     dexNumber: { nat: 431 },
     dexName: "Glameow",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -4015,7 +4015,7 @@ export const dexObject: Record<number, DexRecord> = {
   432: {
     dexNumber: { nat: 432 },
     dexName: "Purugly",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -4023,7 +4023,7 @@ export const dexObject: Record<number, DexRecord> = {
   433: {
     dexNumber: { nat: 433 },
     dexName: "Chingling",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -4031,7 +4031,7 @@ export const dexObject: Record<number, DexRecord> = {
   434: {
     dexNumber: { nat: 434 },
     dexName: "Stunky",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.dark], moves: [] },
     },
@@ -4039,7 +4039,7 @@ export const dexObject: Record<number, DexRecord> = {
   435: {
     dexNumber: { nat: 435 },
     dexName: "Skuntank",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.dark], moves: [] },
     },
@@ -4047,7 +4047,7 @@ export const dexObject: Record<number, DexRecord> = {
   436: {
     dexNumber: { nat: 436 },
     dexName: "Bronzor",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.psychic], moves: [] },
     },
@@ -4055,7 +4055,7 @@ export const dexObject: Record<number, DexRecord> = {
   437: {
     dexNumber: { nat: 437 },
     dexName: "Bronzong",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.psychic], moves: [] },
     },
@@ -4063,7 +4063,7 @@ export const dexObject: Record<number, DexRecord> = {
   438: {
     dexNumber: { nat: 438 },
     dexName: "Bonsly",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock], moves: [] },
     },
@@ -4071,7 +4071,7 @@ export const dexObject: Record<number, DexRecord> = {
   439: {
     dexNumber: { nat: 439 },
     dexName: "Mime Jr.",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.fairy], moves: [] },
     },
@@ -4079,7 +4079,7 @@ export const dexObject: Record<number, DexRecord> = {
   440: {
     dexNumber: { nat: 440 },
     dexName: "Happiny",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -4087,7 +4087,7 @@ export const dexObject: Record<number, DexRecord> = {
   441: {
     dexNumber: { nat: 441 },
     dexName: "Chatot",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -4103,7 +4103,7 @@ export const dexObject: Record<number, DexRecord> = {
   443: {
     dexNumber: { nat: 443 },
     dexName: "Gible",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.ground], moves: [] },
     },
@@ -4111,7 +4111,7 @@ export const dexObject: Record<number, DexRecord> = {
   444: {
     dexNumber: { nat: 444 },
     dexName: "Gabite",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.ground], moves: [] },
     },
@@ -4128,7 +4128,7 @@ export const dexObject: Record<number, DexRecord> = {
   446: {
     dexNumber: { nat: 446 },
     dexName: "Munchlax",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -4136,7 +4136,7 @@ export const dexObject: Record<number, DexRecord> = {
   447: {
     dexNumber: { nat: 447 },
     dexName: "Riolu",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -4153,7 +4153,7 @@ export const dexObject: Record<number, DexRecord> = {
   449: {
     dexNumber: { nat: 449 },
     dexName: "Hippopotas",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground], moves: [] },
     },
@@ -4169,7 +4169,7 @@ export const dexObject: Record<number, DexRecord> = {
   451: {
     dexNumber: { nat: 451 },
     dexName: "Skorupi",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.bug], moves: [] },
     },
@@ -4177,7 +4177,7 @@ export const dexObject: Record<number, DexRecord> = {
   452: {
     dexNumber: { nat: 452 },
     dexName: "Drapion",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.dark], moves: [] },
     },
@@ -4185,7 +4185,7 @@ export const dexObject: Record<number, DexRecord> = {
   453: {
     dexNumber: { nat: 453 },
     dexName: "Croagunk",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.fighting], moves: [] },
     },
@@ -4201,7 +4201,7 @@ export const dexObject: Record<number, DexRecord> = {
   455: {
     dexNumber: { nat: 455 },
     dexName: "Carnivine",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -4209,7 +4209,7 @@ export const dexObject: Record<number, DexRecord> = {
   456: {
     dexNumber: { nat: 456 },
     dexName: "Finneon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -4217,7 +4217,7 @@ export const dexObject: Record<number, DexRecord> = {
   457: {
     dexNumber: { nat: 457 },
     dexName: "Lumineon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -4225,7 +4225,7 @@ export const dexObject: Record<number, DexRecord> = {
   458: {
     dexNumber: { nat: 458 },
     dexName: "Mantyke",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.flying], moves: [] },
     },
@@ -4233,7 +4233,7 @@ export const dexObject: Record<number, DexRecord> = {
   459: {
     dexNumber: { nat: 459 },
     dexName: "Snover",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.ice], moves: [] },
     },
@@ -4258,7 +4258,7 @@ export const dexObject: Record<number, DexRecord> = {
   462: {
     dexNumber: { nat: 462 },
     dexName: "Magnezone",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.steel], moves: [] },
     },
@@ -4266,7 +4266,7 @@ export const dexObject: Record<number, DexRecord> = {
   463: {
     dexNumber: { nat: 463 },
     dexName: "Lickilicky",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -4282,7 +4282,7 @@ export const dexObject: Record<number, DexRecord> = {
   465: {
     dexNumber: { nat: 465 },
     dexName: "Tangrowth",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -4290,7 +4290,7 @@ export const dexObject: Record<number, DexRecord> = {
   466: {
     dexNumber: { nat: 466 },
     dexName: "Electivire",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -4298,7 +4298,7 @@ export const dexObject: Record<number, DexRecord> = {
   467: {
     dexNumber: { nat: 467 },
     dexName: "Magmortar",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -4306,7 +4306,7 @@ export const dexObject: Record<number, DexRecord> = {
   468: {
     dexNumber: { nat: 468 },
     dexName: "Togekiss",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy, TYPES.flying], moves: [] },
     },
@@ -4314,7 +4314,7 @@ export const dexObject: Record<number, DexRecord> = {
   469: {
     dexNumber: { nat: 469 },
     dexName: "Yanmega",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.flying], moves: [] },
     },
@@ -4354,7 +4354,7 @@ export const dexObject: Record<number, DexRecord> = {
   474: {
     dexNumber: { nat: 474 },
     dexName: "Porygon-Z",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -4371,7 +4371,7 @@ export const dexObject: Record<number, DexRecord> = {
   476: {
     dexNumber: { nat: 476 },
     dexName: "Probopass",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.steel], moves: [] },
     },
@@ -4379,7 +4379,7 @@ export const dexObject: Record<number, DexRecord> = {
   477: {
     dexNumber: { nat: 477 },
     dexName: "Dusknoir",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost], moves: [] },
     },
@@ -4408,7 +4408,7 @@ export const dexObject: Record<number, DexRecord> = {
   480: {
     dexNumber: { nat: 480 },
     dexName: "Uxie",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -4416,7 +4416,7 @@ export const dexObject: Record<number, DexRecord> = {
   481: {
     dexNumber: { nat: 481 },
     dexName: "Mesprit",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -4424,7 +4424,7 @@ export const dexObject: Record<number, DexRecord> = {
   482: {
     dexNumber: { nat: 482 },
     dexName: "Azelf",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -4432,7 +4432,7 @@ export const dexObject: Record<number, DexRecord> = {
   483: {
     dexNumber: { nat: 483 },
     dexName: "Dialga",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.dragon], moves: [] },
       "form-origin-forme": { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.dragon], moves: [] },
@@ -4441,7 +4441,7 @@ export const dexObject: Record<number, DexRecord> = {
   484: {
     dexNumber: { nat: 484 },
     dexName: "Palkia",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.dragon], moves: [] },
       "form-origin-forme": { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.dragon], moves: [] },
@@ -4450,7 +4450,7 @@ export const dexObject: Record<number, DexRecord> = {
   485: {
     dexNumber: { nat: 485 },
     dexName: "Heatran",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.steel], moves: [] },
     },
@@ -4458,7 +4458,7 @@ export const dexObject: Record<number, DexRecord> = {
   486: {
     dexNumber: { nat: 486 },
     dexName: "Regigigas",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -4466,7 +4466,7 @@ export const dexObject: Record<number, DexRecord> = {
   487: {
     dexNumber: { nat: 487 },
     dexName: "Giratina",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost, TYPES.dragon], moves: [] },
       "form-origin-forme": { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost, TYPES.dragon], moves: [] },
@@ -4475,7 +4475,7 @@ export const dexObject: Record<number, DexRecord> = {
   488: {
     dexNumber: { nat: 488 },
     dexName: "Cresselia",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -4483,7 +4483,7 @@ export const dexObject: Record<number, DexRecord> = {
   489: {
     dexNumber: { nat: 489 },
     dexName: "Phione",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -4491,7 +4491,7 @@ export const dexObject: Record<number, DexRecord> = {
   490: {
     dexNumber: { nat: 490 },
     dexName: "Manaphy",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -4499,7 +4499,7 @@ export const dexObject: Record<number, DexRecord> = {
   491: {
     dexNumber: { nat: 491 },
     dexName: "Darkrai",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark], moves: [] },
     },
@@ -4507,7 +4507,7 @@ export const dexObject: Record<number, DexRecord> = {
   492: {
     dexNumber: { nat: 492 },
     dexName: "Shaymin",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-sky-forme": { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.flying], moves: [] },
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
@@ -4516,7 +4516,7 @@ export const dexObject: Record<number, DexRecord> = {
   493: {
     dexNumber: { nat: 493 },
     dexName: "Arceus",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -4524,7 +4524,7 @@ export const dexObject: Record<number, DexRecord> = {
   494: {
     dexNumber: { nat: 494 },
     dexName: "Victini",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.fire], moves: [] },
     },
@@ -4532,7 +4532,7 @@ export const dexObject: Record<number, DexRecord> = {
   495: {
     dexNumber: { nat: 495 },
     dexName: "Snivy",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -4540,7 +4540,7 @@ export const dexObject: Record<number, DexRecord> = {
   496: {
     dexNumber: { nat: 496 },
     dexName: "Servine",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -4556,7 +4556,7 @@ export const dexObject: Record<number, DexRecord> = {
   498: {
     dexNumber: { nat: 498 },
     dexName: "Tepig",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -4564,7 +4564,7 @@ export const dexObject: Record<number, DexRecord> = {
   499: {
     dexNumber: { nat: 499 },
     dexName: "Pignite",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.fighting], moves: [] },
     },
@@ -4580,7 +4580,7 @@ export const dexObject: Record<number, DexRecord> = {
   501: {
     dexNumber: { nat: 501 },
     dexName: "Oshawott",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -4588,7 +4588,7 @@ export const dexObject: Record<number, DexRecord> = {
   502: {
     dexNumber: { nat: 502 },
     dexName: "Dewott",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -4605,7 +4605,7 @@ export const dexObject: Record<number, DexRecord> = {
   504: {
     dexNumber: { nat: 504 },
     dexName: "Patrat",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -4621,7 +4621,7 @@ export const dexObject: Record<number, DexRecord> = {
   506: {
     dexNumber: { nat: 506 },
     dexName: "Lillipup",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -4629,7 +4629,7 @@ export const dexObject: Record<number, DexRecord> = {
   507: {
     dexNumber: { nat: 507 },
     dexName: "Herdier",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -4637,7 +4637,7 @@ export const dexObject: Record<number, DexRecord> = {
   508: {
     dexNumber: { nat: 508 },
     dexName: "Stoutland",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -4645,7 +4645,7 @@ export const dexObject: Record<number, DexRecord> = {
   509: {
     dexNumber: { nat: 509 },
     dexName: "Purrloin",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark], moves: [] },
     },
@@ -4661,7 +4661,7 @@ export const dexObject: Record<number, DexRecord> = {
   511: {
     dexNumber: { nat: 511 },
     dexName: "Pansage",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -4677,7 +4677,7 @@ export const dexObject: Record<number, DexRecord> = {
   513: {
     dexNumber: { nat: 513 },
     dexName: "Pansear",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -4693,7 +4693,7 @@ export const dexObject: Record<number, DexRecord> = {
   515: {
     dexNumber: { nat: 515 },
     dexName: "Panpour",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -4709,7 +4709,7 @@ export const dexObject: Record<number, DexRecord> = {
   517: {
     dexNumber: { nat: 517 },
     dexName: "Munna",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -4717,7 +4717,7 @@ export const dexObject: Record<number, DexRecord> = {
   518: {
     dexNumber: { nat: 518 },
     dexName: "Musharna",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -4725,7 +4725,7 @@ export const dexObject: Record<number, DexRecord> = {
   519: {
     dexNumber: { nat: 519 },
     dexName: "Pidove",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -4733,7 +4733,7 @@ export const dexObject: Record<number, DexRecord> = {
   520: {
     dexNumber: { nat: 520 },
     dexName: "Tranquill",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -4741,7 +4741,7 @@ export const dexObject: Record<number, DexRecord> = {
   521: {
     dexNumber: { nat: 521 },
     dexName: "Unfezant",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -4749,7 +4749,7 @@ export const dexObject: Record<number, DexRecord> = {
   522: {
     dexNumber: { nat: 522 },
     dexName: "Blitzle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -4757,7 +4757,7 @@ export const dexObject: Record<number, DexRecord> = {
   523: {
     dexNumber: { nat: 523 },
     dexName: "Zebstrika",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -4765,7 +4765,7 @@ export const dexObject: Record<number, DexRecord> = {
   524: {
     dexNumber: { nat: 524 },
     dexName: "Roggenrola",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock], moves: [] },
     },
@@ -4773,7 +4773,7 @@ export const dexObject: Record<number, DexRecord> = {
   525: {
     dexNumber: { nat: 525 },
     dexName: "Boldore",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock], moves: [] },
     },
@@ -4781,7 +4781,7 @@ export const dexObject: Record<number, DexRecord> = {
   526: {
     dexNumber: { nat: 526 },
     dexName: "Gigalith",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock], moves: [] },
     },
@@ -4789,7 +4789,7 @@ export const dexObject: Record<number, DexRecord> = {
   527: {
     dexNumber: { nat: 527 },
     dexName: "Woobat",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.flying], moves: [] },
     },
@@ -4797,7 +4797,7 @@ export const dexObject: Record<number, DexRecord> = {
   528: {
     dexNumber: { nat: 528 },
     dexName: "Swoobat",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.flying], moves: [] },
     },
@@ -4805,7 +4805,7 @@ export const dexObject: Record<number, DexRecord> = {
   529: {
     dexNumber: { nat: 529 },
     dexName: "Drilbur",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground], moves: [] },
     },
@@ -4830,7 +4830,7 @@ export const dexObject: Record<number, DexRecord> = {
   532: {
     dexNumber: { nat: 532 },
     dexName: "Timburr",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -4838,7 +4838,7 @@ export const dexObject: Record<number, DexRecord> = {
   533: {
     dexNumber: { nat: 533 },
     dexName: "Gurdurr",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -4854,7 +4854,7 @@ export const dexObject: Record<number, DexRecord> = {
   535: {
     dexNumber: { nat: 535 },
     dexName: "Tympole",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -4862,7 +4862,7 @@ export const dexObject: Record<number, DexRecord> = {
   536: {
     dexNumber: { nat: 536 },
     dexName: "Palpitoad",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ground], moves: [] },
     },
@@ -4870,7 +4870,7 @@ export const dexObject: Record<number, DexRecord> = {
   537: {
     dexNumber: { nat: 537 },
     dexName: "Seismitoad",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ground], moves: [] },
     },
@@ -4878,7 +4878,7 @@ export const dexObject: Record<number, DexRecord> = {
   538: {
     dexNumber: { nat: 538 },
     dexName: "Throh",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -4886,7 +4886,7 @@ export const dexObject: Record<number, DexRecord> = {
   539: {
     dexNumber: { nat: 539 },
     dexName: "Sawk",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -4894,7 +4894,7 @@ export const dexObject: Record<number, DexRecord> = {
   540: {
     dexNumber: { nat: 540 },
     dexName: "Sewaddle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.grass], moves: [] },
     },
@@ -4902,7 +4902,7 @@ export const dexObject: Record<number, DexRecord> = {
   541: {
     dexNumber: { nat: 541 },
     dexName: "Swadloon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.grass], moves: [] },
     },
@@ -4910,7 +4910,7 @@ export const dexObject: Record<number, DexRecord> = {
   542: {
     dexNumber: { nat: 542 },
     dexName: "Leavanny",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.grass], moves: [] },
     },
@@ -4918,7 +4918,7 @@ export const dexObject: Record<number, DexRecord> = {
   543: {
     dexNumber: { nat: 543 },
     dexName: "Venipede",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.poison], moves: [] },
     },
@@ -4926,7 +4926,7 @@ export const dexObject: Record<number, DexRecord> = {
   544: {
     dexNumber: { nat: 544 },
     dexName: "Whirlipede",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.poison], moves: [] },
     },
@@ -4934,7 +4934,7 @@ export const dexObject: Record<number, DexRecord> = {
   545: {
     dexNumber: { nat: 545 },
     dexName: "Scolipede",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.poison], moves: [] },
     },
@@ -4942,7 +4942,7 @@ export const dexObject: Record<number, DexRecord> = {
   546: {
     dexNumber: { nat: 546 },
     dexName: "Cottonee",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.fairy], moves: [] },
     },
@@ -5018,7 +5018,7 @@ export const dexObject: Record<number, DexRecord> = {
   548: {
     dexNumber: { nat: 548 },
     dexName: "Petilil",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -5026,7 +5026,7 @@ export const dexObject: Record<number, DexRecord> = {
   549: {
     dexNumber: { nat: 549 },
     dexName: "Lilligant",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
       [FORM_IDS.hisuian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.fighting], moves: [] },
@@ -5035,7 +5035,7 @@ export const dexObject: Record<number, DexRecord> = {
   550: {
     dexNumber: { nat: 550 },
     dexName: "Basculin",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
       "form-blue-striped-form": { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
@@ -5045,7 +5045,7 @@ export const dexObject: Record<number, DexRecord> = {
   551: {
     dexNumber: { nat: 551 },
     dexName: "Sandile",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.dark], moves: [] },
     },
@@ -5053,7 +5053,7 @@ export const dexObject: Record<number, DexRecord> = {
   552: {
     dexNumber: { nat: 552 },
     dexName: "Krokorok",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.dark], moves: [] },
     },
@@ -5069,7 +5069,7 @@ export const dexObject: Record<number, DexRecord> = {
   554: {
     dexNumber: { nat: 554 },
     dexName: "Darumaka",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
       [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice], moves: [] },
@@ -5078,7 +5078,7 @@ export const dexObject: Record<number, DexRecord> = {
   555: {
     dexNumber: { nat: 555 },
     dexName: "Darmanitan",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
       "form-zen-mode": { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.psychic], moves: [] },
@@ -5089,7 +5089,7 @@ export const dexObject: Record<number, DexRecord> = {
   556: {
     dexNumber: { nat: 556 },
     dexName: "Maractus",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -5097,7 +5097,7 @@ export const dexObject: Record<number, DexRecord> = {
   557: {
     dexNumber: { nat: 557 },
     dexName: "Dwebble",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.rock], moves: [] },
     },
@@ -5105,7 +5105,7 @@ export const dexObject: Record<number, DexRecord> = {
   558: {
     dexNumber: { nat: 558 },
     dexName: "Crustle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.rock], moves: [] },
     },
@@ -5113,7 +5113,7 @@ export const dexObject: Record<number, DexRecord> = {
   559: {
     dexNumber: { nat: 559 },
     dexName: "Scraggy",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.fighting], moves: [] },
     },
@@ -5121,7 +5121,7 @@ export const dexObject: Record<number, DexRecord> = {
   560: {
     dexNumber: { nat: 560 },
     dexName: "Scrafty",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.fighting], moves: [] },
     },
@@ -5129,7 +5129,7 @@ export const dexObject: Record<number, DexRecord> = {
   561: {
     dexNumber: { nat: 561 },
     dexName: "Sigilyph",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.flying], moves: [] },
     },
@@ -5137,7 +5137,7 @@ export const dexObject: Record<number, DexRecord> = {
   562: {
     dexNumber: { nat: 562 },
     dexName: "Yamask",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost], moves: [] },
       [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.ghost], moves: [] },
@@ -5154,7 +5154,7 @@ export const dexObject: Record<number, DexRecord> = {
   564: {
     dexNumber: { nat: 564 },
     dexName: "Tirtouga",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.rock], moves: [] },
     },
@@ -5162,7 +5162,7 @@ export const dexObject: Record<number, DexRecord> = {
   565: {
     dexNumber: { nat: 565 },
     dexName: "Carracosta",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.rock], moves: [] },
     },
@@ -5170,7 +5170,7 @@ export const dexObject: Record<number, DexRecord> = {
   566: {
     dexNumber: { nat: 566 },
     dexName: "Archen",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.flying], moves: [] },
     },
@@ -5178,7 +5178,7 @@ export const dexObject: Record<number, DexRecord> = {
   567: {
     dexNumber: { nat: 567 },
     dexName: "Archeops",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.flying], moves: [] },
     },
@@ -5186,7 +5186,7 @@ export const dexObject: Record<number, DexRecord> = {
   568: {
     dexNumber: { nat: 568 },
     dexName: "Trubbish",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison], moves: [] },
     },
@@ -5202,7 +5202,7 @@ export const dexObject: Record<number, DexRecord> = {
   570: {
     dexNumber: { nat: 570 },
     dexName: "Zorua",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark], moves: [] },
       [FORM_IDS.hisuian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.ghost], moves: [] },
@@ -5220,7 +5220,7 @@ export const dexObject: Record<number, DexRecord> = {
   572: {
     dexNumber: { nat: 572 },
     dexName: "Minccino",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -5228,7 +5228,7 @@ export const dexObject: Record<number, DexRecord> = {
   573: {
     dexNumber: { nat: 573 },
     dexName: "Cinccino",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -5236,7 +5236,7 @@ export const dexObject: Record<number, DexRecord> = {
   574: {
     dexNumber: { nat: 574 },
     dexName: "Gothita",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -5244,7 +5244,7 @@ export const dexObject: Record<number, DexRecord> = {
   575: {
     dexNumber: { nat: 575 },
     dexName: "Gothorita",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -5252,7 +5252,7 @@ export const dexObject: Record<number, DexRecord> = {
   576: {
     dexNumber: { nat: 576 },
     dexName: "Gothitelle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -5260,7 +5260,7 @@ export const dexObject: Record<number, DexRecord> = {
   577: {
     dexNumber: { nat: 577 },
     dexName: "Solosis",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -5268,7 +5268,7 @@ export const dexObject: Record<number, DexRecord> = {
   578: {
     dexNumber: { nat: 578 },
     dexName: "Duosion",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -5284,7 +5284,7 @@ export const dexObject: Record<number, DexRecord> = {
   580: {
     dexNumber: { nat: 580 },
     dexName: "Ducklett",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.flying], moves: [] },
     },
@@ -5292,7 +5292,7 @@ export const dexObject: Record<number, DexRecord> = {
   581: {
     dexNumber: { nat: 581 },
     dexName: "Swanna",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.flying], moves: [] },
     },
@@ -5300,7 +5300,7 @@ export const dexObject: Record<number, DexRecord> = {
   582: {
     dexNumber: { nat: 582 },
     dexName: "Vanillite",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice], moves: [] },
     },
@@ -5308,7 +5308,7 @@ export const dexObject: Record<number, DexRecord> = {
   583: {
     dexNumber: { nat: 583 },
     dexName: "Vanillish",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice], moves: [] },
     },
@@ -5324,7 +5324,7 @@ export const dexObject: Record<number, DexRecord> = {
   585: {
     dexNumber: { nat: 585 },
     dexName: "Deerling",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.grass], moves: [] },
     },
@@ -5332,7 +5332,7 @@ export const dexObject: Record<number, DexRecord> = {
   586: {
     dexNumber: { nat: 586 },
     dexName: "Sawsbuck",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.grass], moves: [] },
     },
@@ -5348,7 +5348,7 @@ export const dexObject: Record<number, DexRecord> = {
   588: {
     dexNumber: { nat: 588 },
     dexName: "Karrablast",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -5356,7 +5356,7 @@ export const dexObject: Record<number, DexRecord> = {
   589: {
     dexNumber: { nat: 589 },
     dexName: "Escavalier",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.steel], moves: [] },
     },
@@ -5364,7 +5364,7 @@ export const dexObject: Record<number, DexRecord> = {
   590: {
     dexNumber: { nat: 590 },
     dexName: "Foongus",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.poison], moves: [] },
     },
@@ -5372,7 +5372,7 @@ export const dexObject: Record<number, DexRecord> = {
   591: {
     dexNumber: { nat: 591 },
     dexName: "Amoonguss",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.poison], moves: [] },
     },
@@ -5380,7 +5380,7 @@ export const dexObject: Record<number, DexRecord> = {
   592: {
     dexNumber: { nat: 592 },
     dexName: "Frillish",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ghost], moves: [] },
     },
@@ -5388,7 +5388,7 @@ export const dexObject: Record<number, DexRecord> = {
   593: {
     dexNumber: { nat: 593 },
     dexName: "Jellicent",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ghost], moves: [] },
     },
@@ -5396,7 +5396,7 @@ export const dexObject: Record<number, DexRecord> = {
   594: {
     dexNumber: { nat: 594 },
     dexName: "Alomomola",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -5404,7 +5404,7 @@ export const dexObject: Record<number, DexRecord> = {
   595: {
     dexNumber: { nat: 595 },
     dexName: "Joltik",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.electric], moves: [] },
     },
@@ -5412,7 +5412,7 @@ export const dexObject: Record<number, DexRecord> = {
   596: {
     dexNumber: { nat: 596 },
     dexName: "Galvantula",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.electric], moves: [] },
     },
@@ -5420,7 +5420,7 @@ export const dexObject: Record<number, DexRecord> = {
   597: {
     dexNumber: { nat: 597 },
     dexName: "Ferroseed",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.steel], moves: [] },
     },
@@ -5428,7 +5428,7 @@ export const dexObject: Record<number, DexRecord> = {
   598: {
     dexNumber: { nat: 598 },
     dexName: "Ferrothorn",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.steel], moves: [] },
     },
@@ -5436,7 +5436,7 @@ export const dexObject: Record<number, DexRecord> = {
   599: {
     dexNumber: { nat: 599 },
     dexName: "Klink",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel], moves: [] },
     },
@@ -5444,7 +5444,7 @@ export const dexObject: Record<number, DexRecord> = {
   600: {
     dexNumber: { nat: 600 },
     dexName: "Klang",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel], moves: [] },
     },
@@ -5452,7 +5452,7 @@ export const dexObject: Record<number, DexRecord> = {
   601: {
     dexNumber: { nat: 601 },
     dexName: "Klinklang",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel], moves: [] },
     },
@@ -5460,7 +5460,7 @@ export const dexObject: Record<number, DexRecord> = {
   602: {
     dexNumber: { nat: 602 },
     dexName: "Tynamo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -5468,7 +5468,7 @@ export const dexObject: Record<number, DexRecord> = {
   603: {
     dexNumber: { nat: 603 },
     dexName: "Eelektrik",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -5476,7 +5476,7 @@ export const dexObject: Record<number, DexRecord> = {
   604: {
     dexNumber: { nat: 604 },
     dexName: "Eelektross",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -5484,7 +5484,7 @@ export const dexObject: Record<number, DexRecord> = {
   605: {
     dexNumber: { nat: 605 },
     dexName: "Elgyem",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -5492,7 +5492,7 @@ export const dexObject: Record<number, DexRecord> = {
   606: {
     dexNumber: { nat: 606 },
     dexName: "Beheeyem",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -5500,7 +5500,7 @@ export const dexObject: Record<number, DexRecord> = {
   607: {
     dexNumber: { nat: 607 },
     dexName: "Litwick",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost, TYPES.fire], moves: [] },
     },
@@ -5508,7 +5508,7 @@ export const dexObject: Record<number, DexRecord> = {
   608: {
     dexNumber: { nat: 608 },
     dexName: "Lampent",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost, TYPES.fire], moves: [] },
     },
@@ -5524,7 +5524,7 @@ export const dexObject: Record<number, DexRecord> = {
   610: {
     dexNumber: { nat: 610 },
     dexName: "Axew",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon], moves: [] },
     },
@@ -5532,7 +5532,7 @@ export const dexObject: Record<number, DexRecord> = {
   611: {
     dexNumber: { nat: 611 },
     dexName: "Fraxure",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon], moves: [] },
     },
@@ -5540,7 +5540,7 @@ export const dexObject: Record<number, DexRecord> = {
   612: {
     dexNumber: { nat: 612 },
     dexName: "Haxorus",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon], moves: [] },
     },
@@ -5548,7 +5548,7 @@ export const dexObject: Record<number, DexRecord> = {
   613: {
     dexNumber: { nat: 613 },
     dexName: "Cubchoo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice], moves: [] },
     },
@@ -5564,7 +5564,7 @@ export const dexObject: Record<number, DexRecord> = {
   615: {
     dexNumber: { nat: 615 },
     dexName: "Cryogonal",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice], moves: [] },
     },
@@ -5572,7 +5572,7 @@ export const dexObject: Record<number, DexRecord> = {
   616: {
     dexNumber: { nat: 616 },
     dexName: "Shelmet",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -5580,7 +5580,7 @@ export const dexObject: Record<number, DexRecord> = {
   617: {
     dexNumber: { nat: 617 },
     dexName: "Accelgor",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -5597,7 +5597,7 @@ export const dexObject: Record<number, DexRecord> = {
   619: {
     dexNumber: { nat: 619 },
     dexName: "Mienfoo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -5605,7 +5605,7 @@ export const dexObject: Record<number, DexRecord> = {
   620: {
     dexNumber: { nat: 620 },
     dexName: "Mienshao",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -5613,7 +5613,7 @@ export const dexObject: Record<number, DexRecord> = {
   621: {
     dexNumber: { nat: 621 },
     dexName: "Druddigon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon], moves: [] },
     },
@@ -5621,7 +5621,7 @@ export const dexObject: Record<number, DexRecord> = {
   622: {
     dexNumber: { nat: 622 },
     dexName: "Golett",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.ghost], moves: [] },
     },
@@ -5637,7 +5637,7 @@ export const dexObject: Record<number, DexRecord> = {
   624: {
     dexNumber: { nat: 624 },
     dexName: "Pawniard",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.steel], moves: [] },
     },
@@ -5645,7 +5645,7 @@ export const dexObject: Record<number, DexRecord> = {
   625: {
     dexNumber: { nat: 625 },
     dexName: "Bisharp",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.steel], moves: [] },
     },
@@ -5653,7 +5653,7 @@ export const dexObject: Record<number, DexRecord> = {
   626: {
     dexNumber: { nat: 626 },
     dexName: "Bouffalant",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -5661,7 +5661,7 @@ export const dexObject: Record<number, DexRecord> = {
   627: {
     dexNumber: { nat: 627 },
     dexName: "Rufflet",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -5669,7 +5669,7 @@ export const dexObject: Record<number, DexRecord> = {
   628: {
     dexNumber: { nat: 628 },
     dexName: "Braviary",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
       [FORM_IDS.hisuian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.flying], moves: [] },
@@ -5678,7 +5678,7 @@ export const dexObject: Record<number, DexRecord> = {
   629: {
     dexNumber: { nat: 629 },
     dexName: "Vullaby",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.flying], moves: [] },
     },
@@ -5686,7 +5686,7 @@ export const dexObject: Record<number, DexRecord> = {
   630: {
     dexNumber: { nat: 630 },
     dexName: "Mandibuzz",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.flying], moves: [] },
     },
@@ -5694,7 +5694,7 @@ export const dexObject: Record<number, DexRecord> = {
   631: {
     dexNumber: { nat: 631 },
     dexName: "Heatmor",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -5702,7 +5702,7 @@ export const dexObject: Record<number, DexRecord> = {
   632: {
     dexNumber: { nat: 632 },
     dexName: "Durant",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.steel], moves: [] },
     },
@@ -5710,7 +5710,7 @@ export const dexObject: Record<number, DexRecord> = {
   633: {
     dexNumber: { nat: 633 },
     dexName: "Deino",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.dragon], moves: [] },
     },
@@ -5718,7 +5718,7 @@ export const dexObject: Record<number, DexRecord> = {
   634: {
     dexNumber: { nat: 634 },
     dexName: "Zweilous",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.dragon], moves: [] },
     },
@@ -5734,7 +5734,7 @@ export const dexObject: Record<number, DexRecord> = {
   636: {
     dexNumber: { nat: 636 },
     dexName: "Larvesta",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.fire], moves: [] },
     },
@@ -5750,7 +5750,7 @@ export const dexObject: Record<number, DexRecord> = {
   638: {
     dexNumber: { nat: 638 },
     dexName: "Cobalion",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.fighting], moves: [] },
     },
@@ -5758,7 +5758,7 @@ export const dexObject: Record<number, DexRecord> = {
   639: {
     dexNumber: { nat: 639 },
     dexName: "Terrakion",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.fighting], moves: [] },
     },
@@ -5766,7 +5766,7 @@ export const dexObject: Record<number, DexRecord> = {
   640: {
     dexNumber: { nat: 640 },
     dexName: "Virizion",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.fighting], moves: [] },
     },
@@ -5774,7 +5774,7 @@ export const dexObject: Record<number, DexRecord> = {
   641: {
     dexNumber: { nat: 641 },
     dexName: "Tornadus",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.flying], moves: [] },
       "form-therian-forme": { ...DEX_FORM_STATS_TODO, types: [TYPES.flying], moves: [] },
@@ -5783,7 +5783,7 @@ export const dexObject: Record<number, DexRecord> = {
   642: {
     dexNumber: { nat: 642 },
     dexName: "Thundurus",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.flying], moves: [] },
       "form-therian-forme": { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.flying], moves: [] },
@@ -5792,7 +5792,7 @@ export const dexObject: Record<number, DexRecord> = {
   643: {
     dexNumber: { nat: 643 },
     dexName: "Reshiram",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.fire], moves: [] },
     },
@@ -5800,7 +5800,7 @@ export const dexObject: Record<number, DexRecord> = {
   644: {
     dexNumber: { nat: 644 },
     dexName: "Zekrom",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.electric], moves: [] },
     },
@@ -5808,7 +5808,7 @@ export const dexObject: Record<number, DexRecord> = {
   645: {
     dexNumber: { nat: 645 },
     dexName: "Landorus",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.flying], moves: [] },
       "form-therian-forme": { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.flying], moves: [] },
@@ -5817,7 +5817,7 @@ export const dexObject: Record<number, DexRecord> = {
   646: {
     dexNumber: { nat: 646 },
     dexName: "Kyurem",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.ice], moves: [] },
       "form-white-kyurem": { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.ice], moves: [] },
@@ -5827,7 +5827,7 @@ export const dexObject: Record<number, DexRecord> = {
   647: {
     dexNumber: { nat: 647 },
     dexName: "Keldeo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.fighting], moves: [] },
       "form-resolute-form": { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.fighting], moves: [] },
@@ -5836,7 +5836,7 @@ export const dexObject: Record<number, DexRecord> = {
   648: {
     dexNumber: { nat: 648 },
     dexName: "Meloetta",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.psychic], moves: [] },
       "form-pirouette-forme": { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.fighting], moves: [] },
@@ -5845,7 +5845,7 @@ export const dexObject: Record<number, DexRecord> = {
   649: {
     dexNumber: { nat: 649 },
     dexName: "Genesect",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.steel], moves: [] },
     },
@@ -5853,7 +5853,7 @@ export const dexObject: Record<number, DexRecord> = {
   650: {
     dexNumber: { nat: 650 },
     dexName: "Chespin",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -5861,7 +5861,7 @@ export const dexObject: Record<number, DexRecord> = {
   651: {
     dexNumber: { nat: 651 },
     dexName: "Quilladin",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -5877,7 +5877,7 @@ export const dexObject: Record<number, DexRecord> = {
   653: {
     dexNumber: { nat: 653 },
     dexName: "Fennekin",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -5885,7 +5885,7 @@ export const dexObject: Record<number, DexRecord> = {
   654: {
     dexNumber: { nat: 654 },
     dexName: "Braixen",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -5901,7 +5901,7 @@ export const dexObject: Record<number, DexRecord> = {
   656: {
     dexNumber: { nat: 656 },
     dexName: "Froakie",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -5909,7 +5909,7 @@ export const dexObject: Record<number, DexRecord> = {
   657: {
     dexNumber: { nat: 657 },
     dexName: "Frogadier",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -5926,7 +5926,7 @@ export const dexObject: Record<number, DexRecord> = {
   659: {
     dexNumber: { nat: 659 },
     dexName: "Bunnelby",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -5942,7 +5942,7 @@ export const dexObject: Record<number, DexRecord> = {
   661: {
     dexNumber: { nat: 661 },
     dexName: "Fletchling",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -5950,7 +5950,7 @@ export const dexObject: Record<number, DexRecord> = {
   662: {
     dexNumber: { nat: 662 },
     dexName: "Fletchinder",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.flying], moves: [] },
     },
@@ -5966,7 +5966,7 @@ export const dexObject: Record<number, DexRecord> = {
   664: {
     dexNumber: { nat: 664 },
     dexName: "Scatterbug",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -5974,7 +5974,7 @@ export const dexObject: Record<number, DexRecord> = {
   665: {
     dexNumber: { nat: 665 },
     dexName: "Spewpa",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -5990,7 +5990,7 @@ export const dexObject: Record<number, DexRecord> = {
   667: {
     dexNumber: { nat: 667 },
     dexName: "Litleo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.normal], moves: [] },
     },
@@ -5998,7 +5998,7 @@ export const dexObject: Record<number, DexRecord> = {
   668: {
     dexNumber: { nat: 668 },
     dexName: "Pyroar",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.normal], moves: [] },
     },
@@ -6006,7 +6006,7 @@ export const dexObject: Record<number, DexRecord> = {
   669: {
     dexNumber: { nat: 669 },
     dexName: "Flabébé",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy], moves: [] },
     },
@@ -6030,7 +6030,7 @@ export const dexObject: Record<number, DexRecord> = {
   672: {
     dexNumber: { nat: 672 },
     dexName: "Skiddo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -6038,7 +6038,7 @@ export const dexObject: Record<number, DexRecord> = {
   673: {
     dexNumber: { nat: 673 },
     dexName: "Gogoat",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -6046,7 +6046,7 @@ export const dexObject: Record<number, DexRecord> = {
   674: {
     dexNumber: { nat: 674 },
     dexName: "Pancham",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -6070,7 +6070,7 @@ export const dexObject: Record<number, DexRecord> = {
   677: {
     dexNumber: { nat: 677 },
     dexName: "Espurr",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -6087,7 +6087,7 @@ export const dexObject: Record<number, DexRecord> = {
   679: {
     dexNumber: { nat: 679 },
     dexName: "Honedge",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.ghost], moves: [] },
     },
@@ -6095,7 +6095,7 @@ export const dexObject: Record<number, DexRecord> = {
   680: {
     dexNumber: { nat: 680 },
     dexName: "Doublade",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.ghost], moves: [] },
     },
@@ -6112,7 +6112,7 @@ export const dexObject: Record<number, DexRecord> = {
   682: {
     dexNumber: { nat: 682 },
     dexName: "Spritzee",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy], moves: [] },
     },
@@ -6128,7 +6128,7 @@ export const dexObject: Record<number, DexRecord> = {
   684: {
     dexNumber: { nat: 684 },
     dexName: "Swirlix",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy], moves: [] },
     },
@@ -6144,7 +6144,7 @@ export const dexObject: Record<number, DexRecord> = {
   686: {
     dexNumber: { nat: 686 },
     dexName: "Inkay",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.psychic], moves: [] },
     },
@@ -6152,7 +6152,7 @@ export const dexObject: Record<number, DexRecord> = {
   687: {
     dexNumber: { nat: 687 },
     dexName: "Malamar",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.psychic], moves: [] },
       "form-mega-malamar": { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.psychic], moves: [] },
@@ -6161,7 +6161,7 @@ export const dexObject: Record<number, DexRecord> = {
   688: {
     dexNumber: { nat: 688 },
     dexName: "Binacle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.water], moves: [] },
     },
@@ -6169,7 +6169,7 @@ export const dexObject: Record<number, DexRecord> = {
   689: {
     dexNumber: { nat: 689 },
     dexName: "Barbaracle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.water], moves: [] },
     },
@@ -6177,7 +6177,7 @@ export const dexObject: Record<number, DexRecord> = {
   690: {
     dexNumber: { nat: 690 },
     dexName: "Skrelp",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.water], moves: [] },
     },
@@ -6185,7 +6185,7 @@ export const dexObject: Record<number, DexRecord> = {
   691: {
     dexNumber: { nat: 691 },
     dexName: "Dragalge",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.dragon], moves: [] },
     },
@@ -6193,7 +6193,7 @@ export const dexObject: Record<number, DexRecord> = {
   692: {
     dexNumber: { nat: 692 },
     dexName: "Clauncher",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -6209,7 +6209,7 @@ export const dexObject: Record<number, DexRecord> = {
   694: {
     dexNumber: { nat: 694 },
     dexName: "Helioptile",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.normal], moves: [] },
     },
@@ -6225,7 +6225,7 @@ export const dexObject: Record<number, DexRecord> = {
   696: {
     dexNumber: { nat: 696 },
     dexName: "Tyrunt",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.dragon], moves: [] },
     },
@@ -6241,7 +6241,7 @@ export const dexObject: Record<number, DexRecord> = {
   698: {
     dexNumber: { nat: 698 },
     dexName: "Amaura",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.ice], moves: [] },
     },
@@ -6412,7 +6412,7 @@ export const dexObject: Record<number, DexRecord> = {
   703: {
     dexNumber: { nat: 703 },
     dexName: "Carbink",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.fairy], moves: [] },
     },
@@ -6420,7 +6420,7 @@ export const dexObject: Record<number, DexRecord> = {
   704: {
     dexNumber: { nat: 704 },
     dexName: "Goomy",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon], moves: [] },
     },
@@ -6428,7 +6428,7 @@ export const dexObject: Record<number, DexRecord> = {
   705: {
     dexNumber: { nat: 705 },
     dexName: "Sliggoo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon], moves: [] },
       [FORM_IDS.hisuian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.dragon], moves: [] },
@@ -6454,7 +6454,7 @@ export const dexObject: Record<number, DexRecord> = {
   708: {
     dexNumber: { nat: 708 },
     dexName: "Phantump",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost, TYPES.grass], moves: [] },
     },
@@ -6470,7 +6470,7 @@ export const dexObject: Record<number, DexRecord> = {
   710: {
     dexNumber: { nat: 710 },
     dexName: "Pumpkaboo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost, TYPES.grass], moves: [] },
       [FORM_IDS.small]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost, TYPES.grass], moves: [] },
@@ -6492,7 +6492,7 @@ export const dexObject: Record<number, DexRecord> = {
   712: {
     dexNumber: { nat: 712 },
     dexName: "Bergmite",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice], moves: [] },
     },
@@ -6509,7 +6509,7 @@ export const dexObject: Record<number, DexRecord> = {
   714: {
     dexNumber: { nat: 714 },
     dexName: "Noibat",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.flying, TYPES.dragon], moves: [] },
     },
@@ -6598,7 +6598,7 @@ export const dexObject: Record<number, DexRecord> = {
   716: {
     dexNumber: { nat: 716 },
     dexName: "Xerneas",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy], moves: [] },
     },
@@ -6606,7 +6606,7 @@ export const dexObject: Record<number, DexRecord> = {
   717: {
     dexNumber: { nat: 717 },
     dexName: "Yveltal",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.flying], moves: [] },
     },
@@ -6614,7 +6614,7 @@ export const dexObject: Record<number, DexRecord> = {
   718: {
     dexNumber: { nat: 718 },
     dexName: "Zygarde",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-10-forme": { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.ground], moves: [] },
       "form-complete-forme": { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.ground], moves: [] },
@@ -6624,7 +6624,7 @@ export const dexObject: Record<number, DexRecord> = {
   719: {
     dexNumber: { nat: 719 },
     dexName: "Diancie",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.fairy], moves: [] },
       "form-mega-diancie": { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.fairy], moves: [] },
@@ -6633,7 +6633,7 @@ export const dexObject: Record<number, DexRecord> = {
   720: {
     dexNumber: { nat: 720 },
     dexName: "Hoopa",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-hoopa-unbound": { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.dark], moves: [] },
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.ghost], moves: [] },
@@ -6642,7 +6642,7 @@ export const dexObject: Record<number, DexRecord> = {
   721: {
     dexNumber: { nat: 721 },
     dexName: "Volcanion",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.water], moves: [] },
     },
@@ -6650,7 +6650,7 @@ export const dexObject: Record<number, DexRecord> = {
   722: {
     dexNumber: { nat: 722 },
     dexName: "Rowlet",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.flying], moves: [] },
     },
@@ -6658,7 +6658,7 @@ export const dexObject: Record<number, DexRecord> = {
   723: {
     dexNumber: { nat: 723 },
     dexName: "Dartrix",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.flying], moves: [] },
     },
@@ -6675,7 +6675,7 @@ export const dexObject: Record<number, DexRecord> = {
   725: {
     dexNumber: { nat: 725 },
     dexName: "Litten",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -6683,7 +6683,7 @@ export const dexObject: Record<number, DexRecord> = {
   726: {
     dexNumber: { nat: 726 },
     dexName: "Torracat",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -6699,7 +6699,7 @@ export const dexObject: Record<number, DexRecord> = {
   728: {
     dexNumber: { nat: 728 },
     dexName: "Popplio",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -6707,7 +6707,7 @@ export const dexObject: Record<number, DexRecord> = {
   729: {
     dexNumber: { nat: 729 },
     dexName: "Brionne",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -6723,7 +6723,7 @@ export const dexObject: Record<number, DexRecord> = {
   731: {
     dexNumber: { nat: 731 },
     dexName: "Pikipek",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -6731,7 +6731,7 @@ export const dexObject: Record<number, DexRecord> = {
   732: {
     dexNumber: { nat: 732 },
     dexName: "Trumbeak",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
@@ -6747,7 +6747,7 @@ export const dexObject: Record<number, DexRecord> = {
   734: {
     dexNumber: { nat: 734 },
     dexName: "Yungoos",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -6755,7 +6755,7 @@ export const dexObject: Record<number, DexRecord> = {
   735: {
     dexNumber: { nat: 735 },
     dexName: "Gumshoos",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -6763,7 +6763,7 @@ export const dexObject: Record<number, DexRecord> = {
   736: {
     dexNumber: { nat: 736 },
     dexName: "Grubbin",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -6771,7 +6771,7 @@ export const dexObject: Record<number, DexRecord> = {
   737: {
     dexNumber: { nat: 737 },
     dexName: "Charjabug",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.electric], moves: [] },
     },
@@ -6779,7 +6779,7 @@ export const dexObject: Record<number, DexRecord> = {
   738: {
     dexNumber: { nat: 738 },
     dexName: "Vikavolt",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.electric], moves: [] },
     },
@@ -6787,7 +6787,7 @@ export const dexObject: Record<number, DexRecord> = {
   739: {
     dexNumber: { nat: 739 },
     dexName: "Crabrawler",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -6803,7 +6803,7 @@ export const dexObject: Record<number, DexRecord> = {
   741: {
     dexNumber: { nat: 741 },
     dexName: "Oricorio",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-pom-pom-style": { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.flying], moves: [] },
       "form-pau-style": { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.flying], moves: [] },
@@ -6814,7 +6814,7 @@ export const dexObject: Record<number, DexRecord> = {
   742: {
     dexNumber: { nat: 742 },
     dexName: "Cutiefly",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.fairy], moves: [] },
     },
@@ -6822,7 +6822,7 @@ export const dexObject: Record<number, DexRecord> = {
   743: {
     dexNumber: { nat: 743 },
     dexName: "Ribombee",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.fairy], moves: [] },
     },
@@ -6830,7 +6830,7 @@ export const dexObject: Record<number, DexRecord> = {
   744: {
     dexNumber: { nat: 744 },
     dexName: "Rockruff",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock], moves: [] },
       "form-own-tempo-rockruff": { ...DEX_FORM_STATS_TODO, types: [TYPES.rock], moves: [] },
@@ -6849,7 +6849,7 @@ export const dexObject: Record<number, DexRecord> = {
   746: {
     dexNumber: { nat: 746 },
     dexName: "Wishiwashi",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-school-form": { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
@@ -6858,7 +6858,7 @@ export const dexObject: Record<number, DexRecord> = {
   747: {
     dexNumber: { nat: 747 },
     dexName: "Mareanie",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.water], moves: [] },
     },
@@ -6874,7 +6874,7 @@ export const dexObject: Record<number, DexRecord> = {
   749: {
     dexNumber: { nat: 749 },
     dexName: "Mudbray",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground], moves: [] },
     },
@@ -6890,7 +6890,7 @@ export const dexObject: Record<number, DexRecord> = {
   751: {
     dexNumber: { nat: 751 },
     dexName: "Dewpider",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.bug], moves: [] },
     },
@@ -6906,7 +6906,7 @@ export const dexObject: Record<number, DexRecord> = {
   753: {
     dexNumber: { nat: 753 },
     dexName: "Fomantis",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -6914,7 +6914,7 @@ export const dexObject: Record<number, DexRecord> = {
   754: {
     dexNumber: { nat: 754 },
     dexName: "Lurantis",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -6922,7 +6922,7 @@ export const dexObject: Record<number, DexRecord> = {
   755: {
     dexNumber: { nat: 755 },
     dexName: "Morelull",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.fairy], moves: [] },
     },
@@ -6930,7 +6930,7 @@ export const dexObject: Record<number, DexRecord> = {
   756: {
     dexNumber: { nat: 756 },
     dexName: "Shiinotic",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.fairy], moves: [] },
     },
@@ -6938,7 +6938,7 @@ export const dexObject: Record<number, DexRecord> = {
   757: {
     dexNumber: { nat: 757 },
     dexName: "Salandit",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.fire], moves: [] },
     },
@@ -6954,7 +6954,7 @@ export const dexObject: Record<number, DexRecord> = {
   759: {
     dexNumber: { nat: 759 },
     dexName: "Stufful",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.fighting], moves: [] },
     },
@@ -6962,7 +6962,7 @@ export const dexObject: Record<number, DexRecord> = {
   760: {
     dexNumber: { nat: 760 },
     dexName: "Bewear",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.fighting], moves: [] },
     },
@@ -6970,7 +6970,7 @@ export const dexObject: Record<number, DexRecord> = {
   761: {
     dexNumber: { nat: 761 },
     dexName: "Bounsweet",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -6978,7 +6978,7 @@ export const dexObject: Record<number, DexRecord> = {
   762: {
     dexNumber: { nat: 762 },
     dexName: "Steenee",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -6994,7 +6994,7 @@ export const dexObject: Record<number, DexRecord> = {
   764: {
     dexNumber: { nat: 764 },
     dexName: "Comfey",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy], moves: [] },
     },
@@ -7018,7 +7018,7 @@ export const dexObject: Record<number, DexRecord> = {
   767: {
     dexNumber: { nat: 767 },
     dexName: "Wimpod",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.water], moves: [] },
     },
@@ -7026,7 +7026,7 @@ export const dexObject: Record<number, DexRecord> = {
   768: {
     dexNumber: { nat: 768 },
     dexName: "Golisopod",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.water], moves: [] },
     },
@@ -7034,7 +7034,7 @@ export const dexObject: Record<number, DexRecord> = {
   769: {
     dexNumber: { nat: 769 },
     dexName: "Sandygast",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost, TYPES.ground], moves: [] },
     },
@@ -7042,7 +7042,7 @@ export const dexObject: Record<number, DexRecord> = {
   770: {
     dexNumber: { nat: 770 },
     dexName: "Palossand",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost, TYPES.ground], moves: [] },
     },
@@ -7050,7 +7050,7 @@ export const dexObject: Record<number, DexRecord> = {
   771: {
     dexNumber: { nat: 771 },
     dexName: "Pyukumuku",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -7058,7 +7058,7 @@ export const dexObject: Record<number, DexRecord> = {
   772: {
     dexNumber: { nat: 772 },
     dexName: "Type: Null",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -7066,7 +7066,7 @@ export const dexObject: Record<number, DexRecord> = {
   773: {
     dexNumber: { nat: 773 },
     dexName: "Silvally",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -7074,7 +7074,7 @@ export const dexObject: Record<number, DexRecord> = {
   774: {
     dexNumber: { nat: 774 },
     dexName: "Minior",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-core-form": { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.flying], moves: [] },
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.flying], moves: [] },
@@ -7083,7 +7083,7 @@ export const dexObject: Record<number, DexRecord> = {
   775: {
     dexNumber: { nat: 775 },
     dexName: "Komala",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -7091,7 +7091,7 @@ export const dexObject: Record<number, DexRecord> = {
   776: {
     dexNumber: { nat: 776 },
     dexName: "Turtonator",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.dragon], moves: [] },
     },
@@ -7099,7 +7099,7 @@ export const dexObject: Record<number, DexRecord> = {
   777: {
     dexNumber: { nat: 777 },
     dexName: "Togedemaru",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.steel], moves: [] },
     },
@@ -7115,7 +7115,7 @@ export const dexObject: Record<number, DexRecord> = {
   779: {
     dexNumber: { nat: 779 },
     dexName: "Bruxish",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.psychic], moves: [] },
     },
@@ -7131,7 +7131,7 @@ export const dexObject: Record<number, DexRecord> = {
   781: {
     dexNumber: { nat: 781 },
     dexName: "Dhelmise",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost, TYPES.grass], moves: [] },
     },
@@ -7139,7 +7139,7 @@ export const dexObject: Record<number, DexRecord> = {
   782: {
     dexNumber: { nat: 782 },
     dexName: "Jangmo-o",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon], moves: [] },
     },
@@ -7147,7 +7147,7 @@ export const dexObject: Record<number, DexRecord> = {
   783: {
     dexNumber: { nat: 783 },
     dexName: "Hakamo-o",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.fighting], moves: [] },
     },
@@ -7163,7 +7163,7 @@ export const dexObject: Record<number, DexRecord> = {
   785: {
     dexNumber: { nat: 785 },
     dexName: "Tapu Koko",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.fairy], moves: [] },
     },
@@ -7171,7 +7171,7 @@ export const dexObject: Record<number, DexRecord> = {
   786: {
     dexNumber: { nat: 786 },
     dexName: "Tapu Lele",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.fairy], moves: [] },
     },
@@ -7179,7 +7179,7 @@ export const dexObject: Record<number, DexRecord> = {
   787: {
     dexNumber: { nat: 787 },
     dexName: "Tapu Bulu",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.fairy], moves: [] },
     },
@@ -7187,7 +7187,7 @@ export const dexObject: Record<number, DexRecord> = {
   788: {
     dexNumber: { nat: 788 },
     dexName: "Tapu Fini",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.fairy], moves: [] },
     },
@@ -7195,7 +7195,7 @@ export const dexObject: Record<number, DexRecord> = {
   789: {
     dexNumber: { nat: 789 },
     dexName: "Cosmog",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -7203,7 +7203,7 @@ export const dexObject: Record<number, DexRecord> = {
   790: {
     dexNumber: { nat: 790 },
     dexName: "Cosmoem",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -7211,7 +7211,7 @@ export const dexObject: Record<number, DexRecord> = {
   791: {
     dexNumber: { nat: 791 },
     dexName: "Solgaleo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.steel], moves: [] },
     },
@@ -7219,7 +7219,7 @@ export const dexObject: Record<number, DexRecord> = {
   792: {
     dexNumber: { nat: 792 },
     dexName: "Lunala",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.ghost], moves: [] },
     },
@@ -7227,7 +7227,7 @@ export const dexObject: Record<number, DexRecord> = {
   793: {
     dexNumber: { nat: 793 },
     dexName: "Nihilego",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.poison], moves: [] },
     },
@@ -7235,7 +7235,7 @@ export const dexObject: Record<number, DexRecord> = {
   794: {
     dexNumber: { nat: 794 },
     dexName: "Buzzwole",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.fighting], moves: [] },
     },
@@ -7243,7 +7243,7 @@ export const dexObject: Record<number, DexRecord> = {
   795: {
     dexNumber: { nat: 795 },
     dexName: "Pheromosa",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.fighting], moves: [] },
     },
@@ -7251,7 +7251,7 @@ export const dexObject: Record<number, DexRecord> = {
   796: {
     dexNumber: { nat: 796 },
     dexName: "Xurkitree",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -7259,7 +7259,7 @@ export const dexObject: Record<number, DexRecord> = {
   797: {
     dexNumber: { nat: 797 },
     dexName: "Celesteela",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.flying], moves: [] },
     },
@@ -7267,7 +7267,7 @@ export const dexObject: Record<number, DexRecord> = {
   798: {
     dexNumber: { nat: 798 },
     dexName: "Kartana",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.steel], moves: [] },
     },
@@ -7275,7 +7275,7 @@ export const dexObject: Record<number, DexRecord> = {
   799: {
     dexNumber: { nat: 799 },
     dexName: "Guzzlord",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.dragon], moves: [] },
     },
@@ -7283,7 +7283,7 @@ export const dexObject: Record<number, DexRecord> = {
   800: {
     dexNumber: { nat: 800 },
     dexName: "Necrozma",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
       "form-dusk-mane-necrozma": { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.steel], moves: [] },
@@ -7294,7 +7294,7 @@ export const dexObject: Record<number, DexRecord> = {
   801: {
     dexNumber: { nat: 801 },
     dexName: "Magearna",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.fairy], moves: [] },
     },
@@ -7302,7 +7302,7 @@ export const dexObject: Record<number, DexRecord> = {
   802: {
     dexNumber: { nat: 802 },
     dexName: "Marshadow",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting, TYPES.ghost], moves: [] },
     },
@@ -7310,7 +7310,7 @@ export const dexObject: Record<number, DexRecord> = {
   803: {
     dexNumber: { nat: 803 },
     dexName: "Poipole",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison], moves: [] },
     },
@@ -7318,7 +7318,7 @@ export const dexObject: Record<number, DexRecord> = {
   804: {
     dexNumber: { nat: 804 },
     dexName: "Naganadel",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.dragon], moves: [] },
     },
@@ -7326,7 +7326,7 @@ export const dexObject: Record<number, DexRecord> = {
   805: {
     dexNumber: { nat: 805 },
     dexName: "Stakataka",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.steel], moves: [] },
     },
@@ -7334,7 +7334,7 @@ export const dexObject: Record<number, DexRecord> = {
   806: {
     dexNumber: { nat: 806 },
     dexName: "Blacephalon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.ghost], moves: [] },
     },
@@ -7342,7 +7342,7 @@ export const dexObject: Record<number, DexRecord> = {
   807: {
     dexNumber: { nat: 807 },
     dexName: "Zeraora",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -7350,7 +7350,7 @@ export const dexObject: Record<number, DexRecord> = {
   808: {
     dexNumber: { nat: 808 },
     dexName: "Meltan",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel], moves: [] },
     },
@@ -7358,7 +7358,7 @@ export const dexObject: Record<number, DexRecord> = {
   809: {
     dexNumber: { nat: 809 },
     dexName: "Melmetal",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel], moves: [] },
     },
@@ -7366,7 +7366,7 @@ export const dexObject: Record<number, DexRecord> = {
   810: {
     dexNumber: { nat: 810 },
     dexName: "Grookey",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -7374,7 +7374,7 @@ export const dexObject: Record<number, DexRecord> = {
   811: {
     dexNumber: { nat: 811 },
     dexName: "Thwackey",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -7382,7 +7382,7 @@ export const dexObject: Record<number, DexRecord> = {
   812: {
     dexNumber: { nat: 812 },
     dexName: "Rillaboom",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -7390,7 +7390,7 @@ export const dexObject: Record<number, DexRecord> = {
   813: {
     dexNumber: { nat: 813 },
     dexName: "Scorbunny",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -7398,7 +7398,7 @@ export const dexObject: Record<number, DexRecord> = {
   814: {
     dexNumber: { nat: 814 },
     dexName: "Raboot",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -7406,7 +7406,7 @@ export const dexObject: Record<number, DexRecord> = {
   815: {
     dexNumber: { nat: 815 },
     dexName: "Cinderace",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -7414,7 +7414,7 @@ export const dexObject: Record<number, DexRecord> = {
   816: {
     dexNumber: { nat: 816 },
     dexName: "Sobble",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -7422,7 +7422,7 @@ export const dexObject: Record<number, DexRecord> = {
   817: {
     dexNumber: { nat: 817 },
     dexName: "Drizzile",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -7430,7 +7430,7 @@ export const dexObject: Record<number, DexRecord> = {
   818: {
     dexNumber: { nat: 818 },
     dexName: "Inteleon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -7438,7 +7438,7 @@ export const dexObject: Record<number, DexRecord> = {
   819: {
     dexNumber: { nat: 819 },
     dexName: "Skwovet",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -7446,7 +7446,7 @@ export const dexObject: Record<number, DexRecord> = {
   820: {
     dexNumber: { nat: 820 },
     dexName: "Greedent",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -7454,7 +7454,7 @@ export const dexObject: Record<number, DexRecord> = {
   821: {
     dexNumber: { nat: 821 },
     dexName: "Rookidee",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.flying], moves: [] },
     },
@@ -7462,7 +7462,7 @@ export const dexObject: Record<number, DexRecord> = {
   822: {
     dexNumber: { nat: 822 },
     dexName: "Corvisquire",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.flying], moves: [] },
     },
@@ -7478,7 +7478,7 @@ export const dexObject: Record<number, DexRecord> = {
   824: {
     dexNumber: { nat: 824 },
     dexName: "Blipbug",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -7486,7 +7486,7 @@ export const dexObject: Record<number, DexRecord> = {
   825: {
     dexNumber: { nat: 825 },
     dexName: "Dottler",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.psychic], moves: [] },
     },
@@ -7494,7 +7494,7 @@ export const dexObject: Record<number, DexRecord> = {
   826: {
     dexNumber: { nat: 826 },
     dexName: "Orbeetle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.psychic], moves: [] },
     },
@@ -7502,7 +7502,7 @@ export const dexObject: Record<number, DexRecord> = {
   827: {
     dexNumber: { nat: 827 },
     dexName: "Nickit",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark], moves: [] },
     },
@@ -7510,7 +7510,7 @@ export const dexObject: Record<number, DexRecord> = {
   828: {
     dexNumber: { nat: 828 },
     dexName: "Thievul",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark], moves: [] },
     },
@@ -7518,7 +7518,7 @@ export const dexObject: Record<number, DexRecord> = {
   829: {
     dexNumber: { nat: 829 },
     dexName: "Gossifleur",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -7526,7 +7526,7 @@ export const dexObject: Record<number, DexRecord> = {
   830: {
     dexNumber: { nat: 830 },
     dexName: "Eldegoss",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -7534,7 +7534,7 @@ export const dexObject: Record<number, DexRecord> = {
   831: {
     dexNumber: { nat: 831 },
     dexName: "Wooloo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -7542,7 +7542,7 @@ export const dexObject: Record<number, DexRecord> = {
   832: {
     dexNumber: { nat: 832 },
     dexName: "Dubwool",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -7550,7 +7550,7 @@ export const dexObject: Record<number, DexRecord> = {
   833: {
     dexNumber: { nat: 833 },
     dexName: "Chewtle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -7558,7 +7558,7 @@ export const dexObject: Record<number, DexRecord> = {
   834: {
     dexNumber: { nat: 834 },
     dexName: "Drednaw",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.rock], moves: [] },
     },
@@ -7566,7 +7566,7 @@ export const dexObject: Record<number, DexRecord> = {
   835: {
     dexNumber: { nat: 835 },
     dexName: "Yamper",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -7574,7 +7574,7 @@ export const dexObject: Record<number, DexRecord> = {
   836: {
     dexNumber: { nat: 836 },
     dexName: "Boltund",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -7582,7 +7582,7 @@ export const dexObject: Record<number, DexRecord> = {
   837: {
     dexNumber: { nat: 837 },
     dexName: "Rolycoly",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock], moves: [] },
     },
@@ -7590,7 +7590,7 @@ export const dexObject: Record<number, DexRecord> = {
   838: {
     dexNumber: { nat: 838 },
     dexName: "Carkol",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.fire], moves: [] },
     },
@@ -7598,7 +7598,7 @@ export const dexObject: Record<number, DexRecord> = {
   839: {
     dexNumber: { nat: 839 },
     dexName: "Coalossal",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.fire], moves: [] },
     },
@@ -7606,7 +7606,7 @@ export const dexObject: Record<number, DexRecord> = {
   840: {
     dexNumber: { nat: 840 },
     dexName: "Applin",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.dragon], moves: [] },
     },
@@ -7630,7 +7630,7 @@ export const dexObject: Record<number, DexRecord> = {
   843: {
     dexNumber: { nat: 843 },
     dexName: "Silicobra",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground], moves: [] },
     },
@@ -7646,7 +7646,7 @@ export const dexObject: Record<number, DexRecord> = {
   845: {
     dexNumber: { nat: 845 },
     dexName: "Cramorant",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.flying, TYPES.water], moves: [] },
     },
@@ -7654,7 +7654,7 @@ export const dexObject: Record<number, DexRecord> = {
   846: {
     dexNumber: { nat: 846 },
     dexName: "Arrokuda",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -7662,7 +7662,7 @@ export const dexObject: Record<number, DexRecord> = {
   847: {
     dexNumber: { nat: 847 },
     dexName: "Barraskewda",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -7670,7 +7670,7 @@ export const dexObject: Record<number, DexRecord> = {
   848: {
     dexNumber: { nat: 848 },
     dexName: "Toxel",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.poison], moves: [] },
     },
@@ -7678,7 +7678,7 @@ export const dexObject: Record<number, DexRecord> = {
   849: {
     dexNumber: { nat: 849 },
     dexName: "Toxtricity",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-low-key-form": { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.poison], moves: [] },
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.poison], moves: [] },
@@ -7687,7 +7687,7 @@ export const dexObject: Record<number, DexRecord> = {
   850: {
     dexNumber: { nat: 850 },
     dexName: "Sizzlipede",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.bug], moves: [] },
     },
@@ -7695,7 +7695,7 @@ export const dexObject: Record<number, DexRecord> = {
   851: {
     dexNumber: { nat: 851 },
     dexName: "Centiskorch",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.bug], moves: [] },
     },
@@ -7703,7 +7703,7 @@ export const dexObject: Record<number, DexRecord> = {
   852: {
     dexNumber: { nat: 852 },
     dexName: "Clobbopus",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -7711,7 +7711,7 @@ export const dexObject: Record<number, DexRecord> = {
   853: {
     dexNumber: { nat: 853 },
     dexName: "Grapploct",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -7719,7 +7719,7 @@ export const dexObject: Record<number, DexRecord> = {
   854: {
     dexNumber: { nat: 854 },
     dexName: "Sinistea",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost], moves: [] },
     },
@@ -7735,7 +7735,7 @@ export const dexObject: Record<number, DexRecord> = {
   856: {
     dexNumber: { nat: 856 },
     dexName: "Hatenna",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -7743,7 +7743,7 @@ export const dexObject: Record<number, DexRecord> = {
   857: {
     dexNumber: { nat: 857 },
     dexName: "Hattrem",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -7759,7 +7759,7 @@ export const dexObject: Record<number, DexRecord> = {
   859: {
     dexNumber: { nat: 859 },
     dexName: "Impidimp",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.fairy], moves: [] },
     },
@@ -7767,7 +7767,7 @@ export const dexObject: Record<number, DexRecord> = {
   860: {
     dexNumber: { nat: 860 },
     dexName: "Morgrem",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.fairy], moves: [] },
     },
@@ -7775,7 +7775,7 @@ export const dexObject: Record<number, DexRecord> = {
   861: {
     dexNumber: { nat: 861 },
     dexName: "Grimmsnarl",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.fairy], moves: [] },
     },
@@ -7783,7 +7783,7 @@ export const dexObject: Record<number, DexRecord> = {
   862: {
     dexNumber: { nat: 862 },
     dexName: "Obstagoon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.normal], moves: [] },
     },
@@ -7791,7 +7791,7 @@ export const dexObject: Record<number, DexRecord> = {
   863: {
     dexNumber: { nat: 863 },
     dexName: "Perrserker",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel], moves: [] },
     },
@@ -7799,7 +7799,7 @@ export const dexObject: Record<number, DexRecord> = {
   864: {
     dexNumber: { nat: 864 },
     dexName: "Cursola",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost], moves: [] },
     },
@@ -7807,7 +7807,7 @@ export const dexObject: Record<number, DexRecord> = {
   865: {
     dexNumber: { nat: 865 },
     dexName: "Sirfetch'd",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -7831,7 +7831,7 @@ export const dexObject: Record<number, DexRecord> = {
   868: {
     dexNumber: { nat: 868 },
     dexName: "Milcery",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy], moves: [] },
     },
@@ -7847,7 +7847,7 @@ export const dexObject: Record<number, DexRecord> = {
   870: {
     dexNumber: { nat: 870 },
     dexName: "Falinks",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -7855,7 +7855,7 @@ export const dexObject: Record<number, DexRecord> = {
   871: {
     dexNumber: { nat: 871 },
     dexName: "Pincurchin",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -7863,7 +7863,7 @@ export const dexObject: Record<number, DexRecord> = {
   872: {
     dexNumber: { nat: 872 },
     dexName: "Snom",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.bug], moves: [] },
     },
@@ -7871,7 +7871,7 @@ export const dexObject: Record<number, DexRecord> = {
   873: {
     dexNumber: { nat: 873 },
     dexName: "Frosmoth",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.bug], moves: [] },
     },
@@ -7879,7 +7879,7 @@ export const dexObject: Record<number, DexRecord> = {
   874: {
     dexNumber: { nat: 874 },
     dexName: "Stonjourner",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock], moves: [] },
     },
@@ -7887,7 +7887,7 @@ export const dexObject: Record<number, DexRecord> = {
   875: {
     dexNumber: { nat: 875 },
     dexName: "Eiscue",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-noice-face": { ...DEX_FORM_STATS_TODO, types: [TYPES.ice], moves: [] },
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice], moves: [] },
@@ -7896,7 +7896,7 @@ export const dexObject: Record<number, DexRecord> = {
   876: {
     dexNumber: { nat: 876 },
     dexName: "Indeedee",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.normal], moves: [] },
       [FORM_IDS.female]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.normal], moves: [] },
@@ -7914,7 +7914,7 @@ export const dexObject: Record<number, DexRecord> = {
   878: {
     dexNumber: { nat: 878 },
     dexName: "Cufant",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel], moves: [] },
     },
@@ -7922,7 +7922,7 @@ export const dexObject: Record<number, DexRecord> = {
   879: {
     dexNumber: { nat: 879 },
     dexName: "Copperajah",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel], moves: [] },
     },
@@ -7930,7 +7930,7 @@ export const dexObject: Record<number, DexRecord> = {
   880: {
     dexNumber: { nat: 880 },
     dexName: "Dracozolt",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.dragon], moves: [] },
     },
@@ -7938,7 +7938,7 @@ export const dexObject: Record<number, DexRecord> = {
   881: {
     dexNumber: { nat: 881 },
     dexName: "Arctozolt",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.ice], moves: [] },
     },
@@ -7946,7 +7946,7 @@ export const dexObject: Record<number, DexRecord> = {
   882: {
     dexNumber: { nat: 882 },
     dexName: "Dracovish",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.dragon], moves: [] },
     },
@@ -7954,7 +7954,7 @@ export const dexObject: Record<number, DexRecord> = {
   883: {
     dexNumber: { nat: 883 },
     dexName: "Arctovish",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.ice], moves: [] },
     },
@@ -7962,7 +7962,7 @@ export const dexObject: Record<number, DexRecord> = {
   884: {
     dexNumber: { nat: 884 },
     dexName: "Duraludon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.dragon], moves: [] },
     },
@@ -7970,7 +7970,7 @@ export const dexObject: Record<number, DexRecord> = {
   885: {
     dexNumber: { nat: 885 },
     dexName: "Dreepy",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.ghost], moves: [] },
     },
@@ -7978,7 +7978,7 @@ export const dexObject: Record<number, DexRecord> = {
   886: {
     dexNumber: { nat: 886 },
     dexName: "Drakloak",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.ghost], moves: [] },
     },
@@ -7994,7 +7994,7 @@ export const dexObject: Record<number, DexRecord> = {
   888: {
     dexNumber: { nat: 888 },
     dexName: "Zacian",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-crowned-sword": { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy, TYPES.steel], moves: [] },
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy], moves: [] },
@@ -8003,7 +8003,7 @@ export const dexObject: Record<number, DexRecord> = {
   889: {
     dexNumber: { nat: 889 },
     dexName: "Zamazenta",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-crowned-shield": { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting, TYPES.steel], moves: [] },
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
@@ -8012,7 +8012,7 @@ export const dexObject: Record<number, DexRecord> = {
   890: {
     dexNumber: { nat: 890 },
     dexName: "Eternatus",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.dragon], moves: [] },
       "form-eternamax": { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.dragon], moves: [] },
@@ -8021,7 +8021,7 @@ export const dexObject: Record<number, DexRecord> = {
   891: {
     dexNumber: { nat: 891 },
     dexName: "Kubfu",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
     },
@@ -8029,7 +8029,7 @@ export const dexObject: Record<number, DexRecord> = {
   892: {
     dexNumber: { nat: 892 },
     dexName: "Urshifu",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-rapid-strike-style": { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting, TYPES.water], moves: [] },
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting, TYPES.dark], moves: [] },
@@ -8038,7 +8038,7 @@ export const dexObject: Record<number, DexRecord> = {
   893: {
     dexNumber: { nat: 893 },
     dexName: "Zarude",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.grass], moves: [] },
     },
@@ -8046,7 +8046,7 @@ export const dexObject: Record<number, DexRecord> = {
   894: {
     dexNumber: { nat: 894 },
     dexName: "Regieleki",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -8054,7 +8054,7 @@ export const dexObject: Record<number, DexRecord> = {
   895: {
     dexNumber: { nat: 895 },
     dexName: "Regidrago",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon], moves: [] },
     },
@@ -8062,7 +8062,7 @@ export const dexObject: Record<number, DexRecord> = {
   896: {
     dexNumber: { nat: 896 },
     dexName: "Glastrier",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice], moves: [] },
     },
@@ -8070,7 +8070,7 @@ export const dexObject: Record<number, DexRecord> = {
   897: {
     dexNumber: { nat: 897 },
     dexName: "Spectrier",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost], moves: [] },
     },
@@ -8078,7 +8078,7 @@ export const dexObject: Record<number, DexRecord> = {
   898: {
     dexNumber: { nat: 898 },
     dexName: "Calyrex",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.grass], moves: [] },
       "form-ice-rider": { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic, TYPES.ice], moves: [] },
@@ -8104,7 +8104,7 @@ export const dexObject: Record<number, DexRecord> = {
   901: {
     dexNumber: { nat: 901 },
     dexName: "Ursaluna",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.normal], moves: [] },
       "form-bloodmoon": { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.normal], moves: [] },
@@ -8130,7 +8130,7 @@ export const dexObject: Record<number, DexRecord> = {
   904: {
     dexNumber: { nat: 904 },
     dexName: "Overqwil",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.poison], moves: [] },
     },
@@ -8138,7 +8138,7 @@ export const dexObject: Record<number, DexRecord> = {
   905: {
     dexNumber: { nat: 905 },
     dexName: "Enamorus",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy, TYPES.flying], moves: [] },
       "form-therian-forme": { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy, TYPES.flying], moves: [] },
@@ -8147,7 +8147,7 @@ export const dexObject: Record<number, DexRecord> = {
   906: {
     dexNumber: { nat: 906 },
     dexName: "Sprigatito",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -8155,7 +8155,7 @@ export const dexObject: Record<number, DexRecord> = {
   907: {
     dexNumber: { nat: 907 },
     dexName: "Floragato",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -8171,7 +8171,7 @@ export const dexObject: Record<number, DexRecord> = {
   909: {
     dexNumber: { nat: 909 },
     dexName: "Fuecoco",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -8179,7 +8179,7 @@ export const dexObject: Record<number, DexRecord> = {
   910: {
     dexNumber: { nat: 910 },
     dexName: "Crocalor",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -8195,7 +8195,7 @@ export const dexObject: Record<number, DexRecord> = {
   912: {
     dexNumber: { nat: 912 },
     dexName: "Quaxly",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -8203,7 +8203,7 @@ export const dexObject: Record<number, DexRecord> = {
   913: {
     dexNumber: { nat: 913 },
     dexName: "Quaxwell",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -8219,7 +8219,7 @@ export const dexObject: Record<number, DexRecord> = {
   915: {
     dexNumber: { nat: 915 },
     dexName: "Lechonk",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -8227,7 +8227,7 @@ export const dexObject: Record<number, DexRecord> = {
   916: {
     dexNumber: { nat: 916 },
     dexName: "Oinkologne",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
       [FORM_IDS.female]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
@@ -8236,7 +8236,7 @@ export const dexObject: Record<number, DexRecord> = {
   917: {
     dexNumber: { nat: 917 },
     dexName: "Tarountula",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -8244,7 +8244,7 @@ export const dexObject: Record<number, DexRecord> = {
   918: {
     dexNumber: { nat: 918 },
     dexName: "Spidops",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -8252,7 +8252,7 @@ export const dexObject: Record<number, DexRecord> = {
   919: {
     dexNumber: { nat: 919 },
     dexName: "Nymble",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -8260,7 +8260,7 @@ export const dexObject: Record<number, DexRecord> = {
   920: {
     dexNumber: { nat: 920 },
     dexName: "Lokix",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.dark], moves: [] },
     },
@@ -8268,7 +8268,7 @@ export const dexObject: Record<number, DexRecord> = {
   921: {
     dexNumber: { nat: 921 },
     dexName: "Pawmi",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -8276,7 +8276,7 @@ export const dexObject: Record<number, DexRecord> = {
   922: {
     dexNumber: { nat: 922 },
     dexName: "Pawmo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.fighting], moves: [] },
     },
@@ -8284,7 +8284,7 @@ export const dexObject: Record<number, DexRecord> = {
   923: {
     dexNumber: { nat: 923 },
     dexName: "Pawmot",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.fighting], moves: [] },
     },
@@ -8292,7 +8292,7 @@ export const dexObject: Record<number, DexRecord> = {
   924: {
     dexNumber: { nat: 924 },
     dexName: "Tandemaus",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
     },
@@ -8309,7 +8309,7 @@ export const dexObject: Record<number, DexRecord> = {
   926: {
     dexNumber: { nat: 926 },
     dexName: "Fidough",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy], moves: [] },
     },
@@ -8317,7 +8317,7 @@ export const dexObject: Record<number, DexRecord> = {
   927: {
     dexNumber: { nat: 927 },
     dexName: "Dachsbun",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy], moves: [] },
     },
@@ -8325,7 +8325,7 @@ export const dexObject: Record<number, DexRecord> = {
   928: {
     dexNumber: { nat: 928 },
     dexName: "Smoliv",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.normal], moves: [] },
     },
@@ -8333,7 +8333,7 @@ export const dexObject: Record<number, DexRecord> = {
   929: {
     dexNumber: { nat: 929 },
     dexName: "Dolliv",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.normal], moves: [] },
     },
@@ -8341,7 +8341,7 @@ export const dexObject: Record<number, DexRecord> = {
   930: {
     dexNumber: { nat: 930 },
     dexName: "Arboliva",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.normal], moves: [] },
     },
@@ -8349,7 +8349,7 @@ export const dexObject: Record<number, DexRecord> = {
   931: {
     dexNumber: { nat: 931 },
     dexName: "Squawkabilly",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-blue-plumage": { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
       "form-yellow-plumage": { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
@@ -8360,7 +8360,7 @@ export const dexObject: Record<number, DexRecord> = {
   932: {
     dexNumber: { nat: 932 },
     dexName: "Nacli",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock], moves: [] },
     },
@@ -8368,7 +8368,7 @@ export const dexObject: Record<number, DexRecord> = {
   933: {
     dexNumber: { nat: 933 },
     dexName: "Naclstack",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock], moves: [] },
     },
@@ -8384,7 +8384,7 @@ export const dexObject: Record<number, DexRecord> = {
   935: {
     dexNumber: { nat: 935 },
     dexName: "Charcadet",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
     },
@@ -8473,7 +8473,7 @@ export const dexObject: Record<number, DexRecord> = {
   938: {
     dexNumber: { nat: 938 },
     dexName: "Tadbulb",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
@@ -8489,7 +8489,7 @@ export const dexObject: Record<number, DexRecord> = {
   940: {
     dexNumber: { nat: 940 },
     dexName: "Wattrel",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.flying], moves: [] },
     },
@@ -8497,7 +8497,7 @@ export const dexObject: Record<number, DexRecord> = {
   941: {
     dexNumber: { nat: 941 },
     dexName: "Kilowattrel",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.flying], moves: [] },
     },
@@ -8505,7 +8505,7 @@ export const dexObject: Record<number, DexRecord> = {
   942: {
     dexNumber: { nat: 942 },
     dexName: "Maschiff",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark], moves: [] },
     },
@@ -8513,7 +8513,7 @@ export const dexObject: Record<number, DexRecord> = {
   943: {
     dexNumber: { nat: 943 },
     dexName: "Mabosstiff",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark], moves: [] },
     },
@@ -8521,7 +8521,7 @@ export const dexObject: Record<number, DexRecord> = {
   944: {
     dexNumber: { nat: 944 },
     dexName: "Shroodle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.normal], moves: [] },
     },
@@ -8529,7 +8529,7 @@ export const dexObject: Record<number, DexRecord> = {
   945: {
     dexNumber: { nat: 945 },
     dexName: "Grafaiai",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.normal], moves: [] },
     },
@@ -8537,7 +8537,7 @@ export const dexObject: Record<number, DexRecord> = {
   946: {
     dexNumber: { nat: 946 },
     dexName: "Bramblin",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.ghost], moves: [] },
     },
@@ -8545,7 +8545,7 @@ export const dexObject: Record<number, DexRecord> = {
   947: {
     dexNumber: { nat: 947 },
     dexName: "Brambleghast",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.ghost], moves: [] },
     },
@@ -8553,7 +8553,7 @@ export const dexObject: Record<number, DexRecord> = {
   948: {
     dexNumber: { nat: 948 },
     dexName: "Toedscool",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.grass], moves: [] },
     },
@@ -8561,7 +8561,7 @@ export const dexObject: Record<number, DexRecord> = {
   949: {
     dexNumber: { nat: 949 },
     dexName: "Toedscruel",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.grass], moves: [] },
     },
@@ -8569,7 +8569,7 @@ export const dexObject: Record<number, DexRecord> = {
   950: {
     dexNumber: { nat: 950 },
     dexName: "Klawf",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock], moves: [] },
     },
@@ -8577,7 +8577,7 @@ export const dexObject: Record<number, DexRecord> = {
   951: {
     dexNumber: { nat: 951 },
     dexName: "Capsakid",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
     },
@@ -8593,7 +8593,7 @@ export const dexObject: Record<number, DexRecord> = {
   953: {
     dexNumber: { nat: 953 },
     dexName: "Rellor",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
     },
@@ -8601,7 +8601,7 @@ export const dexObject: Record<number, DexRecord> = {
   954: {
     dexNumber: { nat: 954 },
     dexName: "Rabsca",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.psychic], moves: [] },
     },
@@ -8609,7 +8609,7 @@ export const dexObject: Record<number, DexRecord> = {
   955: {
     dexNumber: { nat: 955 },
     dexName: "Flittle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
@@ -8625,7 +8625,7 @@ export const dexObject: Record<number, DexRecord> = {
   957: {
     dexNumber: { nat: 957 },
     dexName: "Tinkatink",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy, TYPES.steel], moves: [] },
     },
@@ -8633,7 +8633,7 @@ export const dexObject: Record<number, DexRecord> = {
   958: {
     dexNumber: { nat: 958 },
     dexName: "Tinkatuff",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy, TYPES.steel], moves: [] },
     },
@@ -8649,7 +8649,7 @@ export const dexObject: Record<number, DexRecord> = {
   960: {
     dexNumber: { nat: 960 },
     dexName: "Wiglett",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -8657,7 +8657,7 @@ export const dexObject: Record<number, DexRecord> = {
   961: {
     dexNumber: { nat: 961 },
     dexName: "Wugtrio",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -8665,7 +8665,7 @@ export const dexObject: Record<number, DexRecord> = {
   962: {
     dexNumber: { nat: 962 },
     dexName: "Bombirdier",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.flying, TYPES.dark], moves: [] },
     },
@@ -8673,7 +8673,7 @@ export const dexObject: Record<number, DexRecord> = {
   963: {
     dexNumber: { nat: 963 },
     dexName: "Finizen",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -8690,7 +8690,7 @@ export const dexObject: Record<number, DexRecord> = {
   965: {
     dexNumber: { nat: 965 },
     dexName: "Varoom",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.poison], moves: [] },
     },
@@ -8698,7 +8698,7 @@ export const dexObject: Record<number, DexRecord> = {
   966: {
     dexNumber: { nat: 966 },
     dexName: "Revavroom",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.poison], moves: [] },
     },
@@ -8706,7 +8706,7 @@ export const dexObject: Record<number, DexRecord> = {
   967: {
     dexNumber: { nat: 967 },
     dexName: "Cyclizar",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.normal], moves: [] },
     },
@@ -8722,7 +8722,7 @@ export const dexObject: Record<number, DexRecord> = {
   969: {
     dexNumber: { nat: 969 },
     dexName: "Glimmet",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.poison], moves: [] },
     },
@@ -8738,7 +8738,7 @@ export const dexObject: Record<number, DexRecord> = {
   971: {
     dexNumber: { nat: 971 },
     dexName: "Greavard",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost], moves: [] },
     },
@@ -8746,7 +8746,7 @@ export const dexObject: Record<number, DexRecord> = {
   972: {
     dexNumber: { nat: 972 },
     dexName: "Houndstone",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost], moves: [] },
     },
@@ -8754,7 +8754,7 @@ export const dexObject: Record<number, DexRecord> = {
   973: {
     dexNumber: { nat: 973 },
     dexName: "Flamigo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.flying, TYPES.fighting], moves: [] },
     },
@@ -8762,7 +8762,7 @@ export const dexObject: Record<number, DexRecord> = {
   974: {
     dexNumber: { nat: 974 },
     dexName: "Cetoddle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice], moves: [] },
     },
@@ -8770,7 +8770,7 @@ export const dexObject: Record<number, DexRecord> = {
   975: {
     dexNumber: { nat: 975 },
     dexName: "Cetitan",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice], moves: [] },
     },
@@ -8778,7 +8778,7 @@ export const dexObject: Record<number, DexRecord> = {
   976: {
     dexNumber: { nat: 976 },
     dexName: "Veluza",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.psychic], moves: [] },
     },
@@ -8786,7 +8786,7 @@ export const dexObject: Record<number, DexRecord> = {
   977: {
     dexNumber: { nat: 977 },
     dexName: "Dondozo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
@@ -8794,7 +8794,7 @@ export const dexObject: Record<number, DexRecord> = {
   978: {
     dexNumber: { nat: 978 },
     dexName: "Tatsugiri",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-droopy-form": { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.water], moves: [] },
       "form-stretchy-form": { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.water], moves: [] },
@@ -8804,7 +8804,7 @@ export const dexObject: Record<number, DexRecord> = {
   979: {
     dexNumber: { nat: 979 },
     dexName: "Annihilape",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting, TYPES.ghost], moves: [] },
     },
@@ -8812,7 +8812,7 @@ export const dexObject: Record<number, DexRecord> = {
   980: {
     dexNumber: { nat: 980 },
     dexName: "Clodsire",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.ground], moves: [] },
     },
@@ -8828,7 +8828,7 @@ export const dexObject: Record<number, DexRecord> = {
   982: {
     dexNumber: { nat: 982 },
     dexName: "Dudunsparce",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-three-segment-form": { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
@@ -8845,7 +8845,7 @@ export const dexObject: Record<number, DexRecord> = {
   984: {
     dexNumber: { nat: 984 },
     dexName: "Great Tusk",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.fighting], moves: [] },
     },
@@ -8853,7 +8853,7 @@ export const dexObject: Record<number, DexRecord> = {
   985: {
     dexNumber: { nat: 985 },
     dexName: "Scream Tail",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy, TYPES.psychic], moves: [] },
     },
@@ -8861,7 +8861,7 @@ export const dexObject: Record<number, DexRecord> = {
   986: {
     dexNumber: { nat: 986 },
     dexName: "Brute Bonnet",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.dark], moves: [] },
     },
@@ -8869,7 +8869,7 @@ export const dexObject: Record<number, DexRecord> = {
   987: {
     dexNumber: { nat: 987 },
     dexName: "Flutter Mane",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost, TYPES.fairy], moves: [] },
     },
@@ -8877,7 +8877,7 @@ export const dexObject: Record<number, DexRecord> = {
   988: {
     dexNumber: { nat: 988 },
     dexName: "Slither Wing",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.fighting], moves: [] },
     },
@@ -8885,7 +8885,7 @@ export const dexObject: Record<number, DexRecord> = {
   989: {
     dexNumber: { nat: 989 },
     dexName: "Sandy Shocks",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.ground], moves: [] },
     },
@@ -8893,7 +8893,7 @@ export const dexObject: Record<number, DexRecord> = {
   990: {
     dexNumber: { nat: 990 },
     dexName: "Iron Treads",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ground, TYPES.steel], moves: [] },
     },
@@ -8901,7 +8901,7 @@ export const dexObject: Record<number, DexRecord> = {
   991: {
     dexNumber: { nat: 991 },
     dexName: "Iron Bundle",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.water], moves: [] },
     },
@@ -8909,7 +8909,7 @@ export const dexObject: Record<number, DexRecord> = {
   992: {
     dexNumber: { nat: 992 },
     dexName: "Iron Hands",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting, TYPES.electric], moves: [] },
     },
@@ -8917,7 +8917,7 @@ export const dexObject: Record<number, DexRecord> = {
   993: {
     dexNumber: { nat: 993 },
     dexName: "Iron Jugulis",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.flying], moves: [] },
     },
@@ -8925,7 +8925,7 @@ export const dexObject: Record<number, DexRecord> = {
   994: {
     dexNumber: { nat: 994 },
     dexName: "Iron Moth",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.poison], moves: [] },
     },
@@ -8933,7 +8933,7 @@ export const dexObject: Record<number, DexRecord> = {
   995: {
     dexNumber: { nat: 995 },
     dexName: "Iron Thorns",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.electric], moves: [] },
     },
@@ -8941,7 +8941,7 @@ export const dexObject: Record<number, DexRecord> = {
   996: {
     dexNumber: { nat: 996 },
     dexName: "Frigibax",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.ice], moves: [] },
     },
@@ -8949,7 +8949,7 @@ export const dexObject: Record<number, DexRecord> = {
   997: {
     dexNumber: { nat: 997 },
     dexName: "Arctibax",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.ice], moves: [] },
     },
@@ -8957,7 +8957,7 @@ export const dexObject: Record<number, DexRecord> = {
   998: {
     dexNumber: { nat: 998 },
     dexName: "Baxcalibur",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.ice], moves: [] },
     },
@@ -8965,7 +8965,7 @@ export const dexObject: Record<number, DexRecord> = {
   999: {
     dexNumber: { nat: 999 },
     dexName: "Gimmighoul",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-roaming-form": { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost], moves: [] },
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ghost], moves: [] },
@@ -8974,7 +8974,7 @@ export const dexObject: Record<number, DexRecord> = {
   1000: {
     dexNumber: { nat: 1000 },
     dexName: "Gholdengo",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.ghost], moves: [] },
     },
@@ -8982,7 +8982,7 @@ export const dexObject: Record<number, DexRecord> = {
   1001: {
     dexNumber: { nat: 1001 },
     dexName: "Wo-Chien",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.grass], moves: [] },
     },
@@ -8990,7 +8990,7 @@ export const dexObject: Record<number, DexRecord> = {
   1002: {
     dexNumber: { nat: 1002 },
     dexName: "Chien-Pao",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.ice], moves: [] },
     },
@@ -8998,7 +8998,7 @@ export const dexObject: Record<number, DexRecord> = {
   1003: {
     dexNumber: { nat: 1003 },
     dexName: "Ting-Lu",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.ground], moves: [] },
     },
@@ -9006,7 +9006,7 @@ export const dexObject: Record<number, DexRecord> = {
   1004: {
     dexNumber: { nat: 1004 },
     dexName: "Chi-Yu",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark, TYPES.fire], moves: [] },
     },
@@ -9014,7 +9014,7 @@ export const dexObject: Record<number, DexRecord> = {
   1005: {
     dexNumber: { nat: 1005 },
     dexName: "Roaring Moon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dragon, TYPES.dark], moves: [] },
     },
@@ -9022,7 +9022,7 @@ export const dexObject: Record<number, DexRecord> = {
   1006: {
     dexNumber: { nat: 1006 },
     dexName: "Iron Valiant",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy, TYPES.fighting], moves: [] },
     },
@@ -9030,7 +9030,7 @@ export const dexObject: Record<number, DexRecord> = {
   1007: {
     dexNumber: { nat: 1007 },
     dexName: "Koraidon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting, TYPES.dragon], moves: [] },
     },
@@ -9038,7 +9038,7 @@ export const dexObject: Record<number, DexRecord> = {
   1008: {
     dexNumber: { nat: 1008 },
     dexName: "Miraidon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.dragon], moves: [] },
     },
@@ -9046,7 +9046,7 @@ export const dexObject: Record<number, DexRecord> = {
   1009: {
     dexNumber: { nat: 1009 },
     dexName: "Walking Wake",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.dragon], moves: [] },
     },
@@ -9054,7 +9054,7 @@ export const dexObject: Record<number, DexRecord> = {
   1010: {
     dexNumber: { nat: 1010 },
     dexName: "Iron Leaves",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.psychic], moves: [] },
     },
@@ -9062,7 +9062,7 @@ export const dexObject: Record<number, DexRecord> = {
   1011: {
     dexNumber: { nat: 1011 },
     dexName: "Dipplin",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.dragon], moves: [] },
     },
@@ -9070,7 +9070,7 @@ export const dexObject: Record<number, DexRecord> = {
   1012: {
     dexNumber: { nat: 1012 },
     dexName: "Poltchageist",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.ghost], moves: [] },
     },
@@ -9086,7 +9086,7 @@ export const dexObject: Record<number, DexRecord> = {
   1014: {
     dexNumber: { nat: 1014 },
     dexName: "Okidogi",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.fighting], moves: [] },
     },
@@ -9094,7 +9094,7 @@ export const dexObject: Record<number, DexRecord> = {
   1015: {
     dexNumber: { nat: 1015 },
     dexName: "Munkidori",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.psychic], moves: [] },
     },
@@ -9102,7 +9102,7 @@ export const dexObject: Record<number, DexRecord> = {
   1016: {
     dexNumber: { nat: 1016 },
     dexName: "Fezandipiti",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.fairy], moves: [] },
     },
@@ -9110,7 +9110,7 @@ export const dexObject: Record<number, DexRecord> = {
   1017: {
     dexNumber: { nat: 1017 },
     dexName: "Ogerpon",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       "form-wellspring-mask": { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.water], moves: [] },
       "form-hearthflame-mask": { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.fire], moves: [] },
@@ -9198,7 +9198,7 @@ export const dexObject: Record<number, DexRecord> = {
   1020: {
     dexNumber: { nat: 1020 },
     dexName: "Gouging Fire",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.dragon], moves: [] },
     },
@@ -9206,7 +9206,7 @@ export const dexObject: Record<number, DexRecord> = {
   1021: {
     dexNumber: { nat: 1021 },
     dexName: "Raging Bolt",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.dragon], moves: [] },
     },
@@ -9214,7 +9214,7 @@ export const dexObject: Record<number, DexRecord> = {
   1022: {
     dexNumber: { nat: 1022 },
     dexName: "Iron Boulder",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.psychic], moves: [] },
     },
@@ -9222,7 +9222,7 @@ export const dexObject: Record<number, DexRecord> = {
   1023: {
     dexNumber: { nat: 1023 },
     dexName: "Iron Crown",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.psychic], moves: [] },
     },
@@ -9230,7 +9230,7 @@ export const dexObject: Record<number, DexRecord> = {
   1024: {
     dexNumber: { nat: 1024 },
     dexName: "Terapagos",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
       "form-terastal-form": { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
@@ -9240,7 +9240,7 @@ export const dexObject: Record<number, DexRecord> = {
   1025: {
     dexNumber: { nat: 1025 },
     dexName: "Pecharunt",
-    games: { [GAME_IDS.CHAMPIONS]: true },
+    games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.ghost], moves: [] },
     },

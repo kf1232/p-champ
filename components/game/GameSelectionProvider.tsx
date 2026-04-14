@@ -8,23 +8,23 @@ import {
   useSyncExternalStore,
 } from "react";
 
-import { GAME_IDS, VALID_GAMES } from "@/lib/dex";
-import type { GameId } from "@/lib/dex";
+import { DEX_LIST_VIEW_IDS, GAME_IDS } from "@/lib/dex";
+import type { DexListViewId } from "@/lib/dex";
 
 const STORAGE_KEY = "p-champ:selected-game";
 
-function defaultGameId(): GameId {
-  return VALID_GAMES[0] ?? GAME_IDS.CHAMPIONS;
+function defaultDexListViewId(): DexListViewId {
+  return GAME_IDS.CHAMPIONS;
 }
 
-function isGameId(value: string): value is GameId {
-  return (VALID_GAMES as readonly string[]).includes(value);
+function isDexListViewId(value: string): value is DexListViewId {
+  return (DEX_LIST_VIEW_IDS as readonly string[]).includes(value);
 }
 
-function readStoredGameId(): GameId | null {
+function readStoredDexListViewId(): DexListViewId | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw && isGameId(raw)) return raw;
+    if (raw && isDexListViewId(raw)) return raw;
   } catch {
     /* ignore */
   }
@@ -50,17 +50,17 @@ if (typeof window !== "undefined") {
   });
 }
 
-function getSnapshot(): GameId {
-  return readStoredGameId() ?? defaultGameId();
+function getSnapshot(): DexListViewId {
+  return readStoredDexListViewId() ?? defaultDexListViewId();
 }
 
-function getServerSnapshot(): GameId {
-  return defaultGameId();
+function getServerSnapshot(): DexListViewId {
+  return defaultDexListViewId();
 }
 
-function persistGameId(gameId: GameId) {
+function persistDexListViewId(viewId: DexListViewId) {
   try {
-    localStorage.setItem(STORAGE_KEY, gameId);
+    localStorage.setItem(STORAGE_KEY, viewId);
   } catch {
     /* ignore */
   }
@@ -68,8 +68,8 @@ function persistGameId(gameId: GameId) {
 }
 
 type GameSelectionContextValue = {
-  selectedGameId: GameId;
-  setSelectedGameId: (gameId: GameId) => void;
+  selectedGameId: DexListViewId;
+  setSelectedGameId: (viewId: DexListViewId) => void;
 };
 
 const GameSelectionContext = createContext<GameSelectionContextValue | null>(
@@ -87,8 +87,8 @@ export function GameSelectionProvider({
     getServerSnapshot
   );
 
-  const setSelectedGameId = useCallback((gameId: GameId) => {
-    persistGameId(gameId);
+  const setSelectedGameId = useCallback((viewId: DexListViewId) => {
+    persistDexListViewId(viewId);
   }, []);
 
   const value = useMemo(

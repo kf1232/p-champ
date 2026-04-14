@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { useGameSelection } from "@/components/game";
-import { GAME_LABELS, VALID_GAMES } from "@/lib/dex";
+import { DEX_LIST_VIEW_IDS, DEX_LIST_VIEW_LABELS } from "@/lib/dex";
 
 import { SITE_NAME } from "@/lib/site";
 
@@ -12,6 +12,7 @@ export default function Navigation({ title = SITE_NAME }) {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isDex = pathname === "/dex";
+  const isTeamBuilder = pathname === "/team-builder";
   const { selectedGameId, setSelectedGameId } = useGameSelection();
 
   return (
@@ -47,6 +48,16 @@ export default function Navigation({ title = SITE_NAME }) {
             >
               Dex
             </Link>
+            <Link
+              href="/team-builder"
+              className={[
+                "text-sm font-medium",
+                isTeamBuilder ? "text-black" : "text-black/70 hover:text-black",
+              ].join(" ")}
+              aria-current={isTeamBuilder ? "page" : undefined}
+            >
+              Team Builder
+            </Link>
           </nav>
 
           <label className="flex items-center gap-2 text-sm text-black/80">
@@ -56,13 +67,13 @@ export default function Navigation({ title = SITE_NAME }) {
               value={selectedGameId}
               onChange={(e) => {
                 const v = e.target.value;
-                if (VALID_GAMES.includes(v)) setSelectedGameId(v);
+                if (DEX_LIST_VIEW_IDS.includes(v)) setSelectedGameId(v);
               }}
               aria-label="Active game filter"
             >
-              {VALID_GAMES.map((id) => (
+              {DEX_LIST_VIEW_IDS.map((id) => (
                 <option key={id} value={id}>
-                  {GAME_LABELS[id]}
+                  {DEX_LIST_VIEW_LABELS[id]}
                 </option>
               ))}
             </select>

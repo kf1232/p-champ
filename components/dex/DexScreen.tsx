@@ -8,7 +8,7 @@ import { useDexDisplayEntriesForSelectedGame } from "./useDexDisplayEntriesForSe
 
 const DEX_TITLE = "Dex";
 const DEX_DESCRIPTION =
-  "Browse records in a 6-up grid. Each tile is its own component so we can evolve this quickly.";
+  "Browse records in a five-wide grid. Each tile is its own component so we can evolve this quickly.";
 
 export function DexScreen() {
   const records = useDexDisplayEntriesForSelectedGame();
@@ -17,7 +17,7 @@ export function DexScreen() {
     <div className="flex min-h-full flex-col">
       <Navigation title={SITE_NAME} />
 
-      <main className="mx-auto w-full max-w-5xl px-6 py-10">
+      <main className="mx-auto w-full max-w-7xl px-6 py-10">
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-semibold tracking-tight text-black">
             {DEX_TITLE}
