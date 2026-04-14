@@ -1,5 +1,5 @@
 import type { DexDisplayEntry } from "./display";
-import { getDexEntryTypeNames } from "./display";
+import { formatDexTileDisplayName, getDexEntryTypeNames } from "./display";
 import { formatTypeLabel } from "./typeBadgeStyles";
 import { TYPES } from "./types";
 import type { TypeName } from "./types";
@@ -216,4 +216,41 @@ export function getDominantMatchupScore(
     return { value: target, dominant: "target" };
   }
   return { value: threat, dominant: "threat" };
+}
+
+/**
+ * Buckets each candidate by **best STAB** damage multiplier vs the defender’s typings
+ * (dual-type defense uses the usual product rule). Entries with &lt;1× STAB are omitted.
+ */
+export function classifyDexEntriesByBestStabVsDefender(
+  defender: DexDisplayEntry,
+  candidates: readonly DexDisplayEntry[],
+): {
+  neutral: DexDisplayEntry[];
+  effective: DexDisplayEntry[];
+  superEffective: DexDisplayEntry[];
+} {
+  const defendTypes = getDexEntryTypeNames(defender);
+  const neutral: DexDisplayEntry[] = [];
+  const effective: DexDisplayEntry[] = [];
+  const superEffective: DexDisplayEntry[] = [];
+
+  for (const entry of candidates) {
+    const atkTypes = getDexEntryTypeNames(entry);
+    const m = bestStabMultiplier(atkTypes, defendTypes);
+    if (m >= 4 - 1e-9) superEffective.push(entry);
+    else if (m >= 2 - 1e-9) effective.push(entry);
+    else if (Math.abs(m - 1) < 1e-9) neutral.push(entry);
+  }
+
+  const sortKey = (e: DexDisplayEntry) =>
+    formatDexTileDisplayName(e.dexName, e.formId);
+  const sort = (a: DexDisplayEntry, b: DexDisplayEntry) =>
+    sortKey(a).localeCompare(sortKey(b));
+
+  neutral.sort(sort);
+  effective.sort(sort);
+  superEffective.sort(sort);
+
+  return { neutral, effective, superEffective };
 }

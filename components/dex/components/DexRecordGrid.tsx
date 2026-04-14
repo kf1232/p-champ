@@ -31,4 +31,3 @@ export function DexRecordGrid({ records }: DexRecordGridProps) {
     </section>
   );
 }
-
