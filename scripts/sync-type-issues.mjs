@@ -14,11 +14,15 @@
  *   node scripts/sync-type-issues.mjs --max-create 5
  */
 
-import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync, mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+
+import { getRepoSlug, gh as ghGlobal, ghR } from "./lib/dex-issue-sync/gh-repo.mjs";
+import { listOpenDexIssuesMerged } from "./lib/dex-issue-sync/list-open-issues.mjs";
+import { computeTypeSyncPlan } from "./lib/dex-issue-sync/plans.mjs";
+import { parseTypeKeyFromIssue } from "./lib/dex-issue-sync/parsers.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, "..");
@@ -28,23 +32,15 @@ const LABEL = "dex-type";
 const AUTOMATION_LABEL = "automation";
 const REL_PATH = "lib/dex/types.ts";
 
+const BODY_MARKER_SEARCH = "work-item:dex-type in:body";
+
 function marker(typeKey) {
   return `<!-- work-item:dex-type:${typeKey} -->`;
 }
 
-function gh(args, { json = false } = {}) {
-  const out = execFileSync("gh", args, {
-    encoding: "utf8",
-    cwd: REPO_ROOT,
-    stdio: ["ignore", "pipe", "pipe"],
-  });
-  if (json) return JSON.parse(out || "[]");
-  return out.trim();
-}
-
-function ensureLabels() {
+function ensureLabels(repo) {
   try {
-    gh([
+    ghR(repo, REPO_ROOT, [
       "label",
       "create",
       LABEL,
@@ -58,7 +54,7 @@ function ensureLabels() {
     // exists
   }
   try {
-    gh([
+    ghR(repo, REPO_ROOT, [
       "label",
       "create",
       AUTOMATION_LABEL,
@@ -73,22 +69,12 @@ function ensureLabels() {
   }
 }
 
-function listOpenIssues() {
-  return gh(
-    [
-      "issue",
-      "list",
-      "--state",
-      "open",
-      "--label",
-      LABEL,
-      "--json",
-      "number,title,body,labels",
-      "--limit",
-      "1000",
-    ],
-    { json: true },
-  );
+function listOpenIssuesForTypes(repo) {
+  return listOpenDexIssuesMerged(REPO_ROOT, repo, {
+    label: LABEL,
+    bodySearch: BODY_MARKER_SEARCH,
+    titleSearchFragment: '"Configure type:"',
+  });
 }
 
 /** Extract `{ ... }` body of `export const NAME = ...` (brace-balanced). */
@@ -200,16 +186,6 @@ function scanTypesFile(content) {
   return pending;
 }
 
-function parseTypeKeyFromIssue(title, body) {
-  const fromBody = body?.match(/<!--\s*work-item:dex-type:(\w+)\s*-->/);
-  if (fromBody) return fromBody[1];
-  if (title.startsWith("Configure type: ")) {
-    const rest = title.slice("Configure type: ".length).trim();
-    if (/^\w+$/.test(rest)) return rest;
-  }
-  return null;
-}
-
 function parseArgs(argv) {
   let dryRun = false;
   let maxCreate = Infinity;
@@ -241,18 +217,20 @@ function main() {
   const { dryRun, maxCreate } = parseArgs(process.argv.slice(2));
 
   try {
-    gh(["auth", "status"]);
+    ghGlobal(REPO_ROOT, ["auth", "status"]);
   } catch {
     console.error("GitHub CLI is not logged in. Run: gh auth login");
     process.exit(1);
   }
 
+  const repo = getRepoSlug(REPO_ROOT);
+
   const absPath = join(REPO_ROOT, REL_PATH);
   const content = readFileSync(absPath, "utf8");
   const pending = scanTypesFile(content);
 
-  ensureLabels();
-  const openIssues = listOpenIssues();
+  ensureLabels(repo);
+  const openIssues = listOpenIssuesForTypes(repo);
 
   let automationLabelCount = 0;
   for (const issue of openIssues) {
@@ -262,7 +240,7 @@ function main() {
     if (!labelNames.includes(AUTOMATION_LABEL)) {
       console.log(`Add label "${AUTOMATION_LABEL}" to #${issue.number}`);
       if (!dryRun) {
-        gh([
+        ghR(repo, REPO_ROOT, [
           "issue",
           "edit",
           String(issue.number),
@@ -274,32 +252,7 @@ function main() {
     }
   }
 
-  const byType = new Map();
-  for (const issue of openIssues) {
-    const typeKey = parseTypeKeyFromIssue(issue.title, issue.body);
-    if (!typeKey) continue;
-    if (!byType.has(typeKey)) byType.set(typeKey, []);
-    byType.get(typeKey).push(issue.number);
-  }
-
-  const toCreate = [...pending].filter((id) => {
-    const nums = byType.get(id);
-    return !nums || nums.length === 0;
-  });
-
-  const toClose = [];
-  for (const [typeKey, numbers] of byType) {
-    numbers.sort((a, b) => a - b);
-    if (pending.has(typeKey)) {
-      for (let i = 1; i < numbers.length; i++) {
-        toClose.push({ number: numbers[i], reason: "duplicate" });
-      }
-    } else {
-      for (const n of numbers) {
-        toClose.push({ number: n, reason: "completed" });
-      }
-    }
-  }
+  const { toCreate, toClose } = computeTypeSyncPlan(pending, openIssues);
 
   let createCount = 0;
   for (const typeKey of toCreate.sort()) {
@@ -319,7 +272,7 @@ function main() {
       const dir = mkdtempSync(join(tmpdir(), "gh-type-issue-"));
       const bodyFile = join(dir, "body.md");
       writeFileSync(bodyFile, body, "utf8");
-      gh([
+      ghR(repo, REPO_ROOT, [
         "issue",
         "create",
         "--title",
@@ -342,8 +295,14 @@ function main() {
         : `Close #${number} (type configured)`;
     console.log(msg);
     if (!dryRun) {
-      const closeReason = reason === "duplicate" ? "not_planned" : "completed";
-      gh(["issue", "close", String(number), "--reason", closeReason]);
+      const closeReason = reason === "duplicate" ? "not planned" : "completed";
+      ghR(repo, REPO_ROOT, [
+        "issue",
+        "close",
+        String(number),
+        "--reason",
+        closeReason,
+      ]);
     }
   }
 

@@ -19,11 +19,15 @@
  *   node scripts/sync-pokemon-form-issues.mjs --max-create 5
  */
 
-import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync, mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+
+import { getRepoSlug, gh as ghGlobal, ghR } from "./lib/dex-issue-sync/gh-repo.mjs";
+import { listOpenDexIssuesMerged } from "./lib/dex-issue-sync/list-open-issues.mjs";
+import { computePokemonFormSyncPlan } from "./lib/dex-issue-sync/plans.mjs";
+import { parsePokemonFormItemIdFromIssue } from "./lib/dex-issue-sync/parsers.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, "..");
@@ -33,23 +37,15 @@ const LABEL = "dex-pokemon-form";
 const AUTOMATION_LABEL = "automation";
 const REL_PATH = "lib/dex/dexObject.ts";
 
+const BODY_MARKER_SEARCH = "work-item:dex-pokemon-form in:body";
+
 function marker(itemId) {
   return `<!-- work-item:dex-pokemon-form:${itemId} -->`;
 }
 
-function gh(args, { json = false } = {}) {
-  const out = execFileSync("gh", args, {
-    encoding: "utf8",
-    cwd: REPO_ROOT,
-    stdio: ["ignore", "pipe", "pipe"],
-  });
-  if (json) return JSON.parse(out || "[]");
-  return out.trim();
-}
-
-function ensureLabels() {
+function ensureLabels(repo) {
   try {
-    gh([
+    ghR(repo, REPO_ROOT, [
       "label",
       "create",
       LABEL,
@@ -63,7 +59,7 @@ function ensureLabels() {
     // exists
   }
   try {
-    gh([
+    ghR(repo, REPO_ROOT, [
       "label",
       "create",
       AUTOMATION_LABEL,
@@ -78,22 +74,12 @@ function ensureLabels() {
   }
 }
 
-function listOpenIssues() {
-  return gh(
-    [
-      "issue",
-      "list",
-      "--state",
-      "open",
-      "--label",
-      LABEL,
-      "--json",
-      "number,title,body,labels",
-      "--limit",
-      "1000",
-    ],
-    { json: true },
-  );
+function listOpenIssuesForPokemonForms(repo) {
+  return listOpenDexIssuesMerged(REPO_ROOT, repo, {
+    label: LABEL,
+    bodySearch: BODY_MARKER_SEARCH,
+    titleSearchFragment: '"Configure Pokemon form:"',
+  });
 }
 
 /**
@@ -248,16 +234,6 @@ function scanDexObjectFile(content) {
   return incomplete;
 }
 
-function parseItemIdFromIssue(title, body) {
-  const fromBody = body?.match(
-    /<!--\s*work-item:dex-pokemon-form:([\w-]+)\s*-->/,
-  );
-  if (fromBody) return fromBody[1];
-  const m = title.match(/^Configure Pokemon form: (\d+) \((\w+)\)$/);
-  if (m) return `${m[1]}-${m[2]}`;
-  return null;
-}
-
 function titleForItem(itemId) {
   const idx = itemId.indexOf("-");
   const dex = itemId.slice(0, idx);
@@ -277,10 +253,6 @@ National dex \`#${dex}\`, form \`${formKey}\` in \`${REL_PATH}\` is **not finish
 ${bullets}
 
 **Done when:** the slot has a full \`DexForm\` with verified base stats (not \`...DEX_FORM_STATS_TODO\` / not all-\`-1\`), at least one \`TYPES.*\` in \`types\`, and at least one \`MOVES.*\` in \`moves\`.`;
-}
-
-function bodiesDiffer(a, b) {
-  return (a ?? "").trim() !== (b ?? "").trim();
 }
 
 function parseArgs(argv) {
@@ -314,28 +286,30 @@ function main() {
   const { dryRun, maxCreate } = parseArgs(process.argv.slice(2));
 
   try {
-    gh(["auth", "status"]);
+    ghGlobal(REPO_ROOT, ["auth", "status"]);
   } catch {
     console.error("GitHub CLI is not logged in. Run: gh auth login");
     process.exit(1);
   }
 
+  const repo = getRepoSlug(REPO_ROOT);
+
   const absPath = join(REPO_ROOT, REL_PATH);
   const content = readFileSync(absPath, "utf8");
   const incomplete = scanDexObjectFile(content);
 
-  ensureLabels();
-  const openIssues = listOpenIssues();
+  ensureLabels(repo);
+  const openIssues = listOpenIssuesForPokemonForms(repo);
 
   let automationLabelCount = 0;
   for (const issue of openIssues) {
-    const itemId = parseItemIdFromIssue(issue.title, issue.body);
+    const itemId = parsePokemonFormItemIdFromIssue(issue.title, issue.body);
     if (!itemId) continue;
     const labelNames = (issue.labels ?? []).map((l) => l.name);
     if (!labelNames.includes(AUTOMATION_LABEL)) {
       console.log(`Add label "${AUTOMATION_LABEL}" to #${issue.number}`);
       if (!dryRun) {
-        gh([
+        ghR(repo, REPO_ROOT, [
           "issue",
           "edit",
           String(issue.number),
@@ -347,45 +321,11 @@ function main() {
     }
   }
 
-  const byItem = new Map();
-  for (const issue of openIssues) {
-    const itemId = parseItemIdFromIssue(issue.title, issue.body);
-    if (!itemId) continue;
-    if (!byItem.has(itemId)) byItem.set(itemId, []);
-    byItem.get(itemId).push(issue);
-  }
-
-  const toCreate = [...incomplete.keys()].filter((id) => {
-    const issues = byItem.get(id);
-    return !issues || issues.length === 0;
-  });
-
-  const toClose = [];
-  for (const [itemId, issues] of byItem) {
-    const numbers = issues.map((x) => x.number).sort((a, b) => a - b);
-    if (incomplete.has(itemId)) {
-      for (let i = 1; i < numbers.length; i++) {
-        toClose.push({ number: numbers[i], reason: "duplicate" });
-      }
-    } else {
-      for (const n of numbers) {
-        toClose.push({ number: n, reason: "completed" });
-      }
-    }
-  }
-
-  /** @type {{ number: number; body: string }[]} */
-  const toUpdate = [];
-  for (const [itemId, issues] of byItem) {
-    if (!incomplete.has(itemId)) continue;
-    issues.sort((a, b) => a.number - b.number);
-    const primary = issues[0];
-    const state = incomplete.get(itemId);
-    const newBody = bodyForItem(itemId, state.reasons);
-    if (bodiesDiffer(primary.body, newBody)) {
-      toUpdate.push({ number: primary.number, body: newBody });
-    }
-  }
+  const { toCreate, toClose, toUpdate } = computePokemonFormSyncPlan(
+    incomplete,
+    openIssues,
+    bodyForItem,
+  );
 
   let createCount = 0;
   for (const itemId of toCreate) {
@@ -404,7 +344,7 @@ function main() {
       const dir = mkdtempSync(join(tmpdir(), "gh-form-issue-"));
       const bodyFile = join(dir, "body.md");
       writeFileSync(bodyFile, body, "utf8");
-      gh([
+      ghR(repo, REPO_ROOT, [
         "issue",
         "create",
         "--title",
@@ -426,7 +366,13 @@ function main() {
       const dir = mkdtempSync(join(tmpdir(), "gh-form-edit-"));
       const bodyFile = join(dir, "body.md");
       writeFileSync(bodyFile, body, "utf8");
-      gh(["issue", "edit", String(number), "--body-file", bodyFile]);
+      ghR(repo, REPO_ROOT, [
+        "issue",
+        "edit",
+        String(number),
+        "--body-file",
+        bodyFile,
+      ]);
     }
   }
 
@@ -437,8 +383,14 @@ function main() {
         : `Close #${number} (form configured)`;
     console.log(msg);
     if (!dryRun) {
-      const closeReason = reason === "duplicate" ? "not_planned" : "completed";
-      gh(["issue", "close", String(number), "--reason", closeReason]);
+      const closeReason = reason === "duplicate" ? "not planned" : "completed";
+      ghR(repo, REPO_ROOT, [
+        "issue",
+        "close",
+        String(number),
+        "--reason",
+        closeReason,
+      ]);
     }
   }
 
