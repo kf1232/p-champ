@@ -45,6 +45,7 @@ export {
   bestStabMultiplier,
   computeSelectorTeamMatchupPerSlot,
   computeSelectorTeamMatchupTotals,
+  defThreatScoreFromSlots,
   formatEffectivenessMultiplier,
   getBestStabMatchupBreakdown,
   getDominantMatchupScore,

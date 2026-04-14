@@ -160,6 +160,24 @@ export function computeSelectorTeamMatchupPerSlot(
 }
 
 /**
+ * Team Builder threat: sum over filled slots using the **def** band only (selector STAB
+ * attacking your team member). Resisted/neutral slots add 0; 2× adds 2; 4× or higher adds 4.
+ */
+export function defThreatScoreFromSlots(
+  slots: readonly (MatchupSlotCell | null)[],
+): number {
+  let total = 0;
+  for (const cell of slots) {
+    if (!cell) continue;
+    const m = cell.defMultiplier;
+    if (m <= 1 + 1e-9) continue;
+    if (m <= 2 + 1e-9) total += 2;
+    else total += 4;
+  }
+  return total;
+}
+
+/**
  * Sums per-slot discrete scores (filled slots only) to [-24, 24] each.
  */
 export function computeSelectorTeamMatchupTotals(

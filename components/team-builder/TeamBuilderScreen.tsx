@@ -16,6 +16,7 @@ import {
   NATIONAL_VIEW_ID,
   TYPE_NAMES,
   computeSelectorTeamMatchupPerSlot,
+  defThreatScoreFromSlots,
   formatTypeLabel,
   type MatchupSlotCell,
   dexObject,
@@ -132,6 +133,9 @@ export function TeamBuilderScreen() {
   );
   const [typeFilterA, setTypeFilterA] = useState<TypeName | null>(null);
   const [typeFilterB, setTypeFilterB] = useState<TypeName | null>(null);
+  const [gridSort, setGridSort] = useState<
+    "default" | "threat-desc" | "threat-asc"
+  >("default");
   const [flashSlotIndex, setFlashSlotIndex] = useState<number | null>(null);
   const flashClearTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
     null,
@@ -186,6 +190,19 @@ export function TeamBuilderScreen() {
     }
     return m;
   }, [selectorNames, teamSlots]);
+
+  const sortedSelectorNames = useMemo(() => {
+    const rows = selectorNames.slice();
+    if (gridSort === "default") return rows;
+    return rows.sort((a, b) => {
+      const sa = defThreatScoreFromSlots(matchupByKey.get(a.entry.key) ?? []);
+      const sb = defThreatScoreFromSlots(matchupByKey.get(b.entry.key) ?? []);
+      if (sa !== sb) {
+        return gridSort === "threat-desc" ? sb - sa : sa - sb;
+      }
+      return a.label.localeCompare(b.label);
+    });
+  }, [selectorNames, gridSort, matchupByKey]);
 
   const handleSlotDrop = useCallback((slotIndex: number, e: React.DragEvent) => {
     e.preventDefault();
@@ -340,6 +357,29 @@ export function TeamBuilderScreen() {
             <div className="flex w-full shrink-0 flex-wrap items-end justify-end gap-2 sm:gap-3">
               <div className="flex min-w-0 flex-col items-end gap-1">
                 <label
+                  htmlFor="team-builder-sort"
+                  className="text-[10px] font-semibold uppercase tracking-wide text-black/45"
+                >
+                  Sort
+                </label>
+                <select
+                  id="team-builder-sort"
+                  value={gridSort}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    if (v === "threat-desc" || v === "threat-asc") setGridSort(v);
+                    else setGridSort("default");
+                  }}
+                  className="min-w-[11rem] max-w-full rounded-md border border-black/25 bg-white/80 px-2 py-1.5 text-right text-xs text-black shadow-sm"
+                  aria-label="Sort Pokémon grid"
+                >
+                  <option value="default">Default (unsorted)</option>
+                  <option value="threat-desc">Threat (high → low)</option>
+                  <option value="threat-asc">Threat (low → high)</option>
+                </select>
+              </div>
+              <div className="flex min-w-0 flex-col items-end gap-1">
+                <label
                   htmlFor="team-builder-type-a"
                   className="text-[10px] font-semibold uppercase tracking-wide text-black/45"
                 >
@@ -417,7 +457,7 @@ export function TeamBuilderScreen() {
                   className="grid list-none grid-cols-3 gap-4 sm:gap-5"
                   aria-label="Pokémon available for your team"
                 >
-                  {selectorNames.flatMap(({ entry, label }, i) => {
+                  {sortedSelectorNames.flatMap(({ entry, label }, i) => {
                     const nodes: ReactNode[] = [];
                     if (i > 0 && i % SELECTOR_ROW_BREAK_EVERY === 0) {
                       nodes.push(

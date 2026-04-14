@@ -1,5 +1,6 @@
 import type { MatchupSlotCell } from "@/lib/dex";
 import {
+  defThreatScoreFromSlots,
   multiplierToEffectivenessTier,
   type EffectivenessTier,
 } from "@/lib/dex";
@@ -38,6 +39,7 @@ function TierSwatch({
  * Each filled slot shows attack | defense effectiveness as two color bands.
  */
 export function SelectorMatchupGrid({ slots }: SelectorMatchupGridProps) {
+  const threatScore = defThreatScoreFromSlots(slots);
   const labelParts = slots.map((cell, i) =>
     cell
       ? `slot ${i + 1} attack ${cell.atkExplanation}; defense ${cell.defExplanation}`
@@ -45,11 +47,19 @@ export function SelectorMatchupGrid({ slots }: SelectorMatchupGridProps) {
   );
 
   return (
-    <div
-      className="grid w-full grid-cols-2 grid-rows-3 gap-1"
-      role="group"
-      aria-label={`Matchups vs team: ${labelParts.join("; ")}`}
-    >
+    <div className="flex w-full flex-col gap-1">
+      <p
+        className="text-center text-[10px] font-semibold tabular-nums text-black/60"
+        title="Per team slot (right/defense band): +2 if this Pokemon's STAB is 2x vs your slot, +4 if 4x or more. Neutral/resisted add 0."
+        aria-label={`Defensive threat score ${threatScore}`}
+      >
+        Threat {threatScore}
+      </p>
+      <div
+        className="grid w-full grid-cols-2 grid-rows-3 gap-1"
+        role="group"
+        aria-label={`Matchups vs team: ${labelParts.join("; ")}`}
+      >
       {slots.map((cell, i) => (
         <div
           key={i}
@@ -82,6 +92,7 @@ export function SelectorMatchupGrid({ slots }: SelectorMatchupGridProps) {
           )}
         </div>
       ))}
+      </div>
     </div>
   );
 }
