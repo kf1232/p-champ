@@ -16,7 +16,9 @@
     "sync:move-issues:live": "node scripts/sync-move-issues.mjs",
     "sync:pokemon-form-issues:live": "node scripts/sync-pokemon-form-issues.mjs",
     "sync:type-issues:live": "node scripts/sync-type-issues.mjs",
-    "cleanup:workflow-issues:live": "node scripts/cleanup-workflow-issues.mjs"
+    "cleanup:workflow-issues:live": "node scripts/cleanup-workflow-issues.mjs",
+
+    "test": "node --test scripts/lib/dex-issue-sync/dex-issue-sync.test.mjs"
   },
   "dependencies": {
     "next": "16.2.2",

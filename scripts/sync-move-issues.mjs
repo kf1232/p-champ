@@ -10,11 +10,15 @@
  *   node scripts/sync-move-issues.mjs --max-create 5
  */
 
-import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync, mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+
+import { getRepoSlug, gh as ghGlobal, ghR } from "./lib/dex-issue-sync/gh-repo.mjs";
+import { listOpenDexIssuesMerged } from "./lib/dex-issue-sync/list-open-issues.mjs";
+import { computeMoveSyncPlan } from "./lib/dex-issue-sync/plans.mjs";
+import { parseMoveIdFromIssue } from "./lib/dex-issue-sync/parsers.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, "..");
@@ -24,23 +28,16 @@ const LABEL = "dex-move";
 const AUTOMATION_LABEL = "automation";
 const REL_PATH = "lib/dex/moves.ts";
 
+/** `gh issue list --search` fragment so we still see issues missing the category label but with a body marker. */
+const BODY_MARKER_SEARCH = "work-item:dex-move in:body";
+
 function marker(moveId) {
   return `<!-- work-item:dex-move:${moveId} -->`;
 }
 
-function gh(args, { json = false } = {}) {
-  const out = execFileSync("gh", args, {
-    encoding: "utf8",
-    cwd: REPO_ROOT,
-    stdio: ["ignore", "pipe", "pipe"],
-  });
-  if (json) return JSON.parse(out || "[]");
-  return out.trim();
-}
-
-function ensureLabels() {
+function ensureLabels(repo) {
   try {
-    gh([
+    ghR(repo, REPO_ROOT, [
       "label",
       "create",
       LABEL,
@@ -54,7 +51,7 @@ function ensureLabels() {
     // exists
   }
   try {
-    gh([
+    ghR(repo, REPO_ROOT, [
       "label",
       "create",
       AUTOMATION_LABEL,
@@ -69,22 +66,12 @@ function ensureLabels() {
   }
 }
 
-function listOpenIssues() {
-  return gh(
-    [
-      "issue",
-      "list",
-      "--state",
-      "open",
-      "--label",
-      LABEL,
-      "--json",
-      "number,title,body,labels",
-      "--limit",
-      "1000",
-    ],
-    { json: true },
-  );
+function listOpenIssuesForMoves(repo) {
+  return listOpenDexIssuesMerged(REPO_ROOT, repo, {
+    label: LABEL,
+    bodySearch: BODY_MARKER_SEARCH,
+    titleSearchFragment: '"Configure move:"',
+  });
 }
 
 function scanMovesFile(content) {
@@ -97,16 +84,6 @@ function scanMovesFile(content) {
     if (m[2] === "null") pending.add(id);
   }
   return pending;
-}
-
-function parseMoveIdFromIssue(title, body) {
-  const fromBody = body?.match(/<!--\s*work-item:dex-move:(\w+)\s*-->/);
-  if (fromBody) return fromBody[1];
-  if (title.startsWith("Configure move: ")) {
-    const rest = title.slice("Configure move: ".length).trim();
-    if (/^\w+$/.test(rest)) return rest;
-  }
-  return null;
 }
 
 function parseArgs(argv) {
@@ -140,18 +117,20 @@ function main() {
   const { dryRun, maxCreate } = parseArgs(process.argv.slice(2));
 
   try {
-    gh(["auth", "status"]);
+    ghGlobal(REPO_ROOT, ["auth", "status"]);
   } catch {
     console.error("GitHub CLI is not logged in. Run: gh auth login");
     process.exit(1);
   }
 
+  const repo = getRepoSlug(REPO_ROOT);
+
   const absPath = join(REPO_ROOT, REL_PATH);
   const content = readFileSync(absPath, "utf8");
   const pending = scanMovesFile(content);
 
-  ensureLabels();
-  const openIssues = listOpenIssues();
+  ensureLabels(repo);
+  const openIssues = listOpenIssuesForMoves(repo);
 
   let automationLabelCount = 0;
   for (const issue of openIssues) {
@@ -161,7 +140,7 @@ function main() {
     if (!labelNames.includes(AUTOMATION_LABEL)) {
       console.log(`Add label "${AUTOMATION_LABEL}" to #${issue.number}`);
       if (!dryRun) {
-        gh([
+        ghR(repo, REPO_ROOT, [
           "issue",
           "edit",
           String(issue.number),
@@ -173,32 +152,7 @@ function main() {
     }
   }
 
-  const byMove = new Map();
-  for (const issue of openIssues) {
-    const moveId = parseMoveIdFromIssue(issue.title, issue.body);
-    if (!moveId) continue;
-    if (!byMove.has(moveId)) byMove.set(moveId, []);
-    byMove.get(moveId).push(issue.number);
-  }
-
-  const toCreate = [...pending].filter((id) => {
-    const nums = byMove.get(id);
-    return !nums || nums.length === 0;
-  });
-
-  const toClose = [];
-  for (const [moveId, numbers] of byMove) {
-    numbers.sort((a, b) => a - b);
-    if (pending.has(moveId)) {
-      for (let i = 1; i < numbers.length; i++) {
-        toClose.push({ number: numbers[i], reason: "duplicate" });
-      }
-    } else {
-      for (const n of numbers) {
-        toClose.push({ number: n, reason: "completed" });
-      }
-    }
-  }
+  const { toCreate, toClose } = computeMoveSyncPlan(pending, openIssues);
 
   let createCount = 0;
   for (const moveId of toCreate) {
@@ -218,7 +172,7 @@ function main() {
       const dir = mkdtempSync(join(tmpdir(), "gh-move-issue-"));
       const bodyFile = join(dir, "body.md");
       writeFileSync(bodyFile, body, "utf8");
-      gh([
+      ghR(repo, REPO_ROOT, [
         "issue",
         "create",
         "--title",
@@ -241,8 +195,14 @@ function main() {
         : `Close #${number} (move configured)`;
     console.log(msg);
     if (!dryRun) {
-      const closeReason = reason === "duplicate" ? "not_planned" : "completed";
-      gh(["issue", "close", String(number), "--reason", closeReason]);
+      const closeReason = reason === "duplicate" ? "not planned" : "completed";
+      ghR(repo, REPO_ROOT, [
+        "issue",
+        "close",
+        String(number),
+        "--reason",
+        closeReason,
+      ]);
     }
   }
 
