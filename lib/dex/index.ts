@@ -1,8 +1,15 @@
 export { dexObject, getDexIds } from "./dexObject";
 export type { DexForm, DexRecord } from "./dexObject";
 
-export { FORM_IDS, MOVE_CATEGORIES, MOVE_RANGES } from "./constants";
-export type { FormId, MoveCategory, MoveRange } from "./constants";
+export {
+  FORM_IDS,
+  GAME_IDS,
+  GAME_LABELS,
+  MOVE_CATEGORIES,
+  MOVE_RANGES,
+  VALID_GAMES,
+} from "./constants";
+export type { FormId, GameId, MoveCategory, MoveRange } from "./constants";
 
 export { MOVES, moveObject } from "./moves";
 export type { MoveId, MoveRecord } from "./moves";
@@ -12,6 +19,8 @@ export type { MoveEffect, MoveEffectRecord } from "./moveEffects";
 
 export { expandDexRecords } from "./display";
 export type { DexDisplayEntry } from "./display";
+
+export { filterDexRecordsForGame } from "./filterByGame";
 
 export { TYPES, TYPE_NAMES } from "./types";
 export type {

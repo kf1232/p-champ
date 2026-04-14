@@ -1,16 +1,17 @@
+"use client";
+
 import { Navigation } from "@/components/navigation";
-import { dexObject, expandDexRecords, getDexIds } from "@/lib/dex";
 import { SITE_NAME } from "@/lib/site";
 
 import { DexRecordGrid } from "./components/DexRecordGrid";
+import { useDexDisplayEntriesForSelectedGame } from "./useDexDisplayEntriesForSelectedGame";
 
 const DEX_TITLE = "Dex";
 const DEX_DESCRIPTION =
   "Browse records in a 6-up grid. Each tile is its own component so we can evolve this quickly.";
 
 export function DexScreen() {
-  const baseRecords = getDexIds().map((id) => dexObject[id]);
-  const records = expandDexRecords(baseRecords);
+  const records = useDexDisplayEntriesForSelectedGame();
 
   return (
     <div className="flex min-h-full flex-col">
