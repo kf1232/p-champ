@@ -4,8 +4,9 @@
  *
  * A form is **incomplete** when:
  * - `[FORM_IDS.*]: null`, or
+ * - it is an object but stats are still the todo row (`...DEX_FORM_STATS_TODO` or literal all-`-1`), or
  * - it is an object but `types` has no `TYPES.*` entries, or `moves` has no `MOVES.*` entries
- *   (e.g. stats filled in but `moves: []`).
+ *   (e.g. real stats but `moves: []`).
  *
  * Open issues stay open until the form is fully filled; the issue body is **updated** when the
  * situation changes (null → partial object, or partial → different gaps).
@@ -122,11 +123,32 @@ function arrayHasRef(inner, refPrefix) {
   return new RegExp(`\\b${refPrefix}\\w+`).test(inner);
 }
 
+function statFieldInt(block, fieldName) {
+  const m = block.match(new RegExp(`\\b${fieldName}:\\s*(-?\\d+)`));
+  return m ? Number(m[1]) : null;
+}
+
+/** True when the form still uses the shared todo stats row (`...DEX_FORM_STATS_TODO`) or literal all-`-1`. */
+function hasPlaceholderStatsBlock(block) {
+  if (/\.\.\.\s*DEX_FORM_STATS_TODO\b/.test(block)) return true;
+  const names = ["hp", "attack", "defense", "spAtk", "spDef", "speed"];
+  for (const name of names) {
+    const v = statFieldInt(block, name);
+    if (v !== -1) return false;
+  }
+  return true;
+}
+
 /**
  * Reasons why this object literal is not a complete DexForm (empty list = complete).
  */
 function analyzeFormObjectBlock(block) {
   const reasons = [];
+  if (hasPlaceholderStatsBlock(block)) {
+    reasons.push(
+      "Base stats are still placeholder — replace `...DEX_FORM_STATS_TODO` (or all-`-1` literals) with verified values.",
+    );
+  }
   const typesInner = arrayLiteralAfterField(block, "types");
   const movesInner = arrayLiteralAfterField(block, "moves");
 
@@ -249,7 +271,7 @@ National dex \`#${dex}\`, form \`${formKey}\` in \`${REL_PATH}\` is **not finish
 
 ${bullets}
 
-**Done when:** the slot has a full \`DexForm\` with all stats, at least one \`TYPES.*\` in \`types\`, and at least one \`MOVES.*\` in \`moves\`.`;
+**Done when:** the slot has a full \`DexForm\` with verified base stats (not \`...DEX_FORM_STATS_TODO\` / not all-\`-1\`), at least one \`TYPES.*\` in \`types\`, and at least one \`MOVES.*\` in \`moves\`.`;
 }
 
 function bodiesDiffer(a, b) {
