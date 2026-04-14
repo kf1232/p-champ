@@ -58,11 +58,17 @@ function dexEntryMatchesTypeFilters(
   filterA: TypeName | null,
   filterB: TypeName | null,
 ): boolean {
+  const types = getDexEntryTypeNames(entry);
+
+  if (filterA && filterB && filterA === filterB) {
+    return types.length === 1 && types[0] === filterA;
+  }
+
   const required = new Set<TypeName>();
   if (filterA) required.add(filterA);
   if (filterB) required.add(filterB);
   if (required.size === 0) return true;
-  const entryTypes = new Set(getDexEntryTypeNames(entry));
+  const entryTypes = new Set(types);
   for (const t of required) {
     if (!entryTypes.has(t)) return false;
   }
@@ -133,6 +139,7 @@ export function TeamBuilderScreen() {
   );
   const [typeFilterA, setTypeFilterA] = useState<TypeName | null>(null);
   const [typeFilterB, setTypeFilterB] = useState<TypeName | null>(null);
+  const [nameFilter, setNameFilter] = useState("");
   const [gridSort, setGridSort] = useState<
     "default" | "threat-desc" | "threat-asc"
   >("default");
@@ -157,13 +164,19 @@ export function TeamBuilderScreen() {
     };
   }, []);
 
-  const filteredDexEntries = useMemo(
-    () =>
-      dexEntries.filter((e) =>
-        dexEntryMatchesTypeFilters(e, typeFilterA, typeFilterB),
-      ),
-    [dexEntries, typeFilterA, typeFilterB],
-  );
+  const nameFilterNorm = nameFilter.trim().toLowerCase();
+
+  const filteredDexEntries = useMemo(() => {
+    return dexEntries.filter((e) => {
+      if (!dexEntryMatchesTypeFilters(e, typeFilterA, typeFilterB)) return false;
+      if (!nameFilterNorm) return true;
+      const label = formatDexTileDisplayName(e.dexName, e.formId).toLowerCase();
+      return (
+        label.includes(nameFilterNorm) ||
+        e.dexName.toLowerCase().includes(nameFilterNorm)
+      );
+    });
+  }, [dexEntries, typeFilterA, typeFilterB, nameFilterNorm]);
 
   const selectorNames = useMemo(
     () =>
@@ -258,12 +271,14 @@ export function TeamBuilderScreen() {
     setTeamSlots(Array.from({ length: TEAM_SIZE }, () => null));
   }, []);
 
-  const clearAllTypeFilters = useCallback(() => {
+  const clearAllFilters = useCallback(() => {
     setTypeFilterA(null);
     setTypeFilterB(null);
+    setNameFilter("");
   }, []);
 
-  const hasActiveTypeFilters = typeFilterA !== null || typeFilterB !== null;
+  const hasActiveFilters =
+    typeFilterA !== null || typeFilterB !== null || nameFilter.trim() !== "";
   const hasTeamMembers = teamSlots.some((s) => s !== null);
 
   return (
@@ -357,6 +372,24 @@ export function TeamBuilderScreen() {
             <div className="flex w-full shrink-0 flex-wrap items-end justify-end gap-2 sm:gap-3">
               <div className="flex min-w-0 flex-col items-end gap-1">
                 <label
+                  htmlFor="team-builder-name-filter"
+                  className="text-[10px] font-semibold uppercase tracking-wide text-black/45"
+                >
+                  Name
+                </label>
+                <input
+                  id="team-builder-name-filter"
+                  type="search"
+                  value={nameFilter}
+                  onChange={(e) => setNameFilter(e.target.value)}
+                  placeholder="Search…"
+                  autoComplete="off"
+                  className="min-w-[9rem] max-w-full rounded-md border border-black/25 bg-white/80 px-2 py-1.5 text-right text-xs text-black shadow-sm placeholder:text-black/35"
+                  aria-label="Filter Pokémon by name"
+                />
+              </div>
+              <div className="flex min-w-0 flex-col items-end gap-1">
+                <label
                   htmlFor="team-builder-sort"
                   className="text-[10px] font-semibold uppercase tracking-wide text-black/45"
                 >
@@ -390,11 +423,7 @@ export function TeamBuilderScreen() {
                   value={typeFilterA ?? ""}
                   onChange={(e) => {
                     const v = e.target.value;
-                    const next = v === "" ? null : (v as TypeName);
-                    setTypeFilterA(next);
-                    setTypeFilterB((prev) =>
-                      prev && next && prev === next ? null : prev,
-                    );
+                    setTypeFilterA(v === "" ? null : (v as TypeName));
                   }}
                   className="min-w-[7.5rem] max-w-full rounded-md border border-black/25 bg-white/80 px-2 py-1.5 text-right text-xs text-black shadow-sm"
                 >
@@ -423,20 +452,18 @@ export function TeamBuilderScreen() {
                   className="min-w-[7.5rem] max-w-full rounded-md border border-black/25 bg-white/80 px-2 py-1.5 text-right text-xs text-black shadow-sm"
                 >
                   <option value="">Any</option>
-                  {TYPE_NAMES_ORDERED.filter((t) => t !== typeFilterA).map(
-                    (t) => (
-                      <option key={t} value={t}>
-                        {formatTypeLabel(t)}
-                      </option>
-                    ),
-                  )}
+                  {TYPE_NAMES_ORDERED.map((t) => (
+                    <option key={t} value={t}>
+                      {formatTypeLabel(t)}
+                    </option>
+                  ))}
                 </select>
               </div>
               <button
                 type="button"
-                onClick={clearAllTypeFilters}
-                disabled={!hasActiveTypeFilters}
-                aria-label="Clear type filters"
+                onClick={clearAllFilters}
+                disabled={!hasActiveFilters}
+                aria-label="Clear name and type filters"
                 className="rounded-md border border-black/25 bg-white/80 px-2.5 py-1.5 text-xs font-medium text-black/70 shadow-sm hover:bg-black/[0.04] hover:text-black disabled:cursor-not-allowed disabled:border-black/10 disabled:bg-black/[0.02] disabled:text-black/30"
               >
                 Clear all filters
@@ -448,8 +475,9 @@ export function TeamBuilderScreen() {
               </p>
             ) : filteredDexEntries.length === 0 ? (
               <p className="mt-3 shrink-0 text-sm text-black/50">
-                No Pokémon match the selected types. Choose &quot;Any&quot; or
-                different types to see more.
+                No Pokémon match the current name or type filters. Adjust the
+                search, choose &quot;Any&quot; for types, or pick two different
+                types (same type in both slots = pure single-type only).
               </p>
             ) : (
               <div className="mt-3 min-h-0 flex-1 overflow-y-auto overflow-x-hidden pr-1 [scrollbar-gutter:stable]">
