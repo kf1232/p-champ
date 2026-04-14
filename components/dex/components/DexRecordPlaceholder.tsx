@@ -59,4 +59,3 @@ export function DexRecordPlaceholder({ record }: DexRecordPlaceholderProps) {
     </div>
   );
 }
-

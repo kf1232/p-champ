@@ -43,6 +43,7 @@ export { TYPE_BADGE_CLASSES, formatTypeLabel } from "./typeBadgeStyles";
 
 export {
   bestStabMultiplier,
+  classifyDexEntriesByBestStabVsDefender,
   computeSelectorTeamMatchupPerSlot,
   computeSelectorTeamMatchupTotals,
   defThreatScoreFromSlots,

@@ -9,7 +9,10 @@ import {
   type ReactNode,
 } from "react";
 
-import { useDexDisplayEntriesForSelectedGame } from "@/components/dex";
+import {
+  DexRecordDetailModal,
+  useDexDisplayEntriesForSelectedGame,
+} from "@/components/dex";
 import { useGameSelection } from "@/components/game";
 import { Navigation } from "@/components/navigation";
 import {
@@ -144,6 +147,8 @@ export function TeamBuilderScreen() {
     "default" | "threat-desc" | "threat-asc"
   >("default");
   const [flashSlotIndex, setFlashSlotIndex] = useState<number | null>(null);
+  const [selectorDetailEntry, setSelectorDetailEntry] =
+    useState<DexDisplayEntry | null>(null);
   const flashClearTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
     null,
   );
@@ -277,6 +282,11 @@ export function TeamBuilderScreen() {
     setNameFilter("");
   }, []);
 
+  const closeSelectorDetail = useCallback(
+    () => setSelectorDetailEntry(null),
+    [],
+  );
+
   const hasActiveFilters =
     typeFilterA !== null || typeFilterB !== null || nameFilter.trim() !== "";
   const hasTeamMembers = teamSlots.some((s) => s !== null);
@@ -310,14 +320,23 @@ export function TeamBuilderScreen() {
                   className={[
                     "flex min-h-[6.25rem] flex-col rounded-lg border border-dashed border-black/45 bg-white/60 p-2",
                     flashSlotIndex === i ? "animate-team-slot-flash" : "",
+                    slot ? "cursor-pointer" : "",
                   ].join(" ")}
                   aria-label={
                     slot
                       ? `Team slot ${i + 1}: ${formatDexTileDisplayName(slot.dexName, slot.formId)}`
                       : `Team slot ${i + 1} of ${TEAM_SIZE}, empty`
                   }
+                  title={
+                    slot
+                      ? "Double-click for stats and type matchups."
+                      : undefined
+                  }
                   onDragOver={handleSlotDragOver}
                   onDrop={(e) => handleSlotDrop(i, e)}
+                  onDoubleClick={() => {
+                    if (slot) setSelectorDetailEntry(slot);
+                  }}
                 >
                   <div className="flex items-start justify-between gap-1">
                     <span className="text-[10px] font-semibold tabular-nums text-black/35">
@@ -328,6 +347,7 @@ export function TeamBuilderScreen() {
                         type="button"
                         className="shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium text-black/45 hover:bg-red-500/10 hover:text-red-800"
                         onClick={() => clearSlot(i)}
+                        onDoubleClick={(e) => e.stopPropagation()}
                         aria-label={`Remove ${formatDexTileDisplayName(slot.dexName, slot.formId)} from slot ${i + 1}`}
                       >
                         Remove
@@ -505,15 +525,18 @@ export function TeamBuilderScreen() {
                         { length: TEAM_SIZE },
                         () => null as MatchupSlotCell | null,
                       );
+                    const dragTitle = speciesOnTeam
+                      ? "Species on your team — drop on any slot to change its form in the slot it already occupies."
+                      : undefined;
+                    const detailTitle = [dragTitle, "Double-click for stats and type matchups."]
+                      .filter(Boolean)
+                      .join(" ");
                     nodes.push(
                       <li
                         key={entry.key}
                         draggable
-                        title={
-                          speciesOnTeam
-                            ? "Species on your team — drop on any slot to change its form in the slot it already occupies."
-                            : undefined
-                        }
+                        title={detailTitle}
+                        onDoubleClick={() => setSelectorDetailEntry(entry)}
                         onDragStart={(e) => {
                           e.dataTransfer.setData(
                             DEX_ENTRY_DRAG_MIME,
@@ -551,6 +574,12 @@ export function TeamBuilderScreen() {
           </section>
         </div>
       </main>
+
+      <DexRecordDetailModal
+        record={selectorDetailEntry}
+        allRecords={dexEntries}
+        onClose={closeSelectorDetail}
+      />
     </div>
   );
 }
