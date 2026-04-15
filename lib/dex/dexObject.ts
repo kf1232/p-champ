@@ -1438,16 +1438,7 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Staryu",
     games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
-      [FORM_IDS.base]: {
-        hp: 135,
-        attack: 95,
-        defense: 105,
-        spAtk: 120,
-        spDef: 105,
-        speed: 135,
-        types: [TYPES.water],
-        moves: []
-      },
+      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
   },
   121: {
@@ -1455,7 +1446,7 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Starmie",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.psychic], moves: [] },
+      [FORM_IDS.base]: { hp: 135, attack: 95, defense: 105, spAtk: 120, spDef: 105, speed: 135, types: [TYPES.water, TYPES.psychic], moves: [] },
     },
   },
   122: {
@@ -1504,7 +1495,11 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Pinsir",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 140, attack: 145, defense: 120, spAtk: 75, spDef: 90, speed: 105,
+        types: [TYPES.bug],
+        moves: []
+      },
       "form-mega-pinsir": { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.flying], moves: [] },
     },
   },
@@ -1513,10 +1508,22 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Tauros",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
-      [FORM_IDS.paldeanCombat]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
-      [FORM_IDS.paldeanFire]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting, TYPES.fire], moves: [] },
-      [FORM_IDS.paldeanWater]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting, TYPES.water], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 150, attack: 120, defense: 115, spAtk: 60, spDef: 90, speed: 130,
+        types: [TYPES.normal], moves: []
+      },
+      [FORM_IDS.paldeanCombat]: {
+        hp: 150, attack: 130, defense: 125, spAtk: 50, spDef: 90, speed: 120,
+        types: [TYPES.fighting], moves: []
+      },
+      [FORM_IDS.paldeanFire]: {
+        hp: 150, attack: 130, defense: 125, spAtk: 50, spDef: 90, speed: 120,
+        types: [TYPES.fighting, TYPES.fire], moves: []
+      },
+      [FORM_IDS.paldeanWater]: {
+        hp: 150, attack: 130, defense: 125, spAtk: 50, spDef: 90, speed: 120,
+        types: [TYPES.fighting, TYPES.water], moves: []
+      },
     },
   },
   129: {
@@ -1532,7 +1539,10 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Gyarados",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.flying], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 170, attack: 145, defense: 99, spAtk: 80, spDef: 120, speed: 101,
+        types: [TYPES.water, TYPES.flying], moves: []
+      },
       "form-mega-gyarados": { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.dark], moves: [] },
     },
   },
@@ -1549,7 +1559,10 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Ditto",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 123, attack: 68, defense: 68, spAtk: 68, spDef: 68, speed: 68,
+        types: [TYPES.normal], moves: []
+      },
     },
   },
   133: {
@@ -1566,7 +1579,10 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Vaporeon",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 205, attack: 85, defense: 80, spAtk: 130, spDef: 115, speed: 85,
+        types: [TYPES.water], moves: []
+      },
     },
   },
   135: {
