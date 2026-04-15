@@ -1,5 +1,6 @@
+import { compareDexEntriesByAttackerVsDefenderStats } from "./attackerDefenderStatDiff";
 import type { DexDisplayEntry } from "./display";
-import { formatDexTileDisplayName, getDexEntryTypeNames } from "./display";
+import { getDexEntryTypeNames } from "./display";
 import { formatTypeLabel } from "./typeBadgeStyles";
 import { TYPES } from "./types";
 import type { TypeName } from "./types";
@@ -243,10 +244,8 @@ export function classifyDexEntriesByBestStabVsDefender(
     else if (Math.abs(m - 1) < 1e-9) neutral.push(entry);
   }
 
-  const sortKey = (e: DexDisplayEntry) =>
-    formatDexTileDisplayName(e.dexName, e.formId);
   const sort = (a: DexDisplayEntry, b: DexDisplayEntry) =>
-    sortKey(a).localeCompare(sortKey(b));
+    compareDexEntriesByAttackerVsDefenderStats(a, b, defender);
 
   neutral.sort(sort);
   effective.sort(sort);
