@@ -18,6 +18,7 @@ import { Navigation } from "@/components/navigation";
 import {
   NATIONAL_VIEW_ID,
   TYPE_NAMES,
+  ZERO_STAT_SPREAD,
   computeSelectorTeamMatchupPerSlot,
   defThreatScoreFromSlots,
   formatTypeLabel,
@@ -30,11 +31,13 @@ import type {
   DexDisplayEntry,
   DexListViewId,
   FormId,
+  StatSpread,
   TypeName,
 } from "@/lib/dex";
 import { SITE_NAME } from "@/lib/site";
 
 import { SelectorMatchupGrid } from "./SelectorMatchupGrid";
+import { StatSpreadSliders } from "./StatSpreadSliders";
 import { TypeBadges } from "./TypeBadges";
 
 const TEAM_BUILDER_TITLE = "Team Builder";
@@ -123,6 +126,18 @@ function parseDexEntryFromDrag(raw: string): DexDisplayEntry | null {
   }
 }
 
+/**
+ * Drag payloads only include identity + typings — not {@link DexDisplayEntry.form}.
+ * Merge with the live dex catalog so stats and matchup math work everywhere.
+ */
+function resolveDexDisplayEntryFromCatalog(
+  entry: DexDisplayEntry,
+  catalog: readonly DexDisplayEntry[],
+): DexDisplayEntry {
+  const hit = catalog.find((e) => e.key === entry.key);
+  return hit ?? entry;
+}
+
 /** Aligns with {@link filterDexRecordsForListView}: National allows all species; a game only species with `games[viewId]`. */
 function isTeamEntryValidForView(
   entry: DexDisplayEntry,
@@ -147,6 +162,9 @@ export function TeamBuilderScreen() {
   const [flashSlotIndex, setFlashSlotIndex] = useState<number | null>(null);
   const [selectorDetailEntry, setSelectorDetailEntry] =
     useState<DexDisplayEntry | null>(null);
+  const [statSpreadByKey, setStatSpreadByKey] = useState<
+    Record<string, StatSpread>
+  >({});
   const flashClearTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
     null,
   );
@@ -167,6 +185,23 @@ export function TeamBuilderScreen() {
       }
     };
   }, []);
+
+  /** Hydrate team entries from drag (identity-only) with full `form` once `dexEntries` is available. */
+  useEffect(() => {
+    setTeamSlots((prev) => {
+      let changed = false;
+      const next = prev.map((slot) => {
+        if (!slot || slot.form) return slot;
+        const r = resolveDexDisplayEntryFromCatalog(slot, dexEntries);
+        if (r.form) {
+          changed = true;
+          return r;
+        }
+        return slot;
+      });
+      return changed ? next : prev;
+    });
+  }, [dexEntries]);
 
   const nameFilterNorm = nameFilter.trim().toLowerCase();
 
@@ -224,8 +259,10 @@ export function TeamBuilderScreen() {
   const handleSlotDrop = useCallback((slotIndex: number, e: React.DragEvent) => {
     e.preventDefault();
     const raw = e.dataTransfer.getData(DEX_ENTRY_DRAG_MIME);
-    const entry = parseDexEntryFromDrag(raw);
-    if (!entry) return;
+    const parsed = parseDexEntryFromDrag(raw);
+    if (!parsed) return;
+
+    const entry = resolveDexDisplayEntryFromCatalog(parsed, dexEntries);
 
     const existingIndex = teamSlots.findIndex(
       (s) => s !== null && s.dexNumber === entry.dexNumber,
@@ -256,7 +293,7 @@ export function TeamBuilderScreen() {
         flashClearTimeoutRef.current = null;
       }, 650);
     });
-  }, [teamSlots]);
+  }, [teamSlots, dexEntries]);
 
   const handleSlotDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -283,6 +320,13 @@ export function TeamBuilderScreen() {
 
   const closeSelectorDetail = useCallback(
     () => setSelectorDetailEntry(null),
+    [],
+  );
+
+  const handleStatSpreadChange = useCallback(
+    (entryKey: string, spread: StatSpread) => {
+      setStatSpreadByKey((prev) => ({ ...prev, [entryKey]: spread }));
+    },
     [],
   );
 
@@ -317,9 +361,11 @@ export function TeamBuilderScreen() {
                 <li
                   key={i}
                   className={[
-                    "flex min-h-[6.25rem] flex-col rounded-lg border border-dashed border-black/45 bg-white/60 p-2",
+                    "flex h-full min-h-0 flex-col gap-2 text-sm font-medium leading-snug select-none sm:gap-2.5",
+                    slot
+                      ? "cursor-pointer rounded-xl border border-black/35 bg-white/60 p-2.5 sm:p-3"
+                      : "rounded-xl border border-dashed border-black/45 bg-white/60 p-2.5 sm:p-3",
                     flashSlotIndex === i ? "animate-team-slot-flash" : "",
-                    slot ? "cursor-pointer" : "",
                   ].join(" ")}
                   aria-label={
                     slot
@@ -334,39 +380,66 @@ export function TeamBuilderScreen() {
                   onDragOver={handleSlotDragOver}
                   onDrop={(e) => handleSlotDrop(i, e)}
                   onDoubleClick={() => {
-                    if (slot) setSelectorDetailEntry(slot);
+                    if (slot) {
+                      setSelectorDetailEntry(
+                        resolveDexDisplayEntryFromCatalog(slot, dexEntries),
+                      );
+                    }
                   }}
                 >
-                  <div className="flex items-start justify-between gap-1">
-                    <span className="text-[10px] font-semibold tabular-nums text-black/35">
-                      {i + 1}
-                    </span>
-                    {slot ? (
-                      <button
-                        type="button"
-                        className="shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium text-black/45 hover:bg-red-500/10 hover:text-red-800"
-                        onClick={() => clearSlot(i)}
-                        onDoubleClick={(e) => e.stopPropagation()}
-                        aria-label={`Remove ${formatDexTileDisplayName(slot.dexName, slot.formId)} from slot ${i + 1}`}
-                      >
-                        Remove
-                      </button>
-                    ) : null}
-                  </div>
                   {slot ? (
                     <>
-                      <p className="mt-1 line-clamp-2 text-xs font-medium leading-snug text-black">
-                        {formatDexTileDisplayName(slot.dexName, slot.formId)}
-                      </p>
-                      <div className="mt-auto pt-1">
+                      <div className="flex shrink-0 items-start justify-between gap-1">
+                        <span className="text-[10px] font-semibold tabular-nums text-black/35">
+                          {i + 1}
+                        </span>
+                        <button
+                          type="button"
+                          className="shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium text-black/45 hover:bg-red-500/10 hover:text-red-800"
+                          onClick={() => clearSlot(i)}
+                          onDoubleClick={(e) => e.stopPropagation()}
+                          aria-label={`Remove ${formatDexTileDisplayName(slot.dexName, slot.formId)} from slot ${i + 1}`}
+                        >
+                          Remove
+                        </button>
+                      </div>
+                      <header className="shrink-0 text-center">
+                        <h3 className="line-clamp-3 text-sm font-semibold leading-tight text-black">
+                          {formatDexTileDisplayName(slot.dexName, slot.formId)}
+                        </h3>
+                      </header>
+                      <div className="flex min-h-0 w-full min-w-0 flex-1 flex-col justify-center">
+                        <StatSpreadSliders
+                          compact
+                          idPrefix={`team-slot-${i}-${slot.key}`}
+                          spread={
+                            statSpreadByKey[slot.key] ?? ZERO_STAT_SPREAD
+                          }
+                          onChange={(next) =>
+                            handleStatSpreadChange(slot.key, next)
+                          }
+                        />
+                      </div>
+                      <footer className="shrink-0 flex justify-center">
                         <TypeBadges
                           typeNames={getDexEntryTypeNames(slot)}
                           size="compact"
                         />
-                      </div>
+                      </footer>
                     </>
                   ) : (
-                    <p className="mt-1 text-[10px] text-black/35">Drop here</p>
+                    <>
+                      <div className="flex shrink-0 items-start justify-between gap-1">
+                        <span className="text-[10px] font-semibold tabular-nums text-black/35">
+                          {i + 1}
+                        </span>
+                      </div>
+                      <div className="flex min-h-0 flex-1 flex-col items-center justify-center py-4">
+                        <p className="text-center text-[10px] text-black/35">
+                          Drop here
+                        </p>
+                      </div>
+                    </>
                   )}
                 </li>
               ))}
@@ -578,6 +651,8 @@ export function TeamBuilderScreen() {
         record={selectorDetailEntry}
         allRecords={dexEntries}
         onClose={closeSelectorDetail}
+        statSpreadByKey={statSpreadByKey}
+        onStatSpreadChange={handleStatSpreadChange}
       />
     </div>
   );

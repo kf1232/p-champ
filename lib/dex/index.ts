@@ -42,10 +42,27 @@ export type { DexDisplayEntry } from "./display";
 export { TYPE_BADGE_CLASSES, formatTypeLabel } from "./typeBadgeStyles";
 
 export {
+  attackerVsDefenderBaseSpeedDiff,
   attackerVsDefenderBaseStatDiffs,
   compareDexEntriesByAttackerVsDefenderStats,
   formatSignedBaseStatDiff,
+  speedMatchupTierLabelFromDiff,
 } from "./attackerDefenderStatDiff";
+export type {
+  AttackerDefenderStatSpreadOptions,
+  SpeedMatchupTierLabel,
+} from "./attackerDefenderStatDiff";
+
+export {
+  STAT_SPREAD_MAX_PER_STAT,
+  STAT_SPREAD_MAX_TOTAL,
+  ZERO_STAT_SPREAD,
+  clampStatSpreadField,
+  maxAssignableForStatSpreadField,
+  normalizeStatSpread,
+  totalStatSpread,
+} from "./statSpread";
+export type { StatSpread } from "./statSpread";
 
 export {
   bestStabMultiplier,

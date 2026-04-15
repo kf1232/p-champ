@@ -1,26 +1,33 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 import {
   PhysicalDamageCategoryIcon,
   SpecialDamageCategoryIcon,
+  SpeedStatIcon,
 } from "@/components/dex/components/MoveDamageCategoryIcons";
+import { StatSpreadSliders } from "@/components/team-builder/StatSpreadSliders";
 import { TypeBadges } from "@/components/team-builder/TypeBadges";
 import {
   DEX_STAT_TODO,
+  ZERO_STAT_SPREAD,
+  attackerVsDefenderBaseSpeedDiff,
   attackerVsDefenderBaseStatDiffs,
   classifyDexEntriesByBestStabVsDefender,
   formatDexTileDisplayName,
   formatSignedBaseStatDiff,
   getDexEntryTypeNames,
 } from "@/lib/dex";
-import type { DexDisplayEntry } from "@/lib/dex";
+import type { DexDisplayEntry, StatSpread } from "@/lib/dex";
 
 type DexRecordDetailModalProps = {
   record: DexDisplayEntry | null;
   allRecords: readonly DexDisplayEntry[];
   onClose: () => void;
+  /** Per-species/form stat spread for matchup math (base + spread). */
+  statSpreadByKey: Readonly<Record<string, StatSpread>>;
+  onStatSpreadChange: (entryKey: string, spread: StatSpread) => void;
 };
 
 function statPill(label: string, value: number | undefined) {
@@ -41,11 +48,13 @@ function MatchupColumn({
   subtitle,
   defender,
   entries,
+  getSpread,
 }: {
   title: string;
   subtitle: string;
   defender: DexDisplayEntry;
   entries: DexDisplayEntry[];
+  getSpread: (key: string) => StatSpread;
 }) {
   return (
     <div className="flex min-h-0 min-w-0 flex-1 flex-col rounded-xl border border-black/10 bg-white/50">
@@ -61,24 +70,62 @@ function MatchupColumn({
           <li className="px-2 py-4 text-center text-sm text-black/45">None</li>
         ) : (
           entries.map((e) => {
-            const { phys, spec } = attackerVsDefenderBaseStatDiffs(e, defender);
+            const { phys, spec } = attackerVsDefenderBaseStatDiffs(e, defender, {
+              attackerSpread: getSpread(e.key),
+              defenderSpread: getSpread(defender.key),
+            });
+            const speedDiff = attackerVsDefenderBaseSpeedDiff(e, defender, {
+              attackerSpread: getSpread(e.key),
+              defenderSpread: getSpread(defender.key),
+            });
+            const mirror = e.key === defender.key;
+            const speedTitle =
+              speedDiff === null
+                ? "Speed"
+                : mirror
+                  ? "Speed: incoming uses base Spe; your Pokémon uses spread"
+                  : "Speed (attacker Spe − defender Spe, incl. spread)";
+            const physTitle = mirror
+              ? "Physical: incoming uses base Atk; your Pokémon uses spread on Def"
+              : "Physical (Atk − defender Def)";
+            const specTitle = mirror
+              ? "Special: incoming uses base Sp.Atk; your Pokémon uses spread on Sp.Def"
+              : "Special (Sp.Atk − defender Sp.Def)";
+
             return (
               <li
                 key={e.key}
-                className="flex flex-col gap-1 rounded-lg border border-transparent px-2 py-1.5 hover:border-black/10 hover:bg-white/80"
+                className="flex flex-col gap-2 rounded-lg border border-transparent px-2 py-2 hover:border-black/10 hover:bg-white/80"
               >
-                <span className="text-sm font-medium leading-snug text-black">
-                  {formatDexTileDisplayName(e.dexName, e.formId)}
-                </span>
-                <TypeBadges typeNames={getDexEntryTypeNames(e)} size="compact" />
-                <div className="flex justify-between gap-3 text-xs tabular-nums text-black/55">
-                  <span className="flex min-w-0 items-center gap-1" title="Physical">
-                    <PhysicalDamageCategoryIcon className="shrink-0 text-orange-600" />
+                <div className="flex items-start justify-between gap-2">
+                  <span className="min-w-0 flex-1 text-base font-medium leading-snug text-black">
+                    {formatDexTileDisplayName(e.dexName, e.formId)}
+                  </span>
+                  <div className="shrink-0 pt-0.5">
+                    <TypeBadges typeNames={getDexEntryTypeNames(e)} size="default" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 items-center gap-x-2 text-sm tabular-nums text-black/60">
+                  <span
+                    className="flex min-w-0 items-center justify-start gap-1.5"
+                    title={physTitle}
+                  >
+                    <PhysicalDamageCategoryIcon className="h-4 w-4 shrink-0 text-orange-600" />
                     {formatSignedBaseStatDiff(phys)}
                   </span>
-                  <span className="flex min-w-0 items-center gap-1" title="Special">
-                    <SpecialDamageCategoryIcon className="shrink-0 text-sky-600" />
+                  <span
+                    className="flex min-w-0 items-center justify-center gap-1.5"
+                    title={specTitle}
+                  >
+                    <SpecialDamageCategoryIcon className="h-4 w-4 shrink-0 text-sky-600" />
                     {formatSignedBaseStatDiff(spec)}
+                  </span>
+                  <span
+                    className="flex min-w-0 items-center justify-end gap-1.5"
+                    title={speedTitle}
+                  >
+                    <SpeedStatIcon className="h-4 w-4 shrink-0 text-emerald-700" />
+                    {formatSignedBaseStatDiff(speedDiff)}
                   </span>
                 </div>
               </li>
@@ -94,7 +141,14 @@ export function DexRecordDetailModal({
   record,
   allRecords,
   onClose,
+  statSpreadByKey,
+  onStatSpreadChange,
 }: DexRecordDetailModalProps) {
+  const getSpread = useCallback(
+    (key: string) => statSpreadByKey[key] ?? ZERO_STAT_SPREAD,
+    [statSpreadByKey],
+  );
+
   const buckets = useMemo(() => {
     if (!record) {
       return {
@@ -103,8 +157,10 @@ export function DexRecordDetailModal({
         superEffective: [] as DexDisplayEntry[],
       };
     }
-    return classifyDexEntriesByBestStabVsDefender(record, allRecords);
-  }, [record, allRecords]);
+    return classifyDexEntriesByBestStabVsDefender(record, allRecords, {
+      getSpread,
+    });
+  }, [record, allRecords, getSpread]);
 
   useEffect(() => {
     if (!record) return;
@@ -170,6 +226,13 @@ export function DexRecordDetailModal({
               {statPill("SpD", record.form!.spDef)}
               {statPill("Spe", record.form!.speed)}
             </div>
+            <div className="mt-3 min-w-0 max-w-xl">
+              <StatSpreadSliders
+                idPrefix={`dex-detail-${record.key}`}
+                spread={getSpread(record.key)}
+                onChange={(next) => onStatSpreadChange(record.key, next)}
+              />
+            </div>
           </div>
         ) : (
           <div className="shrink-0 border-b border-black/10 px-5 py-4 text-sm text-black/60">
@@ -184,18 +247,21 @@ export function DexRecordDetailModal({
               subtitle="1× best STAB"
               defender={record}
               entries={buckets.neutral}
+              getSpread={getSpread}
             />
             <MatchupColumn
               title="Effective"
               subtitle="2× best STAB"
               defender={record}
               entries={buckets.effective}
+              getSpread={getSpread}
             />
             <MatchupColumn
               title="Super effective"
               subtitle="4× or higher best STAB"
               defender={record}
               entries={buckets.superEffective}
+              getSpread={getSpread}
             />
           </div>
         </div>

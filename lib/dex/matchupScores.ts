@@ -1,5 +1,6 @@
 import { compareDexEntriesByAttackerVsDefenderStats } from "./attackerDefenderStatDiff";
 import type { DexDisplayEntry } from "./display";
+import type { StatSpread } from "./statSpread";
 import { getDexEntryTypeNames } from "./display";
 import { formatTypeLabel } from "./typeBadgeStyles";
 import { TYPES } from "./types";
@@ -226,6 +227,7 @@ export function getDominantMatchupScore(
 export function classifyDexEntriesByBestStabVsDefender(
   defender: DexDisplayEntry,
   candidates: readonly DexDisplayEntry[],
+  options?: { getSpread?: (key: string) => StatSpread },
 ): {
   neutral: DexDisplayEntry[];
   effective: DexDisplayEntry[];
@@ -244,8 +246,9 @@ export function classifyDexEntriesByBestStabVsDefender(
     else if (Math.abs(m - 1) < 1e-9) neutral.push(entry);
   }
 
+  const getSpread = options?.getSpread;
   const sort = (a: DexDisplayEntry, b: DexDisplayEntry) =>
-    compareDexEntriesByAttackerVsDefenderStats(a, b, defender);
+    compareDexEntriesByAttackerVsDefenderStats(a, b, defender, getSpread);
 
   neutral.sort(sort);
   effective.sort(sort);
