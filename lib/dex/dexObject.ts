@@ -1590,7 +1590,10 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Jolteon",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 140, attack: 85, defense: 80, spAtk: 130, spDef: 115, speed: 150,
+        types: [TYPES.electric], moves: []
+      },
     },
   },
   136: {
@@ -1598,7 +1601,10 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Flareon",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 140, attack: 150, defense: 80, spAtk: 115, spDef: 130, speed: 85,
+        types: [TYPES.fire], moves: []
+      },
     },
   },
   137: {
@@ -1646,7 +1652,10 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Aerodactyl",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.flying], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 155, attack: 125, defense: 85, spAtk: 80, spDef: 95, speed: 150,
+        types: [TYPES.rock, TYPES.flying], moves: []
+      },
       "form-mega-aerodactyl": { ...DEX_FORM_STATS_TODO, types: [TYPES.rock, TYPES.flying], moves: [] },
     },
   },
@@ -1655,7 +1664,10 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Snorlax",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 235, attack: 130, defense: 85, spAtk: 85, spDef: 130, speed: 50,
+        types: [TYPES.normal], moves: []
+      },
     },
   },
   144: {
@@ -1841,7 +1853,10 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Meganium",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 155, attack: 102, defense: 120, spAtk: 103, spDef: 120, speed: 100,
+        types: [TYPES.grass], moves: []
+      },
     },
   },
   155: {
@@ -1865,8 +1880,14 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Typhlosion",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
-      [FORM_IDS.hisuian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.ghost], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 153, attack: 104, defense: 98, spAtk: 129, spDef: 105, speed: 120,
+        types: [TYPES.fire], moves: []
+      },
+      [FORM_IDS.hisuian]: {
+        hp: 148, attack: 104, defense: 98, spAtk: 139, spDef: 105, speed: 115,
+        types: [TYPES.fire, TYPES.ghost], moves: []
+      },
     },
   },
   158: {
@@ -1890,7 +1911,10 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Feraligatr",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 160, attack: 125, defense: 120, spAtk: 99, spDef: 103, speed: 98,
+        types: [TYPES.water], moves: []
+      },
     },
   },
   161: {
@@ -1954,7 +1978,10 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Ariados",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.poison], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 145, attack: 110, defense: 90, spAtk: 80, spDef: 90, speed: 60,
+        types: [TYPES.bug, TYPES.poison], moves: []
+      },
     },
   },
   169: {
@@ -2159,7 +2186,10 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Azumarill",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.fairy], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 175, attack: 70, defense: 100, spAtk: 80, spDef: 100, speed: 70,
+        types: [TYPES.water, TYPES.fairy], moves: []
+      },
     },
   },
   185: {
@@ -2175,7 +2205,10 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Politoed",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 165, attack: 95, defense: 95, spAtk: 110, spDef: 120, speed: 90,
+        types: [TYPES.water], moves: []
+      },
     },
   },
   187: {
@@ -2256,7 +2289,10 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Espeon",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 140, attack: 85, defense: 80, spAtk: 150, spDef: 115, speed: 130,
+        types: [TYPES.psychic], moves: []
+      },
     },
   },
   197: {
@@ -2264,7 +2300,10 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Umbreon",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.dark], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 170, attack: 85, defense: 130, spAtk: 80, spDef: 150, speed: 85,
+        types: [TYPES.dark], moves: []
+      },
     },
   },
   198: {
@@ -2280,8 +2319,14 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Slowking",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.psychic], moves: [] },
-      [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.psychic], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 170, attack: 95, defense: 100, spAtk: 120, spDef: 130, speed: 50,
+        types: [TYPES.water, TYPES.psychic], moves: []
+      },
+      [FORM_IDS.galarian]: {
+        hp: 170, attack: 85, defense: 100, spAtk: 130, spDef: 130, speed: 50,
+        types: [TYPES.poison, TYPES.psychic], moves: []
+      },
     },
   },
   200: {
@@ -2329,7 +2374,10 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Forretress",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.steel], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 150, attack: 110, defense: 160, spAtk: 80, spDef: 80, speed: 60,
+        types: [TYPES.bug, TYPES.steel], moves: []
+      },
     },
   },
   206: {
