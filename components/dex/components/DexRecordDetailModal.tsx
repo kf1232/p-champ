@@ -78,10 +78,20 @@ function MatchupColumn({
               attackerSpread: getSpread(e.key),
               defenderSpread: getSpread(defender.key),
             });
+            const mirror = e.key === defender.key;
             const speedTitle =
               speedDiff === null
                 ? "Speed"
-                : `Speed (attacker Spe − defender Spe, incl. spread)`;
+                : mirror
+                  ? "Speed: incoming uses base Spe; your Pokémon uses spread"
+                  : "Speed (attacker Spe − defender Spe, incl. spread)";
+            const physTitle = mirror
+              ? "Physical: incoming uses base Atk; your Pokémon uses spread on Def"
+              : "Physical (Atk − defender Def)";
+            const specTitle = mirror
+              ? "Special: incoming uses base Sp.Atk; your Pokémon uses spread on Sp.Def"
+              : "Special (Sp.Atk − defender Sp.Def)";
+
             return (
               <li
                 key={e.key}
@@ -98,14 +108,14 @@ function MatchupColumn({
                 <div className="grid grid-cols-3 items-center gap-x-2 text-sm tabular-nums text-black/60">
                   <span
                     className="flex min-w-0 items-center justify-start gap-1.5"
-                    title="Physical (Atk − defender Def)"
+                    title={physTitle}
                   >
                     <PhysicalDamageCategoryIcon className="h-4 w-4 shrink-0 text-orange-600" />
                     {formatSignedBaseStatDiff(phys)}
                   </span>
                   <span
                     className="flex min-w-0 items-center justify-center gap-1.5"
-                    title="Special (Sp.Atk − defender Sp.Def)"
+                    title={specTitle}
                   >
                     <SpecialDamageCategoryIcon className="h-4 w-4 shrink-0 text-sky-600" />
                     {formatSignedBaseStatDiff(spec)}

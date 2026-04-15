@@ -9,6 +9,19 @@ function isUsableBaseStat(n: number | undefined): n is number {
 }
 
 /**
+ * Same species+form row as the defender: treat the attacker as **incoming** (dex base only).
+ * Your spread still applies to the defender you’re analyzing.
+ */
+function effectiveAttackerSpreadForDexComparison(
+  attacker: DexDisplayEntry,
+  defender: DexDisplayEntry,
+  attackerSpread: StatSpread,
+): StatSpread {
+  if (attacker.key === defender.key) return ZERO_STAT_SPREAD;
+  return attackerSpread;
+}
+
+/**
  * Physical / special “edges” for an attacker against a defender using **base stats** only.
  *
  * - **phys**: attacker `attack` minus defender `defense` (same units as base stats).
@@ -28,6 +41,10 @@ export type AttackerDefenderStatSpreadOptions = {
   defenderSpread?: StatSpread;
 };
 
+/**
+ * If `attacker.key === defender.key`, attacker spread is ignored (incoming uses dex bases;
+ * defender spread still applies to the Pokémon you’re viewing).
+ */
 export function attackerVsDefenderBaseStatDiffs(
   attacker: DexDisplayEntry,
   defender: DexDisplayEntry,
@@ -35,8 +52,9 @@ export function attackerVsDefenderBaseStatDiffs(
 ): { phys: number | null; spec: number | null } {
   const a = attacker.form;
   const d = defender.form;
-  const as = options?.attackerSpread ?? ZERO_STAT_SPREAD;
+  const rawAs = options?.attackerSpread ?? ZERO_STAT_SPREAD;
   const ds = options?.defenderSpread ?? ZERO_STAT_SPREAD;
+  const as = effectiveAttackerSpreadForDexComparison(attacker, defender, rawAs);
   if (!a || !d) return { phys: null, spec: null };
 
   const phys =
@@ -51,7 +69,10 @@ export function attackerVsDefenderBaseStatDiffs(
   return { phys, spec };
 }
 
-/** Attacker base Speed minus defender base Speed (positive = attacker outspeeds). */
+/**
+ * Attacker Speed minus defender Speed (positive = attacker outspeeds).
+ * Mirror row: incoming attacker uses base Spe only; defender uses spread.
+ */
 export function attackerVsDefenderBaseSpeedDiff(
   attacker: DexDisplayEntry,
   defender: DexDisplayEntry,
@@ -59,8 +80,9 @@ export function attackerVsDefenderBaseSpeedDiff(
 ): number | null {
   const a = attacker.form;
   const d = defender.form;
-  const as = options?.attackerSpread ?? ZERO_STAT_SPREAD;
+  const rawAs = options?.attackerSpread ?? ZERO_STAT_SPREAD;
   const ds = options?.defenderSpread ?? ZERO_STAT_SPREAD;
+  const as = effectiveAttackerSpreadForDexComparison(attacker, defender, rawAs);
   if (!a || !d) return null;
   if (!isUsableBaseStat(a.speed) || !isUsableBaseStat(d.speed)) return null;
   return a.speed + as.speed - (d.speed + ds.speed);
