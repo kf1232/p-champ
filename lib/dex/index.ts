@@ -42,6 +42,12 @@ export type { DexDisplayEntry } from "./display";
 export { TYPE_BADGE_CLASSES, formatTypeLabel } from "./typeBadgeStyles";
 
 export {
+  attackerVsDefenderBaseStatDiffs,
+  compareDexEntriesByAttackerVsDefenderStats,
+  formatSignedBaseStatDiff,
+} from "./attackerDefenderStatDiff";
+
+export {
   bestStabMultiplier,
   classifyDexEntriesByBestStabVsDefender,
   computeSelectorTeamMatchupPerSlot,

@@ -2,11 +2,17 @@
 
 import { useEffect, useMemo } from "react";
 
+import {
+  PhysicalDamageCategoryIcon,
+  SpecialDamageCategoryIcon,
+} from "@/components/dex/components/MoveDamageCategoryIcons";
 import { TypeBadges } from "@/components/team-builder/TypeBadges";
 import {
   DEX_STAT_TODO,
+  attackerVsDefenderBaseStatDiffs,
   classifyDexEntriesByBestStabVsDefender,
   formatDexTileDisplayName,
+  formatSignedBaseStatDiff,
   getDexEntryTypeNames,
 } from "@/lib/dex";
 import type { DexDisplayEntry } from "@/lib/dex";
@@ -33,10 +39,12 @@ function statPill(label: string, value: number | undefined) {
 function MatchupColumn({
   title,
   subtitle,
+  defender,
   entries,
 }: {
   title: string;
   subtitle: string;
+  defender: DexDisplayEntry;
   entries: DexDisplayEntry[];
 }) {
   return (
@@ -52,17 +60,30 @@ function MatchupColumn({
         {entries.length === 0 ? (
           <li className="px-2 py-4 text-center text-sm text-black/45">None</li>
         ) : (
-          entries.map((e) => (
-            <li
-              key={e.key}
-              className="flex flex-col gap-1 rounded-lg border border-transparent px-2 py-1.5 hover:border-black/10 hover:bg-white/80"
-            >
-              <span className="text-sm font-medium leading-snug text-black">
-                {formatDexTileDisplayName(e.dexName, e.formId)}
-              </span>
-              <TypeBadges typeNames={getDexEntryTypeNames(e)} size="compact" />
-            </li>
-          ))
+          entries.map((e) => {
+            const { phys, spec } = attackerVsDefenderBaseStatDiffs(e, defender);
+            return (
+              <li
+                key={e.key}
+                className="flex flex-col gap-1 rounded-lg border border-transparent px-2 py-1.5 hover:border-black/10 hover:bg-white/80"
+              >
+                <span className="text-sm font-medium leading-snug text-black">
+                  {formatDexTileDisplayName(e.dexName, e.formId)}
+                </span>
+                <TypeBadges typeNames={getDexEntryTypeNames(e)} size="compact" />
+                <div className="flex justify-between gap-3 text-xs tabular-nums text-black/55">
+                  <span className="flex min-w-0 items-center gap-1" title="Physical">
+                    <PhysicalDamageCategoryIcon className="shrink-0 text-orange-600" />
+                    {formatSignedBaseStatDiff(phys)}
+                  </span>
+                  <span className="flex min-w-0 items-center gap-1" title="Special">
+                    <SpecialDamageCategoryIcon className="shrink-0 text-sky-600" />
+                    {formatSignedBaseStatDiff(spec)}
+                  </span>
+                </div>
+              </li>
+            );
+          })
         )}
       </ul>
     </div>
@@ -161,16 +182,19 @@ export function DexRecordDetailModal({
             <MatchupColumn
               title="Neutral"
               subtitle="1× best STAB"
+              defender={record}
               entries={buckets.neutral}
             />
             <MatchupColumn
               title="Effective"
               subtitle="2× best STAB"
+              defender={record}
               entries={buckets.effective}
             />
             <MatchupColumn
               title="Super effective"
               subtitle="4× or higher best STAB"
+              defender={record}
               entries={buckets.superEffective}
             />
           </div>
