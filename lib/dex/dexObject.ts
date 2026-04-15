@@ -78,7 +78,15 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Venusaur",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.poison], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 155,
+        attack: 102,
+        defense: 103,
+        spAtk: 120,
+        spDef: 120,
+        speed: 100,
+        types: [TYPES.grass, TYPES.poison], moves: []
+      },
       "form-mega-venusaur": { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.poison], moves: [] },
     },
   },
@@ -103,7 +111,15 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Charizard",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.flying], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 153,
+        attack: 104,
+        defense: 98,
+        spAtk: 129,
+        spDef: 105,
+        speed: 120,
+        types: [TYPES.fire, TYPES.flying], moves: []
+      },
       "form-mega-charizard-x": { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.dragon], moves: [] },
       "form-mega-charizard-y": { ...DEX_FORM_STATS_TODO, types: [TYPES.fire, TYPES.flying], moves: [] },
     },
@@ -129,7 +145,15 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Blastoise",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 154,
+        attack: 103,
+        defense: 120,
+        spAtk: 105,
+        spDef: 125,
+        speed: 98,
+        types: [TYPES.water], moves: []
+      },
       "form-mega-blastoise": { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
     },
   },
@@ -178,7 +202,16 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Beedrill",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.poison], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 140,
+        attack: 110,
+        defense: 60,
+        spAtk: 65,
+        spDef: 100,
+        speed: 95,
+        types: [TYPES.bug, TYPES.poison],
+        moves: []
+      },
       "form-mega-beedrill": { ...DEX_FORM_STATS_TODO, types: [TYPES.bug, TYPES.poison], moves: [] },
     },
   },
@@ -203,7 +236,16 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Pidgeot",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 158,
+        attack: 100,
+        defense: 95,
+        spAtk: 90,
+        spDef: 90,
+        speed: 121,
+        types: [TYPES.normal, TYPES.flying],
+        moves: []
+      },
       "form-mega-pidgeot": { ...DEX_FORM_STATS_TODO, types: [TYPES.normal, TYPES.flying], moves: [] },
     },
   },
@@ -254,7 +296,16 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Arbok",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 135,
+        attack: 115,
+        defense: 89,
+        spAtk: 85,
+        spDef: 99,
+        speed: 100,
+        types: [TYPES.poison],
+        moves: []
+      },
     },
   },
   25: {
@@ -262,7 +313,16 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Pikachu",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 110,
+        attack: 75,
+        defense: 60,
+        spAtk: 70,
+        spDef: 70,
+        speed: 110,
+        types: [TYPES.electric],
+        moves: []
+      },
       "form-partner-pikachu": { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
     },
   },
@@ -271,8 +331,26 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Raichu",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric], moves: [] },
-      [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.electric, TYPES.psychic], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 135,
+        attack: 110,
+        defense: 75,
+        spAtk: 110,
+        spDef: 100,
+        speed: 130,
+        types: [TYPES.electric],
+        moves: []
+      },
+      [FORM_IDS.aloan]: {
+        hp: 135,
+        attack: 105,
+        defense: 70,
+        spAtk: 115,
+        spDef: 105,
+        speed: 130,
+        types: [TYPES.electric, TYPES.psychic],
+        moves: []
+      },
     },
   },
   27: {
@@ -354,7 +432,16 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Clefable",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fairy], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 170,
+        attack: 90,
+        defense: 93,
+        spAtk: 115,
+        spDef: 110,
+        speed: 80,
+        types: [TYPES.fairy],
+        moves: []
+      },
     },
   },
   37: {
@@ -371,8 +458,26 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Ninetales",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fire], moves: [] },
-      [FORM_IDS.aloan]: { ...DEX_FORM_STATS_TODO, types: [TYPES.ice, TYPES.fairy], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 148,
+        attack: 96,
+        defense: 95,
+        spAtk: 101,
+        spDef: 120,
+        speed: 120,
+        types: [TYPES.fire],
+        moves: []
+      },
+      [FORM_IDS.aloan]: {
+        hp: 148,
+        attack: 87,
+        defense: 95,
+        spAtk: 101,
+        spDef: 120,
+        speed: 129,
+        types: [TYPES.ice, TYPES.fairy],
+        moves: []
+      },
     },
   },
   39: {
@@ -9244,7 +9349,8 @@ export const dexObject: Record<number, DexRecord> = {
     forms: {
       [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.ghost], moves: [] },
     },
-  },};
+  },
+};
 
 export function getDexIds(): number[] {
   return Object.keys(dexObject)
