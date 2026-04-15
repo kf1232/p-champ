@@ -1,6 +1,8 @@
 import { DEX_STAT_TODO } from "./dexObject";
 import type { DexDisplayEntry } from "./display";
 import { formatDexTileDisplayName } from "./display";
+import type { StatSpread } from "./statSpread";
+import { ZERO_STAT_SPREAD } from "./statSpread";
 
 function isUsableBaseStat(n: number | undefined): n is number {
   return n !== undefined && n !== DEX_STAT_TODO;
@@ -21,24 +23,61 @@ function isUsableBaseStat(n: number | undefined): n is number {
  * defenses is enough—no z-score or population normalization is required. Relative order
  * of gaps is stable for typical comparisons; treat values as an index, not exact damage.
  */
+export type AttackerDefenderStatSpreadOptions = {
+  attackerSpread?: StatSpread;
+  defenderSpread?: StatSpread;
+};
+
 export function attackerVsDefenderBaseStatDiffs(
   attacker: DexDisplayEntry,
   defender: DexDisplayEntry,
+  options?: AttackerDefenderStatSpreadOptions,
 ): { phys: number | null; spec: number | null } {
   const a = attacker.form;
   const d = defender.form;
+  const as = options?.attackerSpread ?? ZERO_STAT_SPREAD;
+  const ds = options?.defenderSpread ?? ZERO_STAT_SPREAD;
   if (!a || !d) return { phys: null, spec: null };
 
   const phys =
     isUsableBaseStat(a.attack) && isUsableBaseStat(d.defense)
-      ? a.attack - d.defense
+      ? a.attack + as.atk - (d.defense + ds.def)
       : null;
   const spec =
     isUsableBaseStat(a.spAtk) && isUsableBaseStat(d.spDef)
-      ? a.spAtk - d.spDef
+      ? a.spAtk + as.spAtk - (d.spDef + ds.spDef)
       : null;
 
   return { phys, spec };
+}
+
+/** Attacker base Speed minus defender base Speed (positive = attacker outspeeds). */
+export function attackerVsDefenderBaseSpeedDiff(
+  attacker: DexDisplayEntry,
+  defender: DexDisplayEntry,
+  options?: AttackerDefenderStatSpreadOptions,
+): number | null {
+  const a = attacker.form;
+  const d = defender.form;
+  const as = options?.attackerSpread ?? ZERO_STAT_SPREAD;
+  const ds = options?.defenderSpread ?? ZERO_STAT_SPREAD;
+  if (!a || !d) return null;
+  if (!isUsableBaseStat(a.speed) || !isUsableBaseStat(d.speed)) return null;
+  return a.speed + as.speed - (d.speed + ds.speed);
+}
+
+export type SpeedMatchupTierLabel = "++" | "+" | "=" | "-" | "--";
+
+/** Tier from base Speed difference: ++ (≥15), + (1–14), = (0), − (−1 to −14), −− (≤−15). */
+export function speedMatchupTierLabelFromDiff(
+  diff: number | null,
+): SpeedMatchupTierLabel | null {
+  if (diff === null) return null;
+  if (diff >= 15) return "++";
+  if (diff >= 1) return "+";
+  if (diff === 0) return "=";
+  if (diff <= -15) return "--";
+  return "-";
 }
 
 function maxEdge(d: { phys: number | null; spec: number | null }): number {
@@ -55,9 +94,17 @@ export function compareDexEntriesByAttackerVsDefenderStats(
   a: DexDisplayEntry,
   b: DexDisplayEntry,
   defender: DexDisplayEntry,
+  getSpread?: (key: string) => StatSpread,
 ): number {
-  const da = attackerVsDefenderBaseStatDiffs(a, defender);
-  const db = attackerVsDefenderBaseStatDiffs(b, defender);
+  const g = getSpread ?? (() => ZERO_STAT_SPREAD);
+  const da = attackerVsDefenderBaseStatDiffs(a, defender, {
+    attackerSpread: g(a.key),
+    defenderSpread: g(defender.key),
+  });
+  const db = attackerVsDefenderBaseStatDiffs(b, defender, {
+    attackerSpread: g(b.key),
+    defenderSpread: g(defender.key),
+  });
 
   const primary = maxEdge(db) - maxEdge(da);
   if (primary !== 0) return primary;
