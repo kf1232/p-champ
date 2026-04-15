@@ -776,7 +776,16 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Alakazam",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 130,
+        attack: 70,
+        defense: 65,
+        spAtk: 155,
+        spDef: 115,
+        speed: 140,
+        types: [TYPES.psychic],
+        moves: []
+      },
       "form-mega-alakazam": { ...DEX_FORM_STATS_TODO, types: [TYPES.psychic], moves: [] },
     },
   },
@@ -801,7 +810,15 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Machamp",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.fighting], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 165,
+        attack: 150,
+        defense: 100,
+        spAtk: 85,
+        spDef: 105,
+        speed: 75,
+        types: [TYPES.fighting], moves: []
+      },
     },
   },
   69: {
@@ -825,7 +842,15 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Victreebel",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.poison], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 155,
+        attack: 125,
+        defense: 85,
+        spAtk: 120,
+        spDef: 90,
+        speed: 90,
+        types: [TYPES.grass, TYPES.poison], moves: []
+      },
       "form-mega-victreebel": { ...DEX_FORM_STATS_TODO, types: [TYPES.grass, TYPES.poison], moves: [] },
     },
   },
@@ -904,9 +929,25 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Slowbro",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.psychic], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 170,
+        attack: 95,
+        defense: 130,
+        spAtk: 120,
+        spDef: 100,
+        speed: 50,
+        types: [TYPES.water, TYPES.psychic], moves: []
+      },
       "form-mega-slowbro": { ...DEX_FORM_STATS_TODO, types: [TYPES.water, TYPES.psychic], moves: [] },
-      [FORM_IDS.galarian]: { ...DEX_FORM_STATS_TODO, types: [TYPES.poison, TYPES.psychic], moves: [] },
+      [FORM_IDS.galarian]: {
+        hp: 170,
+        attack: 120,
+        defense: 115,
+        spAtk: 120,
+        spDef: 90,
+        speed: 50,
+        types: [TYPES.poison, TYPES.psychic], moves: []
+      },
     },
   },
   81: {
@@ -1397,7 +1438,16 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Staryu",
     games: { [GAME_IDS.CHAMPIONS]: false },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.water], moves: [] },
+      [FORM_IDS.base]: {
+        hp: 135,
+        attack: 95,
+        defense: 105,
+        spAtk: 120,
+        spDef: 105,
+        speed: 135,
+        types: [TYPES.water],
+        moves: []
+      },
     },
   },
   121: {
