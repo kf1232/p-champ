@@ -143,9 +143,7 @@ export function TeamBuilderScreen() {
   const [typeFilterA, setTypeFilterA] = useState<TypeName | null>(null);
   const [typeFilterB, setTypeFilterB] = useState<TypeName | null>(null);
   const [nameFilter, setNameFilter] = useState("");
-  const [gridSort, setGridSort] = useState<
-    "default" | "threat-desc" | "threat-asc"
-  >("default");
+  const [gridSort, setGridSort] = useState<"default" | "threat-desc" | "threat-asc">("default");
   const [flashSlotIndex, setFlashSlotIndex] = useState<number | null>(null);
   const [selectorDetailEntry, setSelectorDetailEntry] =
     useState<DexDisplayEntry | null>(null);
@@ -153,13 +151,14 @@ export function TeamBuilderScreen() {
     null,
   );
 
-  useEffect(() => {
-    setTeamSlots((prev) =>
-      prev.map((slot) =>
+  /** Slots for the current game view; entries invalid for the selected game are shown empty but stay in state until replaced. */
+  const teamSlotsForView = useMemo(
+    () =>
+      teamSlots.map((slot) =>
         slot && !isTeamEntryValidForView(slot, selectedGameId) ? null : slot,
       ),
-    );
-  }, [selectedGameId]);
+    [teamSlots, selectedGameId],
+  );
 
   useEffect(() => {
     return () => {
@@ -194,8 +193,8 @@ export function TeamBuilderScreen() {
 
   /** National dex numbers already occupying a team slot (one form per species). */
   const teamDexNumbers = useMemo(
-    () => new Set(teamSlots.flatMap((s) => (s ? [s.dexNumber] : []))),
-    [teamSlots],
+    () => new Set(teamSlotsForView.flatMap((s) => (s ? [s.dexNumber] : []))),
+    [teamSlotsForView],
   );
 
   const matchupByKey = useMemo(() => {
@@ -203,11 +202,11 @@ export function TeamBuilderScreen() {
     for (const row of selectorNames) {
       m.set(
         row.entry.key,
-        computeSelectorTeamMatchupPerSlot(row.entry, teamSlots),
+        computeSelectorTeamMatchupPerSlot(row.entry, teamSlotsForView),
       );
     }
     return m;
-  }, [selectorNames, teamSlots]);
+  }, [selectorNames, teamSlotsForView]);
 
   const sortedSelectorNames = useMemo(() => {
     const rows = selectorNames.slice();
@@ -289,7 +288,7 @@ export function TeamBuilderScreen() {
 
   const hasActiveFilters =
     typeFilterA !== null || typeFilterB !== null || nameFilter.trim() !== "";
-  const hasTeamMembers = teamSlots.some((s) => s !== null);
+  const hasTeamMembers = teamSlotsForView.some((s) => s !== null);
 
   return (
     <div className="flex h-dvh max-h-dvh min-h-0 flex-col overflow-hidden">
@@ -314,7 +313,7 @@ export function TeamBuilderScreen() {
               className="grid min-h-0 flex-1 grid-cols-2 gap-2 overflow-y-auto pr-0.5"
               aria-label="Team slots"
             >
-              {teamSlots.map((slot, i) => (
+              {teamSlotsForView.map((slot, i) => (
                 <li
                   key={i}
                   className={[
