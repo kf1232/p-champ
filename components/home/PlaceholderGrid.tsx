@@ -1,34 +1,36 @@
 import Link from "next/link";
 
-import { P_CHAMP_DEX_PATH, P_CHAMP_TEAM_BUILDER_PATH } from "@/lib/site";
+import {
+  P_CHAMP_DEX_PATH,
+  P_CHAMP_TEAM_BUILDER_PATH,
+} from "@/lib/site";
 
 type PlaceholderGridProps = {
   count?: number;
 };
+
+type GridLink = { href: string; label: string; ariaLabel: string };
+
+/** First cells map to feature apps; remaining slots are inactive placeholders. */
+const GRID_LINKS: (GridLink | null)[] = [
+  { href: P_CHAMP_DEX_PATH, label: "Dex", ariaLabel: "Go to Dex" },
+  {
+    href: P_CHAMP_TEAM_BUILDER_PATH,
+    label: "Team Builder",
+    ariaLabel: "Go to Team Builder",
+  },
+];
 
 export function PlaceholderGrid({ count = 9 }: PlaceholderGridProps) {
   return (
     <section aria-label="Feature grid" className="mt-8">
       <div className="grid grid-cols-3 gap-3 sm:gap-4">
         {Array.from({ length: count }).map((_, i) => {
-          const isDex = i === 0;
-          const isTeamBuilder = i === 1;
-          const isActive = isDex || isTeamBuilder;
-          const href = isDex
-            ? P_CHAMP_DEX_PATH
-            : isTeamBuilder
-              ? P_CHAMP_TEAM_BUILDER_PATH
-              : "#";
-          const label = isDex
-            ? "Dex"
-            : isTeamBuilder
-              ? "Team Builder"
-              : `Placeholder ${i + 1}`;
-          const ariaLabel = isDex
-            ? "Go to Dex"
-            : isTeamBuilder
-              ? "Go to Team Builder"
-              : `Placeholder ${i + 1}`;
+          const link = GRID_LINKS[i] ?? null;
+          const isActive = link !== null;
+          const href = link?.href ?? "#";
+          const label = link?.label ?? `Placeholder ${i + 1}`;
+          const ariaLabel = link?.ariaLabel ?? `Placeholder ${i + 1}`;
 
           return (
             <Link

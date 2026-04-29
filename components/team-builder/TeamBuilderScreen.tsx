@@ -178,13 +178,27 @@ export function TeamBuilderScreen() {
     null,
   );
 
+  /**
+   * Hydrate identity-only drag placeholders with full catalog rows once `dexEntries` is
+   * available — derived state (no effect + setState).
+   */
+  const hydratedTeamSlots = useMemo(
+    () =>
+      teamSlots.map((slot) => {
+        if (!slot || slot.form) return slot;
+        const r = resolveDexDisplayEntryFromCatalog(slot, dexEntries);
+        return r.form ? r : slot;
+      }),
+    [teamSlots, dexEntries],
+  );
+
   /** Slots for the current game view; entries invalid for the selected game are shown empty but stay in state until replaced. */
   const teamSlotsForView = useMemo(
     () =>
-      teamSlots.map((slot) =>
+      hydratedTeamSlots.map((slot) =>
         slot && !isTeamEntryValidForView(slot, selectedGameId) ? null : slot,
       ),
-    [teamSlots, selectedGameId],
+    [hydratedTeamSlots, selectedGameId],
   );
 
   useEffect(() => {
@@ -194,23 +208,6 @@ export function TeamBuilderScreen() {
       }
     };
   }, []);
-
-  /** Hydrate team entries from drag (identity-only) with full `form` once `dexEntries` is available. */
-  useEffect(() => {
-    setTeamSlots((prev) => {
-      let changed = false;
-      const next = prev.map((slot) => {
-        if (!slot || slot.form) return slot;
-        const r = resolveDexDisplayEntryFromCatalog(slot, dexEntries);
-        if (r.form) {
-          changed = true;
-          return r;
-        }
-        return slot;
-      });
-      return changed ? next : prev;
-    });
-  }, [dexEntries]);
 
   const nameFilterNorm = nameFilter.trim().toLowerCase();
 
