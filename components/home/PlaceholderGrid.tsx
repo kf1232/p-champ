@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { P_CHAMP_DEX_PATH, P_CHAMP_TEAM_BUILDER_PATH } from "@/lib/site";
+
 type PlaceholderGridProps = {
   count?: number;
 };
@@ -12,7 +14,11 @@ export function PlaceholderGrid({ count = 9 }: PlaceholderGridProps) {
           const isDex = i === 0;
           const isTeamBuilder = i === 1;
           const isActive = isDex || isTeamBuilder;
-          const href = isDex ? "/dex" : isTeamBuilder ? "/team-builder" : "#";
+          const href = isDex
+            ? P_CHAMP_DEX_PATH
+            : isTeamBuilder
+              ? P_CHAMP_TEAM_BUILDER_PATH
+              : "#";
           const label = isDex
             ? "Dex"
             : isTeamBuilder

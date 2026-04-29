@@ -2401,7 +2401,8 @@ export const dexObject: Record<number, DexRecord> = {
     dexName: "Steelix",
     games: { [GAME_IDS.CHAMPIONS]: true },
     forms: {
-      [FORM_IDS.base]: { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.ground], moves: [] },
+      [FORM_IDS.base]: { hp:150, attack: 85, defense: 135, spAtk: 130, spDef: 100, speed: 50,
+        types: [TYPES.steel, TYPES.ground], moves: [] },
       "form-mega-steelix": { ...DEX_FORM_STATS_TODO, types: [TYPES.steel, TYPES.ground], moves: [] },
     },
   },
