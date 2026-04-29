@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
+@import "../components/photography/styles/photography.css";
+
 @keyframes team-slot-flash {
   0% {
     background-color: rgb(228 228 231 / 0.9);
   }
+
   100% {
     background-color: rgb(255 255 255 / 0.6);
   }

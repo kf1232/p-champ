@@ -1,0 +1,398 @@
+/**
+ * Photography feature — plain CSS (no Tailwind @apply).
+ * Loaded via app/globals.css. Prefix `photography-` avoids clashes.
+ */
+
+/* PhotographyScreen */
+.photography-screen-root {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+.photography-screen-header {
+  width: 100%;
+  border-bottom: 1px solid rgb(0 0 0 / 0.1);
+  background-color: rgb(255 255 255 / 0.7);
+  backdrop-filter: blur(8px);
+}
+
+.photography-screen-header-inner {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  max-width: 64rem;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.photography-screen-portal-link {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: rgb(0 0 0 / 0.7);
+}
+
+.photography-screen-portal-link:hover {
+  color: rgb(0 0 0);
+}
+
+.photography-screen-breadcrumb-sep {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  color: rgb(0 0 0 / 0.3);
+}
+
+.photography-screen-breadcrumb-current {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: rgb(0 0 0);
+}
+
+.photography-screen-main {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 64rem;
+  flex: 1 1 0%;
+  padding: 2.5rem 1.5rem;
+}
+
+.photography-screen-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.photography-screen-title {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: rgb(0 0 0);
+}
+
+.photography-screen-description {
+  max-width: 65ch;
+  color: rgb(0 0 0 / 0.7);
+}
+
+/* PhotographyContentGrid */
+.photography-grid-section {
+  margin-top: 2rem;
+}
+
+.photography-grid-inner {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .photography-grid-inner {
+    gap: 1rem;
+  }
+}
+
+.photography-grid-placeholder-row {
+  display: flex;
+  width: 100%;
+  aspect-ratio: 3 / 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 1px dashed rgb(0 0 0 / 0.15);
+  background-color: rgb(0 0 0 / 0.02);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: rgb(0 0 0 / 0.35);
+}
+
+/* PhotographyEntryRow */
+.photography-entry-article {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  background-color: rgb(255 255 255 / 0.6);
+}
+
+@media (min-width: 768px) {
+  .photography-entry-article {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.photography-entry-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(0 0 0 / 0.1);
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .photography-entry-info {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .photography-entry-info {
+    border-bottom-width: 0;
+    border-right: 1px solid rgb(0 0 0 / 0.1);
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+}
+
+.photography-entry-title {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: rgb(0 0 0);
+}
+
+@media (min-width: 640px) {
+  .photography-entry-title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+.photography-entry-date {
+  margin-top: 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgb(0 0 0 / 0.7);
+}
+
+.photography-entry-gated-link-wrap {
+  margin-top: 0.75rem;
+  max-width: 14rem;
+  text-align: center;
+}
+
+.photography-entry-detail-section {
+  padding: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .photography-entry-detail-section {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .photography-entry-detail-section {
+    grid-column: span 2 / span 2;
+    padding: 0.75rem 1rem;
+  }
+}
+
+.photography-entry-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.375rem;
+}
+
+@media (min-width: 640px) {
+  .photography-entry-detail-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+}
+
+.photography-entry-slot-empty {
+  display: flex;
+  height: 5rem;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  border: 1px dashed rgb(0 0 0 / 0.15);
+  background-color: rgb(0 0 0 / 0.03);
+}
+
+.photography-entry-detail-thumb-wrap {
+  position: relative;
+  height: 5rem;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  background-color: rgb(0 0 0 / 0.04);
+}
+
+.photography-entry-detail-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.photography-gated-link--text {
+  display: inline;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: rgb(0 0 0 / 0.8);
+  text-decoration: underline;
+  text-decoration-color: rgb(0 0 0 / 0.25);
+  text-underline-offset: 2px;
+}
+
+.photography-gated-link--text:hover {
+  color: rgb(0 0 0);
+}
+
+.photography-gated-link--thumb {
+  display: block;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  text-align: left;
+}
+
+.photography-gated-link--thumb:focus {
+  outline: none;
+}
+
+.photography-gated-link--thumb:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(0 0 0 / 0.3);
+}
+
+/* GatedGalleryLink modal */
+.photography-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0 0 0 / 0.4);
+  padding: 1rem;
+}
+
+.photography-modal-dialog {
+  width: 100%;
+  max-width: 24rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  background-color: rgb(255 255 255);
+  padding: 1.25rem;
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.photography-modal-title {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: rgb(0 0 0);
+}
+
+.photography-modal-description {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgb(0 0 0 / 0.7);
+}
+
+.photography-modal-form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.photography-modal-label {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: rgb(0 0 0);
+}
+
+.photography-modal-input {
+  margin-top: 0.375rem;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(0 0 0 / 0.15);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgb(0 0 0);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.photography-modal-input:focus {
+  border-color: rgb(0 0 0 / 0.3);
+  outline: none;
+  box-shadow:
+    0 0 0 2px rgb(255 255 255),
+    0 0 0 4px rgb(0 0 0 / 0.1);
+}
+
+.photography-modal-error {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgb(185 28 28);
+}
+
+.photography-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding-top: 0.25rem;
+}
+
+.photography-modal-btn-cancel {
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: rgb(0 0 0 / 0.7);
+}
+
+.photography-modal-btn-cancel:hover {
+  background-color: rgb(0 0 0 / 0.05);
+}
+
+.photography-modal-btn-submit {
+  border-radius: 0.375rem;
+  border: none;
+  background-color: rgb(0 0 0);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: rgb(255 255 255);
+}
+
+.photography-modal-btn-submit:hover {
+  background-color: rgb(0 0 0 / 0.9);
+}
+
+.photography-modal-btn-submit:disabled {
+  opacity: 0.5;
+}
