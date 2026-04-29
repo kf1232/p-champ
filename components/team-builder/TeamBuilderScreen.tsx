@@ -160,8 +160,17 @@ export function TeamBuilderScreen() {
   const [nameFilter, setNameFilter] = useState("");
   const [gridSort, setGridSort] = useState<"default" | "threat-desc" | "threat-asc">("default");
   const [flashSlotIndex, setFlashSlotIndex] = useState<number | null>(null);
-  const [selectorDetailEntry, setSelectorDetailEntry] =
-    useState<DexDisplayEntry | null>(null);
+  /**
+   * Detail modal navigation: each layer is a Pokémon + optional team-scoped matchup list.
+   * Opening a threat from matchups pushes; Back pops to the previous layer (e.g. your team mon).
+   */
+  const [detailModalStack, setDetailModalStack] = useState<
+    {
+      entry: DexDisplayEntry;
+      matchupRecordsForBuckets?: readonly DexDisplayEntry[];
+    }[]
+  >([]);
+  const [selectorTeamOnly, setSelectorTeamOnly] = useState(false);
   const [statSpreadByKey, setStatSpreadByKey] = useState<
     Record<string, StatSpread>
   >({});
@@ -205,9 +214,16 @@ export function TeamBuilderScreen() {
 
   const nameFilterNorm = nameFilter.trim().toLowerCase();
 
+  /** Form keys currently on the team (for “team only” selector filter). */
+  const teamSlotKeys = useMemo(
+    () => new Set(teamSlotsForView.flatMap((s) => (s ? [s.key] : []))),
+    [teamSlotsForView],
+  );
+
   const filteredDexEntries = useMemo(() => {
     return dexEntries.filter((e) => {
       if (!dexEntryMatchesTypeFilters(e, typeFilterA, typeFilterB)) return false;
+      if (selectorTeamOnly && !teamSlotKeys.has(e.key)) return false;
       if (!nameFilterNorm) return true;
       const label = formatDexTileDisplayName(e.dexName, e.formId).toLowerCase();
       return (
@@ -215,7 +231,14 @@ export function TeamBuilderScreen() {
         e.dexName.toLowerCase().includes(nameFilterNorm)
       );
     });
-  }, [dexEntries, typeFilterA, typeFilterB, nameFilterNorm]);
+  }, [
+    dexEntries,
+    typeFilterA,
+    typeFilterB,
+    nameFilterNorm,
+    selectorTeamOnly,
+    teamSlotKeys,
+  ]);
 
   const selectorNames = useMemo(
     () =>
@@ -316,11 +339,45 @@ export function TeamBuilderScreen() {
     setTypeFilterA(null);
     setTypeFilterB(null);
     setNameFilter("");
+    setSelectorTeamOnly(false);
   }, []);
 
-  const closeSelectorDetail = useCallback(
-    () => setSelectorDetailEntry(null),
-    [],
+  const detailModalTop = useMemo(
+    () =>
+      detailModalStack.length > 0
+        ? detailModalStack[detailModalStack.length - 1]
+        : null,
+    [detailModalStack],
+  );
+  const modalRecord = detailModalTop?.entry ?? null;
+  const modalMatchupBuckets = detailModalTop?.matchupRecordsForBuckets;
+  const hasPreviousDetailModal = detailModalStack.length > 1;
+
+  /** Pop one layer, or close the modal when only the root layer remains. */
+  const handleModalDismiss = useCallback(() => {
+    setDetailModalStack((prev) => {
+      if (prev.length <= 1) return [];
+      return prev.slice(0, -1);
+    });
+  }, []);
+
+  const openSelectorDetail = useCallback((entry: DexDisplayEntry) => {
+    const resolved = resolveDexDisplayEntryFromCatalog(entry, dexEntries);
+    setDetailModalStack([{ entry: resolved }]);
+  }, [dexEntries]);
+
+  const handleThreatEntryDoubleClick = useCallback(
+    (threat: DexDisplayEntry) => {
+      const resolved = resolveDexDisplayEntryFromCatalog(threat, dexEntries);
+      const teamEntries = teamSlotsForView
+        .filter((s): s is DexDisplayEntry => s !== null)
+        .map((s) => resolveDexDisplayEntryFromCatalog(s, dexEntries));
+      setDetailModalStack((prev) => [
+        ...prev,
+        { entry: resolved, matchupRecordsForBuckets: teamEntries },
+      ]);
+    },
+    [dexEntries, teamSlotsForView],
   );
 
   const handleStatSpreadChange = useCallback(
@@ -331,8 +388,21 @@ export function TeamBuilderScreen() {
   );
 
   const hasActiveFilters =
-    typeFilterA !== null || typeFilterB !== null || nameFilter.trim() !== "";
+    typeFilterA !== null ||
+    typeFilterB !== null ||
+    nameFilter.trim() !== "" ||
+    selectorTeamOnly;
   const hasTeamMembers = teamSlotsForView.some((s) => s !== null);
+
+  /** Detail modal: blue when viewing a slot Pokémon (full dex); red for threat drill-in or selector. */
+  const detailAccentTeam = Boolean(
+    modalRecord &&
+      teamSlotKeys.has(modalRecord.key) &&
+      modalMatchupBuckets === undefined,
+  );
+  const detailModalAccent: "team" | "threat" = detailAccentTeam
+    ? "team"
+    : "threat";
 
   return (
     <div className="flex h-dvh max-h-dvh min-h-0 flex-col overflow-hidden">
@@ -348,11 +418,25 @@ export function TeamBuilderScreen() {
           </p>
         </div>
 
-        <div className="mt-6 flex min-h-0 flex-1 flex-col gap-0 overflow-hidden rounded-xl border border-black/30 bg-white/40 lg:mt-8 lg:flex-row">
+        <div className="mt-6 flex min-h-0 flex-1 flex-col gap-0 overflow-hidden rounded-xl border border-black/30 bg-white/40 lg:mt-8">
+          {/* Workspace status strip (always visible; not part of the site header) */}
+          <div
+            className={[
+              "h-[5px] w-full shrink-0 rounded-t-xl",
+              !modalRecord
+                ? "bg-slate-400/55 shadow-[inset_0_-1px_0_rgba(0,0,0,0.06)]"
+                : detailAccentTeam
+                  ? "bg-blue-600 shadow-[0_3px_10px_-2px_rgba(37,99,235,0.45)]"
+                  : "bg-red-600 shadow-[0_3px_10px_-2px_rgba(220,38,38,0.4)]",
+            ].join(" ")}
+            aria-hidden
+          />
+          <div className="flex min-h-0 flex-1 flex-col overflow-hidden lg:flex-row">
           <section
             aria-label="Team workspace"
             className="flex min-h-0 flex-1 flex-col overflow-hidden border-b border-black/25 p-4 sm:p-5 lg:w-1/3 lg:flex-none lg:border-b-0 lg:border-r lg:border-black/25"
           >
+            <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden rounded-xl border border-black/25 bg-white/50 p-2 shadow-sm sm:p-2.5">
             <ol
               className="grid min-h-0 flex-1 grid-cols-2 gap-2 overflow-y-auto pr-0.5"
               aria-label="Team slots"
@@ -381,7 +465,7 @@ export function TeamBuilderScreen() {
                   onDrop={(e) => handleSlotDrop(i, e)}
                   onDoubleClick={() => {
                     if (slot) {
-                      setSelectorDetailEntry(
+                      openSelectorDetail(
                         resolveDexDisplayEntryFromCatalog(slot, dexEntries),
                       );
                     }
@@ -444,6 +528,7 @@ export function TeamBuilderScreen() {
                 </li>
               ))}
             </ol>
+            </div>
             <div className="shrink-0 border-t border-black/15 pt-3">
               <button
                 type="button"
@@ -462,6 +547,24 @@ export function TeamBuilderScreen() {
             className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden p-4 sm:p-5 lg:w-2/3 lg:flex-none"
           >
             <div className="flex w-full shrink-0 flex-wrap items-end justify-end gap-2 sm:gap-3">
+              <div className="flex min-w-0 flex-col items-end gap-1">
+                <span className="text-[10px] font-semibold uppercase tracking-wide text-black/45">
+                  List
+                </span>
+                <label className="flex cursor-pointer items-center gap-2 rounded-md border border-black/25 bg-white/80 px-2 py-1.5 text-xs text-black shadow-sm select-none">
+                  <input
+                    type="checkbox"
+                    checked={selectorTeamOnly}
+                    disabled={!hasTeamMembers}
+                    onChange={(e) => setSelectorTeamOnly(e.target.checked)}
+                    className="h-3.5 w-3.5 rounded border-black/30 text-black focus:ring-black/20"
+                    aria-label="Show only Pokémon on my team (forms in slots that appear in this list)"
+                  />
+                  <span className={!hasTeamMembers ? "text-black/35" : ""}>
+                    Team only
+                  </span>
+                </label>
+              </div>
               <div className="flex min-w-0 flex-col items-end gap-1">
                 <label
                   htmlFor="team-builder-name-filter"
@@ -567,9 +670,20 @@ export function TeamBuilderScreen() {
               </p>
             ) : filteredDexEntries.length === 0 ? (
               <p className="mt-3 shrink-0 text-sm text-black/50">
-                No Pokémon match the current name or type filters. Adjust the
-                search, choose &quot;Any&quot; for types, or pick two different
-                types (same type in both slots = pure single-type only).
+                {selectorTeamOnly ? (
+                  <>
+                    No Pokémon on your team appear in this list with the
+                    current filters. Turn off &quot;Team only&quot;, or relax
+                    name/type filters.
+                  </>
+                ) : (
+                  <>
+                    No Pokémon match the current name or type filters. Adjust
+                    the search, choose &quot;Any&quot; for types, or pick two
+                    different types (same type in both slots = pure single-type
+                    only).
+                  </>
+                )}
               </p>
             ) : (
               <div className="mt-3 min-h-0 flex-1 overflow-y-auto overflow-x-hidden pr-1 [scrollbar-gutter:stable]">
@@ -608,7 +722,7 @@ export function TeamBuilderScreen() {
                         key={entry.key}
                         draggable
                         title={detailTitle}
-                        onDoubleClick={() => setSelectorDetailEntry(entry)}
+                        onDoubleClick={() => openSelectorDetail(entry)}
                         onDragStart={(e) => {
                           e.dataTransfer.setData(
                             DEX_ENTRY_DRAG_MIME,
@@ -644,15 +758,22 @@ export function TeamBuilderScreen() {
               </div>
             )}
           </section>
+          </div>
         </div>
       </main>
 
       <DexRecordDetailModal
-        record={selectorDetailEntry}
+        record={modalRecord}
         allRecords={dexEntries}
-        onClose={closeSelectorDetail}
+        matchupRecordsForBuckets={modalMatchupBuckets}
+        detailAccent={detailModalAccent}
+        hasPreviousDetail={hasPreviousDetailModal}
+        onClose={handleModalDismiss}
         statSpreadByKey={statSpreadByKey}
         onStatSpreadChange={handleStatSpreadChange}
+        onThreatEntryDoubleClick={
+          hasTeamMembers ? handleThreatEntryDoubleClick : undefined
+        }
       />
     </div>
   );
