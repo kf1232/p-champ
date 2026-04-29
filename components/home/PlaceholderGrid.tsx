@@ -3,7 +3,6 @@ import Link from "next/link";
 import {
   P_CHAMP_DEX_PATH,
   P_CHAMP_TEAM_BUILDER_PATH,
-  PHOTOGRAPHY_HOME_PATH,
 } from "@/lib/site";
 
 type PlaceholderGridProps = {
@@ -19,11 +18,6 @@ const GRID_LINKS: (GridLink | null)[] = [
     href: P_CHAMP_TEAM_BUILDER_PATH,
     label: "Team Builder",
     ariaLabel: "Go to Team Builder",
-  },
-  {
-    href: PHOTOGRAPHY_HOME_PATH,
-    label: "Photography",
-    ariaLabel: "Go to Photography",
   },
 ];
 
