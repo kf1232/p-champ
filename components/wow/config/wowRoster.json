@@ -1,0 +1,54 @@
+{
+  "groups": [
+    {
+      "id": "mythic-saturdays",
+      "name": "Mythic Saturdays",
+      "scheduleLabel": "10am-2pm",
+      "linkUrl": "",
+      "userIds": ["keel", "lolman"]
+    },
+    {
+      "id": "tuesday-raid",
+      "name": "Tuesday Raid",
+      "scheduleLabel": "9pm-12am",
+      "linkUrl": "",
+      "userIds": ["keel", "leech", "roo", "lolman"]
+    }
+  ],
+  "users": [
+    { "id": "keel", "displayName": "Keel" },
+    { "id": "leech", "displayName": "Leech" },
+    { "id": "roo", "displayName": "Roo" },
+    { "id": "lolman", "displayName": "LOLMAN" }
+  ],
+  "characters": [
+    {
+      "id": "loctovan-emerald-dream-us",
+      "userId": "keel",
+      "name": "Loctovan",
+      "characterClass": "Warlock",
+      "profileUrl": "https://worldofwarcraft.blizzard.com/en-us/character/us/emerald-dream/loctovan/"
+    },
+    {
+      "id": "flojob-emerald-dream-us",
+      "userId": "keel",
+      "name": "Flojob",
+      "characterClass": "Paladin",
+      "profileUrl": "https://worldofwarcraft.blizzard.com/en-us/character/us/emerald-dream/flojob/"
+    },
+    {
+      "id": "thunderguns-emerald-dream-us",
+      "userId": "leech",
+      "name": "Thunderguns",
+      "characterClass": "Unknown",
+      "profileUrl": "https://worldofwarcraft.blizzard.com/en-us/character/us/emerald-dream/thunderguns/"
+    },
+    {
+      "id": "roody-akama-us",
+      "userId": "roo",
+      "name": "Roody",
+      "characterClass": "Unknown",
+      "profileUrl": "https://worldofwarcraft.blizzard.com/en-us/character/us/akama/roody/"
+    }
+  ]
+}

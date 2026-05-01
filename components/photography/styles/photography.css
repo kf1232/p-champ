@@ -1,6 +1,6 @@
 /**
  * Photography feature — plain CSS (no Tailwind @apply).
- * Loaded via app/globals.css. Prefix `photography-` avoids clashes.
+ * Loaded via `app/layout.tsx`. Prefix `photography-` avoids clashes.
  */
 
 /* PhotographyScreen */

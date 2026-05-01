@@ -7,23 +7,22 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    
     "sync:move-issues": "node scripts/sync-move-issues.mjs --dry-run",
     "sync:pokemon-form-issues": "node scripts/sync-pokemon-form-issues.mjs --dry-run",
     "sync:type-issues": "node scripts/sync-type-issues.mjs --dry-run",
     "cleanup:workflow-issues": "node scripts/cleanup-workflow-issues.mjs --dry-run",
-
     "sync:move-issues:live": "node scripts/sync-move-issues.mjs",
     "sync:pokemon-form-issues:live": "node scripts/sync-pokemon-form-issues.mjs",
     "sync:type-issues:live": "node scripts/sync-type-issues.mjs",
     "cleanup:workflow-issues:live": "node scripts/cleanup-workflow-issues.mjs",
-
-    "test": "node --test scripts/lib/dex-issue-sync/dex-issue-sync.test.mjs"
+    "test": "node --test scripts/lib/dex-issue-sync/dex-issue-sync.test.mjs",
+    "wow:sample-api": "node scripts/sample-blizzard-profile-responses.mjs"
   },
   "dependencies": {
     "next": "16.2.2",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

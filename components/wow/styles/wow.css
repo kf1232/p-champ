@@ -1,0 +1,666 @@
+/**
+ * WoW groups — same row layout as photography: left = group name / schedule / link,
+ * right = roster counts (Members, Tank, Heal, DPS).
+ * Prefix `wow-` avoids clashes. Imported from `app/layout.tsx`.
+ */
+
+.wow-screen-root {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+.wow-screen-header {
+  width: 100%;
+  border-bottom: 1px solid rgb(0 0 0 / 0.1);
+  background-color: rgb(255 255 255 / 0.7);
+  backdrop-filter: blur(8px);
+}
+
+.wow-screen-header-inner {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  max-width: 64rem;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.wow-screen-portal-link {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: rgb(0 0 0 / 0.7);
+}
+
+.wow-screen-portal-link:hover {
+  color: rgb(0 0 0);
+}
+
+.wow-screen-breadcrumb-sep {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  color: rgb(0 0 0 / 0.3);
+}
+
+.wow-screen-breadcrumb-current {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: rgb(0 0 0);
+}
+
+.wow-screen-main {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 0;
+  width: 100%;
+  max-width: 64rem;
+  flex: 1 1 0%;
+  padding: 2.5rem 1.5rem;
+}
+
+.wow-screen-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wow-screen-title {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: rgb(0 0 0);
+}
+
+.wow-screen-description {
+  max-width: 65ch;
+  color: rgb(0 0 0 / 0.7);
+}
+
+/* Grid */
+.wow-grid-section {
+  margin-top: 2rem;
+}
+
+.wow-grid-inner {
+  display: grid;
+  min-width: 0;
+  width: 100%;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .wow-grid-inner {
+    gap: 1rem;
+  }
+}
+
+.wow-grid-placeholder-row {
+  display: flex;
+  width: 100%;
+  aspect-ratio: 3 / 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 1px dashed rgb(0 0 0 / 0.15);
+  background-color: rgb(0 0 0 / 0.02);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: rgb(0 0 0 / 0.35);
+}
+
+/* Group row */
+.wow-entry-article {
+  display: grid;
+  min-width: 0;
+  width: 100%;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  border-radius: 0.5rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  background-color: rgb(255 255 255 / 0.6);
+}
+
+.wow-group-row-card {
+  position: relative;
+}
+
+.wow-group-row-card:hover {
+  border-color: rgb(0 0 0 / 0.18);
+}
+
+.wow-group-row-overlay-link {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+.wow-group-row-overlay-link:focus {
+  outline: none;
+}
+
+.wow-group-row-overlay-link:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px rgb(0 0 0 / 0.35);
+}
+
+.wow-group-row-pane {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.wow-group-external-link {
+  pointer-events: auto;
+}
+
+.wow-group-external-link-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .wow-entry-article {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.wow-group-metrics-lead {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: rgb(0 0 0);
+}
+
+@media (min-width: 640px) {
+  .wow-group-metrics-lead {
+    font-size: 1.25rem;
+  }
+}
+
+.wow-group-metrics-sub {
+  margin-top: 0.5rem;
+  max-width: 24ch;
+  font-size: 0.875rem;
+  line-height: 1.35rem;
+  color: rgb(0 0 0 / 0.65);
+}
+
+.wow-entry-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(0 0 0 / 0.1);
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .wow-entry-info {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .wow-entry-info {
+    border-bottom-width: 0;
+    border-right: 1px solid rgb(0 0 0 / 0.1);
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+}
+
+.wow-entry-metrics-section {
+  min-width: 0;
+  padding: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .wow-entry-metrics-section {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .wow-entry-metrics-section {
+    grid-column: span 2 / span 2;
+    padding: 0.75rem 1rem;
+  }
+}
+
+.wow-entry-metrics-inner {
+  display: flex;
+  height: 100%;
+  min-height: 8rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(0 0 0 / 0.08);
+  background-color: rgb(0 0 0 / 0.03);
+  padding: 1rem 1.125rem;
+}
+
+.wow-group-counts-inner {
+  align-items: center;
+  text-align: center;
+}
+
+.wow-group-detail-title {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: rgb(0 0 0);
+}
+
+@media (min-width: 640px) {
+  .wow-group-detail-title {
+    font-size: 1.25rem;
+    line-height: 1.6rem;
+  }
+}
+
+.wow-group-schedule {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgb(0 0 0 / 0.65);
+}
+
+.wow-group-link-wrap {
+  margin-top: 0.75rem;
+}
+
+.wow-group-link {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: rgb(0 0 0 / 0.8);
+  text-decoration: underline;
+  text-decoration-color: rgb(0 0 0 / 0.25);
+  text-underline-offset: 2px;
+}
+
+.wow-group-link:hover {
+  color: rgb(0 0 0);
+}
+
+/* Group detail — roster by user */
+.wow-group-roster {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.wow-group-roster-empty,
+.wow-group-roster-no-chars {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.35rem;
+  color: rgb(0 0 0 / 0.55);
+}
+
+.wow-group-roster-user-section {
+  min-width: 0;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  background-color: rgb(255 255 255 / 0.55);
+  padding: 1rem 1.25rem;
+}
+
+.wow-group-roster-user-heading {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  line-height: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: rgb(0 0 0);
+}
+
+.wow-group-roster-char-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wow-group-roster-char-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(0 0 0 / 0.08);
+  background-color: rgb(0 0 0 / 0.02);
+  padding: 0.65rem 0.85rem;
+}
+
+.wow-group-roster-char-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.wow-group-roster-char-stats-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.35rem;
+  font-size: 0.8125rem;
+  line-height: 1.35rem;
+  color: rgb(0 0 0 / 0.62);
+}
+
+.wow-group-roster-class-label {
+  font-weight: 500;
+  color: rgb(0 0 0 / 0.72);
+}
+
+.wow-group-roster-stat-sep {
+  color: rgb(0 0 0 / 0.28);
+  user-select: none;
+}
+
+.wow-stat-line {
+  font-variant-numeric: tabular-nums;
+}
+
+.wow-stat-tier-live {
+  color: rgb(0 0 0 / 0.85);
+}
+
+.wow-stat-tier-snapshot {
+  color: rgb(0 0 0 / 0.58);
+}
+
+.wow-stat-tier-muted {
+  color: rgb(0 0 0 / 0.42);
+}
+
+.wow-stat-tier-blocked {
+  color: rgb(180 83 9);
+}
+
+.wow-stat-blocked-msg {
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+.wow-group-roster-role-none {
+  font-style: italic;
+  color: rgb(0 0 0 / 0.38);
+}
+
+.wow-group-roster-char-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(0 0 0 / 0.92);
+}
+
+.wow-group-roster-char-meta {
+  font-size: 0.8125rem;
+  color: rgb(0 0 0 / 0.55);
+}
+
+.wow-group-roster-char-secondary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  align-self: stretch;
+  justify-content: flex-start;
+  gap: 0.45rem;
+  margin-left: auto;
+  min-width: min-content;
+}
+
+.wow-group-roster-char-secondary-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.65rem 1rem;
+  font-size: 0.8125rem;
+}
+
+.wow-group-roster-live-badge {
+  margin-top: auto;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.wow-group-roster-live-badge--yes {
+  color: rgb(22 101 52);
+}
+
+.wow-group-roster-live-badge--no {
+  color: rgb(0 0 0 / 0.42);
+}
+
+.wow-group-roster-role-slots {
+  font-variant-numeric: tabular-nums;
+  color: rgb(0 0 0 / 0.5);
+}
+
+.wow-group-roster-armory-actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.65rem;
+}
+
+.wow-group-roster-armory-link {
+  font-weight: 500;
+  color: rgb(0 0 0 / 0.75);
+  text-decoration: underline;
+  text-decoration-color: rgb(0 0 0 / 0.22);
+  text-underline-offset: 2px;
+}
+
+.wow-group-roster-armory-link:hover {
+  color: rgb(0 0 0);
+}
+
+.wow-group-roster-sync-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.28rem;
+  border: 1px solid rgb(0 0 0 / 0.14);
+  border-radius: 4px;
+  background: rgb(255 255 255 / 0.65);
+  font: inherit;
+  color: rgb(0 0 0 / 0.68);
+  cursor: pointer;
+}
+
+.wow-group-roster-sync-icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.wow-group-roster-sync-btn:hover:not(:disabled) {
+  border-color: rgb(0 0 0 / 0.22);
+  color: rgb(0 0 0 / 0.88);
+  background: rgb(255 255 255 / 0.9);
+}
+
+.wow-group-roster-sync-btn:disabled {
+  cursor: wait;
+  opacity: 0.75;
+}
+
+.wow-group-roster-sync-btn[aria-busy="true"] .wow-group-roster-sync-icon {
+  animation: wow-refresh-spin 0.75s linear infinite;
+}
+
+@keyframes wow-refresh-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Group password gate */
+.wow-group-gate {
+  display: flex;
+  min-height: 12rem;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.wow-group-gate-card {
+  width: 100%;
+  max-width: 24rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  background: rgb(255 255 255);
+  padding: 1.5rem 1.35rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+}
+
+.wow-group-gate-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(0 0 0 / 0.92);
+}
+
+.wow-group-gate-schedule {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  color: rgb(0 0 0 / 0.55);
+}
+
+.wow-group-gate-lead {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: rgb(0 0 0 / 0.62);
+}
+
+.wow-group-gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.wow-group-gate-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgb(0 0 0 / 0.45);
+}
+
+.wow-group-gate-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(0 0 0 / 0.18);
+  font-size: 1rem;
+}
+
+.wow-group-gate-input:focus {
+  outline: 2px solid rgb(59 130 246 / 0.45);
+  outline-offset: 1px;
+}
+
+.wow-group-gate-error {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: rgb(185 28 28);
+}
+
+.wow-group-gate-submit {
+  margin-top: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(0 0 0 / 0.14);
+  background: rgb(0 0 0 / 0.85);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(255 255 255);
+  cursor: pointer;
+}
+
+.wow-group-gate-submit:hover:not(:disabled) {
+  background: rgb(0 0 0);
+}
+
+.wow-group-gate-submit:disabled {
+  cursor: wait;
+  opacity: 0.75;
+}
+
+/* Modal gate (WoW index `?gate=` after redirect from locked group URL) */
+.wow-group-gate-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.wow-group-gate-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 0.5);
+  cursor: pointer;
+}
+
+.wow-group-gate-modal-panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 24rem;
+}
+
+.wow-group-gate-modal-close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  z-index: 2;
+  display: flex;
+  height: 2rem;
+  width: 2rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 0.25rem;
+  background: transparent;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: rgb(0 0 0 / 0.45);
+  cursor: pointer;
+}
+
+.wow-group-gate-modal-close:hover {
+  background: rgb(0 0 0 / 0.06);
+  color: rgb(0 0 0 / 0.85);
+}
