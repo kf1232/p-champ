@@ -3,7 +3,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { trailingPlaceholderCellCount } from "@/lib/gridPlaceholders";
-import { P_CHAMP_HOME_PATH, PHOTOGRAPHY_HOME_PATH } from "@/lib/site";
+import {
+  P_CHAMP_HOME_PATH,
+  PHOTOGRAPHY_HOME_PATH,
+  WOW_HOME_PATH,
+} from "@/lib/site";
 
 const PORTAL_TITLE = "Fink Social";
 const PORTAL_DESCRIPTION = "Entry Service Point";
@@ -24,6 +28,7 @@ type FeatureLink = {
 const FEATURE_LINKS: FeatureLink[] = [
   { href: P_CHAMP_HOME_PATH, label: "P-Champ", active: true },
   { href: PHOTOGRAPHY_HOME_PATH, label: "Photography", active: true },
+  { href: WOW_HOME_PATH, label: "WoW", active: true },
 ];
 
 const PORTAL_GRID_COLS = 3; // must match `grid-cols-*` on the feature grid
