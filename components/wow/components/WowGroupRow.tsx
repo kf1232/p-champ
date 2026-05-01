@@ -3,7 +3,7 @@ import Link from "next/link";
 import type {
   WowGroupEntry,
   WowGroupMemberMetrics,
-} from "./config/wowRosterConfig";
+} from "../config/wowRosterConfig";
 
 type WowGroupRowProps = {
   group: WowGroupEntry;

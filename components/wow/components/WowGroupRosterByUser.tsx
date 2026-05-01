@@ -2,8 +2,8 @@ import type {
   WowCharacterForDisplay,
   WowStatTier,
 } from "@/lib/wow/battleNetCharacterProfile";
-import type { WowRoleSlots } from "./config/wowRoleTypes";
-import type { WowUserEntry } from "./config/wowRosterConfig";
+import type { WowRoleSlots } from "../config/wowRoleTypes";
+import type { WowUserEntry } from "../config/wowRosterConfig";
 import { WowArmoryLinkWithRefresh } from "./WowArmoryLinkWithRefresh";
 
 function tierTitle(kind: "ilvl" | "mplus", tier: WowStatTier): string | undefined {

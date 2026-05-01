@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
-const GROUP_DETAIL_RE = /^\/wow\/groups\/([^/]+)$/;
+import { WOW_GROUP_DETAIL_PATHNAME_RE } from "@/lib/wow/wowRoutes";
 
 function postRevoke(groupId: string) {
   void fetch("/api/wow/revoke-group-access", {
@@ -23,7 +23,7 @@ export function WowGroupAccessRevokeBridge() {
   const prevGroupRef = useRef<string | null>(null);
 
   useEffect(() => {
-    const match = pathname.match(GROUP_DETAIL_RE);
+    const match = pathname.match(WOW_GROUP_DETAIL_PATHNAME_RE);
     const currentGroup = match?.[1] ?? null;
     const prev = prevGroupRef.current;
 

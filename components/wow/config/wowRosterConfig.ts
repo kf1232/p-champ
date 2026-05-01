@@ -69,6 +69,11 @@ export type WowGroupRosterUserSection = {
 
 export const WOW_GROUP_ENTRIES: readonly WowGroupEntry[] = roster.groups;
 
+/** Known roster group ids — use for param validation instead of ad-hoc Sets. */
+export const WOW_GROUP_ID_SET = new Set(
+  WOW_GROUP_ENTRIES.map((g) => g.id),
+);
+
 export const WOW_USER_ENTRIES: readonly WowUserEntry[] = roster.users;
 
 const USER_BY_ID = new Map<string, WowUserEntry>(

@@ -1,55 +1,45 @@
-import Link from "next/link";
+import {
+  PORTAL_HOME_PATH,
+  PORTAL_NAME,
+  wowGroupDetailPath,
+} from "@/lib/site";
 
-import { PORTAL_HOME_PATH, PORTAL_NAME, wowGroupDetailPath } from "@/lib/site";
-
-import { WowContentGrid } from "./WowContentGrid";
-import { WowGroupGateModal } from "./WowGroupGateModal";
+import { WowContentGrid } from "./components/WowContentGrid";
+import { WowGroupGateModal } from "./components/WowGroupGateModal";
+import { WowScreenShell } from "./components/WowScreenShell";
+import { WowScreenTitleBlock } from "./components/WowScreenTitleBlock";
+import { resolveWowGateGroup } from "./lib/resolveWowGateGroup";
 
 const WOW_SCREEN_DESCRIPTION =
   "Scheduled raid groups and roster counts for each weekly block.";
 
-export type WowScreenGateGroup = {
-  id: string;
-  name: string;
-  scheduleLabel: string;
-};
-
 type WowScreenProps = {
-  gateGroup?: WowScreenGateGroup | null;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
 
-export function WowScreen({ gateGroup = null }: WowScreenProps) {
+export async function WowScreen({ searchParams }: WowScreenProps) {
+  const sp = (await searchParams) ?? {};
+  const gateGroup = resolveWowGateGroup(sp);
+
   return (
-    <div className="wow-screen-root">
-      <header className="wow-screen-header">
-        <div className="wow-screen-header-inner">
-          <Link href={PORTAL_HOME_PATH} className="wow-screen-portal-link">
-            {PORTAL_NAME}
-          </Link>
-          <span className="wow-screen-breadcrumb-sep" aria-hidden>
-            /
-          </span>
-          <span className="wow-screen-breadcrumb-current">WoW</span>
-        </div>
-      </header>
+    <WowScreenShell
+      breadcrumbItems={[
+        { label: PORTAL_NAME, href: PORTAL_HOME_PATH },
+        { label: "WoW" },
+      ]}
+    >
+      <WowScreenTitleBlock title="WoW" description={WOW_SCREEN_DESCRIPTION} />
 
-      <main className="wow-screen-main">
-        <div className="wow-screen-title-block">
-          <h1 className="wow-screen-title">WoW</h1>
-          <p className="wow-screen-description">{WOW_SCREEN_DESCRIPTION}</p>
-        </div>
+      <WowContentGrid />
 
-        <WowContentGrid />
-
-        {gateGroup ? (
-          <WowGroupGateModal
-            groupId={gateGroup.id}
-            groupName={gateGroup.name}
-            scheduleLabel={gateGroup.scheduleLabel}
-            afterSuccessHref={wowGroupDetailPath(gateGroup.id)}
-          />
-        ) : null}
-      </main>
-    </div>
+      {gateGroup ? (
+        <WowGroupGateModal
+          groupId={gateGroup.id}
+          groupName={gateGroup.name}
+          scheduleLabel={gateGroup.scheduleLabel}
+          afterSuccessHref={wowGroupDetailPath(gateGroup.id)}
+        />
+      ) : null}
+    </WowScreenShell>
   );
 }

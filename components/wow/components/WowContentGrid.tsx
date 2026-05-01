@@ -1,12 +1,8 @@
 import { trailingPlaceholderCellCount } from "@/lib/gridPlaceholders";
-import {
-  WOW_GATE_SEARCH_PARAM,
-  WOW_HOME_PATH,
-  wowGroupDetailPath,
-} from "@/lib/site";
+import { wowGroupEntryHrefFromList } from "@/lib/wow/wowRoutes";
 import { groupRequiresPassword } from "@/lib/wow/groupAuthCookie";
 
-import { WOW_GROUP_ENTRIES, metricsForGroup } from "./config/wowRosterConfig";
+import { WOW_GROUP_ENTRIES, metricsForGroup } from "../config/wowRosterConfig";
 import { WowGroupRow } from "./WowGroupRow";
 
 const FILLED_ROW_COUNT = WOW_GROUP_ENTRIES.length;
@@ -26,11 +22,10 @@ export function WowContentGrid() {
             key={group.id}
             group={group}
             metrics={metricsForGroup(group.id)}
-            detailHref={
-              groupRequiresPassword(group.id)
-                ? `${WOW_HOME_PATH}?${WOW_GATE_SEARCH_PARAM}=${encodeURIComponent(group.id)}`
-                : wowGroupDetailPath(group.id)
-            }
+            detailHref={wowGroupEntryHrefFromList(
+              group.id,
+              groupRequiresPassword(group.id),
+            )}
           />
         ))}
         {Array.from({ length: placeholderRows }, (_, i) => (

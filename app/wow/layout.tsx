@@ -1,12 +1,8 @@
 import type { ReactNode } from "react";
 
-import { WowGroupAccessRevokeBridge } from "@/components/wow/WowGroupAccessRevokeBridge";
+import { WowGroupAccessRevokeBridge } from "@/components/wow/components/WowGroupAccessRevokeBridge";
 
-export default function WowLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function WowLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <WowGroupAccessRevokeBridge />
