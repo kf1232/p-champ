@@ -53,3 +53,20 @@ export function parseWowArmoryCharacterUrl(
     return null;
   }
 }
+
+/**
+ * Armory “Mythic Keystone Dungeons” sub-page for a character profile URL.
+ * Roster UI links only the default profile URL; this helper remains for other callers.
+ */
+export function wowMythicKeystoneArmoryUrl(profileUrl: string): string | null {
+  if (!parseWowArmoryCharacterUrl(profileUrl)) {
+    return null;
+  }
+  try {
+    const u = new URL(profileUrl);
+    const path = u.pathname.replace(/\/+$/, "");
+    return `${u.origin}${path}/pve/mythic`;
+  } catch {
+    return null;
+  }
+}
