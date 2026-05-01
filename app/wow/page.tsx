@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 
-import Link from "next/link";
-
-import { PORTAL_HOME_PATH, PORTAL_NAME } from "@/lib/site";
+import { WowScreen } from "@/components/wow";
+import { WOW_GROUP_ENTRIES } from "@/components/wow/config/wowRosterConfig";
+import { groupRequiresPassword } from "@/lib/wow/groupAuthCookie";
+import {
+  PORTAL_NAME,
+  WOW_GATE_SEARCH_PARAM,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
@@ -10,32 +14,40 @@ export const metadata: Metadata = {
   },
 };
 
-export default function WowPage() {
-  return (
-    <div className="flex min-h-full flex-col bg-gradient-to-b from-zinc-50 to-white">
-      <header className="border-b border-black/10 bg-white/50 px-6 py-4">
-        <div className="mx-auto flex max-w-4xl items-center gap-2 text-sm">
-          <Link
-            href={PORTAL_HOME_PATH}
-            className="font-medium text-black/60 hover:text-black"
-          >
-            {PORTAL_NAME}
-          </Link>
-          <span className="text-black/35" aria-hidden>
-            /
-          </span>
-          <span className="font-medium text-black">WoW</span>
-        </div>
-      </header>
+export const dynamic = "force-dynamic";
 
-      <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col px-6 py-16">
-        <h1 className="text-4xl font-semibold tracking-tight text-black">
-          Hello world
-        </h1>
-        <p className="mt-3 text-lg text-black/65">
-          WoW service — placeholder page.
-        </p>
-      </main>
-    </div>
-  );
+const VALID_GROUP_IDS = new Set(WOW_GROUP_ENTRIES.map((g) => g.id));
+
+type WowPageProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function WowPage({ searchParams }: WowPageProps) {
+  const sp = (await searchParams) ?? {};
+  const raw = sp[WOW_GATE_SEARCH_PARAM];
+  const gateParam =
+    typeof raw === "string"
+      ? raw
+      : Array.isArray(raw)
+        ? raw[0]
+        : undefined;
+  const gateGroupId =
+    gateParam && VALID_GROUP_IDS.has(gateParam) ? gateParam : null;
+
+  let gateModal: {
+    id: string;
+    name: string;
+    scheduleLabel: string;
+  } | null = null;
+
+  if (gateGroupId && groupRequiresPassword(gateGroupId)) {
+    const g = WOW_GROUP_ENTRIES.find((x) => x.id === gateGroupId)!;
+    gateModal = {
+      id: g.id,
+      name: g.name,
+      scheduleLabel: g.scheduleLabel,
+    };
+  }
+
+  return <WowScreen gateGroup={gateModal} />;
 }

@@ -4,6 +4,8 @@ import { GameSelectionProvider } from "@/components/game";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 
 import "./globals.css";
+import "@/components/photography/styles/photography.css";
+import "@/components/wow/styles/wow.css";
 
 export const metadata: Metadata = {
   title: {
