@@ -13,3 +13,5 @@ export const P_CHAMP_DEX_PATH = "/p-champ/dex";
 export const P_CHAMP_TEAM_BUILDER_PATH = "/p-champ/team-builder";
 
 export const PHOTOGRAPHY_HOME_PATH = "/photography";
+
+export const WOW_HOME_PATH = "/wow";

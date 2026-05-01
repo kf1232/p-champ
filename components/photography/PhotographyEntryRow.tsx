@@ -1,4 +1,4 @@
-import type { PhotographyAlbumEntry } from "./photographyAlbumEntries";
+import type { PhotographyAlbumEntry } from "./config/photographyAlbumEntries";
 import { GatedGalleryLink } from "./GatedGalleryLink";
 
 type PhotographyEntryRowBase = {

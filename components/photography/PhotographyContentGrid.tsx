@@ -1,7 +1,7 @@
 import { trailingPlaceholderCellCount } from "@/lib/gridPlaceholders";
 import { lightroomRenditionSrcs } from "@/lib/lightroomWeb";
 
-import { PHOTOGRAPHY_ALBUM_ENTRIES } from "./photographyAlbumEntries";
+import { PHOTOGRAPHY_ALBUM_ENTRIES } from "./config/photographyAlbumEntries";
 import { PhotographyEntryRow } from "./PhotographyEntryRow";
 
 const FILLED_ROW_COUNT = PHOTOGRAPHY_ALBUM_ENTRIES.length;
