@@ -15,10 +15,14 @@ import {
   blizzardCharacterProfileSummarySchema,
   blizzardMythicKeystoneSeasonProfileSchema,
   formatZodErrorBrief,
+  mythicBestRunsForDisplayFromSeason,
   mythicKeystoneSeasonIndexSchema,
   mythicSeasonIdFromIndex,
   type BlizzardCharacterProfileSummary,
+  type WowMythicBestRunForDisplay,
 } from "./schemas/battleNetApiSchemas";
+
+export type { WowMythicBestRunForDisplay };
 
 /** How we obtained a stat for UI styling and messaging. */
 export type WowStatTier =
@@ -38,6 +42,11 @@ export type WowCharacterForDisplay = {
   readonly ilvlTier: WowStatTier;
   readonly mythicPlusScore: number | null;
   readonly mythicTier: WowStatTier;
+  /**
+   * Season `best_runs` from the Profile API (armory-equivalent keystone completions).
+   * Populated when the season profile request succeeds; shown in UI only when an M+ score is present.
+   */
+  readonly mythicBestRuns: readonly WowMythicBestRunForDisplay[];
 };
 
 const HOST_BY_REGION: Record<string, string> = {
@@ -47,7 +56,13 @@ const HOST_BY_REGION: Record<string, string> = {
   tw: "tw.api.blizzard.com",
 };
 
+/** Successful Profile / keystone season JSON: in-process cache + Next `fetch` tag (see clear route). */
+export const WOW_BLIZZARD_PROFILE_FETCH_CACHE_TAG = "wow-blizzard-profile" as const;
+
 const LOG_NS = "[wow/battle-net]";
+
+/** Successful Profile API JSON cached in this Node process (dev + server). */
+const BLIZZARD_PROFILE_FETCH_CACHE_TTL_MS = 5 * 60 * 1000;
 
 function warn(...args: unknown[]): void {
   console.warn(LOG_NS, ...args);
@@ -127,10 +142,29 @@ async function getClientCredentialsToken(): Promise<string | null> {
   return token;
 }
 
+const profileSummaryCache = new Map<
+  string,
+  { summary: BlizzardCharacterProfileSummary; fetchedAtMs: number }
+>();
+
+function profileSummaryCacheKey(ref: WowArmoryCharacterRef): string {
+  return `${ref.region.toLowerCase()}|${ref.realmSlug.toLowerCase()}|${ref.characterName.toLowerCase()}`;
+}
+
 async function fetchRetailCharacterSummary(
   ref: WowArmoryCharacterRef,
   token: string,
 ): Promise<BlizzardCharacterProfileSummary | null> {
+  const cacheKey = profileSummaryCacheKey(ref);
+  const cached = profileSummaryCache.get(cacheKey);
+  const now = Date.now();
+  if (cached) {
+    if (now - cached.fetchedAtMs < BLIZZARD_PROFILE_FETCH_CACHE_TTL_MS) {
+      return cached.summary;
+    }
+    profileSummaryCache.delete(cacheKey);
+  }
+
   const host = HOST_BY_REGION[ref.region.toLowerCase()];
   if (!host) {
     warn("Unsupported region for Profile API host mapping", {
@@ -158,7 +192,7 @@ async function fetchRetailCharacterSummary(
   const started = Date.now();
   const res = await fetch(url, {
     headers: { Authorization: `Bearer ${token}` },
-    next: { revalidate: 900 },
+    next: { revalidate: 300, tags: [WOW_BLIZZARD_PROFILE_FETCH_CACHE_TAG] },
   });
 
   if (!res.ok) {
@@ -200,6 +234,11 @@ async function fetchRetailCharacterSummary(
   }
 
   const summary = parsed.data;
+
+  profileSummaryCache.set(cacheKey, {
+    summary,
+    fetchedAtMs: Date.now(),
+  });
 
   return summary;
 }
@@ -308,11 +347,45 @@ async function fetchCurrentMythicSeasonId(
   return seasonId;
 }
 
-async function fetchMythicRatingFromKeystoneSeason(
+const mythicSeasonBundleCache = new Map<
+  string,
+  {
+    bundle: {
+      rating: number | null;
+      bestRuns: readonly WowMythicBestRunForDisplay[];
+    };
+    fetchedAtMs: number;
+  }
+>();
+
+function mythicSeasonBundleCacheKey(
+  ref: WowArmoryCharacterRef,
+  seasonId: number,
+): string {
+  return `${ref.region.toLowerCase()}|${ref.realmSlug.toLowerCase()}|${ref.characterName.toLowerCase()}|${seasonId}`;
+}
+
+async function fetchMythicKeystoneSeasonBundle(
   ref: WowArmoryCharacterRef,
   token: string,
   seasonId: number,
-): Promise<number | null> {
+): Promise<{
+  rating: number | null;
+  bestRuns: readonly WowMythicBestRunForDisplay[];
+} | null> {
+  const bundleKey = mythicSeasonBundleCacheKey(ref, seasonId);
+  const cachedBundle = mythicSeasonBundleCache.get(bundleKey);
+  const bundleNow = Date.now();
+  if (cachedBundle) {
+    if (
+      bundleNow - cachedBundle.fetchedAtMs <
+      BLIZZARD_PROFILE_FETCH_CACHE_TTL_MS
+    ) {
+      return cachedBundle.bundle;
+    }
+    mythicSeasonBundleCache.delete(bundleKey);
+  }
+
   const host = HOST_BY_REGION[ref.region.toLowerCase()];
   if (!host) {
     return null;
@@ -337,7 +410,7 @@ async function fetchMythicRatingFromKeystoneSeason(
   const started = Date.now();
   const res = await fetch(url, {
     headers: { Authorization: `Bearer ${token}` },
-    next: { revalidate: 900 },
+    next: { revalidate: 300, tags: [WOW_BLIZZARD_PROFILE_FETCH_CACHE_TAG] },
   });
 
   if (!res.ok) {
@@ -385,31 +458,68 @@ async function fetchMythicRatingFromKeystoneSeason(
   const r = parsed.data.mythic_rating?.rating;
   const rating =
     typeof r === "number" && !Number.isNaN(r) ? Math.round(r) : null;
+  const bestRuns = mythicBestRunsForDisplayFromSeason(parsed.data);
 
-  return rating;
+  const bundle = { rating, bestRuns };
+  mythicSeasonBundleCache.set(bundleKey, {
+    bundle,
+    fetchedAtMs: Date.now(),
+  });
+
+  return bundle;
+}
+
+/** Clears in-process Blizzard JSON caches (e.g. after user-triggered roster refresh). */
+export function clearBlizzardCharacterProfileResponseCaches(): void {
+  profileSummaryCache.clear();
+  mythicSeasonBundleCache.clear();
 }
 
 /**
- * Live M+ rating: root character resource usually omits `mythic_rating` (armory web UI
- * uses keystone season data). Prefer root when present; otherwise Game Data season index +
- * Profile `.../mythic-keystone-profile/season/{id}`.
+ * Live M+ rating and season `best_runs`: root character resource usually omits
+ * `mythic_rating` (armory uses keystone season). Prefer root rating when present; always
+ * load the season profile when possible so keystone completions match the armory `/pve/mythic` view.
  */
-async function resolveLiveMythicPlusRating(
+async function resolveMythicKeystoneFromApis(
   ref: WowArmoryCharacterRef,
   token: string,
   summary: BlizzardCharacterProfileSummary,
-): Promise<number | null> {
+): Promise<{
+  rating: number | null;
+  bestRuns: readonly WowMythicBestRunForDisplay[];
+}> {
   const fromRoot = mythicFromSummary(summary);
-  if (fromRoot !== null) {
-    return fromRoot;
-  }
-
   const seasonId = await fetchCurrentMythicSeasonId(ref.region, token);
   if (seasonId === null) {
-    return null;
+    return { rating: fromRoot, bestRuns: [] };
   }
 
-  return fetchMythicRatingFromKeystoneSeason(ref, token, seasonId);
+  const bundle = await fetchMythicKeystoneSeasonBundle(ref, token, seasonId);
+  if (!bundle) {
+    return { rating: fromRoot, bestRuns: [] };
+  }
+
+  const rating = fromRoot !== null ? fromRoot : bundle.rating;
+  return { rating, bestRuns: bundle.bestRuns };
+}
+
+function rosterSnapshotClass(character: WowCharacterEntry): string {
+  const raw = character.characterClass?.trim();
+  return raw && raw.length > 0 ? raw : "Unknown";
+}
+
+/**
+ * Display name when the Profile API is not used or returns no `name`: roster JSON, else
+ * the armory URL path segment, else the stable roster row id.
+ */
+function rosterFallbackName(
+  character: WowCharacterEntry,
+  armoryRef: WowArmoryCharacterRef | null,
+): string {
+  const fromJson = character.name?.trim();
+  if (fromJson) return fromJson;
+  if (armoryRef?.characterName) return armoryRef.characterName;
+  return character.id;
 }
 
 export async function enrichCharacterForDisplay(
@@ -418,13 +528,13 @@ export async function enrichCharacterForDisplay(
   const rosterIlvl = rosterNumber(character.ilvl ?? null);
   const rosterMplus = rosterNumber(character.mythicPlusScore ?? null);
 
-  const baseClass = character.characterClass.trim();
+  const baseClass = rosterSnapshotClass(character);
   const baseSlots = classRoleCapacity(baseClass);
 
   if (!character.profileUrl) {
     return {
       rosterId: character.id,
-      name: character.name,
+      name: rosterFallbackName(character, null),
       characterClass: baseClass,
       classRoleSlots: baseSlots,
       profileUrl: character.profileUrl,
@@ -434,6 +544,7 @@ export async function enrichCharacterForDisplay(
       mythicPlusScore: rosterMplus,
       mythicTier:
         rosterMplus !== null ? "snapshot" : "blocked-unconfigured",
+      mythicBestRuns: [],
     };
   }
 
@@ -446,7 +557,7 @@ export async function enrichCharacterForDisplay(
     const resolvedClass = baseClass;
     return {
       rosterId: character.id,
-      name: character.name,
+      name: rosterFallbackName(character, null),
       characterClass: resolvedClass,
       classRoleSlots: classRoleCapacity(resolvedClass),
       profileUrl: character.profileUrl,
@@ -454,6 +565,7 @@ export async function enrichCharacterForDisplay(
       ilvlTier: rosterIlvl !== null ? "snapshot" : "blocked-private",
       mythicPlusScore: rosterMplus,
       mythicTier: rosterMplus !== null ? "snapshot" : "blocked-private",
+      mythicBestRuns: [],
     };
   }
 
@@ -462,7 +574,7 @@ export async function enrichCharacterForDisplay(
     const resolvedClass = baseClass;
     return {
       rosterId: character.id,
-      name: character.name,
+      name: rosterFallbackName(character, parsed),
       characterClass: resolvedClass,
       classRoleSlots: classRoleCapacity(resolvedClass),
       profileUrl: character.profileUrl,
@@ -470,6 +582,7 @@ export async function enrichCharacterForDisplay(
       ilvlTier: rosterIlvl !== null ? "snapshot" : "blocked-unconfigured",
       mythicPlusScore: rosterMplus,
       mythicTier: rosterMplus !== null ? "snapshot" : "blocked-unconfigured",
+      mythicBestRuns: [],
     };
   }
 
@@ -478,7 +591,7 @@ export async function enrichCharacterForDisplay(
     const resolvedClass = baseClass;
     return {
       rosterId: character.id,
-      name: character.name,
+      name: rosterFallbackName(character, parsed),
       characterClass: resolvedClass,
       classRoleSlots: classRoleCapacity(resolvedClass),
       profileUrl: character.profileUrl,
@@ -486,15 +599,22 @@ export async function enrichCharacterForDisplay(
       ilvlTier: rosterIlvl !== null ? "snapshot" : "blocked-private",
       mythicPlusScore: rosterMplus,
       mythicTier: rosterMplus !== null ? "snapshot" : "blocked-private",
+      mythicBestRuns: [],
     };
   }
 
   const apiIlvl =
     summary.equipped_item_level ?? summary.average_item_level ?? null;
-  const apiMplus = await resolveLiveMythicPlusRating(parsed, token, summary);
+  const { rating: apiMplusRaw, bestRuns } = await resolveMythicKeystoneFromApis(
+    parsed,
+    token,
+    summary,
+  );
 
   const resolvedClass =
     summary.character_class?.name?.trim() || baseClass;
+  const resolvedName =
+    summary.name?.trim() || rosterFallbackName(character, parsed);
 
   const ilvl =
     typeof apiIlvl === "number" && !Number.isNaN(apiIlvl)
@@ -508,17 +628,23 @@ export async function enrichCharacterForDisplay(
         : "blocked-private";
 
   const mythicPlusScore =
-    apiMplus !== null ? apiMplus : rosterMplus;
+    apiMplusRaw !== null ? apiMplusRaw : rosterMplus;
   const mythicTier: WowStatTier =
-    apiMplus !== null
+    apiMplusRaw !== null
       ? "live"
       : rosterMplus !== null
         ? "snapshot"
         : "blocked-private";
 
+  const includeRuns =
+    mythicPlusScore !== null &&
+    typeof mythicPlusScore === "number" &&
+    !Number.isNaN(mythicPlusScore) &&
+    bestRuns.length > 0;
+
   return {
     rosterId: character.id,
-    name: character.name,
+    name: resolvedName,
     characterClass: resolvedClass,
     classRoleSlots: classRoleCapacity(resolvedClass),
     profileUrl: character.profileUrl,
@@ -526,6 +652,7 @@ export async function enrichCharacterForDisplay(
     ilvlTier,
     mythicPlusScore,
     mythicTier,
+    mythicBestRuns: includeRuns ? bestRuns : [],
   };
 }
 

@@ -37,10 +37,14 @@ export type WowUserEntry = {
 export type WowCharacterEntry = {
   readonly id: string;
   readonly userId: string;
-  readonly name: string;
-  /** Fallback when Battle.net Profile API is not used or fails; omit if resolved from API only. */
+  /**
+   * Fallback when Profile API is unavailable. With `profileUrl`, the armory path and API
+   * supply the display name when this is omitted.
+   */
+  readonly name?: string;
+  /** Fallback when Profile API is unavailable; defaults to Unknown for metrics/display. */
   readonly ilvl?: number | null;
-  readonly characterClass: string;
+  readonly characterClass?: string;
   /**
    * Snapshot when Battle.net does not expose Mythic+ rating (optional).
    * Same availability rules as ilvl — see enrichment layer.
@@ -99,7 +103,7 @@ export function metricsForGroup(groupId: string): WowGroupMemberMetrics {
     role: keyof WowRoleSlots,
   ): boolean =>
     chars.some((c) => {
-      const cap = classRoleCapacity(c.characterClass);
+      const cap = classRoleCapacity(c.characterClass ?? "Unknown");
       return c.userId === userId && cap[role] > 0;
     });
 

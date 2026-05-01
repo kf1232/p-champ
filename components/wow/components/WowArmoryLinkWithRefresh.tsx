@@ -29,40 +29,70 @@ function RefreshCwIcon({ className }: { className?: string }) {
 type WowArmoryLinkWithRefreshProps = {
   profileUrl: string;
   characterLabel: string;
+  /** Column layout: refresh on top, then Armory link (group roster grid). */
+  variant?: "inline" | "stack";
 };
 
 export function WowArmoryLinkWithRefresh({
   profileUrl,
   characterLabel,
+  variant = "inline",
 }: WowArmoryLinkWithRefreshProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
+  const refreshBtn = (
+    <button
+      type="button"
+      className="wow-group-roster-sync-btn"
+      onClick={() => {
+        startTransition(() => {
+          void fetch("/api/wow/clear-profile-cache", { method: "POST" }).then(
+            () => {
+              router.refresh();
+            },
+          );
+        });
+      }}
+      disabled={isPending}
+      aria-busy={isPending}
+      title={`Refresh Battle.net data for ${characterLabel}`}
+      aria-label={`Refresh Battle.net data for ${characterLabel}`}
+    >
+      <RefreshCwIcon className="wow-group-roster-sync-icon" />
+    </button>
+  );
+
+  const armoryLink = (
+    <a
+      href={profileUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="wow-group-roster-armory-link"
+    >
+      Armory
+    </a>
+  );
+
   return (
-    <span className="wow-group-roster-armory-actions">
-      <a
-        href={profileUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="wow-group-roster-armory-link"
-      >
-        Armory
-      </a>
-      <button
-        type="button"
-        className="wow-group-roster-sync-btn"
-        onClick={() => {
-          startTransition(() => {
-            router.refresh();
-          });
-        }}
-        disabled={isPending}
-        aria-busy={isPending}
-        title={`Refresh Battle.net data for ${characterLabel}`}
-        aria-label={`Refresh Battle.net data for ${characterLabel}`}
-      >
-        <RefreshCwIcon className="wow-group-roster-sync-icon" />
-      </button>
+    <span
+      className={
+        variant === "stack"
+          ? "wow-group-roster-armory-actions wow-group-roster-armory-actions--stack"
+          : "wow-group-roster-armory-actions"
+      }
+    >
+      {variant === "stack" ? (
+        <>
+          {refreshBtn}
+          {armoryLink}
+        </>
+      ) : (
+        <>
+          {armoryLink}
+          {refreshBtn}
+        </>
+      )}
     </span>
   );
 }
