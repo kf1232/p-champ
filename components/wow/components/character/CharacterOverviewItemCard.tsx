@@ -68,13 +68,10 @@ export function CharacterGearItemCard({ card }: { card: CharacterOverviewItemCar
     .filter(Boolean)
     .join(" ");
 
-  const gearInvalid = card.enchantError || card.socketError;
-
   return (
     <article
       className={rootClass}
       aria-label={`${card.slotLabel}: ${card.itemName}`}
-      aria-invalid={gearInvalid}
     >
       <ItemCardRow label="Item Slot">{card.slotLabel}</ItemCardRow>
       <ItemCardRow label="Item Name">{card.itemName}</ItemCardRow>

@@ -4,9 +4,8 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 
@@ -21,6 +20,29 @@ function readStoredEnabled(): boolean {
   }
 }
 
+const storageListeners = new Set<() => void>();
+
+function subscribeToStoredEnabled(onStoreChange: () => void) {
+  storageListeners.add(onStoreChange);
+  if (typeof window === "undefined") {
+    return () => {
+      storageListeners.delete(onStoreChange);
+    };
+  }
+  const onStorage = (e: StorageEvent) => {
+    if (e.key === STORAGE_KEY || e.key === null) onStoreChange();
+  };
+  window.addEventListener("storage", onStorage);
+  return () => {
+    storageListeners.delete(onStoreChange);
+    window.removeEventListener("storage", onStorage);
+  };
+}
+
+function notifyStoredEnabledListeners() {
+  storageListeners.forEach((l) => l());
+}
+
 type WowDebugRawPanelsContextValue = {
   enabled: boolean;
   setEnabled: (next: boolean) => void;
@@ -30,18 +52,18 @@ const WowDebugRawPanelsContext =
   createContext<WowDebugRawPanelsContextValue | null>(null);
 
 export function WowDebugRawPanelsProvider({ children }: { children: ReactNode }) {
-  const [enabled, setEnabledState] = useState(false);
-
-  useEffect(() => {
-    setEnabledState(readStoredEnabled());
-  }, []);
+  const enabled = useSyncExternalStore(
+    subscribeToStoredEnabled,
+    readStoredEnabled,
+    () => false,
+  );
 
   const setEnabled = useCallback((next: boolean) => {
-    setEnabledState(next);
     try {
       if (typeof window !== "undefined") {
         if (next) window.localStorage.setItem(STORAGE_KEY, "1");
         else window.localStorage.removeItem(STORAGE_KEY);
+        notifyStoredEnabledListeners();
       }
     } catch {
       // ignore quota / private mode
