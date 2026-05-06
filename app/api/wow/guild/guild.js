@@ -10,9 +10,10 @@ import {
   getBattleNetClientCredentialsToken,
   WOW_API_HOST_BY_REGION,
   wowApiLocaleForRegion,
-} from "@/lib/wow/battleNetClientCredentials";
+} from "@/lib/wow/battle-net/battleNetClientCredentials";
 
 import { CLIENT_ERROR } from "./constants.js";
+import { normalizeGuildNameSlugForApi } from "@/lib/wow/guild/guildNameSlugNormalize.js";
 
 /**
  * @param {{
@@ -51,7 +52,9 @@ export async function getGuild(input) {
       ? input.locale.trim()
       : wowApiLocaleForRegion(region);
   const realmEnc = encodeURIComponent(String(input.realmSlug).toLowerCase());
-  const guildEnc = encodeURIComponent(String(input.nameSlug).toLowerCase());
+  const guildEnc = encodeURIComponent(
+    normalizeGuildNameSlugForApi(input.nameSlug),
+  );
   const qs = new URLSearchParams({ namespace, locale });
   const url = `https://${host}/data/wow/guild/${realmEnc}/${guildEnc}?${qs}`;
 

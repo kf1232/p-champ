@@ -1,5 +1,5 @@
 /**
- * WoW Guild UI — plain CSS. Loaded from `app/wow/guild/page.tsx`.
+ * WoW Guild UI — plain CSS. Loaded from `Guild.tsx`.
  * Prefix `guild-` avoids clashes; rhythm matches character tools.
  */
 
@@ -28,9 +28,9 @@
 
 .guild-lookup-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(11rem, 15.5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(13rem, 19rem);
   gap: 1.25rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 @media (max-width: 52rem) {
@@ -50,14 +50,25 @@
 .guild-cache-rail {
   position: sticky;
   top: 0.5rem;
+  align-self: start;
+  display: flex;
+  max-height: calc(
+    100svh - var(--wow-cache-rail-top-in-viewport, 12rem) -
+      var(--wow-viewport-footer-h, 64px) - 0.75rem -
+      env(safe-area-inset-bottom, 0px)
+  );
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
   border-radius: 0.5rem;
   border: 1px solid rgb(0 0 0 / 0.1);
   background-color: rgb(255 255 255 / 0.65);
   padding: 0.75rem 0.85rem;
 }
 
-.guild-cache-rail-heading {
+.guild-lookup-history-heading {
   margin: 0 0 0.5rem;
+  flex-shrink: 0;
   font-size: 0.8125rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -65,23 +76,20 @@
   color: rgb(0 0 0 / 0.45);
 }
 
-.guild-cache-rail-summaries-strip {
+.guild-cache-rail-summaries-strip:not(.guild-cache-rail-roster-note) {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
   margin: 0 0 0.65rem;
+  overflow: hidden;
   padding-bottom: 0.65rem;
   border-bottom: 1px solid rgb(0 0 0 / 0.08);
 }
 
-.guild-cache-rail-summaries-strip-label {
-  display: block;
-  margin-bottom: 0.35rem;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: rgb(0 0 0 / 0.4);
-}
-
 .guild-cache-rail-summaries-strip-empty {
   margin: 0;
+  flex-shrink: 0;
   font-size: 0.75rem;
   line-height: 1.35;
   color: rgb(0 0 0 / 0.45);
@@ -92,25 +100,26 @@
   margin: 0;
   padding: 0;
   display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
   flex-direction: column;
   gap: 0.35rem;
-  max-height: 12rem;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .guild-cache-rail-summaries-strip-item {
   margin: 0;
 }
 
-.guild-cache-summary-strip-record {
+.guild-lookup-history-record {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 0.2rem;
+  gap: 0.35rem;
   border-radius: 0.35rem;
   border: 1px solid rgb(0 0 0 / 0.08);
   background: rgb(248 250 252 / 0.95);
-  padding: 0.45rem 0.5rem;
+  padding: 0.5rem 0.55rem;
   box-shadow: 0 1px 1px rgb(0 0 0 / 0.04);
   cursor: pointer;
   outline: none;
@@ -120,31 +129,67 @@
     box-shadow 0.12s ease;
 }
 
-.guild-cache-summary-strip-record:hover {
+.guild-lookup-history-record:hover {
   border-color: rgb(0 0 0 / 0.18);
   background: rgb(255 255 255);
   box-shadow: 0 2px 6px rgb(0 0 0 / 0.08);
 }
 
-.guild-cache-summary-strip-name {
+.guild-lookup-history-name {
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: rgb(15 23 42);
   word-break: break-word;
+  line-height: 1.25;
 }
 
-.guild-cache-summary-strip-realm,
-.guild-cache-summary-strip-faction {
+.guild-lookup-history-meta {
   font-size: 0.6875rem;
-  line-height: 1.3;
+  line-height: 1.35;
+  font-weight: 500;
   color: rgb(0 0 0 / 0.55);
+}
+
+.guild-lookup-history-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.1rem;
+}
+
+.guild-lookup-history-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  border-radius: 0.25rem;
+  padding: 0.15rem;
+  transition:
+    color 0.12s ease,
+    background-color 0.12s ease;
+}
+
+.guild-lookup-history-icon--active {
+  color: rgb(22 101 52);
+  background: rgb(240 253 244 / 0.95);
+}
+
+.guild-lookup-history-icon--muted {
+  color: rgb(148 163 184);
+  background: rgb(248 250 252 / 0.6);
+}
+
+.guild-lookup-history-icon-svg {
+  display: block;
 }
 
 .guild-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .guild-form-grid {
@@ -269,20 +314,15 @@
   color: rgb(185 28 28);
 }
 
-.guild-cache-summary-strip-roster {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  color: rgb(22 101 52);
-}
-
-.guild-cache-rail-roster-note {
-  margin-top: 0.75rem;
+.guild-cache-rail-summaries-strip.guild-cache-rail-roster-note {
+  flex-shrink: 0;
+  margin: 0.75rem 0 0;
   padding-top: 0.65rem;
   border-top: 1px solid rgb(0 0 0 / 0.08);
 }
 
 .guild-cache-rail-roster-note-body {
-  margin: 0.35rem 0 0;
+  margin: 0;
   font-size: 0.6875rem;
   line-height: 1.35;
   color: rgb(0 0 0 / 0.45);
@@ -296,4 +336,342 @@
   .guild-form-field--span-2 {
     grid-column: auto;
   }
+}
+
+/* --- Guild profile summary (structured display) --- */
+.guild-profile-display {
+  /* Defaults match neutral card when no crest theme is applied */
+  --guild-crest-emblem: rgb(15 23 42);
+  --guild-crest-border: rgb(148 163 184);
+  --guild-crest-background: rgb(241 245 249);
+
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid
+    color-mix(in srgb, var(--guild-crest-border) 38%, rgb(0 0 0 / 0.06));
+  border-left: 4px solid var(--guild-crest-emblem);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--guild-crest-background) 28%, white) 0%,
+    color-mix(in srgb, var(--guild-crest-background) 12%, white) 48%,
+    rgb(255 255 255 / 0.92) 100%
+  );
+  padding: 1rem 1.1rem;
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.05),
+    inset 0 1px 0 color-mix(in srgb, white 82%, var(--guild-crest-emblem));
+
+  /*
+   * Legibility on crest-tinted backgrounds: light halo + dark drop.
+   * One shadow per custom property so comma-separated text-shadow parses reliably.
+   */
+  --guild-profile-ts-h1: 0 0 1px rgb(255 255 255 / 0.94);
+  --guild-profile-ts-h2: 0 0 4px rgb(255 255 255 / 0.55);
+  --guild-profile-ts-d1: 0 1px 2px rgb(0 0 0 / 0.22);
+  --guild-profile-ts-d2: 0 1px 4px rgb(0 0 0 / 0.12);
+  --guild-profile-ts-b1: 0 0 1px rgb(255 255 255 / 0.88);
+  --guild-profile-ts-b2: 0 1px 2px rgb(0 0 0 / 0.18);
+}
+
+.guild-profile-display-fallback {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  color: rgb(0 0 0 / 0.55);
+}
+
+.guild-profile-display-header {
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--guild-crest-border) 28%, rgb(0 0 0 / 0.08));
+}
+
+.guild-profile-display-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: color-mix(in srgb, var(--guild-crest-emblem) 42%, rgb(15 23 42));
+  text-shadow: var(--guild-profile-ts-h1), var(--guild-profile-ts-h2),
+    var(--guild-profile-ts-d1), var(--guild-profile-ts-d2);
+}
+
+.guild-profile-display-sub {
+  margin: 0.35rem 0 0;
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--guild-crest-emblem) 22%, rgb(0 0 0 / 0.55));
+  text-shadow: var(--guild-profile-ts-b1), var(--guild-profile-ts-b2);
+}
+
+.guild-profile-display-dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(7rem, 10rem) minmax(0, 1fr);
+  gap: 0.4rem 1rem;
+  align-items: baseline;
+}
+
+.guild-profile-display-dl-row {
+  display: contents;
+}
+
+.guild-profile-display-dt {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--guild-crest-border) 18%, rgb(0 0 0 / 0.45));
+  text-shadow: var(--guild-profile-ts-b1), var(--guild-profile-ts-b2);
+}
+
+.guild-profile-display-dd {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: color-mix(in srgb, var(--guild-crest-emblem) 18%, rgb(15 23 42));
+  word-break: break-word;
+  text-shadow: var(--guild-profile-ts-h1), var(--guild-profile-ts-h2),
+    var(--guild-profile-ts-d1), var(--guild-profile-ts-d2);
+}
+
+.guild-profile-display-dd--break {
+  word-break: break-all;
+}
+
+.guild-profile-display-resource-link {
+  color: rgb(37 99 235);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.guild-profile-display-resource-link:hover {
+  color: rgb(29 78 216);
+}
+
+.guild-profile-display .guild-profile-links-heading {
+  margin: 0 0 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--guild-crest-emblem) 20%, rgb(0 0 0 / 0.45));
+  text-shadow: var(--guild-profile-ts-b1), var(--guild-profile-ts-b2);
+}
+
+.guild-profile-links {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgb(0 0 0 / 0.08);
+}
+
+.guild-profile-links-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.guild-profile-links-item {
+  margin: 0.25rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.guild-profile-links-anchor {
+  color: rgb(37 99 235);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.guild-profile-links-anchor:hover {
+  color: rgb(29 78 216);
+}
+
+.guild-profile-links-hint {
+  color: rgb(0 0 0 / 0.4);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 36rem) {
+  .guild-profile-display-dl {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Guild roster (structured table) — crest vars match `.guild-profile-display` --- */
+.guild-roster-display {
+  --guild-crest-emblem: rgb(15 23 42);
+  --guild-crest-border: rgb(148 163 184);
+  --guild-crest-background: rgb(241 245 249);
+  --guild-profile-ts-h1: 0 0 1px rgb(255 255 255 / 0.94);
+  --guild-profile-ts-h2: 0 0 4px rgb(255 255 255 / 0.55);
+  --guild-profile-ts-d1: 0 1px 2px rgb(0 0 0 / 0.22);
+  --guild-profile-ts-d2: 0 1px 4px rgb(0 0 0 / 0.12);
+  --guild-profile-ts-b1: 0 0 1px rgb(255 255 255 / 0.88);
+  --guild-profile-ts-b2: 0 1px 2px rgb(0 0 0 / 0.18);
+
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid
+    color-mix(in srgb, var(--guild-crest-border) 38%, rgb(0 0 0 / 0.06));
+  border-left: 4px solid var(--guild-crest-emblem);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--guild-crest-background) 28%, white) 0%,
+    color-mix(in srgb, var(--guild-crest-background) 12%, white) 48%,
+    rgb(255 255 255 / 0.92) 100%
+  );
+  padding: 1rem 1.1rem;
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.05),
+    inset 0 1px 0 color-mix(in srgb, white 82%, var(--guild-crest-emblem));
+}
+
+.guild-roster-display-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--guild-crest-border) 28%, rgb(0 0 0 / 0.08));
+}
+
+.guild-roster-display-title {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: color-mix(in srgb, var(--guild-crest-emblem) 42%, rgb(15 23 42));
+  text-shadow: var(--guild-profile-ts-h1), var(--guild-profile-ts-h2),
+    var(--guild-profile-ts-d1), var(--guild-profile-ts-d2);
+}
+
+.guild-roster-display-sub {
+  margin: 0.35rem 0 0;
+  font-size: 0.875rem;
+  color: rgb(0 0 0 / 0.55);
+}
+
+.guild-roster-display-meta {
+  margin: 0.25rem 0 0;
+  font-size: 0.8125rem;
+  color: rgb(0 0 0 / 0.5);
+}
+
+.guild-roster-display-api-link {
+  color: rgb(37 99 235);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.guild-roster-display-api-link:hover {
+  color: rgb(29 78 216);
+}
+
+.guild-roster-filter-toggle {
+  flex-shrink: 0;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 0.375rem;
+  border: 1px solid
+    color-mix(in srgb, var(--guild-crest-border) 45%, rgb(0 0 0 / 0.15));
+  background-color: color-mix(
+    in srgb,
+    white 88%,
+    var(--guild-crest-background)
+  );
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: color-mix(in srgb, var(--guild-crest-emblem) 25%, rgb(0 0 0 / 0.85));
+  text-shadow: var(--guild-profile-ts-b1), var(--guild-profile-ts-b2);
+}
+
+.guild-roster-filter-toggle:hover {
+  background-color: color-mix(
+    in srgb,
+    white 72%,
+    var(--guild-crest-background)
+  );
+}
+
+.guild-roster-filter-toggle:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px rgb(255 255 255),
+    0 0 0 4px rgb(0 0 0 / 0.12);
+}
+
+.guild-roster-display-empty,
+.guild-roster-display-fallback {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--guild-crest-emblem) 18%, rgb(0 0 0 / 0.55));
+  text-shadow: var(--guild-profile-ts-b1), var(--guild-profile-ts-b2);
+}
+
+.guild-roster-table-wrap {
+  overflow-x: auto;
+  margin: 0 -0.15rem;
+  padding: 0 0.15rem;
+}
+
+.guild-roster-table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.guild-roster-table th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--guild-crest-border) 18%, rgb(0 0 0 / 0.45));
+  padding: 0.4rem 0.5rem 0.5rem 0;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--guild-crest-border) 30%, rgb(0 0 0 / 0.1));
+  white-space: nowrap;
+  text-shadow: var(--guild-profile-ts-b1), var(--guild-profile-ts-b2);
+}
+
+.guild-roster-table td {
+  padding: 0.4rem 0.5rem 0.4rem 0;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--guild-crest-border) 20%, rgb(0 0 0 / 0.06));
+  vertical-align: middle;
+  color: color-mix(in srgb, var(--guild-crest-emblem) 18%, rgb(15 23 42));
+  text-shadow: var(--guild-profile-ts-h1), var(--guild-profile-ts-h2),
+    var(--guild-profile-ts-d1), var(--guild-profile-ts-d2);
+}
+
+.guild-roster-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.guild-roster-table-num {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.guild-roster-table-name {
+  font-weight: 500;
+}
+
+.guild-roster-table-link {
+  color: rgb(37 99 235);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-size: 0.75rem;
+}
+
+.guild-roster-table-link:hover {
+  color: rgb(29 78 216);
 }

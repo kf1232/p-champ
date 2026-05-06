@@ -1,0 +1,76 @@
+.wow-realm-picker {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.wow-realm-picker-input-wrap {
+  position: relative;
+}
+
+.wow-realm-picker-list {
+  position: absolute;
+  z-index: 40;
+  left: 0;
+  right: 0;
+  top: calc(100% + 0.25rem);
+  margin: 0;
+  padding: 0.25rem 0;
+  list-style: none;
+  max-height: 14rem;
+  overflow: auto;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(0 0 0 / 0.15);
+  background-color: rgb(255 255 255);
+  box-shadow:
+    0 4px 12px rgb(0 0 0 / 0.12),
+    0 1px 2px rgb(0 0 0 / 0.06);
+}
+
+.wow-realm-picker-item {
+  margin: 0;
+}
+
+.wow-realm-picker-option {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.1rem;
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  padding: 0.45rem 0.65rem;
+  font: inherit;
+  color: rgb(15 23 42);
+}
+
+.wow-realm-picker-option:hover,
+.wow-realm-picker-option--active {
+  background-color: rgb(0 0 0 / 0.06);
+}
+
+.wow-realm-picker-option-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+}
+
+.wow-realm-picker-option-slug {
+  font-size: 0.75rem;
+  line-height: 1.15rem;
+  color: rgb(0 0 0 / 0.5);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.wow-realm-picker-meta {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: rgb(0 0 0 / 0.45);
+}
+
+.wow-realm-picker-meta--error {
+  color: rgb(153 27 27);
+}

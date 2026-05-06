@@ -1,5 +1,5 @@
 /**
  * WoW feature public surface: the layout shell wired into `app/wow/layout.tsx`.
- * Page bodies (e.g. `WowServiceHomeContent`) import from their module path.
+ * Page bodies import from `@/components/wow/components/home`.
  */
-export { WowLayoutShell } from "./WowLayoutShell";
+export { WowLayoutShell } from "./Wow";

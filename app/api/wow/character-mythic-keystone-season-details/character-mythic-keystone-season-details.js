@@ -9,7 +9,7 @@ import {
   getBattleNetClientCredentialsToken,
   WOW_API_HOST_BY_REGION,
   wowApiLocaleForRegion,
-} from "@/lib/wow/battleNetClientCredentials";
+} from "@/lib/wow/battle-net/battleNetClientCredentials";
 
 import { CLIENT_ERROR } from "./constants.js";
 

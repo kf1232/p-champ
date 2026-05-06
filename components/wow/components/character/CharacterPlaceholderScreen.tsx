@@ -1,4 +1,6 @@
-import { CharacterProfileLookupForm } from "./CharacterProfileLookupForm";
+import { Suspense } from "react";
+
+import { CharacterProfileLookupForm } from "./components/lookup";
 
 /** WoW `/wow/character` — character tools entry (profile summary lookup). */
 export function CharacterPlaceholderScreen() {
@@ -8,7 +10,9 @@ export function CharacterPlaceholderScreen() {
         <h1 className="character-service-title">Character</h1>
       </div>
 
-      <CharacterProfileLookupForm />
+      <Suspense fallback={null}>
+        <CharacterProfileLookupForm />
+      </Suspense>
     </>
   );
 }

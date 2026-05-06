@@ -1,6 +1,6 @@
 "use client";
 
-import { useWowDebugRawPanels } from "@/components/wow/WowDebugRawPanelsContext";
+import { useWowDebugRawPanels } from "@/components/wow/components/providers/WowDebugRawPanelsContext";
 
 import "./styles/wowRawJsonDataPanel.css";
 
@@ -25,11 +25,32 @@ const FRESHNESS_LABEL: Record<WowRawDataFreshness, string> = {
   error: "Error",
 };
 
+function isRedactedBattleNetApiUrlString(s: string): boolean {
+  const t = s.trim();
+  if (!/^https?:\/\//i.test(t)) return false;
+  const l = t.toLowerCase();
+  return (
+    l.includes("battle.net") ||
+    l.includes("blizzard.com") ||
+    l.includes("api.blizzard.com") ||
+    l.includes("/data/wow/") ||
+    l.includes("/profile/world-of-warcraft") ||
+    l.includes("/profile/wow/")
+  );
+}
+
 function formatRawBody(rawBody: unknown): string {
   if (rawBody === undefined) return "";
-  if (typeof rawBody === "string") return rawBody;
+  if (typeof rawBody === "string") {
+    return isRedactedBattleNetApiUrlString(rawBody) ? "[removed]" : rawBody;
+  }
   try {
-    return JSON.stringify(rawBody, null, 2);
+    return JSON.stringify(rawBody, (_k, v) => {
+      if (typeof v === "string" && isRedactedBattleNetApiUrlString(v)) {
+        return "[removed]";
+      }
+      return v;
+    }, 2);
   } catch {
     return String(rawBody);
   }

@@ -1,0 +1,1 @@
+export { CharacterGearInformationSection } from "./CharacterGearInformationSection";

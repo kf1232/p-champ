@@ -1,0 +1,1 @@
+export { CharacterWowheadBisGearSection } from "./CharacterWowheadBisGearSection";
