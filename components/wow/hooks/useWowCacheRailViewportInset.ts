@@ -51,5 +51,5 @@ export function useWowCacheRailViewportInset<T extends HTMLElement>(
         vv.removeEventListener("scroll", update);
       }
     };
-  }, []);
+  }, [railRef]);
 }

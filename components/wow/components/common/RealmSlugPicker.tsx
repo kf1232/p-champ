@@ -122,7 +122,6 @@ export function RealmSlugPicker({
   const browseRowsRef = useRef<RealmSlugPickerRealm[]>([]);
   const inputValueRef = useRef("");
   const valueRef = useRef(value);
-  valueRef.current = value;
 
   const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState(value);
@@ -131,7 +130,13 @@ export function RealmSlugPicker({
   const [error, setError] = useState<string | null>(null);
   const [highlight, setHighlight] = useState(-1);
 
-  inputValueRef.current = inputValue;
+  useEffect(() => {
+    valueRef.current = value;
+  }, [value]);
+
+  useEffect(() => {
+    inputValueRef.current = inputValue;
+  }, [inputValue]);
 
   useEffect(() => {
     queueMicrotask(() => {
