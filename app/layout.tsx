@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { GameSelectionProvider } from "@/components/game";
+import { GameSelectionProvider } from "@/components/p-champ";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 
 import "./globals.css";

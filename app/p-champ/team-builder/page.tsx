@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { TeamBuilderScreen } from "@/components/team-builder";
+import { TeamBuilderScreen } from "@/components/p-champ";
 
 export const metadata: Metadata = {
   title: "Team Builder",
