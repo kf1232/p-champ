@@ -1,0 +1,319 @@
+/* Character overview (structured segments) — used by `CharacterOverviewSegments` and nested overview UI. */
+
+.character-overview-root {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.character-overview-segment {
+  border-radius: 0.5rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  background-color: rgb(255 255 255 / 0.85);
+  padding: 1rem 1.1rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+}
+
+.character-overview-segment-title {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: rgb(15 23 42);
+}
+
+.character-overview-segment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.character-overview-segment-header .character-overview-segment-title {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.character-overview-segment-header-actions {
+  flex: 0 0 auto;
+}
+
+.character-overview-segment-header-actions .character-submit-secondary {
+  text-decoration: none;
+  text-align: center;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.character-overview-empty {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: rgb(0 0 0 / 0.55);
+}
+
+.character-overview-muted {
+  margin: 0.5rem 0 0;
+  font-size: 0.8125rem;
+  color: rgb(0 0 0 / 0.5);
+}
+
+.character-overview-bis-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.character-overview-bis-field {
+  flex: 1 1 12rem;
+  min-width: 0;
+  max-width: 22rem;
+}
+
+.character-overview-bis-actions {
+  flex: 0 0 auto;
+  padding-bottom: 0.125rem;
+}
+
+.character-overview-dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(8rem, 11rem) minmax(0, 1fr);
+  gap: 0.35rem 1rem;
+  align-items: baseline;
+}
+
+@media (max-width: 36rem) {
+  .character-overview-dl {
+    grid-template-columns: 1fr;
+  }
+
+  .character-overview-dl-term {
+    margin-top: 0.35rem;
+  }
+
+  .character-overview-dl-row:first-child .character-overview-dl-term {
+    margin-top: 0;
+  }
+}
+
+.character-overview-dl-row {
+  display: contents;
+}
+
+.character-overview-dl-term {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgb(0 0 0 / 0.45);
+}
+
+.character-overview-dl-def {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: rgb(15 23 42);
+  word-break: break-word;
+}
+
+.character-overview-table-wrap {
+  overflow-x: auto;
+  margin: 0 -0.15rem;
+  padding: 0 0.15rem;
+}
+
+.character-overview-table {
+  width: 100%;
+  min-width: 44rem;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.character-overview-table th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgb(0 0 0 / 0.45);
+  padding: 0.4rem 0.5rem 0.5rem 0;
+  border-bottom: 1px solid rgb(0 0 0 / 0.1);
+  white-space: nowrap;
+}
+
+.character-overview-table td {
+  padding: 0.45rem 0.5rem 0.45rem 0;
+  border-bottom: 1px solid rgb(0 0 0 / 0.06);
+  vertical-align: top;
+  color: rgb(15 23 42);
+}
+
+.character-overview-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.character-overview-table-num {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.character-overview-table-cell-nowrap {
+  white-space: nowrap;
+  max-width: 14rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.character-overview-table-cell-preline {
+  white-space: pre-line;
+  word-break: break-word;
+  max-width: 22rem;
+}
+
+.character-overview-table-cell-bonus {
+  max-width: 28rem;
+}
+
+.character-overview-quality--POOR {
+  color: rgb(157 157 157);
+}
+
+.character-overview-quality--COMMON {
+  color: rgb(0 0 0);
+}
+
+.character-overview-quality--UNCOMMON {
+  color: rgb(30 255 0);
+}
+
+.character-overview-quality--RARE {
+  color: rgb(0 112 255);
+}
+
+.character-overview-quality--EPIC {
+  color: rgb(163 53 238);
+}
+
+.character-overview-quality--LEGENDARY {
+  color: rgb(255 128 0);
+}
+
+.character-overview-quality--ARTIFACT {
+  color: rgb(230 204 128);
+}
+
+.character-overview-quality--HEIRLOOM {
+  color: rgb(0 204 255);
+}
+
+.character-overview-mythic-summary {
+  margin-bottom: 0.75rem;
+}
+
+.character-overview-mythic-line {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(15 23 42);
+}
+
+.character-overview-mythic-kv {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.character-overview-mythic-kv li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.character-overview-mythic-k {
+  font-weight: 600;
+  color: rgb(0 0 0 / 0.45);
+  min-width: 7.5rem;
+}
+
+.character-overview-mythic-v {
+  color: rgb(15 23 42);
+}
+
+.character-overview-mythic-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.character-overview-rating-swatch {
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 0.15rem;
+  border: 1px solid rgb(0 0 0 / 0.12);
+  flex-shrink: 0;
+}
+
+.character-overview-item-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.character-overview-item-card {
+  border-radius: 0.45rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  background: rgb(252 252 253);
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.character-overview-item-card--enchant-error,
+.character-overview-item-card--socket-error {
+  border-color: rgb(220 38 38);
+  background: rgb(254 242 242);
+  box-shadow: 0 0 0 1px rgb(220 38 38 / 0.15);
+}
+
+.character-overview-item-card__value--enchant-error {
+  color: rgb(185 28 28);
+  font-weight: 600;
+}
+
+.character-overview-item-card__row {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 8.5rem) minmax(0, 1fr);
+  gap: 0.35rem 0.75rem;
+  align-items: start;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 32rem) {
+  .character-overview-item-card__row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.character-overview-item-card__label {
+  font-weight: 600;
+  color: rgb(0 0 0 / 0.45);
+}
+
+.character-overview-item-card__value {
+  color: rgb(15 23 42);
+  word-break: break-word;
+}

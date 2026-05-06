@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
-import { GuildPlaceholderScreen } from "@/components/wow/components/guild";
-import "@/components/wow/components/guild/styles/guild.css";
+import { Guild } from "@/components/wow/components/guild";
 import { PORTAL_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -11,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function WowGuildPage() {
-  return <GuildPlaceholderScreen />;
+  return <Guild />;
 }

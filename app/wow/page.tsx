@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { WowServiceHomeContent } from "@/components/wow/WowServiceHomeContent";
+import { Home } from "@/components/wow/components/home";
 import { PORTAL_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function WowServicePage() {
-  return <WowServiceHomeContent />;
+  return <Home />;
 }

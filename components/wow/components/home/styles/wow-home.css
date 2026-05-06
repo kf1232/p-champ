@@ -1,0 +1,63 @@
+/* WoW `/wow` home — intro + placeholder grid (see `components/home/Home.tsx`). */
+
+.wow-home-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wow-home-title {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: rgb(0 0 0);
+}
+
+.wow-home-desc {
+  max-width: 65ch;
+  color: rgb(0 0 0 / 0.7);
+}
+
+.wow-grid-section {
+  margin-top: 2rem;
+}
+
+.wow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .wow-grid {
+    gap: 1rem;
+  }
+}
+
+.wow-grid-cell {
+  display: flex;
+  aspect-ratio: 1 / 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  background-color: rgb(255 255 255 / 0.6);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+
+.wow-grid-cell--active {
+  color: rgb(0 0 0);
+}
+
+.wow-grid-cell--active:hover {
+  border-color: rgb(0 0 0 / 0.2);
+  background-color: rgb(255 255 255 / 0.8);
+}
+
+.wow-grid-cell--inactive {
+  pointer-events: none;
+  color: rgb(0 0 0 / 0.4);
+}

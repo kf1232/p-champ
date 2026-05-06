@@ -1,0 +1,202 @@
+/**
+ * Profile lookup + cache rail only. Form control tokens (`.character-form-*`, etc.)
+ * stay in `../../styles/character.css` for reuse in overview.
+ */
+
+.character-lookup {
+  margin-top: 1.5rem;
+}
+
+.character-lookup-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(13rem, 19rem);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+@media (max-width: 52rem) {
+  .character-lookup-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .character-cache-rail {
+    position: static;
+  }
+}
+
+.character-lookup-main {
+  min-width: 0;
+}
+
+.character-cache-rail {
+  position: sticky;
+  top: 0.5rem;
+  align-self: start;
+  display: flex;
+  max-height: calc(
+    100svh - var(--wow-cache-rail-top-in-viewport, 12rem) -
+      var(--wow-viewport-footer-h, 64px) - 0.75rem -
+      env(safe-area-inset-bottom, 0px)
+  );
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  background-color: rgb(255 255 255 / 0.65);
+  padding: 0.75rem 0.85rem;
+}
+
+.character-lookup-history-heading {
+  margin: 0 0 0.5rem;
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgb(0 0 0 / 0.45);
+}
+
+.character-cache-rail-summaries-strip {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  margin: 0;
+  overflow: hidden;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.character-cache-rail-summaries-strip-empty {
+  margin: 0;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: rgb(0 0 0 / 0.45);
+}
+
+.character-cache-rail-summaries-strip-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.35rem;
+  overflow-y: auto;
+}
+
+.character-cache-rail-summaries-strip-item {
+  margin: 0;
+}
+
+.character-lookup-history-record {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+  border-radius: 0.35rem;
+  border: 1px solid rgb(0 0 0 / 0.08);
+  background: rgb(248 250 252 / 0.95);
+  padding: 0.5rem 0.55rem;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 0.04);
+  cursor: pointer;
+  outline: none;
+  transition:
+    border-color 0.12s ease,
+    background-color 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.character-lookup-history-record:hover {
+  border-color: rgb(0 0 0 / 0.18);
+  background: rgb(255 255 255);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.08);
+}
+
+.character-lookup-history-name {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: rgb(15 23 42);
+  word-break: break-word;
+  line-height: 1.25;
+}
+
+.character-lookup-history-meta {
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: rgb(0 0 0 / 0.55);
+}
+
+.character-lookup-history-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.1rem;
+}
+
+.character-lookup-history-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  border-radius: 0.25rem;
+  padding: 0.15rem;
+  transition:
+    color 0.12s ease,
+    background-color 0.12s ease;
+}
+
+.character-lookup-history-icon--active {
+  color: rgb(37 99 235);
+  background: rgb(239 246 255 / 0.9);
+}
+
+.character-lookup-history-icon--muted {
+  color: rgb(148 163 184);
+  background: rgb(248 250 252 / 0.6);
+}
+
+.character-lookup-history-icon-svg {
+  display: block;
+}
+
+.character-cache-rail-mythic-note {
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgb(0 0 0 / 0.08);
+}
+
+.character-cache-rail-mythic-note-body {
+  margin: 0.35rem 0 0;
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  color: rgb(0 0 0 / 0.45);
+}
+
+.character-cache-rail-season-note {
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgb(0 0 0 / 0.08);
+}
+
+.character-cache-rail-season-note-body {
+  margin: 0.35rem 0 0;
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  color: rgb(0 0 0 / 0.45);
+}
+
+.character-hint-code {
+  font-size: 0.6875rem;
+  padding: 0.08em 0.3em;
+  border-radius: 0.25rem;
+  background-color: rgb(0 0 0 / 0.06);
+  color: rgb(0 0 0 / 0.75);
+}

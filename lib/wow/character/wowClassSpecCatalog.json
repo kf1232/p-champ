@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 2,
+  "game": "wow-retail",
+  "description": "Playable classes and specializations with Blizzard Game Data API ids (playable-class, playable-specialization).",
+  "sourceNote": "Ids match profile/static responses such as playable-class/{classId} and playable-specialization/{specId}. Midnight adds Demon Hunter Devourer (id 1480, CHRSPEC / SimC DEMON_HUNTER_DEVOURER).",
+  "classCount": 13,
+  "specializationCount": 40,
+  "classes": [
+    {
+      "id": 1,
+      "name": "Warrior",
+      "specializations": [
+        { "id": 71, "name": "Arms" },
+        { "id": 72, "name": "Fury" },
+        { "id": 73, "name": "Protection" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Paladin",
+      "specializations": [
+        { "id": 65, "name": "Holy" },
+        { "id": 66, "name": "Protection" },
+        { "id": 70, "name": "Retribution" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Hunter",
+      "specializations": [
+        { "id": 253, "name": "Beast Mastery" },
+        { "id": 254, "name": "Marksmanship" },
+        { "id": 255, "name": "Survival" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Rogue",
+      "specializations": [
+        { "id": 259, "name": "Assassination" },
+        { "id": 260, "name": "Outlaw" },
+        { "id": 261, "name": "Subtlety" }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Priest",
+      "specializations": [
+        { "id": 256, "name": "Discipline" },
+        { "id": 257, "name": "Holy" },
+        { "id": 258, "name": "Shadow" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Death Knight",
+      "specializations": [
+        { "id": 250, "name": "Blood" },
+        { "id": 251, "name": "Frost" },
+        { "id": 252, "name": "Unholy" }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Shaman",
+      "specializations": [
+        { "id": 262, "name": "Elemental" },
+        { "id": 263, "name": "Enhancement" },
+        { "id": 264, "name": "Restoration" }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Mage",
+      "specializations": [
+        { "id": 62, "name": "Arcane" },
+        { "id": 63, "name": "Fire" },
+        { "id": 64, "name": "Frost" }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Warlock",
+      "specializations": [
+        { "id": 265, "name": "Affliction" },
+        { "id": 266, "name": "Demonology" },
+        { "id": 267, "name": "Destruction" }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Monk",
+      "specializations": [
+        { "id": 268, "name": "Brewmaster" },
+        { "id": 269, "name": "Windwalker" },
+        { "id": 270, "name": "Mistweaver" }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Druid",
+      "specializations": [
+        { "id": 102, "name": "Balance" },
+        { "id": 103, "name": "Feral" },
+        { "id": 104, "name": "Guardian" },
+        { "id": 105, "name": "Restoration" }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Demon Hunter",
+      "specializations": [
+        { "id": 577, "name": "Havoc" },
+        { "id": 581, "name": "Vengeance" },
+        { "id": 1480, "name": "Devourer" }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Evoker",
+      "specializations": [
+        { "id": 1467, "name": "Devastation" },
+        { "id": 1468, "name": "Preservation" },
+        { "id": 1473, "name": "Augmentation" }
+      ]
+    }
+  ],
+  "combinations": [
+    { "classId": 1, "className": "Warrior", "specId": 71, "specName": "Arms" },
+    { "classId": 1, "className": "Warrior", "specId": 72, "specName": "Fury" },
+    { "classId": 1, "className": "Warrior", "specId": 73, "specName": "Protection" },
+    { "classId": 2, "className": "Paladin", "specId": 65, "specName": "Holy" },
+    { "classId": 2, "className": "Paladin", "specId": 66, "specName": "Protection" },
+    { "classId": 2, "className": "Paladin", "specId": 70, "specName": "Retribution" },
+    { "classId": 3, "className": "Hunter", "specId": 253, "specName": "Beast Mastery" },
+    { "classId": 3, "className": "Hunter", "specId": 254, "specName": "Marksmanship" },
+    { "classId": 3, "className": "Hunter", "specId": 255, "specName": "Survival" },
+    { "classId": 4, "className": "Rogue", "specId": 259, "specName": "Assassination" },
+    { "classId": 4, "className": "Rogue", "specId": 260, "specName": "Outlaw" },
+    { "classId": 4, "className": "Rogue", "specId": 261, "specName": "Subtlety" },
+    { "classId": 5, "className": "Priest", "specId": 256, "specName": "Discipline" },
+    { "classId": 5, "className": "Priest", "specId": 257, "specName": "Holy" },
+    { "classId": 5, "className": "Priest", "specId": 258, "specName": "Shadow" },
+    { "classId": 6, "className": "Death Knight", "specId": 250, "specName": "Blood" },
+    { "classId": 6, "className": "Death Knight", "specId": 251, "specName": "Frost" },
+    { "classId": 6, "className": "Death Knight", "specId": 252, "specName": "Unholy" },
+    { "classId": 7, "className": "Shaman", "specId": 262, "specName": "Elemental" },
+    { "classId": 7, "className": "Shaman", "specId": 263, "specName": "Enhancement" },
+    { "classId": 7, "className": "Shaman", "specId": 264, "specName": "Restoration" },
+    { "classId": 8, "className": "Mage", "specId": 62, "specName": "Arcane" },
+    { "classId": 8, "className": "Mage", "specId": 63, "specName": "Fire" },
+    { "classId": 8, "className": "Mage", "specId": 64, "specName": "Frost" },
+    { "classId": 9, "className": "Warlock", "specId": 265, "specName": "Affliction" },
+    { "classId": 9, "className": "Warlock", "specId": 266, "specName": "Demonology" },
+    { "classId": 9, "className": "Warlock", "specId": 267, "specName": "Destruction" },
+    { "classId": 10, "className": "Monk", "specId": 268, "specName": "Brewmaster" },
+    { "classId": 10, "className": "Monk", "specId": 269, "specName": "Windwalker" },
+    { "classId": 10, "className": "Monk", "specId": 270, "specName": "Mistweaver" },
+    { "classId": 11, "className": "Druid", "specId": 102, "specName": "Balance" },
+    { "classId": 11, "className": "Druid", "specId": 103, "specName": "Feral" },
+    { "classId": 11, "className": "Druid", "specId": 104, "specName": "Guardian" },
+    { "classId": 11, "className": "Druid", "specId": 105, "specName": "Restoration" },
+    { "classId": 12, "className": "Demon Hunter", "specId": 577, "specName": "Havoc" },
+    { "classId": 12, "className": "Demon Hunter", "specId": 581, "specName": "Vengeance" },
+    { "classId": 12, "className": "Demon Hunter", "specId": 1480, "specName": "Devourer" },
+    { "classId": 13, "className": "Evoker", "specId": 1467, "specName": "Devastation" },
+    { "classId": 13, "className": "Evoker", "specId": 1468, "specName": "Preservation" },
+    { "classId": 13, "className": "Evoker", "specId": 1473, "specName": "Augmentation" }
+  ]
+}
