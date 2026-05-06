@@ -15,7 +15,8 @@
     "sync:pokemon-form-issues:live": "node scripts/sync-pokemon-form-issues.mjs",
     "sync:type-issues:live": "node scripts/sync-type-issues.mjs",
     "cleanup:workflow-issues:live": "node scripts/cleanup-workflow-issues.mjs",
-    "test": "node --test scripts/lib/dex-issue-sync/dex-issue-sync.test.mjs",
+    "test": "jest",
+    "test:verbose": "jest --verbose --runInBand",
     "wow:sample-api": "node scripts/sample-blizzard-profile-responses.mjs"
   },
   "dependencies": {
@@ -26,11 +27,13 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
+    "jest": "^30.3.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

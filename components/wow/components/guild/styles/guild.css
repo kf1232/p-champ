@@ -1,0 +1,299 @@
+/**
+ * WoW Guild UI — plain CSS. Loaded from `app/wow/guild/page.tsx`.
+ * Prefix `guild-` avoids clashes; rhythm matches character tools.
+ */
+
+.guild-service-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.guild-service-title {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: rgb(0 0 0);
+}
+
+.guild-service-desc {
+  max-width: 65ch;
+  color: rgb(0 0 0 / 0.7);
+}
+
+.guild-lookup {
+  margin-top: 1.5rem;
+}
+
+.guild-lookup-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(11rem, 15.5rem);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 52rem) {
+  .guild-lookup-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .guild-cache-rail {
+    position: static;
+  }
+}
+
+.guild-lookup-main {
+  min-width: 0;
+}
+
+.guild-cache-rail {
+  position: sticky;
+  top: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  background-color: rgb(255 255 255 / 0.65);
+  padding: 0.75rem 0.85rem;
+}
+
+.guild-cache-rail-heading {
+  margin: 0 0 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgb(0 0 0 / 0.45);
+}
+
+.guild-cache-rail-summaries-strip {
+  margin: 0 0 0.65rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgb(0 0 0 / 0.08);
+}
+
+.guild-cache-rail-summaries-strip-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgb(0 0 0 / 0.4);
+}
+
+.guild-cache-rail-summaries-strip-empty {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: rgb(0 0 0 / 0.45);
+}
+
+.guild-cache-rail-summaries-strip-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-height: 12rem;
+  overflow: auto;
+}
+
+.guild-cache-rail-summaries-strip-item {
+  margin: 0;
+}
+
+.guild-cache-summary-strip-record {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.2rem;
+  border-radius: 0.35rem;
+  border: 1px solid rgb(0 0 0 / 0.08);
+  background: rgb(248 250 252 / 0.95);
+  padding: 0.45rem 0.5rem;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 0.04);
+  cursor: pointer;
+  outline: none;
+  transition:
+    border-color 0.12s ease,
+    background-color 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.guild-cache-summary-strip-record:hover {
+  border-color: rgb(0 0 0 / 0.18);
+  background: rgb(255 255 255);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.08);
+}
+
+.guild-cache-summary-strip-name {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: rgb(15 23 42);
+  word-break: break-word;
+}
+
+.guild-cache-summary-strip-realm,
+.guild-cache-summary-strip-faction {
+  font-size: 0.6875rem;
+  line-height: 1.3;
+  color: rgb(0 0 0 / 0.55);
+}
+
+.guild-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.guild-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem 1rem;
+  align-items: start;
+}
+
+.guild-form-grid > .guild-form-field {
+  min-width: 0;
+}
+
+.guild-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.guild-form-field--span-2 {
+  grid-column: span 2;
+}
+
+.guild-label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: rgb(0 0 0 / 0.85);
+}
+
+.guild-hint {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: rgb(0 0 0 / 0.45);
+}
+
+.guild-hint-code {
+  font-size: 0.6875rem;
+  padding: 0.08em 0.3em;
+  border-radius: 0.25rem;
+  background-color: rgb(0 0 0 / 0.06);
+  color: rgb(0 0 0 / 0.75);
+}
+
+.guild-select,
+.guild-input {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(0 0 0 / 0.15);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgb(0 0 0);
+  background-color: rgb(255 255 255);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.guild-select:focus,
+.guild-input:focus {
+  border-color: rgb(0 0 0 / 0.35);
+  outline: none;
+  box-shadow:
+    0 0 0 2px rgb(255 255 255),
+    0 0 0 4px rgb(0 0 0 / 0.08);
+}
+
+.guild-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.guild-submit {
+  border-radius: 0.375rem;
+  border: none;
+  background-color: rgb(0 0 0);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: rgb(255 255 255);
+  cursor: pointer;
+}
+
+.guild-submit:hover:not(:disabled) {
+  background-color: rgb(0 0 0 / 0.88);
+}
+
+.guild-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.guild-submit-secondary {
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: rgb(255 255 255);
+  color: rgb(0 0 0 / 0.85);
+  border: 1px solid rgb(0 0 0 / 0.2);
+}
+
+.guild-submit-secondary:hover:not(:disabled) {
+  background-color: rgb(0 0 0 / 0.06);
+}
+
+.guild-submit-secondary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.guild-form-error {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.35rem;
+  color: rgb(185 28 28);
+}
+
+.guild-cache-summary-strip-roster {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: rgb(22 101 52);
+}
+
+.guild-cache-rail-roster-note {
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgb(0 0 0 / 0.08);
+}
+
+.guild-cache-rail-roster-note-body {
+  margin: 0.35rem 0 0;
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  color: rgb(0 0 0 / 0.45);
+}
+
+@media (max-width: 42rem) {
+  .guild-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guild-form-field--span-2 {
+    grid-column: auto;
+  }
+}

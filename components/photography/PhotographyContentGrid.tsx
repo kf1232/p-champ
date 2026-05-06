@@ -12,8 +12,8 @@ export function PhotographyContentGrid() {
   const placeholderRows = trailingPlaceholderCellCount(FILLED_ROW_COUNT, GRID_COLS);
 
   return (
-    <section aria-label="Photography modules" className="photography-grid-section">
-      <div className="photography-grid-inner">
+    <section aria-label="Photography modules" className="mt-8">
+      <div className="grid min-w-0 w-full grid-cols-1 gap-3 sm:gap-4">
         {PHOTOGRAPHY_ALBUM_ENTRIES.map((album) => (
           <PhotographyEntryRow
             key={album.id}

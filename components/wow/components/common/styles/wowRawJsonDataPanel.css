@@ -1,0 +1,79 @@
+/**
+ * WoW raw JSON result panel — shared by guild, character, etc.
+ * Prefix `wow-raw-json-data-panel` avoids clashes.
+ */
+
+.wow-raw-json-data-panel {
+  margin-top: 1rem;
+}
+
+.wow-raw-json-data-panel--stack-next {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(0 0 0 / 0.08);
+}
+
+.wow-raw-json-data-panel__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.wow-raw-json-data-panel__title {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgb(0 0 0 / 0.45);
+}
+
+.wow-raw-json-data-panel__chip {
+  flex-shrink: 0;
+  border-radius: 9999px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+}
+
+.wow-raw-json-data-panel__chip--live {
+  border: 1px solid rgb(22 101 52 / 0.35);
+  background-color: rgb(240 253 244);
+  color: rgb(22 101 52);
+}
+
+.wow-raw-json-data-panel__chip--cache {
+  border: 1px solid rgb(30 64 175 / 0.35);
+  background-color: rgb(239 246 255);
+  color: rgb(30 64 175);
+}
+
+.wow-raw-json-data-panel__chip--error {
+  border: 1px solid rgb(185 28 28 / 0.35);
+  background-color: rgb(254 242 242);
+  color: rgb(185 28 28);
+}
+
+.wow-raw-json-data-panel__body {
+  border-radius: 0.5rem;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  background-color: rgb(0 0 0 / 0.03);
+  overflow: auto;
+  max-height: min(50vh, 24rem);
+}
+
+.wow-raw-json-data-panel__pre {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: rgb(0 0 0 / 0.85);
+  white-space: pre;
+  overflow: auto;
+  tab-size: 2;
+}
