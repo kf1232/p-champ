@@ -4,9 +4,16 @@ import { LOCATION_FINDER_GEOCODE_RESPONSES_KEY } from "@/lib/burke/location-find
 
 import { APP_STORAGE_KEYS, appLocalStorage } from "./index";
 
-function installMockLocalStorage(): void {
+type MockStorage = {
+  getItem: (key: string) => string | null;
+  setItem: (key: string, value: string) => void;
+  removeItem: (key: string) => void;
+  clear: () => void;
+};
+
+function createMockLocalStorage(): MockStorage {
   const store = new Map<string, string>();
-  const mock = {
+  return {
     getItem: (key: string) => store.get(key) ?? null,
     setItem: (key: string, value: string) => {
       store.set(key, value);
@@ -16,8 +23,14 @@ function installMockLocalStorage(): void {
     },
     clear: () => store.clear(),
   };
+}
+
+let mockStorage: MockStorage;
+
+function installMockLocalStorage(): void {
+  mockStorage = createMockLocalStorage();
   Object.defineProperty(globalThis, "localStorage", {
-    value: mock,
+    value: mockStorage,
     configurable: true,
     writable: true,
   });
@@ -26,13 +39,13 @@ function installMockLocalStorage(): void {
 describe("appLocalStorage", () => {
   beforeEach(() => {
     installMockLocalStorage();
-    localStorage.clear();
+    mockStorage.clear();
   });
 
   it("exposes envelope storage for wow service", () => {
     const client = appLocalStorage(APP_STORAGE_KEYS.wowService);
     client.write({ foo: "bar" });
-    expect(localStorage.getItem(APP_STORAGE_KEYS.wowService)).toContain("foo");
+    expect(mockStorage.getItem(APP_STORAGE_KEYS.wowService)).toContain("foo");
     const parsed = client.parseRaw(client.getSnapshot());
     expect(parsed.data).toEqual({ foo: "bar" });
     expect(parsed.storedAt).toEqual(expect.any(Number));
@@ -51,7 +64,7 @@ describe("appLocalStorage", () => {
 
   it("reads wow v1 envelope payloads", () => {
     const storedAt = Date.now();
-    localStorage.setItem(
+    mockStorage.setItem(
       APP_STORAGE_KEYS.wowService,
       JSON.stringify({
         v: 1,
@@ -69,7 +82,7 @@ describe("appLocalStorage", () => {
     const client = appLocalStorage(APP_STORAGE_KEYS.burkeLocationFinder);
     const payload = { [LOCATION_FINDER_GEOCODE_RESPONSES_KEY]: { "test key": {} } };
     client.write(payload);
-    expect(localStorage.getItem(APP_STORAGE_KEYS.burkeLocationFinder)).toContain(
+    expect(mockStorage.getItem(APP_STORAGE_KEYS.burkeLocationFinder)).toContain(
       '"tool":"burke-location-finder"',
     );
     expect(client.parseRaw(client.getSnapshot()).data).toEqual(payload);
@@ -77,7 +90,7 @@ describe("appLocalStorage", () => {
 
   it("expires wow service payloads past TTL", () => {
     const client = appLocalStorage(APP_STORAGE_KEYS.wowService);
-    localStorage.setItem(
+    mockStorage.setItem(
       APP_STORAGE_KEYS.wowService,
       JSON.stringify({
         v: 1,
@@ -86,6 +99,6 @@ describe("appLocalStorage", () => {
       }),
     );
     expect(client.getSnapshot()).toBe("");
-    expect(localStorage.getItem(APP_STORAGE_KEYS.wowService)).toBeNull();
+    expect(mockStorage.getItem(APP_STORAGE_KEYS.wowService)).toBeNull();
   });
 });

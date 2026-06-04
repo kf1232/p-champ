@@ -66,7 +66,10 @@ export function useAddressFieldController({
 }: UseAddressFieldControllerArgs): AddressFieldController {
   const { lookup, peekLookup, lookupGeneration } = useGeocodeLookup();
   const peekLookupRef = useRef(peekLookup);
-  peekLookupRef.current = peekLookup;
+
+  useEffect(() => {
+    peekLookupRef.current = peekLookup;
+  }, [peekLookup]);
 
   const listId = useId();
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -106,7 +109,9 @@ export function useAddressFieldController({
   }, [rowStatus]);
 
   useEffect(() => {
-    setInputValue(value.query);
+    queueMicrotask(() => {
+      setInputValue(value.query);
+    });
   }, [value.query]);
 
   useLayoutEffect(() => {
@@ -254,10 +259,12 @@ export function useAddressFieldController({
   useEffect(() => {
     const trimmed = inputValue.trim();
     if (trimmed.length < 3) {
-      setSuggestions([]);
-      setOpen(false);
-      setHighlight(-1);
-      setLookupSettled(false);
+      queueMicrotask(() => {
+        setSuggestions([]);
+        setOpen(false);
+        setHighlight(-1);
+        setLookupSettled(false);
+      });
       return;
     }
     if (isAddressResolved(value)) {

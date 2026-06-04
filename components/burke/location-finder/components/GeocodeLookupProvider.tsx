@@ -51,7 +51,7 @@ type GeocodeLookupContextValue = {
   lookup: (query: string) => Promise<GeocodeResponse>;
   prefetch: (queries: string[]) => Promise<void>;
   peekLookup: (query: string) => GeocodeResponse | null;
-  lookupGeneration: number;
+  lookupGeneration: string;
 };
 
 const GeocodeLookupContext = createContext<GeocodeLookupContextValue | null>(
@@ -80,7 +80,14 @@ export function GeocodeLookupProvider({
     new Map<string, (result: GeocodeResponse) => void>(),
   );
   const geocodeFingerprintRef = useRef("");
-  const [lookupGeneration, setLookupGeneration] = useState(0);
+  const [cacheRevision, setCacheRevision] = useState(0);
+
+  const dataFingerprint = useMemo(() => {
+    const map = readGeocodeResponseMap(data);
+    return fingerprintGeocodeResponseMap(map);
+  }, [data]);
+
+  const lookupGeneration = `${dataFingerprint}:${cacheRevision}`;
 
   const bundle = useCallback(
     (): GeocodeCacheBundle => ({
@@ -98,7 +105,6 @@ export function GeocodeLookupProvider({
       inflightRef.current.clear();
       clearGeocodeCache();
       geocodeFingerprintRef.current = "";
-      setLookupGeneration((g) => g + 1);
       return;
     }
     const nextCache = new Map<string, GeocodeResponse>();
@@ -106,11 +112,7 @@ export function GeocodeLookupProvider({
       nextCache.set(key, map[key]!);
     }
     cacheRef.current = nextCache;
-    const fingerprint = fingerprintGeocodeResponseMap(map);
-    if (fingerprint !== geocodeFingerprintRef.current) {
-      geocodeFingerprintRef.current = fingerprint;
-      setLookupGeneration((g) => g + 1);
-    }
+    geocodeFingerprintRef.current = fingerprintGeocodeResponseMap(map);
   }, [data]);
 
   const persistGeocode = useCallback(
@@ -190,7 +192,7 @@ export function GeocodeLookupProvider({
           persistGeocodeBatch,
           persistGeocode,
         );
-        setLookupGeneration((g) => g + 1);
+        setCacheRevision((g) => g + 1);
       } catch {
         markBatchMissesAsEmpty(bundle(), needed, persistGeocode);
       }
@@ -317,7 +319,7 @@ export function GeocodeLookupProvider({
           persistGeocodeBatch,
           persistGeocode,
         ).then(() => {
-          setLookupGeneration((g) => g + 1);
+          setCacheRevision((g) => g + 1);
         });
 
         for (let i = 0; i < batch.length; i++) {

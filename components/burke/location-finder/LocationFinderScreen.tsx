@@ -67,7 +67,9 @@ export function LocationFinderScreen({
   }, []);
 
   useEffect(() => {
-    void runPreload();
+    queueMicrotask(() => {
+      void runPreload();
+    });
   }, [runPreload]);
 
   useEffect(() => {

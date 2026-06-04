@@ -11,7 +11,6 @@ import {
   effectiveAddressFieldStatus,
   groupSecondaryRowsByEffectiveStatus,
 } from "@/lib/burke/geo/addressFieldStatus";
-import type { AddressFieldStatus, AddressFieldValue } from "@/lib/burke/geo/types";
 import { applyGeocodeResponseToRow } from "@/lib/burke/geo/applyGeocodeToRow";
 import { parseLocationsCsv } from "@/lib/burke/location-finder/parseLocationsCsv";
 import { nextSecondaryRowId } from "@/lib/burke/location-finder/secondaryRowId";
