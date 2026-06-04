@@ -28,6 +28,9 @@ const BASE_CLIENTS: Record<
   Exclude<AppStorageKey, typeof APP_STORAGE_KEYS.burkeLocationFinder>,
   AppStorageClient
 > = {
+  [APP_STORAGE_KEYS.colorScheme]: createRawStringStorageClient(
+    APP_STORAGE_KEYS.colorScheme,
+  ),
   [APP_STORAGE_KEYS.wowService]: createEnvelopeStorageClient({
     key: APP_STORAGE_KEYS.wowService,
     ttlMs: SEVEN_DAY_TTL_MS,
@@ -53,6 +56,9 @@ function resolveClient(key: AppStorageKey): AppStorageClient | undefined {
 export function appLocalStorage(
   key: typeof APP_STORAGE_KEYS.burkeLocationFinder,
 ): EnvelopeStorageClient;
+export function appLocalStorage(
+  key: typeof APP_STORAGE_KEYS.colorScheme,
+): RawStringStorageClient;
 export function appLocalStorage(
   key: typeof APP_STORAGE_KEYS.wowService,
 ): EnvelopeStorageClient;

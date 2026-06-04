@@ -122,7 +122,7 @@ export function DrivingRoutingDiagnosticsPanel({
           <p className="text-xs font-medium uppercase tracking-wide text-amber-800/90">
             Unrouted locations
           </p>
-          <div className="mt-2 max-h-64 overflow-y-auto rounded border border-amber-200/60 bg-white/50">
+          <div className="mt-2 max-h-64 overflow-y-auto rounded border border-amber-200/60 bg-surface-overlay">
             <table className="w-full text-left text-xs">
               <thead className="sticky top-0 bg-amber-100/90 text-amber-900">
                 <tr>

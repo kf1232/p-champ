@@ -14,8 +14,8 @@ function statLine(label: string, value: number | undefined) {
     value === undefined || value === DEX_STAT_TODO ? "—" : value;
   return (
     <div className="flex items-baseline justify-between gap-2">
-      <div className="text-sm font-medium text-black/50">{label}</div>
-      <div className="text-sm font-semibold text-black/80">{display}</div>
+      <div className="text-sm font-medium text-tertiary">{label}</div>
+      <div className="text-sm font-semibold text-secondary">{display}</div>
     </div>
   );
 }
@@ -29,12 +29,12 @@ export function DexRecordPlaceholder({ record }: DexRecordPlaceholderProps) {
 
   return (
     <div
-      className={`flex min-h-[11rem] flex-col gap-3 rounded-xl border border-black/10 bg-white/60 p-5 ${
+      className={`flex min-h-[11rem] flex-col gap-3 rounded-xl border border-border-subtle bg-surface-overlay p-5 ${
         record.formId !== FORM_IDS.base ? "cursor-help" : ""
       }`}
       title={formTooltip}
     >
-      <div className="truncate text-lg font-semibold leading-snug text-black">
+      <div className="truncate text-lg font-semibold leading-snug text-primary">
         {displayName}
       </div>
 
@@ -49,12 +49,12 @@ export function DexRecordPlaceholder({ record }: DexRecordPlaceholderProps) {
             {statLine("Spe", record.form.speed)}
           </div>
 
-          <div className="text-sm text-black/50">
+          <div className="text-sm text-tertiary">
             Moves: {record.form.moves.length}
           </div>
         </>
       ) : (
-        <div className="text-base text-black/60">Details coming soon.</div>
+        <div className="text-base text-secondary">Details coming soon.</div>
       )}
     </div>
   );

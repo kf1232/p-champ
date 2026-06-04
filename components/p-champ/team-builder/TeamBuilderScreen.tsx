@@ -9,12 +9,9 @@ import {
   type ReactNode,
 } from "react";
 
-import { AppViewportFooter } from "@/components/commons";
-
 import { DexRecordDetailModal } from "../dex/components/DexRecordDetailModal";
 import { useDexDisplayEntriesForSelectedGame } from "../dex/useDexDisplayEntriesForSelectedGame";
 import { useGameSelection } from "../GameSelectionProvider";
-import Navigation from "../Navigation";
 import {
   NATIONAL_VIEW_ID,
   TYPE_NAMES,
@@ -34,9 +31,6 @@ import type {
   StatSpread,
   TypeName,
 } from "@/lib/p-champ/dex";
-import { SITE_NAME } from "@/lib/site";
-import { VIEWPORT_LOCKED_FOOTER_H_PX } from "@/lib/viewportFooterChrome";
-
 import { SelectorMatchupGrid } from "./SelectorMatchupGrid";
 import { StatSpreadSliders } from "./StatSpreadSliders";
 import { TypeBadges } from "./TypeBadges";
@@ -404,23 +398,16 @@ export function TeamBuilderScreen() {
 
   return (
     <>
-      <div
-        className="box-border flex h-dvh max-h-dvh min-h-0 flex-col overflow-hidden"
-        style={{ paddingBottom: VIEWPORT_LOCKED_FOOTER_H_PX }}
-      >
-        <Navigation title={SITE_NAME} />
-
-        <main className="mx-auto flex w-full max-w-7xl min-h-0 flex-1 flex-col overflow-hidden px-6 py-6">
         <div className="shrink-0">
-          <h1 className="text-3xl font-semibold tracking-tight text-black">
+          <h1 className="text-3xl font-semibold tracking-tight text-primary">
             {TEAM_BUILDER_TITLE}
           </h1>
-          <p className="mt-1 max-w-prose text-black/70">
+          <p className="mt-1 max-w-prose text-secondary">
             {TEAM_BUILDER_DESCRIPTION}
           </p>
         </div>
 
-        <div className="mt-6 flex min-h-0 flex-1 flex-col gap-0 overflow-hidden rounded-xl border border-black/30 bg-white/40 lg:mt-8">
+        <div className="mt-6 flex min-h-0 flex-1 flex-col gap-0 overflow-hidden rounded-xl border border-border-strong bg-surface-overlay lg:mt-8">
           {/* Workspace status strip (always visible; not part of the site header) */}
           <div
             className={[
@@ -436,9 +423,9 @@ export function TeamBuilderScreen() {
           <div className="flex min-h-0 flex-1 flex-col overflow-hidden lg:flex-row">
           <section
             aria-label="Team workspace"
-            className="flex min-h-0 flex-1 flex-col overflow-hidden border-b border-black/25 p-4 sm:p-5 lg:w-1/3 lg:flex-none lg:border-b-0 lg:border-r lg:border-black/25"
+            className="flex min-h-0 flex-1 flex-col overflow-hidden border-b border-border-strong p-4 sm:p-5 lg:w-1/3 lg:flex-none lg:border-b-0 lg:border-r lg:border-border-strong"
           >
-            <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden rounded-xl border border-black/25 bg-white/50 p-2 shadow-sm sm:p-2.5">
+            <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden rounded-xl border border-border-strong bg-surface-overlay p-2 shadow-sm sm:p-2.5">
             <ol
               className="grid min-h-0 flex-1 grid-cols-2 gap-2 overflow-y-auto pr-0.5"
               aria-label="Team slots"
@@ -449,8 +436,8 @@ export function TeamBuilderScreen() {
                   className={[
                     "flex h-full min-h-0 flex-col gap-2 text-sm font-medium leading-snug select-none sm:gap-2.5",
                     slot
-                      ? "cursor-pointer rounded-xl border border-black/35 bg-white/60 p-2.5 sm:p-3"
-                      : "rounded-xl border border-dashed border-black/45 bg-white/60 p-2.5 sm:p-3",
+                      ? "cursor-pointer rounded-xl border border-border-strong bg-surface-overlay p-2.5 sm:p-3"
+                      : "rounded-xl border border-dashed border-border-strong bg-surface-overlay p-2.5 sm:p-3",
                     flashSlotIndex === i ? "animate-team-slot-flash" : "",
                   ].join(" ")}
                   aria-label={
@@ -476,12 +463,12 @@ export function TeamBuilderScreen() {
                   {slot ? (
                     <>
                       <div className="flex shrink-0 items-start justify-between gap-1">
-                        <span className="text-[10px] font-semibold tabular-nums text-black/35">
+                        <span className="text-[10px] font-semibold tabular-nums text-tertiary">
                           {i + 1}
                         </span>
                         <button
                           type="button"
-                          className="shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium text-black/45 hover:bg-red-500/10 hover:text-red-800"
+                          className="shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium text-tertiary hover:bg-red-500/10 hover:text-red-800"
                           onClick={() => clearSlot(i)}
                           onDoubleClick={(e) => e.stopPropagation()}
                           aria-label={`Remove ${formatDexTileDisplayName(slot.dexName, slot.formId)} from slot ${i + 1}`}
@@ -490,7 +477,7 @@ export function TeamBuilderScreen() {
                         </button>
                       </div>
                       <header className="shrink-0 text-center">
-                        <h3 className="line-clamp-3 text-sm font-semibold leading-tight text-black">
+                        <h3 className="line-clamp-3 text-sm font-semibold leading-tight text-primary">
                           {formatDexTileDisplayName(slot.dexName, slot.formId)}
                         </h3>
                       </header>
@@ -516,12 +503,12 @@ export function TeamBuilderScreen() {
                   ) : (
                     <>
                       <div className="flex shrink-0 items-start justify-between gap-1">
-                        <span className="text-[10px] font-semibold tabular-nums text-black/35">
+                        <span className="text-[10px] font-semibold tabular-nums text-tertiary">
                           {i + 1}
                         </span>
                       </div>
                       <div className="flex min-h-0 flex-1 flex-col items-center justify-center py-4">
-                        <p className="text-center text-[10px] text-black/35">
+                        <p className="text-center text-[10px] text-tertiary">
                           Drop here
                         </p>
                       </div>
@@ -531,13 +518,13 @@ export function TeamBuilderScreen() {
               ))}
             </ol>
             </div>
-            <div className="shrink-0 border-t border-black/15 pt-3">
+            <div className="shrink-0 border-t border-border-default pt-3">
               <button
                 type="button"
                 onClick={clearAllTeam}
                 disabled={!hasTeamMembers}
                 aria-label="Clear all team slots"
-                className="w-full rounded-md border border-black/25 bg-white/80 px-3 py-2 text-xs font-medium text-black/70 shadow-sm hover:bg-black/[0.04] hover:text-black disabled:cursor-not-allowed disabled:border-black/10 disabled:bg-black/[0.02] disabled:text-black/30"
+                className="w-full rounded-md border border-border-strong bg-surface-elevated px-3 py-2 text-xs font-medium text-secondary shadow-sm hover:bg-hover hover:text-primary disabled:cursor-not-allowed disabled:border-border-subtle disabled:bg-surface-muted disabled:text-tertiary"
               >
                 Clear team
               </button>
@@ -550,19 +537,19 @@ export function TeamBuilderScreen() {
           >
             <div className="flex w-full shrink-0 flex-wrap items-end justify-end gap-2 sm:gap-3">
               <div className="flex min-w-0 flex-col items-end gap-1">
-                <span className="text-[10px] font-semibold uppercase tracking-wide text-black/45">
+                <span className="text-[10px] font-semibold uppercase tracking-wide text-tertiary">
                   List
                 </span>
-                <label className="flex cursor-pointer items-center gap-2 rounded-md border border-black/25 bg-white/80 px-2 py-1.5 text-xs text-black shadow-sm select-none">
+                <label className="flex cursor-pointer items-center gap-2 rounded-md border border-border-strong bg-surface-elevated px-2 py-1.5 text-xs text-primary shadow-sm select-none">
                   <input
                     type="checkbox"
                     checked={selectorTeamOnly}
                     disabled={!hasTeamMembers}
                     onChange={(e) => setSelectorTeamOnly(e.target.checked)}
-                    className="h-3.5 w-3.5 rounded border-black/30 text-black focus:ring-black/20"
+                    className="h-3.5 w-3.5 rounded border-border-strong text-primary focus:ring-[var(--app-focus-ring)]"
                     aria-label="Show only Pokémon on my team (forms in slots that appear in this list)"
                   />
-                  <span className={!hasTeamMembers ? "text-black/35" : ""}>
+                  <span className={!hasTeamMembers ? "text-tertiary" : ""}>
                     Team only
                   </span>
                 </label>
@@ -570,7 +557,7 @@ export function TeamBuilderScreen() {
               <div className="flex min-w-0 flex-col items-end gap-1">
                 <label
                   htmlFor="team-builder-name-filter"
-                  className="text-[10px] font-semibold uppercase tracking-wide text-black/45"
+                  className="text-[10px] font-semibold uppercase tracking-wide text-tertiary"
                 >
                   Name
                 </label>
@@ -581,14 +568,14 @@ export function TeamBuilderScreen() {
                   onChange={(e) => setNameFilter(e.target.value)}
                   placeholder="Search…"
                   autoComplete="off"
-                  className="min-w-[9rem] max-w-full rounded-md border border-black/25 bg-white/80 px-2 py-1.5 text-right text-xs text-black shadow-sm placeholder:text-black/35"
+                  className="min-w-[9rem] max-w-full rounded-md border border-border-strong bg-surface-elevated px-2 py-1.5 text-right text-xs text-primary shadow-sm placeholder:text-tertiary"
                   aria-label="Filter Pokémon by name"
                 />
               </div>
               <div className="flex min-w-0 flex-col items-end gap-1">
                 <label
                   htmlFor="team-builder-sort"
-                  className="text-[10px] font-semibold uppercase tracking-wide text-black/45"
+                  className="text-[10px] font-semibold uppercase tracking-wide text-tertiary"
                 >
                   Sort
                 </label>
@@ -600,7 +587,7 @@ export function TeamBuilderScreen() {
                     if (v === "threat-desc" || v === "threat-asc") setGridSort(v);
                     else setGridSort("default");
                   }}
-                  className="min-w-[11rem] max-w-full rounded-md border border-black/25 bg-white/80 px-2 py-1.5 text-right text-xs text-black shadow-sm"
+                  className="min-w-[11rem] max-w-full rounded-md border border-border-strong bg-surface-elevated px-2 py-1.5 text-right text-xs text-primary shadow-sm"
                   aria-label="Sort Pokémon grid"
                 >
                   <option value="default">Default (unsorted)</option>
@@ -611,7 +598,7 @@ export function TeamBuilderScreen() {
               <div className="flex min-w-0 flex-col items-end gap-1">
                 <label
                   htmlFor="team-builder-type-a"
-                  className="text-[10px] font-semibold uppercase tracking-wide text-black/45"
+                  className="text-[10px] font-semibold uppercase tracking-wide text-tertiary"
                 >
                   Type 1
                 </label>
@@ -622,7 +609,7 @@ export function TeamBuilderScreen() {
                     const v = e.target.value;
                     setTypeFilterA(v === "" ? null : (v as TypeName));
                   }}
-                  className="min-w-[7.5rem] max-w-full rounded-md border border-black/25 bg-white/80 px-2 py-1.5 text-right text-xs text-black shadow-sm"
+                  className="min-w-[7.5rem] max-w-full rounded-md border border-border-strong bg-surface-elevated px-2 py-1.5 text-right text-xs text-primary shadow-sm"
                 >
                   <option value="">Any</option>
                   {TYPE_NAMES_ORDERED.map((t) => (
@@ -635,7 +622,7 @@ export function TeamBuilderScreen() {
               <div className="flex min-w-0 flex-col items-end gap-1">
                 <label
                   htmlFor="team-builder-type-b"
-                  className="text-[10px] font-semibold uppercase tracking-wide text-black/45"
+                  className="text-[10px] font-semibold uppercase tracking-wide text-tertiary"
                 >
                   Type 2
                 </label>
@@ -646,7 +633,7 @@ export function TeamBuilderScreen() {
                     const v = e.target.value;
                     setTypeFilterB(v === "" ? null : (v as TypeName));
                   }}
-                  className="min-w-[7.5rem] max-w-full rounded-md border border-black/25 bg-white/80 px-2 py-1.5 text-right text-xs text-black shadow-sm"
+                  className="min-w-[7.5rem] max-w-full rounded-md border border-border-strong bg-surface-elevated px-2 py-1.5 text-right text-xs text-primary shadow-sm"
                 >
                   <option value="">Any</option>
                   {TYPE_NAMES_ORDERED.map((t) => (
@@ -661,17 +648,17 @@ export function TeamBuilderScreen() {
                 onClick={clearAllFilters}
                 disabled={!hasActiveFilters}
                 aria-label="Clear name and type filters"
-                className="rounded-md border border-black/25 bg-white/80 px-2.5 py-1.5 text-xs font-medium text-black/70 shadow-sm hover:bg-black/[0.04] hover:text-black disabled:cursor-not-allowed disabled:border-black/10 disabled:bg-black/[0.02] disabled:text-black/30"
+                className="rounded-md border border-border-strong bg-surface-elevated px-2.5 py-1.5 text-xs font-medium text-secondary shadow-sm hover:bg-hover hover:text-primary disabled:cursor-not-allowed disabled:border-border-subtle disabled:bg-surface-muted disabled:text-tertiary"
               >
                 Clear all filters
               </button>
             </div>
             {dexEntries.length === 0 ? (
-              <p className="mt-3 shrink-0 text-sm text-black/50">
+              <p className="mt-3 shrink-0 text-sm text-tertiary">
                 No Pokémon match the current game filter.
               </p>
             ) : filteredDexEntries.length === 0 ? (
-              <p className="mt-3 shrink-0 text-sm text-black/50">
+              <p className="mt-3 shrink-0 text-sm text-tertiary">
                 {selectorTeamOnly ? (
                   <>
                     No Pokémon on your team appear in this list with the
@@ -702,7 +689,7 @@ export function TeamBuilderScreen() {
                           className="col-span-full list-none"
                           aria-hidden="true"
                         >
-                          <div className="my-3 border-t border-black/25 sm:my-4" />
+                          <div className="my-3 border-t border-border-strong sm:my-4" />
                         </li>,
                       );
                     }
@@ -733,13 +720,13 @@ export function TeamBuilderScreen() {
                           e.dataTransfer.effectAllowed = "copy";
                         }}
                         className={[
-                          "flex h-full min-h-0 flex-col gap-2 rounded-xl border border-black/35 p-2.5 text-sm font-medium leading-snug select-none sm:gap-2.5 sm:p-3",
-                          "cursor-grab bg-white/60 text-black hover:border-black/50 hover:bg-white/80 active:cursor-grabbing",
+                          "flex h-full min-h-0 flex-col gap-2 rounded-xl border border-border-strong p-2.5 text-sm font-medium leading-snug select-none sm:gap-2.5 sm:p-3",
+                          "cursor-grab bg-surface-overlay text-primary hover:border-border-strong hover:bg-surface-elevated active:cursor-grabbing",
                           speciesOnTeam ? "ring-1 ring-inset ring-amber-500/35" : "",
                         ].join(" ")}
                       >
                         <header className="shrink-0 text-center">
-                          <h3 className="line-clamp-3 text-sm font-semibold leading-tight text-black">
+                          <h3 className="line-clamp-3 text-sm font-semibold leading-tight text-primary">
                             {label}
                           </h3>
                         </header>
@@ -762,7 +749,6 @@ export function TeamBuilderScreen() {
           </section>
           </div>
         </div>
-      </main>
 
         <DexRecordDetailModal
           record={modalRecord}
@@ -777,8 +763,6 @@ export function TeamBuilderScreen() {
             hasTeamMembers ? handleThreatEntryDoubleClick : undefined
           }
         />
-      </div>
-      <AppViewportFooter blankFooter="pChamp" />
     </>
   );
 }

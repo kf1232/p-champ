@@ -40,10 +40,10 @@ export function PChampPlaceholderGrid({
               href={href}
               aria-label={ariaLabel}
               className={[
-                "flex aspect-square items-center justify-center rounded-lg border border-black/10 bg-white/60 text-sm font-medium",
+                "flex aspect-square items-center justify-center rounded-lg border border-border-subtle bg-surface-overlay text-sm font-medium",
                 isActive
-                  ? "text-black hover:bg-white/80 hover:border-black/20"
-                  : "pointer-events-none text-black/40",
+                  ? "text-primary hover:bg-surface-elevated hover:border-border-default"
+                  : "pointer-events-none text-tertiary",
               ].join(" ")}
             >
               {label}

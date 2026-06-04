@@ -1,8 +1,8 @@
 export const LOCATION_FINDER_INPUT_CLASS =
-  "w-full rounded-md border border-black/25 bg-white/80 px-3 py-2 text-sm text-black shadow-sm placeholder:text-black/35";
+  "w-full rounded-md border border-border-default bg-surface px-3 py-2 text-sm text-primary shadow-sm placeholder:text-tertiary";
 
 export const LOCATION_FINDER_CONTROL_CLASS =
-  "rounded-md border border-black/25 bg-white/80 px-3 py-2 text-sm text-black shadow-sm";
+  "rounded-md border border-border-default bg-surface px-3 py-2 text-sm text-primary shadow-sm";
 
 export const LOCATION_FINDER_ACTION_BUTTON_CLASS =
-  "rounded-md border border-black/20 bg-white/80 px-3 py-1.5 text-sm font-medium text-black shadow-sm hover:border-black/30 hover:bg-white";
+  "rounded-md border border-border-default bg-surface px-3 py-1.5 text-sm font-medium text-primary shadow-sm hover:border-border-strong hover:bg-hover";

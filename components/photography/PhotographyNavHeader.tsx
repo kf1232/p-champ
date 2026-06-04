@@ -9,60 +9,60 @@ import {
   PORTAL_NAME,
 } from "@/lib/site";
 
-type PhotographyNavHeaderProps = {
+type PhotographyNavProps = {
   title?: string;
 };
 
-export function PhotographyNavHeader({
-  title = "Photography",
-}: PhotographyNavHeaderProps) {
+/** Photography nav — inner content only (`AppViewportHeader` supplies the shell). */
+export function PhotographyNav({ title = "Photography" }: PhotographyNavProps) {
   const pathname = usePathname() ?? "";
   const isPhotographyHome = pathname === PHOTOGRAPHY_HOME_PATH;
 
   return (
-    <header className="w-full border-b border-black/10 bg-white/70 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-3 px-6 py-4">
-        <div className="flex min-w-0 flex-wrap items-center gap-x-2">
-          <Link
-            href={PORTAL_HOME_PATH}
-            className="text-sm font-medium text-black/70 hover:text-black"
-          >
-            {PORTAL_NAME}
-          </Link>
-          <span className="text-sm text-black/30" aria-hidden>
-            /
-          </span>
-          {isPhotographyHome ? (
-            <span className="text-sm font-semibold text-black">{title}</span>
-          ) : (
-            <Link
-              href={PHOTOGRAPHY_HOME_PATH}
-              className="text-sm font-semibold text-black hover:opacity-80"
-              aria-label={`${title} (home)`}
-            >
-              {title}
-            </Link>
-          )}
-        </div>
-
-        <nav
-          aria-label="Photography primary navigation"
-          className="flex flex-wrap items-center gap-4"
+    <>
+      <div className="flex min-w-0 flex-wrap items-center gap-x-2">
+        <Link
+          href={PORTAL_HOME_PATH}
+          className="text-sm font-medium text-secondary hover:text-primary"
         >
+          {PORTAL_NAME}
+        </Link>
+        <span className="text-sm text-tertiary" aria-hidden>
+          /
+        </span>
+        {isPhotographyHome ? (
+          <span className="text-sm font-semibold text-primary">{title}</span>
+        ) : (
           <Link
             href={PHOTOGRAPHY_HOME_PATH}
-            className={[
-              "text-sm font-medium",
-              isPhotographyHome
-                ? "text-black"
-                : "text-black/70 hover:text-black",
-            ].join(" ")}
-            aria-current={isPhotographyHome ? "page" : undefined}
+            className="text-sm font-semibold text-primary hover:opacity-80"
+            aria-label={`${title} (home)`}
           >
-            Home
+            {title}
           </Link>
-        </nav>
+        )}
       </div>
-    </header>
+
+      <nav
+        aria-label="Photography primary navigation"
+        className="flex flex-wrap items-center gap-4"
+      >
+        <Link
+          href={PHOTOGRAPHY_HOME_PATH}
+          className={[
+            "text-sm font-medium",
+            isPhotographyHome
+              ? "text-primary"
+              : "text-secondary hover:text-primary",
+          ].join(" ")}
+          aria-current={isPhotographyHome ? "page" : undefined}
+        >
+          Home
+        </Link>
+      </nav>
+    </>
   );
 }
+
+/** @deprecated Use `PhotographyNav` — kept for existing imports. */
+export const PhotographyNavHeader = PhotographyNav;

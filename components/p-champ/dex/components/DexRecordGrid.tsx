@@ -20,7 +20,7 @@ export function DexRecordGrid({ records }: DexRecordGridProps) {
                 key={`dex-break-${i}`}
                 role="separator"
                 aria-hidden="true"
-                className="col-span-full my-3 border-t border-black/10 sm:my-4"
+                className="col-span-full my-3 border-t border-border-subtle sm:my-4"
               />,
             );
           }

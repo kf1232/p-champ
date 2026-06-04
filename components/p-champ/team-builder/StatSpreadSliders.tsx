@@ -43,11 +43,11 @@ function SpreadGrid({
   tiny: boolean;
 }) {
   const labelCls = tiny
-    ? "text-[8px] font-semibold uppercase tracking-wide text-black/45"
-    : "text-[10px] font-semibold uppercase tracking-wide text-black/50";
+    ? "text-[8px] font-semibold uppercase tracking-wide text-tertiary"
+    : "text-[10px] font-semibold uppercase tracking-wide text-tertiary";
   const valCls = tiny
-    ? "min-w-[0.85rem] text-right text-[8px] tabular-nums text-black/50"
-    : "min-w-[0.9rem] text-right text-[9px] tabular-nums text-black/55";
+    ? "min-w-[0.85rem] text-right text-[8px] tabular-nums text-tertiary"
+    : "min-w-[0.9rem] text-right text-[9px] tabular-nums text-tertiary";
 
   return (
     <div
@@ -111,12 +111,12 @@ export function StatSpreadSliders({
       <p
         className={
           compact
-            ? "mb-1 text-[9px] font-medium tabular-nums text-black/50"
-            : "mb-1.5 text-[10px] font-medium tabular-nums text-black/50"
+            ? "mb-1 text-[9px] font-medium tabular-nums text-tertiary"
+            : "mb-1.5 text-[10px] font-medium tabular-nums text-tertiary"
         }
       >
         Spread{" "}
-        <span className="text-black/75">
+        <span className="text-secondary">
           {total}/{STAT_SPREAD_MAX_TOTAL}
         </span>
       </p>

@@ -267,15 +267,15 @@ export function SecondaryJobLocationsEditor({
       <div className="flex flex-col gap-2">
         <button
           type="button"
-          className="flex w-full flex-wrap items-center justify-between gap-3 rounded-md border border-black/15 bg-white/50 px-3 py-2.5 text-left shadow-sm hover:border-black/25 hover:bg-white/80"
+          className="flex w-full flex-wrap items-center justify-between gap-3 rounded-md border border-border-default bg-surface-overlay px-3 py-2.5 text-left shadow-sm hover:border-border-strong hover:bg-surface-elevated"
           aria-expanded={false}
           aria-controls="secondary-job-locations-panel"
           onClick={expand}
         >
-          <span className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-sm font-medium text-black">
+          <span className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-sm font-medium text-primary">
             Secondary Job Locations
             <SecondaryLocationStatusCounts counts={statusCounts} />
-            <span className="font-normal text-black/50">
+            <span className="font-normal text-tertiary">
               ({filledCount} {filledCount === 1 ? "location" : "locations"})
             </span>
           </span>
@@ -292,7 +292,7 @@ export function SecondaryJobLocationsEditor({
       aria-expanded
     >
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-medium text-black">
+        <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-medium text-primary">
           Secondary Job Locations
           <SecondaryLocationStatusCounts counts={statusCounts} />
         </span>
@@ -368,9 +368,9 @@ export function SecondaryJobLocationsEditor({
       ) : null}
 
       {pasteOpen && !bulkImportActive ? (
-        <div className="flex flex-col gap-2 rounded-md border border-black/15 bg-white/40 p-3">
+        <div className="flex flex-col gap-2 rounded-md border border-border-default bg-surface-overlay p-3">
           <textarea
-            className="min-h-[6rem] w-full rounded-md border border-black/25 bg-white/80 px-3 py-2 text-sm text-black"
+            className="min-h-[6rem] w-full rounded-md border border-border-strong bg-surface-elevated px-3 py-2 text-sm text-primary"
             placeholder="One address per line, or CSV rows"
             value={pasteText}
             onChange={(e) => setPasteText(e.target.value)}
@@ -402,10 +402,10 @@ export function SecondaryJobLocationsEditor({
             {section.label ? (
               <h3
                 id={`secondary-status-section-${section.key}`}
-                className="text-xs font-semibold tracking-wide text-black/55"
+                className="text-xs font-semibold tracking-wide text-tertiary"
               >
                 {section.label}
-                <span className="ml-1.5 font-normal tabular-nums text-black/40">
+                <span className="ml-1.5 font-normal tabular-nums text-tertiary">
                   ({section.rows.length})
                 </span>
               </h3>
@@ -442,7 +442,7 @@ export function SecondaryJobLocationsEditor({
                   {rows.length > 1 ? (
                     <button
                       type="button"
-                      className="mt-2 shrink-0 rounded-md px-2 py-1 text-sm text-black/45 hover:bg-black/[0.04] hover:text-black"
+                      className="mt-2 shrink-0 rounded-md px-2 py-1 text-sm text-tertiary hover:bg-hover hover:text-primary"
                       aria-label="Remove row"
                       onClick={() => removeRow(row.id)}
                     >

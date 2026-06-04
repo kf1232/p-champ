@@ -4,7 +4,7 @@
 
 | Location | Purpose |
 |----------|---------|
-| **`components/commons/`** | **Shared** UI used by **more than one feature** (e.g. viewport-locked footer shell, blank footer band keyed by feature). Import from `@/components/commons`. |
+| **`components/commons/`** | **Shared** UI used by **more than one feature** (`AppChrome`, `appLayout.css`, `styles/themes/`, storage footer context). Import from `@/components/commons`. **Layout debug:** `APP_THEME=RELEASE` \| `DEBUG`. **Light/dark:** header toggle + semantic tokens (`themes/semantic.css`) and Tailwind utilities (`themes/semanticUtilities.css` via `app/globals.css`). |
 | **`components/{feature}/`** | **Page-level** and **feature-owned** UI for one surface (`portal`, `wow`, `photography`, `p-champ`, …). Import from `@/components/{feature}`. |
 
 Put something in **commons** only when it is truly cross-feature. If it only serves routes under **`/p-champ`**, it belongs under **`components/p-champ/`**, not under commons.
@@ -27,7 +27,7 @@ They both use a title + grid pattern, but different routes, copy, and targets �
 | File | Role |
 |------|------|
 | `components/portal/portalHomeCopy.ts` | `PORTAL_TITLE`, `PORTAL_DESCRIPTION` — shared with route **metadata** in `app/page.tsx`. |
-| `components/portal/PortalHomeScreen.tsx` | Hub grid + layout; **`ViewportLockedPageShell`** with `footer="portal"`. |
+| `components/portal/PortalHomeScreen.tsx` | Hub grid; chrome from **`app/layout.tsx`** (`AppChrome`). |
 | `components/portal/index.ts` | Barrel exports. |
 
 **Usage:**
@@ -116,6 +116,8 @@ API clients, storage, guild/character helpers — see `lib/wow/`. Route constant
 
 ## Commons viewport chrome
 
-**Files:** `ViewportLockedPageShell`, `AppViewportFooter`, `AppStorageFooterProvider`, `ViewportLockedFooterBar` in `components/commons/`. TTL envelope services register via `createEnvelopeStorageFooterConfig` + `useRegisterAppStorageFooter` (cache size, TTL, download, clear — same controls on WoW and Burke Location Finder).
+**Shell:** `AppChrome` in root layout always mounts **header** + **footer** (`AppViewportHeader` / `AppViewportFooter`). Route defaults come from `resolveAppChrome` in `lib/appChrome.ts`. Feature nav components (`Navigation`, `BurkeNav`, `PortalNav`, …) supply **inner content only** — not their own `<header class="app-chrome__header">`.
 
-**Usage:** Pass blank-footer key `portal` \| `pChamp` \| `photography`, or use `ViewportLockedFooterBar` for custom footer (WoW). Constants in `lib/viewportFooterChrome.ts`.
+**Header override:** `AppHeaderProvider` + `useRegisterAppHeader({ content, wide?, ariaLabel? })` — same pattern as the footer. Clear on unmount by passing `null` or leaving the registration component.
+
+**Footer override:** `AppStorageFooterProvider` + `useRegisterAppStorageFooter` + `createEnvelopeStorageFooterConfig` (WoW, Burke Location Finder). Blank footers: `portal` \| `pChamp` \| `photography` \| `burke` via `resolveAppChrome`. Constants in `lib/viewportFooterChrome.ts` and `lib/appHeaderChrome.ts`.

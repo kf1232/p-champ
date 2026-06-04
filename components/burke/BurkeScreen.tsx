@@ -1,29 +1,14 @@
-import { ViewportLockedPageShell } from "@/components/commons";
-import {
-  VIEWPORT_LOCKED_MAIN_PADDING_BOTTOM_PX,
-} from "@/lib/viewportFooterChrome";
-
-import { BurkeNavHeader } from "./BurkeNavHeader";
 import { BurkePlaceholderGrid } from "./BurkePlaceholderGrid";
 import { BURKE_TITLE } from "./configs/burkeHomeCopy";
 
 export function BurkeScreen() {
   return (
-    <ViewportLockedPageShell footer="burke">
-      <BurkeNavHeader />
+    <>
+      <h1 className="text-3xl font-semibold tracking-tight text-primary">
+        {BURKE_TITLE}
+      </h1>
 
-      <main
-        className="mx-auto w-full max-w-5xl flex-1 px-6 pt-10"
-        style={{
-          paddingBottom: VIEWPORT_LOCKED_MAIN_PADDING_BOTTOM_PX,
-        }}
-      >
-        <h1 className="text-3xl font-semibold tracking-tight text-black">
-          {BURKE_TITLE}
-        </h1>
-
-        <BurkePlaceholderGrid />
-      </main>
-    </ViewportLockedPageShell>
+      <BurkePlaceholderGrid />
+    </>
   );
 }
