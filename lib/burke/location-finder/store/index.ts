@@ -5,6 +5,7 @@ export {
   LOCATION_FINDER_ALLOWED_DATA_KEYS,
   LOCATION_FINDER_FORM_DRAFT_KEY,
   LOCATION_FINDER_GEOCODE_RESPONSES_KEY,
+  LOCATION_FINDER_PROXIMITY_DIAGNOSTICS_KEY,
   LOCATION_FINDER_PROXIMITY_RESULTS_KEY,
   LOCATION_FINDER_FOOTER_CLEAR_CONFIRM,
   LOCATION_FINDER_TOOL_ID,
@@ -35,7 +36,9 @@ export {
   readGeocodeResponseMap,
 } from "./locationFinderGeocodeCache";
 export {
+  findStoredProximityDrivingDiagnostics,
   findStoredProximityMatches,
+  findStoredProximityMetrics,
   mergeProximityMatchesIntoLocationFinderData,
 } from "./locationFinderProximityCache";
 export {

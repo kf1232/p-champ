@@ -1,4 +1,5 @@
 import {
+  ADDRESS_FIELD_MIN_QUERY_LENGTH,
   ADDRESS_STATUS_DISPLAY_ORDER,
   ADDRESS_STATUS_SECTION_LABELS,
 } from "./constants";
@@ -24,7 +25,7 @@ export function deriveAddressFieldStatus(
 
   const trimmed = query.trim();
   if (
-    trimmed.length >= 3 &&
+    trimmed.length >= ADDRESS_FIELD_MIN_QUERY_LENGTH &&
     value.formatted !== null &&
     value.placeId !== null &&
     value.lat !== null &&
@@ -34,7 +35,7 @@ export function deriveAddressFieldStatus(
     return "success";
   }
 
-  if (trimmed.length < 3) {
+  if (trimmed.length < ADDRESS_FIELD_MIN_QUERY_LENGTH) {
     return "idle";
   }
 

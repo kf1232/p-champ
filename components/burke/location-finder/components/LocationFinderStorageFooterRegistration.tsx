@@ -2,14 +2,14 @@
 
 import { useCallback, useMemo } from "react";
 
-import { useRegisterAppStorageFooter } from "@/components/commons/AppStorageFooterContext";
-import { createEnvelopeStorageFooterConfig } from "@/components/commons/utils/storageFooterActions";
+import { useRegisterAppStorageFooter } from "@/components/commons";
+import { createEnvelopeStorageFooterConfig } from "@/components/commons";
 import {
   exportLocationFinderCacheDownloadBody,
   LOCATION_FINDER_FOOTER_CLEAR_CONFIRM,
   LOCATION_FINDER_STORAGE_TTL_MS,
   LOCATION_FINDER_TOOL_ID,
-} from "@/lib/burke/location-finder/store";
+} from "@/lib/burke";
 import { VIEWPORT_BURKE_LOCATION_FINDER_FOOTER_ARIA } from "@/lib/viewportFooterChrome";
 
 import { useLocationFinderStorage } from "./providers/LocationFinderStorageProvider";

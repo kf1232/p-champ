@@ -1,6 +1,6 @@
-import "@/lib/burke/location-finder/store/registerAppStorage";
+import "@/lib/burke/registerAppStorage";
 
-import { LOCATION_FINDER_GEOCODE_RESPONSES_KEY } from "@/lib/burke/location-finder/store/locationFinderCacheKeys";
+import { LOCATION_FINDER_GEOCODE_RESPONSES_KEY } from "@/lib/burke";
 
 import { APP_STORAGE_KEYS, appLocalStorage } from "./index";
 

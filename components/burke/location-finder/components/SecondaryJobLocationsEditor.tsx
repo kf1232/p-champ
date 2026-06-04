@@ -5,15 +5,24 @@ import { useMemo, useRef, useState } from "react";
 import {
   addressFieldValuesEqual,
   emptyAddressFieldValue,
-} from "@/lib/burke/geo/addressFieldValue";
+  isAddressResolved,
+} from "@/lib/burke";
 import {
   countAddressStatuses,
   effectiveAddressFieldStatus,
   groupSecondaryRowsByEffectiveStatus,
-} from "@/lib/burke/geo/addressFieldStatus";
-import { applyGeocodeResponseToRow } from "@/lib/burke/geo/applyGeocodeToRow";
-import { parseLocationsCsv } from "@/lib/burke/location-finder/parseLocationsCsv";
-import { nextSecondaryRowId } from "@/lib/burke/location-finder/secondaryRowId";
+} from "@/lib/burke";
+import {
+  applyGeocodeWithTargetContext,
+  parseRegionHintFromFormatted,
+  queryLikelyNeedsRegionContext,
+  withRegionContext,
+} from "@/lib/burke";
+import {
+  LOCATION_FINDER_MAX_SECONDARY_LOCATIONS,
+  parseLocationsCsv,
+  nextSecondaryRowId,
+} from "@/lib/burke";
 
 import { LOCATION_FINDER_ACTION_BUTTON_CLASS } from "../configs/locationFinderStyles";
 import {
@@ -30,6 +39,8 @@ export type { SecondaryLocationRow };
 type SecondaryJobLocationsEditorProps = {
   rows: SecondaryLocationRow[];
   onChange: (rows: SecondaryLocationRow[]) => void;
+  /** Resolved target formatted line — used to geocode street-only bulk rows in context. */
+  targetFormatted?: string | null;
   collapsed?: boolean;
   onCollapsedChange?: (collapsed: boolean) => void;
 };
@@ -65,6 +76,7 @@ function waitForNextPaint(): Promise<void> {
 export function SecondaryJobLocationsEditor({
   rows,
   onChange,
+  targetFormatted = null,
   collapsed = false,
   onCollapsedChange,
 }: SecondaryJobLocationsEditorProps) {
@@ -110,6 +122,10 @@ export function SecondaryJobLocationsEditor({
     onChange(rows.map((row) => (row.id === id ? next : row)));
   };
 
+  const [importLimitNotice, setImportLimitNotice] = useState<string | null>(
+    null,
+  );
+
   const addRowsFromAddresses = async (
     addresses: string[],
     options?: { fromBulkImport?: boolean },
@@ -118,8 +134,28 @@ export function SecondaryJobLocationsEditor({
       return;
     }
 
+    const filledCount = rows.filter((row) => row.value.query.trim()).length;
+    const slots = Math.max(
+      0,
+      LOCATION_FINDER_MAX_SECONDARY_LOCATIONS - filledCount,
+    );
+    const toAdd = addresses.slice(0, slots);
+    if (toAdd.length === 0) {
+      setImportLimitNotice(
+        `You already have ${LOCATION_FINDER_MAX_SECONDARY_LOCATIONS} locations. Remove some before importing more.`,
+      );
+      return;
+    }
+    if (toAdd.length < addresses.length) {
+      setImportLimitNotice(
+        `Only the first ${toAdd.length} of ${addresses.length} addresses were added (limit ${LOCATION_FINDER_MAX_SECONDARY_LOCATIONS}).`,
+      );
+    } else {
+      setImportLimitNotice(null);
+    }
+
     let next = [...rows];
-    for (const address of addresses) {
+    for (const address of toAdd) {
       const emptyIndex = next.findIndex((row) => !row.value.query.trim());
       if (emptyIndex >= 0) {
         next[emptyIndex] = {
@@ -132,7 +168,7 @@ export function SecondaryJobLocationsEditor({
       }
     }
 
-    const toResolve = [
+    const baseQueries = [
       ...new Set(
         next
           .map((row) => row.value.query.trim())
@@ -140,7 +176,21 @@ export function SecondaryJobLocationsEditor({
       ),
     ];
 
-    setResolvingCount(toResolve.length);
+    const regionHint = targetFormatted
+      ? parseRegionHintFromFormatted(targetFormatted)
+      : null;
+    const toResolve = [
+      ...new Set(
+        baseQueries.flatMap((q) => {
+          if (regionHint && queryLikelyNeedsRegionContext(q)) {
+            return [q, withRegionContext(q, regionHint)];
+          }
+          return [q];
+        }),
+      ),
+    ];
+
+    setResolvingCount(baseQueries.length);
     setIsResolvingBulk(true);
     try {
       await prefetch(toResolve);
@@ -149,7 +199,11 @@ export function SecondaryJobLocationsEditor({
         if (query.length < 3) {
           return row;
         }
-        const applied = applyGeocodeResponseToRow(query, peekLookup(query));
+        const applied = applyGeocodeWithTargetContext(
+          query,
+          peekLookup,
+          targetFormatted,
+        );
         return {
           ...row,
           value: applied.value,
@@ -307,6 +361,12 @@ export function SecondaryJobLocationsEditor({
         }}
       />
 
+      {importLimitNotice ? (
+        <p className="text-sm text-amber-800" role="status">
+          {importLimitNotice}
+        </p>
+      ) : null}
+
       {pasteOpen && !bulkImportActive ? (
         <div className="flex flex-col gap-2 rounded-md border border-black/15 bg-white/40 p-3">
           <textarea
@@ -366,9 +426,11 @@ export function SecondaryJobLocationsEditor({
                         }
                         updateRow(row.id, {
                           value,
-                          status: addressFieldValuesEqual(value, current.value)
-                            ? current.status
-                            : "idle",
+                          status: isAddressResolved(value)
+                            ? "success"
+                            : addressFieldValuesEqual(value, current.value)
+                              ? current.status
+                              : "idle",
                         });
                       }}
                       onStatusChange={(status) =>

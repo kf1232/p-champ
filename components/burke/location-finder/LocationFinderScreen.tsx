@@ -1,15 +1,20 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, type CSSProperties } from "react";
 
 import {
   BURKE_LOCATION_FINDER_ACCESS_PATH,
   BURKE_REVOKE_LOCATION_FINDER_ACCESS_PATH,
-} from "@/lib/burke/location-finder/access/constants";
-import { VIEWPORT_LOCKED_MAIN_PADDING_BOTTOM_PX } from "@/lib/viewportFooterChrome";
+} from "@/lib/burke";
+import {
+  MAIN_SPACER_ABOVE_VIEWPORT_FOOTER_PX,
+  VIEWPORT_LOCKED_FOOTER_H_PX,
+  VIEWPORT_STICKY_ABOVE_FOOTER_GAP_REM,
+  VIEWPORT_STICKY_ACTION_BAND_MIN_REM,
+} from "@/lib/viewportFooterChrome";
 
-import { AppStorageFooterProvider } from "@/components/commons/AppStorageFooterContext";
-import { AppViewportFooter } from "@/components/commons/AppViewportFooter";
+import { AppStorageFooterProvider } from "@/components/commons";
+import { AppViewportFooter } from "@/components/commons";
 
 import { BurkeNavHeader } from "../BurkeNavHeader";
 import { GeocodeLookupProvider } from "./components/GeocodeLookupProvider";
@@ -18,15 +23,14 @@ import { LocationFinderStorageFooterRegistration } from "./components/LocationFi
 import { LocationFinderFormWithStorageReset } from "./components/LocationFinderForm";
 import { LocationFinderPageShell } from "./components/LocationFinderPageShell";
 import { LocationFinderStorageProvider } from "./components/providers/LocationFinderStorageProvider";
-import {
-  LOCATION_FINDER_DESCRIPTION,
-  LOCATION_FINDER_TITLE,
-} from "./configs/locationFinderCopy";
+import { LOCATION_FINDER_TITLE } from "./configs/locationFinderCopy";
 
-const LOCATION_FINDER_STICKY_SUBMIT_H_PX = 56;
-const LOCATION_FINDER_MAIN_PADDING_BOTTOM_PX =
-  VIEWPORT_LOCKED_MAIN_PADDING_BOTTOM_PX +
-  LOCATION_FINDER_STICKY_SUBMIT_H_PX;
+const locationFinderMainStyle = {
+  "--burke-viewport-footer-h": `${VIEWPORT_LOCKED_FOOTER_H_PX}px`,
+  "--burke-main-scroll-spacer": `${MAIN_SPACER_ABOVE_VIEWPORT_FOOTER_PX}px`,
+  "--burke-sticky-above-footer-gap": `${VIEWPORT_STICKY_ABOVE_FOOTER_GAP_REM}rem`,
+  "--burke-sticky-submit-band-min-h": `${VIEWPORT_STICKY_ACTION_BAND_MIN_REM}rem`,
+} as CSSProperties;
 
 type PreloadStatus = {
   configured: boolean;
@@ -106,19 +110,12 @@ export function LocationFinderScreen({
           <BurkeNavHeader />
 
           <main
-            className="mx-auto w-full max-w-5xl flex-1 px-6 pt-10"
-            style={{
-              paddingBottom: LOCATION_FINDER_MAIN_PADDING_BOTTOM_PX,
-            }}
+            className="location-finder-layout-main mx-auto w-full max-w-5xl flex-1 px-6 pt-10"
+            style={locationFinderMainStyle}
           >
-            <div className="flex flex-col gap-2">
-              <h1 className="text-3xl font-semibold tracking-tight text-black">
-                {LOCATION_FINDER_TITLE}
-              </h1>
-              <p className="max-w-prose text-black/70">
-                {LOCATION_FINDER_DESCRIPTION}
-              </p>
-            </div>
+            <h1 className="text-3xl font-semibold tracking-tight text-black">
+              {LOCATION_FINDER_TITLE}
+            </h1>
 
             <GeocodeLookupProvider onUnauthorized={denyAccess}>
               <LocationFinderFormWithStorageReset onUnauthorized={denyAccess} />

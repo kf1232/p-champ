@@ -10,12 +10,17 @@ export const LOCATION_FINDER_GEOCODE_RESPONSES_KEY =
 export const LOCATION_FINDER_PROXIMITY_RESULTS_KEY =
   "proximityResults" as const;
 
+/** Driving routing diagnostics keyed like proximity metrics (per target + destinations + unit). */
+export const LOCATION_FINDER_PROXIMITY_DIAGNOSTICS_KEY =
+  "proximityDiagnostics" as const;
+
 export const LOCATION_FINDER_FORM_DRAFT_KEY = "formDraft" as const;
 
 /** Only these keys are read, written, sized, or exported for this tool. */
 export const LOCATION_FINDER_ALLOWED_DATA_KEYS = [
   LOCATION_FINDER_GEOCODE_RESPONSES_KEY,
   LOCATION_FINDER_PROXIMITY_RESULTS_KEY,
+  LOCATION_FINDER_PROXIMITY_DIAGNOSTICS_KEY,
   LOCATION_FINDER_FORM_DRAFT_KEY,
 ] as const;
 

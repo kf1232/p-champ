@@ -1,8 +1,8 @@
 import {
   ADDRESS_STATUS_DISPLAY_ORDER,
   ADDRESS_STATUS_SECTION_LABELS,
-} from "@/lib/burke/geo/constants";
-import type { AddressStatusDisplayKey } from "@/lib/burke/geo/types";
+} from "@/lib/burke";
+import type { AddressStatusDisplayKey } from "@/lib/burke";
 
 type AddressStatusGlyphProps = {
   status: AddressStatusDisplayKey;

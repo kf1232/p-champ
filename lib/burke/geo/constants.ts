@@ -22,6 +22,9 @@ export const BURKE_GEOCODE_BATCH_RETRY_MS = 2000;
 /** Merge concurrent autocomplete lookups into one batch request. */
 export const BURKE_GEOCODE_LOOKUP_COALESCE_MS = 50;
 
+/** Minimum query length before address autocomplete / status validation runs. */
+export const ADDRESS_FIELD_MIN_QUERY_LENGTH = 5;
+
 import type { AddressStatusDisplayKey } from "./types";
 
 /** Display order for status sections and header counters (problems first). */

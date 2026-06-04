@@ -12,3 +12,5 @@ export { useRegisterAppStorageFooter } from "./AppStorageFooterContext";
 export { AppViewportFooter } from "./AppViewportFooter";
 export { ViewportLockedFooterBar } from "./ViewportLockedFooterBar";
 export { ViewportLockedPageShell } from "./ViewportLockedPageShell";
+export { FloatingComboboxMenu, useFloatingComboboxAnchor } from "./combobox";
+export { createEnvelopeStorageFooterConfig } from "./utils/storageFooterActions";

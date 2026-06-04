@@ -2,10 +2,10 @@ import {
   BURKE_GEOCODE_BATCH_API_PATH,
   BURKE_GEOCODE_BATCH_RETRY_MS,
   BURKE_GEOCODE_CLIENT_BATCH_SIZE,
-} from "@/lib/burke/geo/constants";
-import { normalizeGeocodeQuery } from "@/lib/burke/geo/geocodeCache";
-import { sanitizeGeocodeResponse } from "@/lib/burke/geo/sanitizeGeocodeResponse";
-import type { GeocodeResponse } from "@/lib/burke/geo/types";
+} from "@/lib/burke";
+import { normalizeGeocodeQuery } from "@/lib/burke";
+import { sanitizeGeocodeResponse } from "@/lib/burke";
+import type { GeocodeResponse } from "@/lib/burke";
 
 export type GeocodeCacheBundle = {
   cache: Map<string, GeocodeResponse>;

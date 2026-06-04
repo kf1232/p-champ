@@ -14,10 +14,10 @@ import {
 import {
   BURKE_GEOCODE_CLIENT_BATCH_SIZE,
   BURKE_GEOCODE_LOOKUP_COALESCE_MS,
-} from "@/lib/burke/geo/constants";
-import { clearGeocodeCache, normalizeGeocodeQuery } from "@/lib/burke/geo/geocodeCache";
-import { sanitizeGeocodeResponse } from "@/lib/burke/geo/sanitizeGeocodeResponse";
-import type { GeocodeResponse } from "@/lib/burke/geo/types";
+} from "@/lib/burke";
+import { clearGeocodeCache, normalizeGeocodeQuery } from "@/lib/burke";
+import { sanitizeGeocodeResponse } from "@/lib/burke";
+import type { GeocodeResponse } from "@/lib/burke";
 
 function fingerprintGeocodeResponseMap(
   map: Record<string, GeocodeResponse>,
@@ -36,7 +36,7 @@ import {
   findStoredGeocodeResponse,
   mergeGeocodeResponseIntoLocationFinderData,
   readGeocodeResponseMap,
-} from "@/lib/burke/location-finder/store";
+} from "@/lib/burke";
 
 import {
   chunk,

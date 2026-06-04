@@ -1,12 +1,25 @@
 import { NextResponse } from "next/server";
 
-import { requireLocationFinderApiAccess } from "@/lib/burke/location-finder/access/locationFinderGrant";
-import { filterByMinutesThreshold } from "@/lib/burke/location-finder/distance/filterByThreshold";
-import { fetchOsrmTableMetrics } from "@/lib/burke/location-finder/distance/osrmTable";
+import {
+  buildProximityRoutingDiagnostics,
+  dedupeResolvedLocations,
+  expandProximityMatches,
+  expandProximityRoutingDiagnostics,
+  filterByDrivingMilesThreshold,
+  formatRequestRoutingFailure,
+  isDrivingDistanceUnit,
+  listProximityMetricsDriving,
+  LOCATION_FINDER_MAX_SECONDARY_LOCATIONS,
+  normalizeDistanceUnit,
+} from "@/lib/burke";
 import type {
   DistanceThreshold,
   ResolvedLocation,
-} from "@/lib/burke/location-finder/distance/types";
+} from "@/lib/burke";
+import {
+  fetchOsrmTableMetrics,
+  requireLocationFinderApiAccess,
+} from "@/lib/burke/server";
 
 type ProximityRequestBody = {
   target?: ResolvedLocation;
@@ -21,11 +34,13 @@ function isResolvedLocation(v: unknown): v is ResolvedLocation {
     typeof (v as ResolvedLocation).id === "string" &&
     typeof (v as ResolvedLocation).formatted === "string" &&
     typeof (v as ResolvedLocation).lat === "number" &&
-    typeof (v as ResolvedLocation).lon === "number"
+    typeof (v as ResolvedLocation).lon === "number" &&
+    Number.isFinite((v as ResolvedLocation).lat) &&
+    Number.isFinite((v as ResolvedLocation).lon)
   );
 }
 
-/** POST — driving-time proximity from target to each destination (minutes threshold). */
+/** POST — driving-distance proximity (OSRM road miles from target to each destination). */
 export async function POST(req: Request) {
   const denied = await requireLocationFinderApiAccess();
   if (denied) {
@@ -43,6 +58,7 @@ export async function POST(req: Request) {
   const target = b.target;
   const destinations = b.destinations;
   const threshold = b.threshold;
+  const unit = threshold ? normalizeDistanceUnit(threshold.unit) : null;
 
   if (!isResolvedLocation(target)) {
     return NextResponse.json({ error: "Missing target." }, { status: 400 });
@@ -61,44 +77,97 @@ export async function POST(req: Request) {
 
   if (
     !threshold ||
-    threshold.unit !== "minutes" ||
+    !unit ||
+    !isDrivingDistanceUnit(unit) ||
     !Number.isFinite(threshold.value) ||
     threshold.value <= 0
   ) {
     return NextResponse.json(
-      { error: "Invalid minutes threshold." },
+      { error: "Invalid driving miles threshold." },
+      { status: 400 },
+    );
+  }
+
+  const deduped = dedupeResolvedLocations(destinations);
+  if (deduped.unique.length > LOCATION_FINDER_MAX_SECONDARY_LOCATIONS) {
+    return NextResponse.json(
+      {
+        error: `At most ${LOCATION_FINDER_MAX_SECONDARY_LOCATIONS} distinct locations per search (${deduped.unique.length} after removing duplicates).`,
+      },
       { status: 400 },
     );
   }
 
   try {
-    const metrics = await fetchOsrmTableMetrics(
+    const { legs, sourceSnapDistanceMeters } = await fetchOsrmTableMetrics(
       target,
-      destinations.map((d) => ({ lat: d.lat, lon: d.lon })),
+      deduped.unique.map((d) => ({ lat: d.lat, lon: d.lon })),
+    );
+
+    const diagnostics = expandProximityRoutingDiagnostics(
+      buildProximityRoutingDiagnostics(
+        target,
+        deduped.unique,
+        legs,
+        sourceSnapDistanceMeters,
+      ),
+      destinations,
+      deduped.canonicalIdByInputId,
     );
 
     const minutesById = new Map<string, number>();
     const milesById = new Map<string, number>();
-    destinations.forEach((dest, i) => {
-      const leg = metrics[i];
-      if (!leg) {
+
+    deduped.unique.forEach((dest, i) => {
+      const leg = legs[i];
+      if (!leg || leg.status !== "routed") {
         return;
       }
-      minutesById.set(dest.id, leg.minutes);
-      milesById.set(dest.id, leg.miles);
+      minutesById.set(dest.id, leg.metrics.minutes);
+      milesById.set(dest.id, leg.metrics.miles);
     });
 
-    const matches = filterByMinutesThreshold(
-      destinations,
-      minutesById,
+    const canonicalMetrics = listProximityMetricsDriving(
+      deduped.unique,
       milesById,
+      minutesById,
+    );
+    const canonicalMatches = filterByDrivingMilesThreshold(
+      deduped.unique,
+      milesById,
+      minutesById,
       threshold.value,
     );
 
-    return NextResponse.json({ unit: "minutes", matches }, { status: 200 });
-  } catch {
+    const metrics = expandProximityMatches(
+      canonicalMetrics,
+      destinations,
+      deduped.canonicalIdByInputId,
+    );
+    const matches = expandProximityMatches(
+      canonicalMatches,
+      destinations,
+      deduped.canonicalIdByInputId,
+    );
+
     return NextResponse.json(
-      { error: "Could not compute drive times." },
+      {
+        unit: "drivingMiles",
+        matches,
+        metrics,
+        unroutedCount: diagnostics.unroutedCount,
+        duplicateCount: deduped.duplicateInputIds.length,
+        diagnostics,
+      },
+      { status: 200 },
+    );
+  } catch (err) {
+    const failure = formatRequestRoutingFailure(err);
+    return NextResponse.json(
+      {
+        error: failure.message,
+        requestFailure: failure,
+      },
       { status: 502 },
     );
   }
