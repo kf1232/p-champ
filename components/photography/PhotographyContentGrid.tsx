@@ -1,5 +1,5 @@
 import { trailingPlaceholderCellCount } from "@/lib/gridPlaceholders";
-import { lightroomRenditionSrcs } from "@/lib/lightroomWeb";
+import { lightroomRenditionSrcs } from "@/lib/photography/lightroomWeb";
 
 import { PHOTOGRAPHY_ALBUM_ENTRIES } from "./config/photographyAlbumEntries";
 import { PhotographyEntryRow } from "./PhotographyEntryRow";

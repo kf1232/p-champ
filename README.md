@@ -10,11 +10,12 @@ https://fink.social/
 
 - `app/`: Next.js App Router pages (`/` and `/dex`) and global layout.
 - `components/`: UI screens and reusable view components.
-- `lib/dex/`: Core domain data and types.
+- `lib/p-champ/dex/`: P-Champ dex domain data and types (team builder, dex UI).
   - `dexObject.ts`: source-of-truth record map keyed by dex id.
   - `moves.ts`, `types.ts`, `constants.ts`: normalized reference catalogs.
   - `display.ts`: transforms raw records into UI-friendly display entries.
   - `index.ts`: centralized exports for consumers.
+- `lib/photography/`, `lib/burke/`, `lib/wow/`: other feature libraries (see `components/README.md`).
 
 Design approach:
 - Data is modeled as typed records (`DexRecord`, `DexForm`) with explicit form variants.

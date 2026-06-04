@@ -2,8 +2,8 @@ import {
   DEX_STAT_TODO,
   FORM_IDS,
   formatDexTileDisplayName,
-} from "@/lib/dex";
-import type { DexDisplayEntry } from "@/lib/dex";
+} from "@/lib/p-champ/dex";
+import type { DexDisplayEntry } from "@/lib/p-champ/dex";
 
 type DexRecordPlaceholderProps = {
   record: DexDisplayEntry;

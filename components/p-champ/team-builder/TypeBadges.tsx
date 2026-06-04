@@ -1,8 +1,8 @@
 import {
   TYPE_BADGE_CLASSES,
   formatTypeLabel,
-} from "@/lib/dex";
-import type { TypeName } from "@/lib/dex";
+} from "@/lib/p-champ/dex";
+import type { TypeName } from "@/lib/p-champ/dex";
 
 type TypeBadgesProps = {
   typeNames: readonly TypeName[];

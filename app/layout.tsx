@@ -4,8 +4,10 @@ import { GameSelectionProvider } from "@/components/p-champ";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 
 import "./globals.css";
+import "@/components/commons/styles/appViewportFooter.css";
 import "@/components/photography/styles/photography.css";
 import "@/components/wow/styles/wow.css";
+import "@/components/burke/styles/burke.css";
 
 export const metadata: Metadata = {
   title: {

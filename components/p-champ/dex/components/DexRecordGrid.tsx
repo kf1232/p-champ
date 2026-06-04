@@ -1,6 +1,6 @@
 import { DexRecordPlaceholder } from "./DexRecordPlaceholder";
 
-import type { DexDisplayEntry } from "@/lib/dex";
+import type { DexDisplayEntry } from "@/lib/p-champ/dex";
 
 const ROW_BREAK_EVERY = 30;
 

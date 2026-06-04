@@ -1,9 +1,9 @@
-import type { MatchupSlotCell } from "@/lib/dex";
+import type { MatchupSlotCell } from "@/lib/p-champ/dex";
 import {
   defThreatScoreFromSlots,
   multiplierToEffectivenessTier,
   type EffectivenessTier,
-} from "@/lib/dex";
+} from "@/lib/p-champ/dex";
 
 type SelectorMatchupGridProps = {
   /** Length matches team slots (e.g. 6); index aligns with team slot order (row-major 2×3). */

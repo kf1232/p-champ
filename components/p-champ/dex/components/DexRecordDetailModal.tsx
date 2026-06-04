@@ -18,8 +18,8 @@ import {
   formatDexTileDisplayName,
   formatSignedBaseStatDiff,
   getDexEntryTypeNames,
-} from "@/lib/dex";
-import type { DexDisplayEntry, StatSpread } from "@/lib/dex";
+} from "@/lib/p-champ/dex";
+import type { DexDisplayEntry, StatSpread } from "@/lib/p-champ/dex";
 
 type DexRecordDetailModalProps = {
   record: DexDisplayEntry | null;
