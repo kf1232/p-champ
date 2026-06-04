@@ -1,0 +1,25 @@
+/**
+ * Semantic color tokens (light defaults).
+ * Dark values: `components/commons/styles/colorScheme.css`
+ * Tailwind utilities: `semanticUtilities.css` (imported from `app/globals.css`)
+ */
+
+:root,
+[data-color-scheme="light"] {
+  --app-text-primary: #0a0a0a;
+  --app-text-secondary: rgb(10 10 10 / 0.7);
+  --app-text-tertiary: rgb(10 10 10 / 0.45);
+
+  --app-surface: #ffffff;
+  --app-surface-elevated: rgb(255 255 255 / 0.85);
+  --app-surface-muted: rgb(0 0 0 / 0.03);
+  --app-surface-overlay: rgb(255 255 255 / 0.6);
+
+  --app-border-subtle: rgb(0 0 0 / 0.1);
+  --app-border-default: rgb(0 0 0 / 0.15);
+  --app-border-strong: rgb(0 0 0 / 0.25);
+
+  --app-hover-surface: rgb(0 0 0 / 0.04);
+  --app-focus-ring: rgb(0 0 0 / 0.1);
+  --app-overlay-scrim: rgb(0 0 0 / 0.4);
+}

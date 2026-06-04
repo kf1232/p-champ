@@ -1,0 +1,44 @@
+/**
+ * RELEASE — production shell colors and neutral chrome (no layout debug paint).
+ * Activated when `APP_THEME=RELEASE` or env is unset (see `lib/theme/appTheme.ts`).
+ */
+[data-app-theme="release"] {
+  --app-chrome-header-bg: #ffffff;
+  --app-chrome-body-bg: #ffffff;
+  --app-chrome-footer-bg: #ffffff;
+
+  --app-shell-border-width: 0;
+  --app-region-border-width: 0;
+  --app-inner-border-width: 0;
+  --app-page-border-width: 0;
+  --app-header-divider-width: 1px;
+  --app-footer-divider-width: 1px;
+
+  --app-border-chrome: transparent;
+  --app-border-body: transparent;
+  --app-border-header-top: transparent;
+  --app-border-header-side: transparent;
+  --app-border-header-bottom: rgb(0 0 0 / 0.1);
+  --app-border-header-inner: transparent;
+  --app-border-footer-top: rgb(0 0 0 / 0.1);
+  --app-border-footer-side: transparent;
+  --app-border-footer-bottom: transparent;
+  --app-border-footer-inner: transparent;
+  --app-border-page-top: transparent;
+  --app-border-page-right: transparent;
+  --app-border-page-bottom: transparent;
+  --app-border-page-left: transparent;
+
+  --app-margin-page-outline: none;
+  --app-margin-header-inner-outline: none;
+  --app-margin-footer-inner-outline: none;
+  --app-margin-column-outline-offset: 0;
+
+  --app-padding-inline-fill: transparent;
+}
+
+[data-app-theme="release"] html,
+[data-app-theme="release"] body {
+  background-color: var(--app-chrome-body-bg);
+  color: var(--app-text-primary);
+}

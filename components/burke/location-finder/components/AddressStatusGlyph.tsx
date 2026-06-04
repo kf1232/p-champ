@@ -106,7 +106,7 @@ export function SecondaryLocationStatusCounts({
       {items.map((key) => (
         <span
           key={key}
-          className="inline-flex items-center gap-1 text-black/80"
+          className="inline-flex items-center gap-1 text-secondary"
           title={COUNT_META[key].title}
         >
           <AddressStatusGlyph status={key} size="inline" />

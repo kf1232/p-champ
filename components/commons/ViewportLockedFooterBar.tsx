@@ -2,18 +2,14 @@
 
 import type { ReactNode } from "react";
 
-import { VIEWPORT_LOCKED_FOOTER_H_PX } from "@/lib/viewportFooterChrome";
-
 type ViewportLockedFooterBarProps = {
   children?: ReactNode;
-  /** Merged with base chrome classes (e.g. flex + text sizing for WoW). */
+  /** Merged with base chrome classes (e.g. flex + text sizing for storage footer). */
   className?: string;
   ariaLabel?: string;
 };
 
-/**
- * Fixed-height bottom band shared by blank footers and WoW’s stats footer.
- */
+/** Fixed bottom band — dimensions from `appLayout.css` (`.app-chrome__footer`). */
 export function ViewportLockedFooterBar({
   children,
   className = "",
@@ -21,13 +17,7 @@ export function ViewportLockedFooterBar({
 }: ViewportLockedFooterBarProps) {
   return (
     <footer
-      className={[
-        "fixed bottom-0 left-0 right-0 z-40 w-full border-t border-black/10 bg-white/90 backdrop-blur",
-        className,
-      ]
-        .filter(Boolean)
-        .join(" ")}
-      style={{ height: VIEWPORT_LOCKED_FOOTER_H_PX }}
+      className={["app-chrome__footer", className].filter(Boolean).join(" ")}
       aria-label={ariaLabel}
     >
       {children}

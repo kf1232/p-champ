@@ -32,7 +32,7 @@ export function useWowCacheRailViewportInset<T extends HTMLElement>(
     window.addEventListener("resize", update);
 
     const ro = new ResizeObserver(update);
-    const main = el.closest(".wow-layout-main");
+    const main = el.closest(".app-page");
     if (main) ro.observe(main);
     ro.observe(el);
 

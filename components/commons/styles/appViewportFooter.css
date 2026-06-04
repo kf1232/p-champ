@@ -5,29 +5,7 @@
   justify-content: center;
   font-size: 0.75rem;
   line-height: 1rem;
-  color: rgb(0 0 0 / 0.55);
-}
-
-.app-viewport-footer-inner {
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  max-width: 64rem;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-@media (min-width: 640px) {
-  .app-viewport-footer-inner {
-    gap: 2rem;
-  }
+  color: var(--app-text-secondary);
 }
 
 .app-viewport-footer-line {
@@ -37,36 +15,36 @@
 }
 
 .app-viewport-footer-label {
-  color: rgb(0 0 0 / 0.4);
+  color: var(--app-text-tertiary);
 }
 
 .app-viewport-footer-value {
   font-weight: 500;
   font-variant-numeric: tabular-nums;
-  color: rgb(0 0 0 / 0.7);
+  color: var(--app-text-primary);
 }
 
 .app-viewport-footer-divider {
   flex-shrink: 0;
-  color: rgb(0 0 0 / 0.25);
+  color: var(--app-text-tertiary);
 }
 
 .app-viewport-footer-action {
   flex-shrink: 0;
   cursor: pointer;
   border-radius: 0.375rem;
-  border: 1px solid rgb(0 0 0 / 0.18);
-  background-color: rgb(255 255 255 / 0.85);
+  border: 1px solid var(--app-border-default);
+  background-color: var(--app-surface-elevated);
   padding: 0.2rem 0.55rem;
   font-size: 0.6875rem;
   line-height: 1.2;
   font-weight: 600;
-  color: rgb(0 0 0 / 0.75);
+  color: var(--app-text-primary);
 }
 
 .app-viewport-footer-action:hover:not(:disabled) {
-  border-color: rgb(0 0 0 / 0.28);
-  background-color: rgb(255 255 255);
+  border-color: var(--app-border-strong);
+  background-color: var(--app-surface);
 }
 
 .app-viewport-footer-action:disabled {
@@ -76,5 +54,5 @@
 
 .app-viewport-footer-action--clear:hover:not(:disabled) {
   border-color: rgb(185 28 28 / 0.35);
-  color: rgb(127 29 29);
+  color: rgb(248 113 113);
 }

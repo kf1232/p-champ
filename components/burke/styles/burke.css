@@ -1,46 +1,112 @@
 /* Burke feature styles */
 
-/**
- * Location Finder: sticky submit + main padding track the viewport footer via
- * CSS variables (set on `<main>`) and adapt to safe-area / font size.
- */
-.location-finder-layout-main {
-  --burke-sticky-above-footer-gap: 1rem;
-  --burke-sticky-submit-band-min-h: 4.5rem;
+/* Location Finder page slot padding: `.app-page--location-finder` in `appLayout.css` */
 
-  padding-bottom: calc(
-    var(--burke-viewport-footer-h, 64px) + var(--burke-sticky-above-footer-gap) +
-      env(safe-area-inset-bottom, 0px) + var(--burke-sticky-submit-band-min-h) +
-      var(--burke-main-scroll-spacer, 2.5rem)
-  );
-  scroll-padding-bottom: calc(
-    var(--burke-viewport-footer-h, 64px) + var(--burke-sticky-above-footer-gap) +
-      env(safe-area-inset-bottom, 0px) + var(--burke-sticky-submit-band-min-h) +
-      var(--burke-main-scroll-spacer, 2.5rem)
-  );
-}
-
-.location-finder-sticky-submit {
+.location-finder-search-actions {
   position: sticky;
   z-index: 30;
   margin-top: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  background-color: var(--app-chrome-body-bg, var(--app-surface));
   bottom: calc(
-    var(--burke-viewport-footer-h, 64px) + var(--burke-sticky-above-footer-gap) +
+    var(--app-footer-h) + var(--burke-sticky-above-footer-gap, 1rem) +
       env(safe-area-inset-bottom, 0px)
   );
-  min-height: var(--burke-sticky-submit-band-min-h);
+}
+
+.location-finder-search-panel {
+  box-sizing: border-box;
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--app-border-strong);
+  border-radius: 0.5rem;
+  background-color: var(--app-chrome-body-bg, var(--app-surface));
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+}
+
+.location-finder-search-panel-alert {
+  width: 100%;
+  margin: 0;
+}
+
+.location-finder-search-panel-row {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.location-finder-search-panel-row > :first-child {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.location-finder-submit-btn {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  margin-inline-start: auto;
+  border: 1px solid var(--app-border-default);
+  border-radius: 0.375rem;
+  background-color: var(--app-surface);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  color: var(--app-text-primary);
+  cursor: pointer;
+}
+
+[data-color-scheme="light"] .location-finder-submit-btn {
+  background-color: #ffffff;
+}
+
+.location-finder-submit-btn:hover:not(:disabled) {
+  border-color: var(--app-border-strong);
+  background-color: var(--app-surface-elevated);
+}
+
+[data-color-scheme="light"] .location-finder-submit-btn:hover:not(:disabled) {
+  background-color: #f4f4f5;
+}
+
+[data-color-scheme="dark"] .location-finder-submit-btn:hover:not(:disabled) {
+  background-color: #334155;
+}
+
+.location-finder-submit-btn:focus-visible {
+  outline: 2px solid var(--app-focus-ring);
+  outline-offset: 2px;
+}
+
+.location-finder-submit-btn:disabled {
+  cursor: default;
+  pointer-events: none;
+  color: var(--app-text-tertiary);
+  border-color: var(--app-border-subtle);
+  background-color: #e5e5e5;
+}
+
+[data-color-scheme="dark"] .location-finder-submit-btn:disabled {
+  color: #94a3b8;
+  background-color: #334155;
 }
 
 .location-finder-map-wrap {
   position: relative;
+  width: 100%;
+  min-width: 0;
 }
 
 .location-finder-map {
   z-index: 0;
-  height: min(22rem, 55vh);
   width: 100%;
+  min-width: 0;
+  height: min(28rem, 50vh);
   border-radius: 0.5rem;
   border: 1px solid rgb(0 0 0 / 0.1);
   overflow: hidden;
@@ -100,7 +166,7 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background-color: rgb(0 0 0 / 0.45);
+  background-color: var(--app-overlay-scrim);
 }
 
 .location-finder-diagnostics-modal-dialog {
@@ -135,13 +201,13 @@
   border: 1px solid rgb(0 0 0 / 0.15);
   padding: 0.25rem 0.625rem;
   font-size: 0.875rem;
-  color: rgb(0 0 0 / 0.75);
+  color: var(--app-text-secondary);
   background: white;
   cursor: pointer;
 }
 
 .location-finder-diagnostics-modal-close:hover {
-  background-color: rgb(0 0 0 / 0.04);
+  background-color: var(--app-hover-surface);
 }
 
 .location-finder-diagnostics-modal-body {
@@ -157,7 +223,7 @@
   gap: 0.5rem 1rem;
   font-size: 0.75rem;
   line-height: 1.125rem;
-  color: rgb(0 0 0 / 0.65);
+  color: var(--app-text-secondary);
 }
 
 .location-finder-map-legend-item {
@@ -181,14 +247,14 @@
 
 .location-finder-map-legend-btn:hover:not(:disabled) {
   border-color: rgb(0 0 0 / 0.12);
-  background-color: rgb(0 0 0 / 0.04);
+  background-color: var(--app-hover-surface);
 }
 
 .location-finder-map-legend-btn--active {
-  border-color: rgb(0 0 0 / 0.2);
-  background-color: rgb(0 0 0 / 0.06);
+  border-color: var(--app-border-default);
+  background-color: var(--app-hover-surface);
   font-weight: 500;
-  color: rgb(0 0 0 / 0.85);
+  color: var(--app-text-primary);
 }
 
 .location-finder-map-legend-btn:disabled {
@@ -201,9 +267,14 @@
   width: 0.625rem;
   flex-shrink: 0;
   border-radius: 9999px;
-  border: 1px solid rgb(0 0 0 / 0.12);
+  border: 1px solid #000;
+  box-sizing: border-box;
+}
+
+[data-color-scheme="dark"] .location-finder-map-legend-swatch {
+  border-color: #fff;
 }
 
 .location-finder-map-legend-count {
-  color: rgb(0 0 0 / 0.45);
+  color: var(--app-text-tertiary);
 }

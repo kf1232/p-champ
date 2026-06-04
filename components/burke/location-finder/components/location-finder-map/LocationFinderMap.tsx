@@ -78,6 +78,7 @@ export function LocationFinderMap({
 
     let disposed = false;
     let map: import("leaflet").Map | null = null;
+    let resizeObserver: ResizeObserver | null = null;
 
     void (async () => {
       const L = (await import("leaflet")).default;
@@ -147,20 +148,34 @@ export function LocationFinderMap({
         onClearSelectionRef.current();
       });
 
-      if (bounds.length === 0) {
-        map.setView([39.5, -98.35], 4);
-      } else if (bounds.length === 1) {
-        map.setView(bounds[0], 12);
-      } else {
-        map.fitBounds(L.latLngBounds(bounds), {
-          padding: [32, 32],
-          maxZoom: 13,
-        });
-      }
+      const fitMapToBounds = () => {
+        if (!map) {
+          return;
+        }
+        if (bounds.length === 0) {
+          map.setView([39.5, -98.35], 4);
+        } else if (bounds.length === 1) {
+          map.setView(bounds[0], 12);
+        } else {
+          map.fitBounds(L.latLngBounds(bounds), {
+            padding: [32, 32],
+            maxZoom: 13,
+          });
+        }
+      };
+
+      fitMapToBounds();
+
+      resizeObserver = new ResizeObserver(() => {
+        map?.invalidateSize();
+        fitMapToBounds();
+      });
+      resizeObserver.observe(container);
     })();
 
     return () => {
       disposed = true;
+      resizeObserver?.disconnect();
       map?.remove();
     };
   }, [

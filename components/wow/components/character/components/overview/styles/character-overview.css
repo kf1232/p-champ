@@ -10,7 +10,7 @@
 .character-overview-segment {
   border-radius: 0.5rem;
   border: 1px solid rgb(0 0 0 / 0.1);
-  background-color: rgb(255 255 255 / 0.85);
+  background-color: var(--app-surface-elevated);
   padding: 1rem 1.1rem;
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
 }
@@ -53,13 +53,13 @@
   margin: 0;
   font-size: 0.875rem;
   line-height: 1.45;
-  color: rgb(0 0 0 / 0.55);
+  color: var(--app-text-tertiary);
 }
 
 .character-overview-muted {
   margin: 0.5rem 0 0;
   font-size: 0.8125rem;
-  color: rgb(0 0 0 / 0.5);
+  color: var(--app-text-tertiary);
 }
 
 .character-overview-bis-row {
@@ -110,7 +110,7 @@
   margin: 0;
   font-size: 0.8125rem;
   font-weight: 600;
-  color: rgb(0 0 0 / 0.45);
+  color: var(--app-text-tertiary);
 }
 
 .character-overview-dl-def {
@@ -140,7 +140,7 @@
   font-size: 0.6875rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: rgb(0 0 0 / 0.45);
+  color: var(--app-text-tertiary);
   padding: 0.4rem 0.5rem 0.5rem 0;
   border-bottom: 1px solid rgb(0 0 0 / 0.1);
   white-space: nowrap;
@@ -184,7 +184,7 @@
 }
 
 .character-overview-quality--COMMON {
-  color: rgb(0 0 0);
+  color: var(--app-text-primary);
 }
 
 .character-overview-quality--UNCOMMON {
@@ -241,7 +241,7 @@
 
 .character-overview-mythic-k {
   font-weight: 600;
-  color: rgb(0 0 0 / 0.45);
+  color: var(--app-text-tertiary);
   min-width: 7.5rem;
 }
 
@@ -310,7 +310,7 @@
 
 .character-overview-item-card__label {
   font-weight: 600;
-  color: rgb(0 0 0 / 0.45);
+  color: var(--app-text-tertiary);
 }
 
 .character-overview-item-card__value {

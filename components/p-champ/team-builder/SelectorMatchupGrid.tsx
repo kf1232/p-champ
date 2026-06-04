@@ -49,7 +49,7 @@ export function SelectorMatchupGrid({ slots }: SelectorMatchupGridProps) {
   return (
     <div className="flex w-full flex-col gap-1">
       <p
-        className="text-center text-[10px] font-semibold tabular-nums text-black/60"
+        className="text-center text-[10px] font-semibold tabular-nums text-secondary"
         title="Per team slot (right/defense band): +2 if this Pokemon's STAB is 2x vs your slot, +4 if 4x or more. Neutral/resisted add 0."
         aria-label={`Defensive threat score ${threatScore}`}
       >
@@ -66,14 +66,14 @@ export function SelectorMatchupGrid({ slots }: SelectorMatchupGridProps) {
           className={[
             "flex min-h-[2rem] flex-col items-center justify-center rounded-md border px-0.5 py-0.5",
             cell
-              ? "border-black/25 bg-white/40"
-              : "border-black/15 bg-black/[0.04]",
+              ? "border-border-strong bg-surface-overlay"
+              : "border-border-default bg-hover",
           ].join(" ")}
           aria-label={labelParts[i] ?? `slot ${i + 1}`}
         >
           {cell ? (
             <div
-              className="flex h-4 w-full max-w-[5.5rem] items-stretch overflow-hidden rounded border border-black/30"
+              className="flex h-4 w-full max-w-[5.5rem] items-stretch overflow-hidden rounded border border-border-strong"
               role="img"
               aria-label={`Attack: ${cell.atkExplanation}. Defense: ${cell.defExplanation}`}
             >
@@ -88,7 +88,7 @@ export function SelectorMatchupGrid({ slots }: SelectorMatchupGridProps) {
               />
             </div>
           ) : (
-            <span className="text-sm text-black/25">—</span>
+            <span className="text-sm text-tertiary">—</span>
           )}
         </div>
       ))}

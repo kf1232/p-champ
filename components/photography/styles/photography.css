@@ -12,11 +12,11 @@
   justify-content: center;
   border-radius: 0.5rem;
   border: 1px dashed rgb(0 0 0 / 0.15);
-  background-color: rgb(0 0 0 / 0.02);
+  background-color: var(--app-surface-muted);
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: rgb(0 0 0 / 0.35);
+  color: var(--app-text-tertiary);
 }
 
 /* PhotographyEntryRow */
@@ -28,7 +28,7 @@
   /* Rounded border only; let inner cards clip overflow so focus rings on thumbs stay visible. */
   border-radius: 0.5rem;
   border: 1px solid rgb(0 0 0 / 0.1);
-  background-color: rgb(255 255 255 / 0.6);
+  background-color: var(--app-surface-overlay);
 }
 
 @media (min-width: 768px) {
@@ -69,7 +69,7 @@
   line-height: 1.75rem;
   font-weight: 600;
   letter-spacing: -0.025em;
-  color: rgb(0 0 0);
+  color: var(--app-text-primary);
 }
 
 @media (min-width: 640px) {
@@ -83,7 +83,7 @@
   margin-top: 0.375rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: rgb(0 0 0 / 0.7);
+  color: var(--app-text-secondary);
 }
 
 .photography-entry-gated-link-wrap {
@@ -132,7 +132,7 @@
   justify-content: center;
   border-radius: 0.375rem;
   border: 1px dashed rgb(0 0 0 / 0.15);
-  background-color: rgb(0 0 0 / 0.03);
+  background-color: var(--app-surface-muted);
 }
 
 .photography-entry-detail-thumb-wrap {
@@ -142,7 +142,7 @@
   min-width: 0;
   border-radius: 0.375rem;
   border: 1px solid rgb(0 0 0 / 0.1);
-  background-color: rgb(0 0 0 / 0.04);
+  background-color: var(--app-hover-surface);
 }
 
 .photography-entry-detail-img {
@@ -160,14 +160,14 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: rgb(0 0 0 / 0.8);
+  color: var(--app-text-primary);
   text-decoration: underline;
-  text-decoration-color: rgb(0 0 0 / 0.25);
+  text-decoration-color: var(--app-text-tertiary);
   text-underline-offset: 2px;
 }
 
 .photography-gated-link--text:hover {
-  color: rgb(0 0 0);
+  color: var(--app-text-primary);
 }
 
 .photography-gated-link--thumb {
@@ -201,7 +201,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(0 0 0 / 0.4);
+  background-color: var(--app-text-tertiary);
   padding: 1rem;
 }
 
@@ -210,7 +210,7 @@
   max-width: 24rem;
   border-radius: 0.5rem;
   border: 1px solid rgb(0 0 0 / 0.1);
-  background-color: rgb(255 255 255);
+  background-color: var(--app-surface);
   padding: 1.25rem;
   box-shadow:
     0 10px 15px -3px rgb(0 0 0 / 0.1),
@@ -222,14 +222,14 @@
   line-height: 1.75rem;
   font-weight: 600;
   letter-spacing: -0.025em;
-  color: rgb(0 0 0);
+  color: var(--app-text-primary);
 }
 
 .photography-modal-description {
   margin-top: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: rgb(0 0 0 / 0.7);
+  color: var(--app-text-secondary);
 }
 
 .photography-modal-form {
@@ -244,7 +244,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: rgb(0 0 0);
+  color: var(--app-text-primary);
 }
 
 .photography-modal-input {
@@ -255,12 +255,12 @@
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: rgb(0 0 0);
+  color: var(--app-text-primary);
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
 .photography-modal-input:focus {
-  border-color: rgb(0 0 0 / 0.3);
+  border-color: var(--app-text-tertiary);
   outline: none;
   box-shadow:
     0 0 0 2px rgb(255 255 255),
@@ -286,7 +286,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  color: rgb(0 0 0 / 0.7);
+  color: var(--app-text-secondary);
 }
 
 .photography-modal-btn-cancel:hover {
@@ -296,7 +296,7 @@
 .photography-modal-btn-submit {
   border-radius: 0.375rem;
   border: none;
-  background-color: rgb(0 0 0);
+  background-color: var(--app-text-primary);
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
   line-height: 1.25rem;

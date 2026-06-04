@@ -80,7 +80,7 @@ function AppViewportStorageFooter({
       ariaLabel={config.ariaLabel}
       className="app-viewport-footer-bar"
     >
-      <div className="app-viewport-footer-inner">
+      <div className="app-chrome__footer-inner">
         <p className="app-viewport-footer-line">
           <span className="app-viewport-footer-label">Cache : </span>
           <span className="app-viewport-footer-value">

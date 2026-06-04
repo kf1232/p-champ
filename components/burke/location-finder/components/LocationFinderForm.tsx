@@ -458,7 +458,7 @@ export function LocationFinderForm({
 
   return (
     <form
-      className="mt-8 flex max-w-xl flex-col gap-6 pb-4"
+      className="mt-8 flex w-full flex-col gap-6 pb-4"
       onSubmit={onSubmit}
       noValidate
     >
@@ -472,8 +472,6 @@ export function LocationFinderForm({
         required
       />
 
-      <DistanceThresholdControl value={threshold} onChange={setThreshold} />
-
       <SecondaryJobLocationsEditor
         rows={secondaries}
         onChange={setSecondaries}
@@ -482,21 +480,33 @@ export function LocationFinderForm({
         onCollapsedChange={setSecondariesCollapseOverride}
       />
 
-      <div className="location-finder-sticky-submit -mx-6 flex flex-col gap-2 border-t border-black/10 bg-white/90 px-6 py-3 backdrop-blur">
-        {overSecondaryLimit ? (
-          <p className="text-sm text-red-700" role="alert">
-            At most {LOCATION_FINDER_MAX_SECONDARY_LOCATIONS} distinct locations
-            per search ({dedupedSecondaries.unique.length} after removing
-            duplicates).
-          </p>
-        ) : null}
-        <button
-          type="submit"
-          disabled={!canSubmit}
-          className="w-full rounded-md border border-black/20 bg-white/80 px-4 py-2.5 text-sm font-medium text-black shadow-sm hover:border-black/30 hover:bg-white disabled:pointer-events-none disabled:opacity-40 sm:w-auto"
-        >
-          {submitting ? "Finding…" : "Find locations"}
-        </button>
+      <div className="location-finder-search-actions flex flex-col gap-2">
+        <div className="location-finder-search-panel">
+          {overSecondaryLimit ? (
+            <p
+              className="location-finder-search-panel-alert text-sm text-red-700"
+              role="alert"
+            >
+              At most {LOCATION_FINDER_MAX_SECONDARY_LOCATIONS} distinct locations
+              per search ({dedupedSecondaries.unique.length} after removing
+              duplicates).
+            </p>
+          ) : null}
+          <div className="location-finder-search-panel-row">
+            <DistanceThresholdControl
+              layout="inline"
+              value={threshold}
+              onChange={setThreshold}
+            />
+            <button
+              type="submit"
+              disabled={!canSubmit}
+              className="location-finder-submit-btn"
+            >
+              {submitting ? "Finding…" : "Find locations"}
+            </button>
+          </div>
+        </div>
       </div>
 
       {activeError ? (

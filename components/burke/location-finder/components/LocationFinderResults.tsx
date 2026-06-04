@@ -117,15 +117,15 @@ export function LocationFinderResults({
 
   return (
     <section
-      className="mt-8 flex max-w-3xl flex-col gap-4 rounded-lg border border-black/10 bg-white/50 px-4 py-3"
+      className="mt-8 flex w-full min-w-0 flex-col gap-4 rounded-lg border border-border-subtle bg-surface-overlay px-4 py-3"
       aria-label={`Proximity results, ${modeLabel}`}
     >
-      <p className="text-xs font-medium uppercase tracking-wide text-black/50">
+      <p className="text-xs font-medium uppercase tracking-wide text-tertiary">
         {modeLabel}
       </p>
 
       {duplicateCount > 0 ? (
-        <p className="text-sm text-black/70">
+        <p className="text-sm text-secondary">
           {duplicateCount}{" "}
           {duplicateCount === 1
             ? "duplicate location was"
@@ -140,7 +140,7 @@ export function LocationFinderResults({
             diagnostics={routingDiagnostics}
             placement="inline"
           />
-          <p className="text-xs text-black/55">
+          <p className="text-xs text-tertiary">
             No locations could be mapped. Hover or click the badge for routing
             details.
           </p>
@@ -170,7 +170,7 @@ export function LocationFinderResults({
             activePinIds={activePinIds}
             onTierSelect={selectLegendTier}
           />
-          <p className="mt-2 text-xs text-black/55">
+          <p className="mt-2 text-xs text-tertiary">
             Click a pin or legend color to filter the list. Click again to
             clear.
             {showRoutingOverlay
@@ -190,13 +190,13 @@ export function LocationFinderResults({
 
       {pinFilterActive ? (
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="text-sm text-black/70">
+          <p className="text-sm text-secondary">
             Showing {listRows.length} selected{" "}
             {listRows.length === 1 ? "location" : "locations"}
           </p>
           <button
             type="button"
-            className="text-sm font-medium text-black/80 underline-offset-2 hover:underline"
+            className="text-sm font-medium text-secondary underline-offset-2 hover:underline"
             onClick={clearPinFilter}
           >
             Show all in range
@@ -205,9 +205,9 @@ export function LocationFinderResults({
       ) : null}
 
       {!pinFilterActive && matches.length === 0 ? (
-        <p className="text-sm text-black/70">No secondary locations in range.</p>
+        <p className="text-sm text-secondary">No secondary locations in range.</p>
       ) : listRows.length === 0 ? (
-        <p className="text-sm text-black/70">
+        <p className="text-sm text-secondary">
           No locations match the selected pins.
         </p>
       ) : (
@@ -215,10 +215,10 @@ export function LocationFinderResults({
           {listRows.map((match) => (
             <li
               key={match.id}
-              className="flex flex-wrap items-baseline justify-between gap-2 text-sm text-black"
+              className="flex flex-wrap items-baseline justify-between gap-2 text-sm text-primary"
             >
               <span>{match.formatted}</span>
-              <span className="tabular-nums text-black/55">
+              <span className="tabular-nums text-tertiary">
                 {formatDistance(match, threshold)}
               </span>
             </li>

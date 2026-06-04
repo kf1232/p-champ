@@ -79,11 +79,11 @@ export function LocationFinderGate({
       <div className="flex flex-col gap-2 text-center">
         <h1
           id={titleId}
-          className="text-2xl font-semibold tracking-tight text-black"
+          className="text-2xl font-semibold tracking-tight text-primary"
         >
           {LOCATION_FINDER_TITLE}
         </h1>
-        <p className="text-sm text-black/70">
+        <p className="text-sm text-secondary">
           {configured
             ? "Enter the password to continue."
             : "Location Finder is not configured on this server."}
@@ -95,7 +95,7 @@ export function LocationFinderGate({
           onSubmit={handleSubmit}
           className="flex flex-col items-center gap-4"
         >
-          <label className="flex w-full max-w-sm flex-col gap-1.5 text-left text-sm font-medium text-black">
+          <label className="flex w-full max-w-sm flex-col gap-1.5 text-left text-sm font-medium text-primary">
             Password
             <input
               ref={passwordRef}

@@ -35,7 +35,7 @@
   display: flex;
   max-height: calc(
     100svh - var(--wow-cache-rail-top-in-viewport, 12rem) -
-      var(--wow-viewport-footer-h, 64px) - 0.75rem -
+      var(--app-footer-h, 64px) - 0.75rem -
       env(safe-area-inset-bottom, 0px)
   );
   flex-direction: column;
@@ -43,7 +43,7 @@
   overflow: hidden;
   border-radius: 0.5rem;
   border: 1px solid rgb(0 0 0 / 0.1);
-  background-color: rgb(255 255 255 / 0.65);
+  background-color: var(--app-surface-overlay);
   padding: 0.75rem 0.85rem;
 }
 
@@ -54,7 +54,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: rgb(0 0 0 / 0.45);
+  color: var(--app-text-tertiary);
 }
 
 .character-cache-rail-summaries-strip {
@@ -73,7 +73,7 @@
   flex-shrink: 0;
   font-size: 0.75rem;
   line-height: 1.35;
-  color: rgb(0 0 0 / 0.45);
+  color: var(--app-text-tertiary);
 }
 
 .character-cache-rail-summaries-strip-list {
@@ -111,7 +111,7 @@
 }
 
 .character-lookup-history-record:hover {
-  border-color: rgb(0 0 0 / 0.18);
+  border-color: var(--app-border-default);
   background: rgb(255 255 255);
   box-shadow: 0 2px 6px rgb(0 0 0 / 0.08);
 }
@@ -130,7 +130,7 @@
   line-height: 1.35;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
-  color: rgb(0 0 0 / 0.55);
+  color: var(--app-text-tertiary);
 }
 
 .character-lookup-history-icons {
@@ -177,7 +177,7 @@
   margin: 0.35rem 0 0;
   font-size: 0.6875rem;
   line-height: 1.35;
-  color: rgb(0 0 0 / 0.45);
+  color: var(--app-text-tertiary);
 }
 
 .character-cache-rail-season-note {
@@ -190,13 +190,13 @@
   margin: 0.35rem 0 0;
   font-size: 0.6875rem;
   line-height: 1.35;
-  color: rgb(0 0 0 / 0.45);
+  color: var(--app-text-tertiary);
 }
 
 .character-hint-code {
   font-size: 0.6875rem;
   padding: 0.08em 0.3em;
   border-radius: 0.25rem;
-  background-color: rgb(0 0 0 / 0.06);
-  color: rgb(0 0 0 / 0.75);
+  background-color: var(--app-hover-surface);
+  color: var(--app-text-secondary);
 }

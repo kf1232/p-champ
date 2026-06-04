@@ -1,15 +1,17 @@
-@import "tailwindcss";
-
-@keyframes team-slot-flash {
-  0% {
-    background-color: rgb(228 228 231 / 0.9);
-  }
-
-  100% {
-    background-color: rgb(255 255 255 / 0.6);
-  }
-}
-
-.animate-team-slot-flash {
-  animation: team-slot-flash 0.55s ease-out forwards;
-}
+@import "tailwindcss";
+@import "../components/commons/styles/themes/semantic.css";
+@import "../components/commons/styles/themes/semanticUtilities.css";
+
+@keyframes team-slot-flash {
+  0% {
+    background-color: rgb(228 228 231 / 0.9);
+  }
+
+  100% {
+    background-color: var(--app-surface-overlay);
+  }
+}
+
+.animate-team-slot-flash {
+  animation: team-slot-flash 0.55s ease-out forwards;
+}

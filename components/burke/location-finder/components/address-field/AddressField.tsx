@@ -57,7 +57,7 @@ export function AddressField({
   return (
     <div className="flex flex-col gap-1.5">
       {label ? (
-        <label className="text-sm font-medium text-black" htmlFor={id}>
+        <label className="text-sm font-medium text-primary" htmlFor={id}>
           {label}
         </label>
       ) : null}

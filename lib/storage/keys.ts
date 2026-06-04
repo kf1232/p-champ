@@ -4,6 +4,7 @@
  */
 export const APP_STORAGE_KEYS = {
   burkeLocationFinder: "p-champ:burke-location-finder",
+  colorScheme: "p-champ:color-scheme",
   wowService: "p-champ:wow-service",
   selectedGame: "p-champ:selected-game",
   wowDebugRawPanels: "p-champ:wow-debug-raw-panels",

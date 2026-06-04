@@ -7,11 +7,6 @@ import {
   PHOTOGRAPHY_HOME_PATH,
   WOW_HOME_PATH,
 } from "@/lib/site";
-import {
-  VIEWPORT_LOCKED_MAIN_PADDING_BOTTOM_PX,
-} from "@/lib/viewportFooterChrome";
-
-import { ViewportLockedPageShell } from "@/components/commons";
 
 import {
   PORTAL_DESCRIPTION,
@@ -34,10 +29,10 @@ const FEATURE_LINKS: FeatureLink[] = [
 const PORTAL_GRID_COLS = 3;
 
 const activeTileClass =
-  "flex aspect-square items-center justify-center rounded-lg border border-black/10 bg-white/60 text-sm font-medium text-black shadow-sm hover:border-black/20 hover:bg-white/80";
+  "flex aspect-square items-center justify-center rounded-lg border border-border-subtle bg-surface-overlay text-sm font-medium text-primary shadow-sm hover:border-border-default hover:bg-surface-elevated";
 
 const placeholderCellClassName =
-  "flex aspect-square items-center justify-center rounded-lg border border-dashed border-black/15 bg-black/[0.02] text-sm font-medium text-black/35";
+  "flex aspect-square items-center justify-center rounded-lg border border-dashed border-border-default bg-surface-muted text-sm font-medium text-tertiary";
 
 export function PortalHomeScreen() {
   const placeholderCount = incompleteRowPaddingCellCount(
@@ -46,49 +41,42 @@ export function PortalHomeScreen() {
   );
 
   return (
-    <ViewportLockedPageShell footer="portal">
-      <main
-        className="mx-auto w-full max-w-5xl flex-1 px-6 pt-10"
-        style={{
-          paddingBottom: VIEWPORT_LOCKED_MAIN_PADDING_BOTTOM_PX,
-        }}
-      >
-        <header className="mb-10 text-center sm:mb-12">
-          <h1 className="text-3xl font-semibold tracking-tight text-black">
-            {PORTAL_TITLE}
-          </h1>
-          <p className="mx-auto mt-3 max-w-prose text-black/70">
-            {PORTAL_DESCRIPTION}
-          </p>
-        </header>
+    <>
+      <header className="mb-10 text-center sm:mb-12">
+        <h1 className="text-3xl font-semibold tracking-tight text-primary">
+          {PORTAL_TITLE}
+        </h1>
+        <p className="mx-auto mt-3 max-w-prose text-secondary">
+          {PORTAL_DESCRIPTION}
+        </p>
+      </header>
 
-        <section aria-label="Features" className="mx-auto w-full max-w-3xl">
-          <div className="grid grid-cols-3 gap-3 sm:gap-4">
-            {FEATURE_LINKS.map((item) =>
-              item.active ? (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={activeTileClass}
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <div key={item.label} className={placeholderCellClassName}>
-                  {item.label}
-                </div>
-              ),
-            )}
-            {Array.from({ length: placeholderCount }, (_, i) => (
-              <div
-                key={`portal-grid-placeholder-${i}`}
-                className={placeholderCellClassName}
-                aria-hidden
-              />
-            ))}
-          </div>
-        </section>
-      </main>
-    </ViewportLockedPageShell>
+      <section aria-label="Features" className="mx-auto w-full max-w-3xl">
+        <div className="grid grid-cols-3 gap-3 sm:gap-4">
+          {FEATURE_LINKS.map((item) =>
+            item.active ? (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={activeTileClass}
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <div key={item.label} className={placeholderCellClassName}>
+                {item.label}
+              </div>
+            ),
+          )}
+          {Array.from({ length: placeholderCount }, (_, i) => (
+            <div
+              key={`portal-grid-placeholder-${i}`}
+              className={placeholderCellClassName}
+              aria-hidden
+            />
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

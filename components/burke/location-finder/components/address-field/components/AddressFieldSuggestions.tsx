@@ -36,7 +36,7 @@ export function AddressFieldSuggestions({
       getMenuProps={getMenuProps}
       setFloatingElement={setFloatingElement}
       floatingStyles={floatingStyles}
-      className="z-50 overflow-auto rounded-md border border-black/15 bg-white py-1 shadow-md"
+      className="z-50 overflow-auto rounded-md border border-border-default bg-surface py-1 shadow-md"
     >
       {showList
         ? suggestions.map((row, index) => (
@@ -46,7 +46,7 @@ export function AddressFieldSuggestions({
                 item: row,
                 index,
                 className: [
-                  "cursor-pointer px-3 py-2 text-sm text-black hover:bg-black/[0.04]",
+                  "cursor-pointer px-3 py-2 text-sm text-primary hover:bg-hover",
                   highlightedIndex === index ? "bg-black/[0.06]" : "",
                 ].join(" "),
               })}
