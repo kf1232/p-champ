@@ -1,4 +1,4 @@
-import type { DistanceThreshold, DistanceUnit } from "@/lib/burke/location-finder/distance/types";
+import type { DistanceThreshold, DistanceUnit } from "@/lib/burke";
 
 import { LOCATION_FINDER_CONTROL_CLASS } from "../configs/locationFinderStyles";
 
@@ -6,6 +6,11 @@ type DistanceThresholdControlProps = {
   value: DistanceThreshold;
   onChange: (next: DistanceThreshold) => void;
 };
+
+const UNIT_OPTIONS: { value: DistanceUnit; label: string }[] = [
+  { value: "miles", label: "straight-line miles" },
+  { value: "drivingMiles", label: "driving miles" },
+];
 
 export function DistanceThresholdControl({
   value,
@@ -20,7 +25,7 @@ export function DistanceThresholdControl({
           className={`${LOCATION_FINDER_CONTROL_CLASS} w-28`}
           type="number"
           min={0}
-          step={value.unit === "minutes" ? 1 : 0.1}
+          step={0.1}
           value={Number.isFinite(value.value) ? value.value : ""}
           onChange={(e) => {
             const parsed = Number(e.target.value);
@@ -42,8 +47,11 @@ export function DistanceThresholdControl({
             })
           }
         >
-          <option value="miles">miles</option>
-          <option value="minutes">minutes</option>
+          {UNIT_OPTIONS.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
         </select>
         <span className="text-sm text-black/60">of target</span>
       </div>

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-import { BURKE_LOCATION_FINDER_GRANT_COOKIE } from "@/lib/burke/location-finder/access/constants";
-import { grantCookieOptions } from "@/lib/burke/location-finder/access/locationFinderGrant";
+import { BURKE_LOCATION_FINDER_GRANT_COOKIE } from "@/lib/burke";
+import { grantCookieOptions } from "@/lib/burke/server";
 
 /** Clears the Location Finder grant cookie (session ends for this tool). */
 export async function POST() {

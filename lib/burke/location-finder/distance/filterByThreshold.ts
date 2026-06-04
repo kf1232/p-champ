@@ -1,14 +1,14 @@
 import { haversineMiles } from "./haversineMiles";
+import { isDrivingDistanceUnit, isStraightLineDistanceUnit } from "./distanceUnit";
 import type {
   DistanceThreshold,
   ProximityMatch,
   ResolvedLocation,
 } from "./types";
 
-export function filterByMilesThreshold(
+export function listProximityMetricsMiles(
   target: ResolvedLocation,
   destinations: ResolvedLocation[],
-  thresholdMiles: number,
 ): ProximityMatch[] {
   return destinations
     .map((dest) => {
@@ -20,22 +20,30 @@ export function filterByMilesThreshold(
         minutes: 0,
       };
     })
-    .filter((row) => row.miles <= thresholdMiles)
     .sort((a, b) => a.miles - b.miles);
 }
 
-export function filterByMinutesThreshold(
+export function filterByMilesThreshold(
+  target: ResolvedLocation,
   destinations: ResolvedLocation[],
-  driveMinutesById: Map<string, number>,
+  thresholdMiles: number,
+): ProximityMatch[] {
+  return listProximityMetricsMiles(target, destinations).filter(
+    (row) => row.miles <= thresholdMiles,
+  );
+}
+
+export function listProximityMetricsDriving(
+  destinations: ResolvedLocation[],
   driveMilesById: Map<string, number>,
-  thresholdMinutes: number,
+  driveMinutesById: Map<string, number>,
 ): ProximityMatch[] {
   const rows: ProximityMatch[] = [];
 
   for (const dest of destinations) {
-    const minutes = driveMinutesById.get(dest.id);
     const miles = driveMilesById.get(dest.id);
-    if (minutes === undefined || miles === undefined) {
+    const minutes = driveMinutesById.get(dest.id);
+    if (miles === undefined || minutes === undefined) {
       continue;
     }
     rows.push({
@@ -46,11 +54,26 @@ export function filterByMinutesThreshold(
     });
   }
 
-  return rows
-    .filter((row) => row.minutes <= thresholdMinutes)
-    .sort((a, b) => a.minutes - b.minutes);
+  return rows.sort((a, b) => a.miles - b.miles);
+}
+
+export function filterByDrivingMilesThreshold(
+  destinations: ResolvedLocation[],
+  driveMilesById: Map<string, number>,
+  driveMinutesById: Map<string, number>,
+  thresholdMiles: number,
+): ProximityMatch[] {
+  return listProximityMetricsDriving(
+    destinations,
+    driveMilesById,
+    driveMinutesById,
+  ).filter((row) => row.miles <= thresholdMiles);
 }
 
 export function isValidThreshold({ value, unit }: DistanceThreshold): boolean {
-  return Number.isFinite(value) && value > 0 && (unit === "miles" || unit === "minutes");
+  return (
+    Number.isFinite(value) &&
+    value > 0 &&
+    (isStraightLineDistanceUnit(unit) || isDrivingDistanceUnit(unit))
+  );
 }

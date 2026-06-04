@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
 
-import { BURKE_GEOCODE_BATCH_MAX } from "@/lib/burke/geo/constants";
-import { requireLocationFinderApiAccess } from "@/lib/burke/location-finder/access/locationFinderGrant";
-import { geoGoogleMapsApiKey } from "@/lib/burke/geo/googleGeocodeSearch";
-import { geocodeServiceUnavailableResponse } from "@/lib/burke/geo/geocodeApiErrors";
-import { resolveAddressQueries } from "@/lib/burke/geo/resolveAddress";
+import { BURKE_GEOCODE_BATCH_MAX } from "@/lib/burke";
+import {
+  geoGoogleMapsApiKey,
+  geocodeServiceUnavailableResponse,
+  requireLocationFinderApiAccess,
+  resolveAddressQueries,
+} from "@/lib/burke/server";
 
 /** Allow long batch runs on hosts that support extended route duration. */
 export const maxDuration = 300;

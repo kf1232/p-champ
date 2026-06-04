@@ -9,7 +9,7 @@ import {
   useState,
 } from "react";
 
-import { BURKE_VERIFY_LOCATION_FINDER_PASSWORD_PATH } from "@/lib/burke/location-finder/access/constants";
+import { BURKE_VERIFY_LOCATION_FINDER_PASSWORD_PATH } from "@/lib/burke";
 
 import { LOCATION_FINDER_INPUT_CLASS } from "../configs/locationFinderStyles";
 import { LOCATION_FINDER_TITLE } from "../configs/locationFinderCopy";

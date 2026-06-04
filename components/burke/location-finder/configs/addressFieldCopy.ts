@@ -1,4 +1,4 @@
-import type { AddressStatusDisplayKey } from "@/lib/burke/geo/types";
+import type { AddressStatusDisplayKey } from "@/lib/burke";
 
 export const ADDRESS_FIELD_STATUS_ARIA: Record<
   AddressStatusDisplayKey,

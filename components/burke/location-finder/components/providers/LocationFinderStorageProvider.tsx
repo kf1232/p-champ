@@ -18,7 +18,7 @@ import {
   subscribeLocationFinderStorage,
   writeLocationFinderStoredData,
   type LocationFinderStoredData,
-} from "@/lib/burke/location-finder/store";
+} from "@/lib/burke";
 
 type LocationFinderStorageContextValue = {
   data: LocationFinderStoredData;

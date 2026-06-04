@@ -1,6 +1,6 @@
-import { emptyAddressFieldValue } from "@/lib/burke/geo/addressFieldValue";
-import type { AddressFieldStatus, AddressFieldValue } from "@/lib/burke/geo/types";
-import { INITIAL_SECONDARY_ROW_ID } from "@/lib/burke/location-finder/secondaryRowId";
+import { emptyAddressFieldValue } from "@/lib/burke";
+import type { AddressFieldStatus, AddressFieldValue } from "@/lib/burke";
+import { INITIAL_SECONDARY_ROW_ID } from "@/lib/burke";
 
 export type SecondaryLocationRow = {
   id: string;

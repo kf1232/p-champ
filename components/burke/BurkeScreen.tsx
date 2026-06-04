@@ -5,7 +5,7 @@ import {
 
 import { BurkeNavHeader } from "./BurkeNavHeader";
 import { BurkePlaceholderGrid } from "./BurkePlaceholderGrid";
-import { BURKE_DESCRIPTION, BURKE_TITLE } from "./configs/burkeHomeCopy";
+import { BURKE_TITLE } from "./configs/burkeHomeCopy";
 
 export function BurkeScreen() {
   return (
@@ -18,12 +18,9 @@ export function BurkeScreen() {
           paddingBottom: VIEWPORT_LOCKED_MAIN_PADDING_BOTTOM_PX,
         }}
       >
-        <div className="flex flex-col gap-2">
-          <h1 className="text-3xl font-semibold tracking-tight text-black">
-            {BURKE_TITLE}
-          </h1>
-          <p className="max-w-prose text-black/70">{BURKE_DESCRIPTION}</p>
-        </div>
+        <h1 className="text-3xl font-semibold tracking-tight text-black">
+          {BURKE_TITLE}
+        </h1>
 
         <BurkePlaceholderGrid />
       </main>

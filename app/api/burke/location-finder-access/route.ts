@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-import { BURKE_LOCATION_FINDER_GRANT_COOKIE } from "@/lib/burke/location-finder/access/constants";
-import { getLocationFinderPreloadStatus } from "@/lib/burke/location-finder/access/locationFinderGrant";
+import { BURKE_LOCATION_FINDER_GRANT_COOKIE } from "@/lib/burke";
+import { getLocationFinderPreloadStatus } from "@/lib/burke/server";
 
 /** GET — preload grant and geocode config (call when the tool opens). */
 export async function GET() {

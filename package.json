@@ -20,6 +20,9 @@
     "wow:sample-api": "node scripts/sample-blizzard-profile-responses.mjs"
   },
   "dependencies": {
+    "@floating-ui/react": "^0.27.19",
+    "downshift": "^9.3.6",
+    "leaflet": "^1.9.4",
     "next": "16.2.2",
     "react": "19.2.4",
     "react-dom": "19.2.4",
@@ -28,6 +31,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/jest": "^30.0.0",
+    "@types/leaflet": "^1.9.21",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

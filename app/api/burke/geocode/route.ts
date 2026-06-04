@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
 
-import { requireLocationFinderApiAccess } from "@/lib/burke/location-finder/access/locationFinderGrant";
-import { BURKE_GEOCODE_QUERY_PARAM } from "@/lib/burke/geo/constants";
-import { geoGoogleMapsApiKey } from "@/lib/burke/geo/googleGeocodeSearch";
-import { geocodeServiceUnavailableResponse } from "@/lib/burke/geo/geocodeApiErrors";
-import { resolveAddressQuery } from "@/lib/burke/geo/resolveAddress";
+import { BURKE_GEOCODE_QUERY_PARAM } from "@/lib/burke";
+import {
+  geoGoogleMapsApiKey,
+  geocodeServiceUnavailableResponse,
+  requireLocationFinderApiAccess,
+  resolveAddressQuery,
+} from "@/lib/burke/server";
 
 /** Query: `address` (required). Geocodes via Google Geocoding API. */
 export async function GET(req: Request) {

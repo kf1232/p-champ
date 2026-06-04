@@ -1,39 +1,40 @@
 "use client";
 
+import { useFloatingComboboxAnchor } from "@/components/commons";
+import { useCombobox } from "downshift";
 import {
   useCallback,
   useEffect,
-  useId,
   useLayoutEffect,
   useRef,
   useState,
-  type KeyboardEvent,
-  type RefObject,
+  type CSSProperties,
 } from "react";
 
 import {
   addressFieldValuesEqual,
   emptyAddressFieldValue,
   isAddressResolved,
-} from "@/lib/burke/geo/addressFieldValue";
+  normalizeGeocodeQuery,
+} from "@/lib/burke";
 import {
   deriveAddressFieldStatus,
   effectiveAddressFieldStatus,
   isLookupSettledForRow,
   shouldEmitAddressFieldStatusChange,
-} from "@/lib/burke/geo/addressFieldStatus";
+} from "@/lib/burke";
 import type {
   AddressFieldStatus,
   AddressFieldValue,
   GeocodeResponse,
   GeocodeSuggestion,
-} from "@/lib/burke/geo/types";
+} from "@/lib/burke";
 
+import {
+  ADDRESS_FIELD_LOOKUP_DEBOUNCE_MS,
+  ADDRESS_FIELD_MIN_LOOKUP_LENGTH,
+} from "../../../configs/addressFieldLookup";
 import { useGeocodeLookup } from "../../GeocodeLookupProvider";
-import { nextComboboxHighlight } from "../utils/comboboxHighlight";
-import { useClickOutside } from "./useClickOutside";
-
-const LOOKUP_DEBOUNCE_MS = 250;
 
 export type UseAddressFieldControllerArgs = {
   value: AddressFieldValue;
@@ -43,19 +44,16 @@ export type UseAddressFieldControllerArgs = {
 };
 
 export type AddressFieldController = {
-  listId: string;
-  wrapRef: RefObject<HTMLDivElement | null>;
   displayStatus: AddressFieldStatus;
-  open: boolean;
-  inputValue: string;
   suggestions: GeocodeSuggestion[];
-  highlight: number;
-  onInputChange: (next: string) => void;
-  onBlurInput: () => void;
-  onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void;
-  onFocusInput: () => void;
-  onSuggestionMouseDown: () => void;
-  pickSuggestion: (suggestion: GeocodeSuggestion) => void;
+  isOpen: boolean;
+  highlightedIndex: number;
+  floatingStyles: CSSProperties;
+  setReferenceElement: (node: HTMLInputElement | null) => void;
+  setFloatingElement: (node: HTMLElement | null) => void;
+  getInputProps: ReturnType<typeof useCombobox<GeocodeSuggestion>>["getInputProps"];
+  getMenuProps: ReturnType<typeof useCombobox<GeocodeSuggestion>>["getMenuProps"];
+  getItemProps: ReturnType<typeof useCombobox<GeocodeSuggestion>>["getItemProps"];
 };
 
 export function useAddressFieldController({
@@ -71,14 +69,12 @@ export function useAddressFieldController({
     peekLookupRef.current = peekLookup;
   }, [peekLookup]);
 
-  const listId = useId();
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const selectingRef = useRef(false);
+  const suppressInputValueChangeRef = useRef(false);
+  const valueRef = useRef(value);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const requestGenRef = useRef(0);
   const lastScheduledQueryRef = useRef<string | null>(null);
   const lastHydratedQueryRef = useRef<string | null>(null);
-
   const onStatusChangeRef = useRef(onStatusChange);
   const rowStatusRef = useRef(rowStatus);
   const reportedStatusRef = useRef<AddressFieldStatus>(rowStatus ?? "idle");
@@ -86,10 +82,9 @@ export function useAddressFieldController({
     rowStatus ?? null,
   );
 
-  const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState(value.query);
   const [suggestions, setSuggestions] = useState<GeocodeSuggestion[]>([]);
-  const [highlight, setHighlight] = useState(-1);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [lookupSettled, setLookupSettled] = useState(() =>
     isLookupSettledForRow(value, rowStatus),
   );
@@ -101,6 +96,10 @@ export function useAddressFieldController({
   );
 
   useEffect(() => {
+    valueRef.current = value;
+  }, [value]);
+
+  useEffect(() => {
     onStatusChangeRef.current = onStatusChange;
   }, [onStatusChange]);
 
@@ -109,17 +108,27 @@ export function useAddressFieldController({
   }, [rowStatus]);
 
   useEffect(() => {
+    if (inputValue === value.query) {
+      return;
+    }
+    suppressInputValueChangeRef.current = true;
     queueMicrotask(() => {
       setInputValue(value.query);
+      queueMicrotask(() => {
+        suppressInputValueChangeRef.current = false;
+      });
     });
-  }, [value.query]);
+  }, [value.query, inputValue]);
 
   useLayoutEffect(() => {
     if (hydrated) {
       return;
     }
     const trimmed = value.query.trim();
-    if (rowStatus === "warning" && trimmed.length >= 3) {
+    if (
+      rowStatus === "warning" &&
+      trimmed.length >= ADDRESS_FIELD_MIN_LOOKUP_LENGTH
+    ) {
       const cached = peekLookupRef.current(trimmed);
       if (cached?.suggestions.length) {
         setSuggestions(cached.suggestions);
@@ -184,12 +193,10 @@ export function useAddressFieldController({
     };
   }, []);
 
-  const closeList = useCallback(() => {
-    setOpen(false);
-    setHighlight(-1);
-  }, []);
+  const listVisible = menuOpen && suggestions.length > 0;
 
-  useClickOutside(wrapRef, closeList);
+  const { setReferenceElement, setFloatingElement, floatingStyles } =
+    useFloatingComboboxAnchor({ open: listVisible });
 
   const applyGeocodeResponse = useCallback(
     (_query: string, result: GeocodeResponse) => {
@@ -203,8 +210,7 @@ export function useAddressFieldController({
             ? [result.match]
             : [];
       setSuggestions(list);
-      setOpen(list.length > 0);
-      setHighlight(-1);
+      setMenuOpen(list.length > 0);
       setLookupSettled(true);
     },
     [value],
@@ -215,7 +221,7 @@ export function useAddressFieldController({
       const trimmed = query.trim();
       if (!trimmed) {
         setSuggestions([]);
-        setOpen(false);
+        setMenuOpen(false);
         setLookupSettled(false);
         return;
       }
@@ -234,8 +240,7 @@ export function useAddressFieldController({
           return;
         }
         setSuggestions([]);
-        setOpen(false);
-        setHighlight(-1);
+        setMenuOpen(false);
         setLookupSettled(true);
       }
     },
@@ -251,18 +256,106 @@ export function useAddressFieldController({
       }
       debounceRef.current = setTimeout(() => {
         void runLookup(trimmed);
-      }, LOOKUP_DEBOUNCE_MS);
+      }, ADDRESS_FIELD_LOOKUP_DEBOUNCE_MS);
     },
     [runLookup],
   );
 
+  const pickSuggestion = useCallback(
+    (suggestion: GeocodeSuggestion) => {
+      const next: AddressFieldValue = {
+        query: suggestion.formatted,
+        formatted: suggestion.formatted,
+        placeId: suggestion.placeId,
+        lat: suggestion.lat,
+        lon: suggestion.lon,
+      };
+      suppressInputValueChangeRef.current = true;
+      setInputValue(next.query);
+      setSuggestions([]);
+      setMenuOpen(false);
+      setLookupSettled(true);
+      reportedStatusRef.current = "success";
+      setReportedStatus("success");
+      lastEmittedStatusRef.current = "success";
+      onStatusChangeRef.current?.("success");
+      if (addressFieldValuesEqual(value, next) && isAddressResolved(value)) {
+        queueMicrotask(() => {
+          suppressInputValueChangeRef.current = false;
+        });
+        return;
+      }
+      onChange(next);
+      queueMicrotask(() => {
+        suppressInputValueChangeRef.current = false;
+      });
+    },
+    [onChange, value],
+  );
+
+  const resetTypingState = useCallback(() => {
+    lastScheduledQueryRef.current = null;
+    lastHydratedQueryRef.current = null;
+    lastEmittedStatusRef.current = null;
+    reportedStatusRef.current = "idle";
+    setReportedStatus("idle");
+    onStatusChangeRef.current?.("idle");
+  }, []);
+
+  const shouldIgnoreInputMutation = useCallback((next: string): boolean => {
+    const current = valueRef.current;
+    if (!isAddressResolved(current)) {
+      return false;
+    }
+    if (next === current.query) {
+      return true;
+    }
+    if (
+      current.formatted &&
+      normalizeGeocodeQuery(next) === normalizeGeocodeQuery(current.formatted)
+    ) {
+      return true;
+    }
+    return false;
+  }, []);
+
+  const handleInputValueChange = useCallback(
+    (next: string) => {
+      if (suppressInputValueChangeRef.current) {
+        return;
+      }
+      if (shouldIgnoreInputMutation(next)) {
+        if (inputValue !== next) {
+          setInputValue(next);
+        }
+        return;
+      }
+      setInputValue(next);
+      resetTypingState();
+      onChange({
+        ...emptyAddressFieldValue(),
+        query: next,
+      });
+      const trimmed = next.trim();
+      if (trimmed.length < ADDRESS_FIELD_MIN_LOOKUP_LENGTH) {
+        setSuggestions([]);
+        setMenuOpen(false);
+        setLookupSettled(false);
+        return;
+      }
+      setSuggestions([]);
+      setMenuOpen(false);
+      scheduleLookup(trimmed);
+    },
+    [inputValue, onChange, resetTypingState, scheduleLookup, shouldIgnoreInputMutation],
+  );
+
   useEffect(() => {
     const trimmed = inputValue.trim();
-    if (trimmed.length < 3) {
+    if (trimmed.length < ADDRESS_FIELD_MIN_LOOKUP_LENGTH) {
       queueMicrotask(() => {
         setSuggestions([]);
-        setOpen(false);
-        setHighlight(-1);
+        setMenuOpen(false);
         setLookupSettled(false);
       });
       return;
@@ -302,134 +395,47 @@ export function useAddressFieldController({
     scheduleLookup,
   ]);
 
-  const pickSuggestion = useCallback(
-    (suggestion: GeocodeSuggestion) => {
-      const next: AddressFieldValue = {
-        query: suggestion.formatted,
-        formatted: suggestion.formatted,
-        placeId: suggestion.placeId,
-        lat: suggestion.lat,
-        lon: suggestion.lon,
-      };
-      setInputValue(next.query);
-      setSuggestions([]);
-      setOpen(false);
-      setHighlight(-1);
-      setLookupSettled(true);
-      if (addressFieldValuesEqual(value, next) && isAddressResolved(value)) {
+  const {
+    getInputProps,
+    getMenuProps,
+    getItemProps,
+    highlightedIndex,
+    isOpen,
+  } = useCombobox<GeocodeSuggestion>({
+    items: suggestions,
+    inputValue,
+    selectedItem: null,
+    isOpen: menuOpen,
+    itemToString: (item) => item?.formatted ?? "",
+    onInputValueChange: ({ inputValue: next, type }) => {
+      if (type !== useCombobox.stateChangeTypes.InputChange) {
         return;
       }
-      onChange(next);
+      handleInputValueChange(next ?? "");
     },
-    [onChange, value],
-  );
-
-  const resetTypingState = useCallback(() => {
-    lastScheduledQueryRef.current = null;
-    lastHydratedQueryRef.current = null;
-    lastEmittedStatusRef.current = null;
-    reportedStatusRef.current = "idle";
-    setReportedStatus("idle");
-    onStatusChangeRef.current?.("idle");
-  }, []);
-
-  const onInputChange = useCallback(
-    (next: string) => {
-      setInputValue(next);
-      resetTypingState();
-      onChange({
-        ...emptyAddressFieldValue(),
-        query: next,
-      });
-      const trimmed = next.trim();
-      if (trimmed.length < 3) {
-        setSuggestions([]);
-        setOpen(false);
-        setLookupSettled(false);
-        return;
-      }
-      setOpen(true);
-      scheduleLookup(trimmed);
-    },
-    [onChange, resetTypingState, scheduleLookup],
-  );
-
-  const onBlurInput = useCallback(() => {
-    window.setTimeout(() => {
-      if (selectingRef.current) {
-        selectingRef.current = false;
-        return;
-      }
-      closeList();
-    }, 0);
-  }, [closeList]);
-
-  const onKeyDown = useCallback(
-    (e: KeyboardEvent<HTMLInputElement>) => {
-      if (!open && (e.key === "ArrowDown" || e.key === "ArrowUp")) {
-        if (suggestions.length > 0) {
-          setOpen(true);
-        }
-        return;
-      }
-      if (!open) {
-        return;
-      }
-      if (e.key === "Escape") {
-        e.preventDefault();
-        closeList();
-        return;
-      }
-      if (e.key === "ArrowDown") {
-        e.preventDefault();
-        setHighlight((h) =>
-          nextComboboxHighlight(h, suggestions.length, "down"),
-        );
-        return;
-      }
-      if (e.key === "ArrowUp") {
-        e.preventDefault();
-        setHighlight((h) => nextComboboxHighlight(h, suggestions.length, "up"));
-        return;
-      }
-      if (
-        e.key === "Enter" &&
-        highlight >= 0 &&
-        highlight < suggestions.length
-      ) {
-        e.preventDefault();
-        const row = suggestions[highlight];
-        if (row) {
-          pickSuggestion(row);
-        }
+    onSelectedItemChange: ({ selectedItem }) => {
+      if (selectedItem) {
+        pickSuggestion(selectedItem);
       }
     },
-    [closeList, highlight, open, pickSuggestion, suggestions],
-  );
-
-  const onFocusInput = useCallback(() => {
-    if (suggestions.length > 0) {
-      setOpen(true);
-    }
-  }, [suggestions.length]);
-
-  const onSuggestionMouseDown = useCallback(() => {
-    selectingRef.current = true;
-  }, []);
+    onIsOpenChange: ({ isOpen: nextOpen }) => {
+      if (nextOpen && suggestions.length === 0) {
+        return;
+      }
+      setMenuOpen(nextOpen);
+    },
+  });
 
   return {
-    listId,
-    wrapRef,
     displayStatus,
-    open,
-    inputValue,
     suggestions,
-    highlight,
-    onInputChange,
-    onBlurInput,
-    onKeyDown,
-    onFocusInput,
-    onSuggestionMouseDown,
-    pickSuggestion,
+    isOpen: isOpen && suggestions.length > 0,
+    highlightedIndex,
+    floatingStyles,
+    setReferenceElement,
+    setFloatingElement,
+    getInputProps,
+    getMenuProps,
+    getItemProps,
   };
 }

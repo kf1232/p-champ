@@ -1,7 +1,7 @@
 "use client";
 
-import { effectiveAddressFieldStatus } from "@/lib/burke/geo/addressFieldStatus";
-import type { AddressFieldStatus, AddressFieldValue } from "@/lib/burke/geo/types";
+import { effectiveAddressFieldStatus } from "@/lib/burke";
+import type { AddressFieldStatus, AddressFieldValue } from "@/lib/burke";
 
 import { ADDRESS_FIELD_STATUS_ARIA } from "../../configs/addressFieldCopy";
 import { LOCATION_FINDER_INPUT_CLASS } from "../../configs/locationFinderStyles";
@@ -33,81 +33,81 @@ export function AddressField({
   required = false,
   showStatusIcon = false,
 }: AddressFieldProps) {
-  const controller = useAddressFieldController({
+  const {
+    displayStatus,
+    suggestions,
+    isOpen,
+    highlightedIndex,
+    floatingStyles,
+    setReferenceElement,
+    setFloatingElement,
+    getInputProps,
+    getMenuProps,
+    getItemProps,
+  } = useAddressFieldController({
     value,
     onChange,
     onStatusChange,
     rowStatus,
   });
 
-  const {
-    listId,
-    wrapRef,
-    displayStatus,
-    open,
-    inputValue,
-    suggestions,
-    highlight,
-    onInputChange,
-    onBlurInput,
-    onKeyDown,
-    onFocusInput,
-    onSuggestionMouseDown,
-    pickSuggestion,
-  } = controller;
-
   const statusForIcon = effectiveAddressFieldStatus(value, displayStatus);
   const showInlineStatus = showStatusIcon && statusForIcon !== "idle";
 
   return (
-    <div className="flex flex-col gap-1.5" ref={wrapRef}>
+    <div className="flex flex-col gap-1.5">
       {label ? (
         <label className="text-sm font-medium text-black" htmlFor={id}>
           {label}
         </label>
       ) : null}
 
-      <div className="relative">
-        <input
-          id={id}
-          name={name}
-          type="text"
-          role="combobox"
-          className={[
-            LOCATION_FINDER_INPUT_CLASS,
-            showStatusIcon ? "pr-9" : "",
-          ].join(" ")}
-          autoComplete="off"
-          spellCheck={false}
-          placeholder="Street, city, state, postal code"
-          aria-autocomplete="list"
-          aria-controls={listId}
-          aria-expanded={open && suggestions.length > 0}
-          aria-haspopup="listbox"
-          value={inputValue}
-          onChange={(e) => onInputChange(e.target.value)}
-          onFocus={onFocusInput}
-          onBlur={onBlurInput}
-          onKeyDown={onKeyDown}
-          required={required}
-        />
-        {showInlineStatus ? (
+      <div
+        className={
+          showStatusIcon
+            ? "flex min-w-0 items-start gap-2"
+            : "relative min-w-0"
+        }
+      >
+        <div className="relative min-w-0 flex-1">
+          <input
+            {...getInputProps({
+              ref: setReferenceElement,
+              id,
+              name,
+              required,
+              className: LOCATION_FINDER_INPUT_CLASS,
+              autoComplete: "off",
+              spellCheck: false,
+              placeholder: "Street, city, state, postal code",
+            })}
+          />
+        </div>
+        {showStatusIcon ? (
           <span
-            className="pointer-events-none absolute inset-y-0 right-2 flex items-center"
-            aria-label={ADDRESS_FIELD_STATUS_ARIA[statusForIcon]}
+            className="mt-2 flex h-5 w-5 shrink-0 items-center justify-center"
+            aria-hidden={!showInlineStatus}
+            aria-label={
+              showInlineStatus
+                ? ADDRESS_FIELD_STATUS_ARIA[statusForIcon]
+                : undefined
+            }
           >
-            <AddressStatusGlyph status={statusForIcon} size="row" />
+            {showInlineStatus ? (
+              <AddressStatusGlyph status={statusForIcon} size="row" />
+            ) : null}
           </span>
         ) : null}
       </div>
 
       <AddressFieldSuggestions
-        listId={listId}
-        open={open}
+        isOpen={isOpen}
         suggestions={suggestions}
-        highlight={highlight}
-        onMouseDownOption={onSuggestionMouseDown}
-        onPick={pickSuggestion}
+        highlightedIndex={highlightedIndex}
+        floatingStyles={floatingStyles}
+        setFloatingElement={setFloatingElement}
+        getMenuProps={getMenuProps}
+        getItemProps={getItemProps}
       />
     </div>
   );

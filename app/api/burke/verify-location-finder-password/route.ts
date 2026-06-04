@@ -6,7 +6,7 @@ import {
   getLocationFinderSecret,
   isLocationFinderGateConfigured,
   verifyLocationFinderPassword,
-} from "@/lib/burke/location-finder/access/locationFinderGrant";
+} from "@/lib/burke/server";
 
 /** POST `{ password: string }` — sets httpOnly session grant cookie on success. */
 export async function POST(req: Request) {

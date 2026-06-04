@@ -11,6 +11,17 @@ export const MAIN_SPACER_ABOVE_VIEWPORT_FOOTER_PX = 40;
 export const VIEWPORT_LOCKED_MAIN_PADDING_BOTTOM_PX =
   VIEWPORT_LOCKED_FOOTER_H_PX + MAIN_SPACER_ABOVE_VIEWPORT_FOOTER_PX;
 
+/**
+ * Gap between the viewport-locked footer and in-page sticky controls (rem).
+ * Used in CSS `calc()` so spacing scales with user font size.
+ */
+export const VIEWPORT_STICKY_ABOVE_FOOTER_GAP_REM = 1;
+
+/**
+ * Minimum scroll budget for a sticky action band (submit row + padding), in rem.
+ */
+export const VIEWPORT_STICKY_ACTION_BAND_MIN_REM = 4.5;
+
 /** `aria-label` for blank footers — portal, P-Champ, photography, Burke. */
 export const VIEWPORT_BLANK_FOOTER_ARIA = {
   portal: "Fink Social portal",

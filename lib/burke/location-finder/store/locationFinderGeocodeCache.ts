@@ -1,6 +1,6 @@
-import { normalizeGeocodeQuery } from "@/lib/burke/geo/geocodeCache";
-import { sanitizeGeocodeResponse } from "@/lib/burke/geo/sanitizeGeocodeResponse";
-import type { GeocodeResponse } from "@/lib/burke/geo/types";
+import { normalizeGeocodeQuery } from "../../geo/geocodeCache";
+import { sanitizeGeocodeResponse } from "../../geo/sanitizeGeocodeResponse";
+import type { GeocodeResponse } from "../../geo/types";
 
 import { LOCATION_FINDER_GEOCODE_RESPONSES_KEY } from "./locationFinderCacheKeys";
 import type { LocationFinderStoredData } from "./types";

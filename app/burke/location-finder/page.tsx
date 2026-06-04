@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { cookies } from "next/headers";
 
 import { LocationFinderScreen } from "@/components/burke/location-finder";
-import { BURKE_LOCATION_FINDER_GRANT_COOKIE } from "@/lib/burke/location-finder/access/constants";
+import { BURKE_LOCATION_FINDER_GRANT_COOKIE } from "@/lib/burke";
 import {
   hasValidLocationFinderGrant,
   isLocationFinderGateConfigured,
-} from "@/lib/burke/location-finder/access/locationFinderGrant";
+} from "@/lib/burke/server";
 
 export const metadata: Metadata = {
   title: "Location Finder",

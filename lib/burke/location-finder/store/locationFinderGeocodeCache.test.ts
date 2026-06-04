@@ -1,4 +1,4 @@
-import { normalizeGeocodeQuery } from "@/lib/burke/geo/geocodeCache";
+import { normalizeGeocodeQuery } from "../../geo/geocodeCache";
 
 import { LOCATION_FINDER_GEOCODE_RESPONSES_KEY } from "./locationFinderCacheKeys";
 import {

@@ -1,32 +1,52 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-import { BURKE_PROXIMITY_API_PATH } from "@/lib/burke/location-finder/distance/constants";
+import { BURKE_PROXIMITY_API_PATH } from "@/lib/burke";
 import {
-  filterByMilesThreshold,
+  dedupeResolvedLocations,
+  expandProximityMatches,
+  filterByDrivingMilesThreshold,
+  findStoredProximityDrivingDiagnostics,
+  findStoredProximityMetrics,
+  isStraightLineDistanceUnit,
   isValidThreshold,
-} from "@/lib/burke/location-finder/distance/filterByThreshold";
+  listProximityMetricsMiles,
+  LOCATION_FINDER_MAX_SECONDARY_LOCATIONS,
+  normalizeDistanceUnit,
+} from "@/lib/burke";
 import type {
   DistanceThreshold,
+  DistanceUnit,
   ProximityMatch,
+  ProximityRoutingDiagnostics,
   ResolvedLocation,
-} from "@/lib/burke/location-finder/distance/types";
+} from "@/lib/burke";
 import {
   emptyAddressFieldValue,
   isAddressResolved,
-} from "@/lib/burke/geo/addressFieldValue";
-import type { AddressFieldValue } from "@/lib/burke/geo/types";
+} from "@/lib/burke";
+import type { AddressFieldValue } from "@/lib/burke";
 import {
-  findStoredProximityMatches,
   mergeFormDraftIntoLocationFinderData,
   mergeProximityMatchesIntoLocationFinderData,
   readLocationFinderFormDraft,
   type LocationFinderFormDraft,
   type StoredSecondaryRow,
-} from "@/lib/burke/location-finder/store";
-import { VIEWPORT_LOCKED_FOOTER_H_PX } from "@/lib/viewportFooterChrome";
-
+} from "@/lib/burke";
+import {
+  draftSnapshotsFromByMode,
+  proximityByModeFromDraft,
+} from "../utils/draftProximityByMode";
+import {
+  activeDistanceUnit,
+  clearStaleModeSnapshots,
+  getSnapshotForUnit,
+  isSnapshotVisible,
+  modeResultsLabel,
+  type ProximityResultsByMode,
+  type ProximityResultsSnapshot,
+} from "../utils/proximityResultsByMode";
 import { AddressField } from "./address-field";
 import { DistanceThresholdControl } from "./DistanceThresholdControl";
 import { LocationFinderResults } from "./LocationFinderResults";
@@ -89,6 +109,26 @@ function locationInputsSnapshot(
   });
 }
 
+function patchModeSnapshot(
+  byMode: ProximityResultsByMode,
+  unit: DistanceUnit,
+  patch: Partial<ProximityResultsSnapshot>,
+): ProximityResultsByMode {
+  const key = activeDistanceUnit(unit);
+  return {
+    ...byMode,
+    [key]: { ...byMode[key], ...patch },
+  };
+}
+
+function hasVisibleResultsForUnit(
+  byMode: ProximityResultsByMode,
+  unit: DistanceUnit,
+  inputsSnapshot: string,
+): boolean {
+  return isSnapshotVisible(getSnapshotForUnit(byMode, unit), inputsSnapshot);
+}
+
 type LocationFinderFormProps = {
   onUnauthorized?: () => void;
 };
@@ -111,37 +151,60 @@ export function LocationFinderForm({
         ? draftToSecondaryRows(savedDraft)
         : createInitialSecondaryRows(),
   );
-  const [threshold, setThreshold] = useState<DistanceThreshold>(
-    () => savedDraft?.threshold ?? { value: 25, unit: "miles" },
+  const [threshold, setThreshold] = useState<DistanceThreshold>(() => {
+    const draft = savedDraft?.threshold ?? { value: 25, unit: "miles" as const };
+    return {
+      value: draft.value,
+      unit: normalizeDistanceUnit(draft.unit),
+    };
+  });
+  const [resultsByMode, setResultsByMode] = useState<ProximityResultsByMode>(
+    () => proximityByModeFromDraft(savedDraft),
   );
-  const [results, setResults] = useState<ProximityMatch[] | null>(
-    () => savedDraft?.results ?? null,
-  );
-  const [secondariesCollapsed, setSecondariesCollapsed] = useState(
-    () => savedDraft?.results != null,
-  );
+  const [secondariesCollapseOverride, setSecondariesCollapseOverride] = useState<
+    boolean | null
+  >(null);
   const [submitting, setSubmitting] = useState(false);
-  const resultsInputsSnapshotRef = useRef<string | null>(null);
 
-  useEffect(() => {
-    const current = locationInputsSnapshot(target, secondaries);
+  const inputsSnapshot = useMemo(
+    () => locationInputsSnapshot(target, secondaries),
+    [target, secondaries],
+  );
 
-    if (results === null) {
-      resultsInputsSnapshotRef.current = null;
-      return;
-    }
+  const [trackedInputsSnapshot, setTrackedInputsSnapshot] =
+    useState(inputsSnapshot);
+  if (trackedInputsSnapshot !== inputsSnapshot) {
+    setTrackedInputsSnapshot(inputsSnapshot);
+    setSecondariesCollapseOverride(null);
+  }
 
-    if (resultsInputsSnapshotRef.current === null) {
-      resultsInputsSnapshotRef.current = current;
-      return;
-    }
+  const displayResultsByMode = useMemo(
+    () => clearStaleModeSnapshots(resultsByMode, inputsSnapshot),
+    [resultsByMode, inputsSnapshot],
+  );
 
-    if (current !== resultsInputsSnapshotRef.current) {
-      setResults(null);
-      resultsInputsSnapshotRef.current = null;
-      setSecondariesCollapsed(false);
-    }
-  }, [target, secondaries, results]);
+  const activeSnapshot = useMemo(
+    () => getSnapshotForUnit(displayResultsByMode, threshold.unit),
+    [displayResultsByMode, threshold.unit],
+  );
+
+  const showResults = useMemo(
+    () => isSnapshotVisible(activeSnapshot, inputsSnapshot),
+    [activeSnapshot, inputsSnapshot],
+  );
+
+  const autoCollapseSecondaries = useMemo(
+    () =>
+      hasVisibleResultsForUnit(
+        displayResultsByMode,
+        threshold.unit,
+        inputsSnapshot,
+      ),
+    [displayResultsByMode, threshold.unit, inputsSnapshot],
+  );
+
+  const secondariesCollapsed =
+    secondariesCollapseOverride ?? autoCollapseSecondaries;
 
   useEffect(() => {
     const handle = window.setTimeout(() => {
@@ -155,12 +218,14 @@ export function LocationFinderForm({
           }),
         ),
         threshold,
-        results,
+        ...draftSnapshotsFromByMode(
+          clearStaleModeSnapshots(resultsByMode, inputsSnapshot),
+        ),
       };
       setData((prev) => mergeFormDraftIntoLocationFinderData(prev, draft));
     }, 400);
     return () => window.clearTimeout(handle);
-  }, [target, secondaries, threshold, results, setData]);
+  }, [target, secondaries, threshold, resultsByMode, inputsSnapshot, setData]);
 
   const resolvedTarget = useMemo(() => toResolved("target", target), [target]);
 
@@ -172,11 +237,26 @@ export function LocationFinderForm({
     [secondaries],
   );
 
+  const dedupedSecondaries = useMemo(
+    () => dedupeResolvedLocations(resolvedSecondaries),
+    [resolvedSecondaries],
+  );
+
+  const overSecondaryLimit =
+    dedupedSecondaries.unique.length >
+    LOCATION_FINDER_MAX_SECONDARY_LOCATIONS;
+
   const canSubmit =
     resolvedTarget !== null &&
-    resolvedSecondaries.length > 0 &&
+    dedupedSecondaries.unique.length > 0 &&
+    !overSecondaryLimit &&
     isValidThreshold(threshold) &&
     !submitting;
+
+  const activeError =
+    activeSnapshot.inputsSnapshot === inputsSnapshot
+      ? activeSnapshot.error
+      : null;
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -185,17 +265,55 @@ export function LocationFinderForm({
     }
 
     setSubmitting(true);
-    setResults(null);
+    setResultsByMode((prev) =>
+      patchModeSnapshot(prev, threshold.unit, {
+        matches: null,
+        metrics: null,
+        error: null,
+        unroutedCount: 0,
+        routingDiagnostics: null,
+        duplicateCount: 0,
+        inputsSnapshot: null,
+      }),
+    );
+
+    const completeSearch = (patch: Partial<ProximityResultsSnapshot>) => {
+      setResultsByMode((prev) =>
+        patchModeSnapshot(prev, threshold.unit, {
+          ...patch,
+          inputsSnapshot,
+        }),
+      );
+      setSecondariesCollapseOverride(true);
+    };
 
     try {
-      if (threshold.unit === "miles") {
-        const matches = filterByMilesThreshold(
+      if (isStraightLineDistanceUnit(threshold.unit)) {
+        const canonicalMetrics = listProximityMetricsMiles(
           resolvedTarget,
-          resolvedSecondaries,
-          threshold.value,
+          dedupedSecondaries.unique,
         );
-        setResults(matches);
-        setSecondariesCollapsed(true);
+        const canonicalMatches = canonicalMetrics.filter(
+          (row) => row.miles <= threshold.value,
+        );
+        const metrics = expandProximityMatches(
+          canonicalMetrics,
+          resolvedSecondaries,
+          dedupedSecondaries.canonicalIdByInputId,
+        );
+        const matches = expandProximityMatches(
+          canonicalMatches,
+          resolvedSecondaries,
+          dedupedSecondaries.canonicalIdByInputId,
+        );
+        completeSearch({
+          metrics,
+          matches,
+          error: null,
+          unroutedCount: 0,
+          routingDiagnostics: null,
+          duplicateCount: dedupedSecondaries.duplicateInputIds.length,
+        });
         setData((prev) =>
           mergeProximityMatchesIntoLocationFinderData(
             prev,
@@ -203,20 +321,45 @@ export function LocationFinderForm({
             resolvedSecondaries,
             threshold,
             matches,
+            metrics,
           ),
         );
         return;
       }
 
-      const cached = findStoredProximityMatches(
+      const cachedMetrics = findStoredProximityMetrics(
         data,
         resolvedTarget,
         resolvedSecondaries,
         threshold,
       );
-      if (cached) {
-        setResults(cached);
-        setSecondariesCollapsed(true);
+      const cachedDiagnostics = cachedMetrics
+        ? findStoredProximityDrivingDiagnostics(
+            data,
+            resolvedTarget,
+            resolvedSecondaries,
+            threshold,
+          )
+        : undefined;
+      if (cachedMetrics && cachedDiagnostics !== undefined) {
+        const minutesById = new Map(
+          cachedMetrics.map((row) => [row.id, row.minutes]),
+        );
+        const milesById = new Map(cachedMetrics.map((row) => [row.id, row.miles]));
+        const matches = filterByDrivingMilesThreshold(
+          resolvedSecondaries,
+          milesById,
+          minutesById,
+          threshold.value,
+        );
+        completeSearch({
+          metrics: cachedMetrics,
+          matches,
+          error: null,
+          unroutedCount: cachedDiagnostics.unroutedCount,
+          routingDiagnostics: cachedDiagnostics,
+          duplicateCount: dedupedSecondaries.duplicateInputIds.length,
+        });
         return;
       }
 
@@ -237,15 +380,66 @@ export function LocationFinderForm({
         return;
       }
 
-      if (!res.ok || !body || typeof body !== "object" || !("matches" in body)) {
-        setResults([]);
-        setSecondariesCollapsed(true);
+      if (!res.ok || !body || typeof body !== "object") {
+        const message =
+          body &&
+          typeof body === "object" &&
+          "error" in body &&
+          typeof (body as { error: unknown }).error === "string"
+            ? (body as { error: string }).error
+            : "Could not compute driving distances.";
+        completeSearch({
+          error: message,
+          matches: [],
+          metrics: [],
+          unroutedCount: 0,
+          routingDiagnostics: null,
+          duplicateCount: 0,
+        });
         return;
       }
 
-      const matches = (body as { matches: ProximityMatch[] }).matches;
-      setResults(matches);
-      setSecondariesCollapsed(true);
+      if (!("matches" in body)) {
+        completeSearch({
+          error: "Could not compute driving distances.",
+          matches: [],
+          metrics: [],
+          unroutedCount: 0,
+          routingDiagnostics: null,
+          duplicateCount: 0,
+        });
+        return;
+      }
+
+      const parsed = body as {
+        matches: ProximityMatch[];
+        metrics?: ProximityMatch[];
+        unroutedCount?: number;
+        duplicateCount?: number;
+        diagnostics?: ProximityRoutingDiagnostics;
+      };
+      const metrics = Array.isArray(parsed.metrics)
+        ? parsed.metrics
+        : parsed.matches;
+      const matches = parsed.matches;
+      const diagnostics =
+        parsed.diagnostics && typeof parsed.diagnostics === "object"
+          ? parsed.diagnostics
+          : null;
+      completeSearch({
+        metrics,
+        matches,
+        error: null,
+        unroutedCount:
+          typeof parsed.unroutedCount === "number"
+            ? parsed.unroutedCount
+            : diagnostics?.unroutedCount ?? 0,
+        routingDiagnostics: diagnostics,
+        duplicateCount:
+          typeof parsed.duplicateCount === "number"
+            ? parsed.duplicateCount
+            : dedupedSecondaries.duplicateInputIds.length,
+      });
       setData((prev) =>
         mergeProximityMatchesIntoLocationFinderData(
           prev,
@@ -253,6 +447,8 @@ export function LocationFinderForm({
           resolvedSecondaries,
           threshold,
           matches,
+          metrics,
+          diagnostics,
         ),
       );
     } finally {
@@ -281,14 +477,19 @@ export function LocationFinderForm({
       <SecondaryJobLocationsEditor
         rows={secondaries}
         onChange={setSecondaries}
+        targetFormatted={target.formatted}
         collapsed={secondariesCollapsed}
-        onCollapsedChange={setSecondariesCollapsed}
+        onCollapsedChange={setSecondariesCollapseOverride}
       />
 
-      <div
-        className="sticky z-30 -mx-6 border-t border-black/10 bg-white/90 px-6 py-3 backdrop-blur"
-        style={{ bottom: VIEWPORT_LOCKED_FOOTER_H_PX }}
-      >
+      <div className="location-finder-sticky-submit -mx-6 flex flex-col gap-2 border-t border-black/10 bg-white/90 px-6 py-3 backdrop-blur">
+        {overSecondaryLimit ? (
+          <p className="text-sm text-red-700" role="alert">
+            At most {LOCATION_FINDER_MAX_SECONDARY_LOCATIONS} distinct locations
+            per search ({dedupedSecondaries.unique.length} after removing
+            duplicates).
+          </p>
+        ) : null}
         <button
           type="submit"
           disabled={!canSubmit}
@@ -298,8 +499,28 @@ export function LocationFinderForm({
         </button>
       </div>
 
-      {results !== null ? (
-        <LocationFinderResults unit={threshold.unit} matches={results} />
+      {activeError ? (
+        <p className="text-sm text-red-700" role="alert">
+          {activeError}
+        </p>
+      ) : null}
+
+      {showResults &&
+      resolvedTarget &&
+      activeSnapshot.matches !== null &&
+      (activeSnapshot.metrics !== null ||
+        activeSnapshot.routingDiagnostics !== null) ? (
+        <LocationFinderResults
+          matches={activeSnapshot.matches}
+          target={resolvedTarget}
+          secondaries={resolvedSecondaries}
+          threshold={threshold}
+          metrics={activeSnapshot.metrics ?? []}
+          unroutedCount={activeSnapshot.unroutedCount}
+          routingDiagnostics={activeSnapshot.routingDiagnostics}
+          duplicateCount={activeSnapshot.duplicateCount}
+          modeLabel={modeResultsLabel(threshold.unit)}
+        />
       ) : null}
     </form>
   );
