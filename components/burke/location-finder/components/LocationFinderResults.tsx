@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import {
   hasDrivingRoutingIssues,
@@ -54,13 +54,18 @@ export function LocationFinderResults({
   routingDiagnostics = null,
   duplicateCount = 0,
 }: LocationFinderResultsProps) {
+  const matchesKey = useMemo(
+    () => matches.map((match) => match.id).join("\0"),
+    [matches],
+  );
   const [activePinIds, setActivePinIds] = useState<ReadonlySet<string>>(
     () => new Set(),
   );
-
-  useEffect(() => {
+  const [pinFilterKey, setPinFilterKey] = useState(matchesKey);
+  if (pinFilterKey !== matchesKey) {
+    setPinFilterKey(matchesKey);
     setActivePinIds(new Set());
-  }, [matches]);
+  }
 
   const togglePin = useCallback((id: string) => {
     setActivePinIds((prev) => {

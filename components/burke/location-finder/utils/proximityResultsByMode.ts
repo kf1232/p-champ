@@ -42,6 +42,26 @@ export function emptyProximityResultsByMode(): ProximityResultsByMode {
   };
 }
 
+/** Drop per-mode snapshots whose saved inputs no longer match the current form. */
+export function clearStaleModeSnapshots(
+  byMode: ProximityResultsByMode,
+  currentInputsSnapshot: string,
+): ProximityResultsByMode {
+  let changed = false;
+  const next = { ...byMode };
+  for (const key of ["straightLine", "driving"] as const) {
+    const snapshot = byMode[key];
+    if (
+      snapshot.inputsSnapshot !== null &&
+      snapshot.inputsSnapshot !== currentInputsSnapshot
+    ) {
+      next[key] = emptyProximityResultsSnapshot();
+      changed = true;
+    }
+  }
+  return changed ? next : byMode;
+}
+
 export function activeDistanceUnit(unit: DistanceUnit): keyof ProximityResultsByMode {
   return isDrivingDistanceUnit(unit) ? "driving" : "straightLine";
 }

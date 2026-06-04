@@ -54,8 +54,11 @@ export function LocationFinderMap({
   const containerRef = useRef<HTMLDivElement>(null);
   const onPinToggleRef = useRef(onPinToggle);
   const onClearSelectionRef = useRef(onClearSelection);
-  onPinToggleRef.current = onPinToggle;
-  onClearSelectionRef.current = onClearSelection;
+
+  useEffect(() => {
+    onPinToggleRef.current = onPinToggle;
+    onClearSelectionRef.current = onClearSelection;
+  });
 
   const metricsById = useMemo(
     () => new Map(metrics.map((row) => [row.id, row])),

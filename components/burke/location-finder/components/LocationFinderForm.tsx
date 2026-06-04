@@ -40,6 +40,7 @@ import {
 } from "../utils/draftProximityByMode";
 import {
   activeDistanceUnit,
+  clearStaleModeSnapshots,
   getSnapshotForUnit,
   isSnapshotVisible,
   modeResultsLabel,
@@ -160,19 +161,9 @@ export function LocationFinderForm({
   const [resultsByMode, setResultsByMode] = useState<ProximityResultsByMode>(
     () => proximityByModeFromDraft(savedDraft),
   );
-  const [secondariesCollapsed, setSecondariesCollapsed] = useState(() => {
-    const unit = normalizeDistanceUnit(savedDraft?.threshold.unit ?? "miles");
-    const inputs = savedDraft
-      ? locationInputsSnapshot(savedDraft.target, draftToSecondaryRows(savedDraft))
-      : "";
-    return savedDraft
-      ? hasVisibleResultsForUnit(
-          proximityByModeFromDraft(savedDraft),
-          unit,
-          inputs,
-        )
-      : false;
-  });
+  const [secondariesCollapseOverride, setSecondariesCollapseOverride] = useState<
+    boolean | null
+  >(null);
   const [submitting, setSubmitting] = useState(false);
 
   const inputsSnapshot = useMemo(
@@ -180,9 +171,21 @@ export function LocationFinderForm({
     [target, secondaries],
   );
 
+  const [trackedInputsSnapshot, setTrackedInputsSnapshot] =
+    useState(inputsSnapshot);
+  if (trackedInputsSnapshot !== inputsSnapshot) {
+    setTrackedInputsSnapshot(inputsSnapshot);
+    setSecondariesCollapseOverride(null);
+  }
+
+  const displayResultsByMode = useMemo(
+    () => clearStaleModeSnapshots(resultsByMode, inputsSnapshot),
+    [resultsByMode, inputsSnapshot],
+  );
+
   const activeSnapshot = useMemo(
-    () => getSnapshotForUnit(resultsByMode, threshold.unit),
-    [resultsByMode, threshold.unit],
+    () => getSnapshotForUnit(displayResultsByMode, threshold.unit),
+    [displayResultsByMode, threshold.unit],
   );
 
   const showResults = useMemo(
@@ -190,37 +193,18 @@ export function LocationFinderForm({
     [activeSnapshot, inputsSnapshot],
   );
 
-  useEffect(() => {
-    setResultsByMode((prev) => {
-      let changed = false;
-      const next = { ...prev };
-      for (const key of ["straightLine", "driving"] as const) {
-        const snapshot = prev[key];
-        if (
-          snapshot.inputsSnapshot !== null &&
-          snapshot.inputsSnapshot !== inputsSnapshot
-        ) {
-          next[key] = {
-            matches: null,
-            metrics: null,
-            unroutedCount: 0,
-            error: null,
-            routingDiagnostics: null,
-            duplicateCount: 0,
-            inputsSnapshot: null,
-          };
-          changed = true;
-        }
-      }
-      return changed ? next : prev;
-    });
-  }, [inputsSnapshot]);
+  const autoCollapseSecondaries = useMemo(
+    () =>
+      hasVisibleResultsForUnit(
+        displayResultsByMode,
+        threshold.unit,
+        inputsSnapshot,
+      ),
+    [displayResultsByMode, threshold.unit, inputsSnapshot],
+  );
 
-  useEffect(() => {
-    setSecondariesCollapsed(
-      hasVisibleResultsForUnit(resultsByMode, threshold.unit, inputsSnapshot),
-    );
-  }, [threshold.unit, resultsByMode, inputsSnapshot]);
+  const secondariesCollapsed =
+    secondariesCollapseOverride ?? autoCollapseSecondaries;
 
   useEffect(() => {
     const handle = window.setTimeout(() => {
@@ -234,12 +218,14 @@ export function LocationFinderForm({
           }),
         ),
         threshold,
-        ...draftSnapshotsFromByMode(resultsByMode),
+        ...draftSnapshotsFromByMode(
+          clearStaleModeSnapshots(resultsByMode, inputsSnapshot),
+        ),
       };
       setData((prev) => mergeFormDraftIntoLocationFinderData(prev, draft));
     }, 400);
     return () => window.clearTimeout(handle);
-  }, [target, secondaries, threshold, resultsByMode, setData]);
+  }, [target, secondaries, threshold, resultsByMode, inputsSnapshot, setData]);
 
   const resolvedTarget = useMemo(() => toResolved("target", target), [target]);
 
@@ -298,7 +284,7 @@ export function LocationFinderForm({
           inputsSnapshot,
         }),
       );
-      setSecondariesCollapsed(true);
+      setSecondariesCollapseOverride(true);
     };
 
     try {
@@ -493,7 +479,7 @@ export function LocationFinderForm({
         onChange={setSecondaries}
         targetFormatted={target.formatted}
         collapsed={secondariesCollapsed}
-        onCollapsedChange={setSecondariesCollapsed}
+        onCollapsedChange={setSecondariesCollapseOverride}
       />
 
       <div className="location-finder-sticky-submit -mx-6 flex flex-col gap-2 border-t border-black/10 bg-white/90 px-6 py-3 backdrop-blur">
