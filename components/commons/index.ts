@@ -6,6 +6,9 @@
  * See `components/README.md` for the full `commons` vs `{feature}` convention.
  */
 
-export { ViewportBlankFooter } from "./ViewportBlankFooter";
+export { AppStorageFooterProvider } from "./AppStorageFooterContext";
+export type { AppStorageFooterConfig } from "./AppStorageFooterContext";
+export { useRegisterAppStorageFooter } from "./AppStorageFooterContext";
+export { AppViewportFooter } from "./AppViewportFooter";
 export { ViewportLockedFooterBar } from "./ViewportLockedFooterBar";
 export { ViewportLockedPageShell } from "./ViewportLockedPageShell";

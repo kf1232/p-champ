@@ -8,8 +8,8 @@ import {
   expandDexRecords,
   filterDexRecordsForListView,
   getDexIds,
-} from "@/lib/dex";
-import type { DexDisplayEntry } from "@/lib/dex";
+} from "@/lib/p-champ/dex";
+import type { DexDisplayEntry } from "@/lib/p-champ/dex";
 
 /** Dex grid rows: all species for National, or `games[gameId] === true` for a game. */
 export function useDexDisplayEntriesForSelectedGame(): DexDisplayEntry[] {

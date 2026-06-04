@@ -7,7 +7,7 @@ import {
   maxAssignableForStatSpreadField,
   totalStatSpread,
   type StatSpread,
-} from "@/lib/dex";
+} from "@/lib/p-champ/dex";
 
 const FIELDS: { key: keyof StatSpread; label: string }[] = [
   { key: "hp", label: "HP" },

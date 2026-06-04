@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { useGameSelection } from "./GameSelectionProvider";
-import { DEX_LIST_VIEW_IDS, DEX_LIST_VIEW_LABELS } from "@/lib/dex";
+import { DEX_LIST_VIEW_IDS, DEX_LIST_VIEW_LABELS } from "@/lib/p-champ/dex";
 
 import {
   P_CHAMP_DEX_PATH,

@@ -7,16 +7,18 @@ export const PORTAL_HOME_PATH = "/";
 export const SITE_DESCRIPTION =
   "A clean starting point. Choose a square below to plug in your first feature.";
 
-/** Routes for the P-Champ area (Dex, Team Builder, home). */
-export const P_CHAMP_HOME_PATH = "/p-champ";
-export const P_CHAMP_DEX_PATH = "/p-champ/dex";
-export const P_CHAMP_TEAM_BUILDER_PATH = "/p-champ/team-builder";
+export {
+  P_CHAMP_HOME_PATH,
+  P_CHAMP_DEX_PATH,
+  P_CHAMP_TEAM_BUILDER_PATH,
+} from "./p-champ/paths";
 
-export const PHOTOGRAPHY_HOME_PATH = "/photography";
+export { PHOTOGRAPHY_HOME_PATH } from "./photography/paths";
 
-/** WoW service area (guild tools, APIs, etc.). */
-export const WOW_HOME_PATH = "/wow";
-/** WoW — character tools (lookup, roster, etc.). */
-export const WOW_CHARACTER_PATH = "/wow/character";
-/** WoW — guild tools (lookup, roster, etc.). */
-export const WOW_GUILD_PATH = "/wow/guild";
+export { BURKE_HOME_PATH, BURKE_LOCATION_FINDER_PATH } from "./burke/paths";
+
+export {
+  WOW_HOME_PATH,
+  WOW_CHARACTER_PATH,
+  WOW_GUILD_PATH,
+} from "./wow/paths";

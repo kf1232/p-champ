@@ -1,7 +1,8 @@
 import Link from "next/link";
 
-import { trailingPlaceholderCellCount } from "@/lib/gridPlaceholders";
+import { incompleteRowPaddingCellCount } from "@/lib/gridPlaceholders";
 import {
+  BURKE_HOME_PATH,
   P_CHAMP_HOME_PATH,
   PHOTOGRAPHY_HOME_PATH,
   WOW_HOME_PATH,
@@ -27,6 +28,7 @@ const FEATURE_LINKS: FeatureLink[] = [
   { href: P_CHAMP_HOME_PATH, label: "P-Champ", active: true },
   { href: PHOTOGRAPHY_HOME_PATH, label: "Photography", active: true },
   { href: WOW_HOME_PATH, label: "WoW", active: true },
+  { href: BURKE_HOME_PATH, label: "Burke", active: true },
 ];
 
 const PORTAL_GRID_COLS = 3;
@@ -38,7 +40,7 @@ const placeholderCellClassName =
   "flex aspect-square items-center justify-center rounded-lg border border-dashed border-black/15 bg-black/[0.02] text-sm font-medium text-black/35";
 
 export function PortalHomeScreen() {
-  const placeholderCount = trailingPlaceholderCellCount(
+  const placeholderCount = incompleteRowPaddingCellCount(
     FEATURE_LINKS.length,
     PORTAL_GRID_COLS,
   );

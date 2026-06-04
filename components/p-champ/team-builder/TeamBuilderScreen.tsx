@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from "react";
 
-import { ViewportBlankFooter } from "@/components/commons";
+import { AppViewportFooter } from "@/components/commons";
 
 import { DexRecordDetailModal } from "../dex/components/DexRecordDetailModal";
 import { useDexDisplayEntriesForSelectedGame } from "../dex/useDexDisplayEntriesForSelectedGame";
@@ -26,14 +26,14 @@ import {
   dexObject,
   formatDexTileDisplayName,
   getDexEntryTypeNames,
-} from "@/lib/dex";
+} from "@/lib/p-champ/dex";
 import type {
   DexDisplayEntry,
   DexListViewId,
   FormId,
   StatSpread,
   TypeName,
-} from "@/lib/dex";
+} from "@/lib/p-champ/dex";
 import { SITE_NAME } from "@/lib/site";
 import { VIEWPORT_LOCKED_FOOTER_H_PX } from "@/lib/viewportFooterChrome";
 
@@ -778,7 +778,7 @@ export function TeamBuilderScreen() {
           }
         />
       </div>
-      <ViewportBlankFooter footer="pChamp" />
+      <AppViewportFooter blankFooter="pChamp" />
     </>
   );
 }

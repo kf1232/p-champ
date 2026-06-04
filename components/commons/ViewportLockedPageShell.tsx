@@ -4,14 +4,14 @@ import type { ReactNode } from "react";
 
 import type { ViewportBlankFooterKey } from "@/lib/viewportFooterChrome";
 
-import { ViewportBlankFooter } from "./ViewportBlankFooter";
+import { AppViewportFooter } from "./AppViewportFooter";
 
 type ViewportLockedPageShellProps = {
   children: ReactNode;
   footer: ViewportBlankFooterKey;
 };
 
-/** Flex column + viewport-locked blank footer (portal, P-Champ, photography). */
+/** Flex column + viewport-locked footer (blank or local-storage when registered). */
 export function ViewportLockedPageShell({
   children,
   footer,
@@ -19,7 +19,7 @@ export function ViewportLockedPageShell({
   return (
     <>
       <div className="flex min-h-full flex-col">{children}</div>
-      <ViewportBlankFooter footer={footer} />
+      <AppViewportFooter blankFooter={footer} />
     </>
   );
 }

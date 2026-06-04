@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 import {
   normalizeShareUrlForRedirect,
   parseGalleryKeyedEnvJson,
-} from "@/lib/photographyGalleryEnv";
+} from "@/lib/photography/galleryEnv";
 
 function hashPassword(value: string): Buffer {
   return createHash("sha256").update(value, "utf8").digest();

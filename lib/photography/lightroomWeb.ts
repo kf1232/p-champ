@@ -8,6 +8,8 @@
  *
  * The web client key is Adobe’s public identifier for lightroom.adobe.com (same idea
  * as the `api_key` on share-page preview URLs). Set via env — never commit values in source.
+ *
+ * `NEXT_PUBLIC_*` is intentional: this key is loaded in the browser, not a server secret.
  */
 function lightroomSpaceBase(lightroomSpaceId: string): string {
   const id = lightroomSpaceId.trim();

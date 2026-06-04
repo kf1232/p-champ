@@ -8,10 +8,11 @@ import {
   useSyncExternalStore,
 } from "react";
 
-import { DEX_LIST_VIEW_IDS, GAME_IDS } from "@/lib/dex";
-import type { DexListViewId } from "@/lib/dex";
+import { DEX_LIST_VIEW_IDS, GAME_IDS } from "@/lib/p-champ/dex";
+import type { DexListViewId } from "@/lib/p-champ/dex";
+import { APP_STORAGE_KEYS, appLocalStorage } from "@/lib/storage";
 
-const STORAGE_KEY = "p-champ:selected-game";
+const selectedGameStorage = appLocalStorage(APP_STORAGE_KEYS.selectedGame);
 
 function defaultDexListViewId(): DexListViewId {
   return GAME_IDS.CHAMPIONS;
@@ -22,32 +23,11 @@ function isDexListViewId(value: string): value is DexListViewId {
 }
 
 function readStoredDexListViewId(): DexListViewId | null {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw && isDexListViewId(raw)) return raw;
-  } catch {
-    /* ignore */
+  const raw = selectedGameStorage.read();
+  if (raw && isDexListViewId(raw)) {
+    return raw;
   }
   return null;
-}
-
-let listeners: Array<() => void> = [];
-
-function subscribe(listener: () => void) {
-  listeners.push(listener);
-  return () => {
-    listeners = listeners.filter((l) => l !== listener);
-  };
-}
-
-function emit() {
-  listeners.forEach((l) => l());
-}
-
-if (typeof window !== "undefined") {
-  window.addEventListener("storage", (e: StorageEvent) => {
-    if (e.key === STORAGE_KEY || e.key === null) emit();
-  });
 }
 
 function getSnapshot(): DexListViewId {
@@ -58,22 +38,13 @@ function getServerSnapshot(): DexListViewId {
   return defaultDexListViewId();
 }
 
-function persistDexListViewId(viewId: DexListViewId) {
-  try {
-    localStorage.setItem(STORAGE_KEY, viewId);
-  } catch {
-    /* ignore */
-  }
-  emit();
-}
-
 type GameSelectionContextValue = {
   selectedGameId: DexListViewId;
   setSelectedGameId: (viewId: DexListViewId) => void;
 };
 
 const GameSelectionContext = createContext<GameSelectionContextValue | null>(
-  null
+  null,
 );
 
 export function GameSelectionProvider({
@@ -82,18 +53,18 @@ export function GameSelectionProvider({
   children: React.ReactNode;
 }) {
   const selectedGameId = useSyncExternalStore(
-    subscribe,
+    selectedGameStorage.subscribe,
     getSnapshot,
-    getServerSnapshot
+    getServerSnapshot,
   );
 
   const setSelectedGameId = useCallback((viewId: DexListViewId) => {
-    persistDexListViewId(viewId);
+    selectedGameStorage.write(viewId);
   }, []);
 
   const value = useMemo(
     () => ({ selectedGameId, setSelectedGameId }),
-    [selectedGameId, setSelectedGameId]
+    [selectedGameId, setSelectedGameId],
   );
 
   return (
@@ -107,7 +78,7 @@ export function useGameSelection(): GameSelectionContextValue {
   const ctx = useContext(GameSelectionContext);
   if (!ctx) {
     throw new Error(
-      "useGameSelection must be used within GameSelectionProvider"
+      "useGameSelection must be used within GameSelectionProvider",
     );
   }
   return ctx;

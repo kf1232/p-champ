@@ -1,6 +1,8 @@
 export {
+  WOW_SERVICE_FOOTER_CLEAR_CONFIRM,
   WOW_SERVICE_LOCAL_STORAGE_KEY,
   WOW_SERVICE_STORAGE_TTL_MS,
+  WOW_SERVICE_TOOL_ID,
   subscribeWowServiceStorage,
   getWowServiceStorageSnapshot,
   getWowServiceStorageServerSnapshot,

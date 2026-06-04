@@ -12,3 +12,8 @@ export * from "./api";
 export * from "./storage";
 export * from "./character";
 export * from "./guild";
+export {
+  WOW_HOME_PATH,
+  WOW_CHARACTER_PATH,
+  WOW_GUILD_PATH,
+} from "./paths";
