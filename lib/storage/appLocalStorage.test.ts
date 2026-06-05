@@ -1,4 +1,5 @@
-import "@/lib/burke/registerAppStorage";
+import "@/lib/burke/location-finder/store/registerAppStorage";
+import "@/lib/scheduler/registerAppStorage";
 
 import { LOCATION_FINDER_GEOCODE_RESPONSES_KEY } from "@/lib/burke";
 
@@ -84,6 +85,16 @@ describe("appLocalStorage", () => {
     client.write(payload);
     expect(mockStorage.getItem(APP_STORAGE_KEYS.burkeLocationFinder)).toContain(
       '"tool":"burke-location-finder"',
+    );
+    expect(client.parseRaw(client.getSnapshot()).data).toEqual(payload);
+  });
+
+  it("registers Scheduler envelope client", () => {
+    const client = appLocalStorage(APP_STORAGE_KEYS.scheduler);
+    const payload = { calendarSelectedCalendarId: "primary" };
+    client.write(payload);
+    expect(mockStorage.getItem(APP_STORAGE_KEYS.scheduler)).toContain(
+      '"tool":"scheduler"',
     );
     expect(client.parseRaw(client.getSnapshot()).data).toEqual(payload);
   });

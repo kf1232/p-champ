@@ -10,6 +10,7 @@ export type AppHeaderVariant =
   | "pChamp"
   | "burke"
   | "photography"
+  | "scheduler"
   | "wow";
 
 /** CSS class list for the page slot wrapped around route children (see `styles/global/shell.css`). */
@@ -70,6 +71,16 @@ export function resolveAppChrome(pathname: string): AppChromeConfig {
       header: "photography",
       headerWide: false,
       blankFooter: "photography",
+      contentClass: "",
+      pageClass: "app-page app-page--max-5xl app-page--scroll",
+    };
+  }
+
+  if (pathname.startsWith("/scheduler")) {
+    return {
+      header: "scheduler",
+      headerWide: false,
+      blankFooter: "scheduler",
       contentClass: "",
       pageClass: "app-page app-page--max-5xl app-page--scroll",
     };

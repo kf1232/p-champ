@@ -1,0 +1,1 @@
+export const SCHEDULER_TITLE = "Scheduler";

@@ -3,6 +3,7 @@ import {
   BURKE_HOME_PATH,
   P_CHAMP_HOME_PATH,
   PHOTOGRAPHY_HOME_PATH,
+  SCHEDULER_HOME_PATH,
   WOW_HOME_PATH,
 } from "@/lib/site";
 
@@ -14,6 +15,7 @@ import {
 const PORTAL_FEATURE_LINKS = [
   { href: P_CHAMP_HOME_PATH, label: "P-Champ" },
   { href: PHOTOGRAPHY_HOME_PATH, label: "Photography" },
+  { href: SCHEDULER_HOME_PATH, label: "Scheduler" },
   { href: WOW_HOME_PATH, label: "WoW" },
   { href: BURKE_HOME_PATH, label: "Burke" },
 ];
