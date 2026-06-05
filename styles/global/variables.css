@@ -22,6 +22,7 @@
   --app-hover-surface: rgb(0 0 0 / 0.04);
   --app-focus-ring: rgb(0 0 0 / 0.1);
   --app-overlay-scrim: rgb(0 0 0 / 0.4);
+  --app-text-danger: rgb(185 28 28);
 }
 
 /* --- Semantic: dark --- */
@@ -42,6 +43,7 @@
   --app-hover-surface: rgb(255 255 255 / 0.06);
   --app-focus-ring: rgb(148 163 184 / 0.35);
   --app-overlay-scrim: rgb(0 0 0 / 0.65);
+  --app-text-danger: rgb(248 113 113);
 }
 
 /* --- Shell theme: release (light) --- */

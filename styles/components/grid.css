@@ -28,6 +28,46 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.app-grid--cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.app-grid--cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+/* Dex record grid — 2 → 3 → 5 columns */
+.app-grid--dex {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .app-grid--dex {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-grid--dex {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.app-grid-break {
+  grid-column: 1 / -1;
+  margin-block: 0.75rem;
+  border-top: 1px solid var(--app-border-subtle);
+}
+
+@media (min-width: 640px) {
+  .app-grid-break {
+    margin-block: 1rem;
+  }
+}
+
 /* Square nav / feature tile */
 .app-grid-cell {
   display: flex;
