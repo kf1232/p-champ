@@ -405,25 +405,25 @@ export function TeamBuilderScreen() {
           description={TEAM_BUILDER_DESCRIPTION}
         />
 
-        <div className="mt-6 flex min-h-0 flex-1 flex-col gap-0 overflow-hidden rounded-xl border border-border-strong bg-surface-overlay lg:mt-8">
+        <div className="app-workspace">
           {/* Workspace status strip (always visible; not part of the site header) */}
           <div
             className={[
-              "h-[5px] w-full shrink-0 rounded-t-xl",
+              "app-workspace__status-strip",
               !modalRecord
-                ? "bg-slate-400/55 shadow-[inset_0_-1px_0_rgba(0,0,0,0.06)]"
+                ? "app-workspace__status-strip--idle"
                 : detailAccentTeam
-                  ? "bg-blue-600 shadow-[0_3px_10px_-2px_rgba(37,99,235,0.45)]"
-                  : "bg-red-600 shadow-[0_3px_10px_-2px_rgba(220,38,38,0.4)]",
+                  ? "app-workspace__status-strip--team"
+                  : "app-workspace__status-strip--threat",
             ].join(" ")}
             aria-hidden
           />
-          <div className="flex min-h-0 flex-1 flex-col overflow-hidden lg:flex-row">
+          <div className="app-workspace__body">
           <section
             aria-label="Team workspace"
-            className="flex min-h-0 flex-1 flex-col overflow-hidden border-b border-border-strong p-4 sm:p-5 lg:w-1/3 lg:flex-none lg:border-b-0 lg:border-r lg:border-border-strong"
+            className="app-workspace__panel"
           >
-            <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden rounded-xl border border-border-strong bg-surface-overlay p-2 shadow-sm sm:p-2.5">
+            <div className="app-workspace__panel-inner">
             <ol
               className="grid min-h-0 flex-1 grid-cols-2 gap-2 overflow-y-auto pr-0.5"
               aria-label="Team slots"
@@ -531,7 +531,7 @@ export function TeamBuilderScreen() {
 
           <section
             aria-label="Selector workspace"
-            className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden p-4 sm:p-5 lg:w-2/3 lg:flex-none"
+            className="app-workspace__main"
           >
             <div className="flex w-full shrink-0 flex-wrap items-end justify-end gap-2 sm:gap-3">
               <div className="flex min-w-0 flex-col items-end gap-1">

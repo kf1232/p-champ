@@ -10,8 +10,8 @@ type DexRecordGridProps = {
 
 export function DexRecordGrid({ records }: DexRecordGridProps) {
   return (
-    <section aria-label="Dex records" className="mt-8">
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-5 lg:gap-6">
+    <section aria-label="Dex records" className="app-grid-section">
+      <div className="app-grid app-grid--dex">
         {records.flatMap((r, i) => {
           const nodes = [];
           if (i > 0 && i % ROW_BREAK_EVERY === 0) {
@@ -20,7 +20,7 @@ export function DexRecordGrid({ records }: DexRecordGridProps) {
                 key={`dex-break-${i}`}
                 role="separator"
                 aria-hidden="true"
-                className="col-span-full my-3 border-t border-border-subtle sm:my-4"
+                className="app-grid-break"
               />,
             );
           }
