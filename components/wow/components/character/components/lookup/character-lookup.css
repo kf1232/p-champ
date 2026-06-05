@@ -28,16 +28,10 @@
   min-width: 0;
 }
 
+/* Viewport rail cap: `app-chrome__viewport-rail` in `styles/footer/container.css` */
+
 .character-cache-rail {
-  position: sticky;
-  top: 0.5rem;
-  align-self: start;
   display: flex;
-  max-height: calc(
-    100svh - var(--wow-cache-rail-top-in-viewport, 12rem) -
-      var(--app-footer-h, 64px) - 0.75rem -
-      env(safe-area-inset-bottom, 0px)
-  );
   flex-direction: column;
   min-height: 0;
   overflow: hidden;

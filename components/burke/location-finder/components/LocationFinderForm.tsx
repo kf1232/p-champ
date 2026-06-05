@@ -480,7 +480,7 @@ export function LocationFinderForm({
         onCollapsedChange={setSecondariesCollapseOverride}
       />
 
-      <div className="location-finder-search-actions flex flex-col gap-2">
+      <div className="location-finder-search-actions app-chrome__sticky-above-bottom flex flex-col gap-2">
         <div className="location-finder-search-panel">
           {overSecondaryLimit ? (
             <p

@@ -568,7 +568,7 @@ export function GuildLookupForm() {
 
         <aside
           ref={cacheRailRef}
-          className="guild-cache-rail"
+          className="guild-cache-rail app-chrome__viewport-rail"
           aria-label="Lookup history: double-click a row to load that guild"
         >
           <h2 className="guild-lookup-history-heading">Lookup History</h2>

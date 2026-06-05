@@ -15,9 +15,9 @@ import {
 export type AppHeaderSlotConfig = {
   /** Replaces route-default inner nav content. */
   content: ReactNode;
-  /** Matches `app-chrome__header-inner--wide` when true. */
+  /** Wide nav layout — passed to route-default header content (e.g. P-Champ). */
   wide?: boolean;
-  /** Overrides route-default `aria-label` on `.app-chrome__header`. */
+  /** Overrides route-default `aria-label` on `.header-container`. */
   ariaLabel?: string;
 };
 

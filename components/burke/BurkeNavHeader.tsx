@@ -24,22 +24,19 @@ export function BurkeNav({ title = BURKE_TITLE }: BurkeNavProps) {
 
   return (
     <>
-      <div className="flex min-w-0 flex-wrap items-center gap-x-2">
-        <Link
-          href={PORTAL_HOME_PATH}
-          className="text-sm font-medium text-secondary hover:text-primary"
-        >
+      <div className="header-title">
+        <Link href={PORTAL_HOME_PATH} className="header-title__parent-link">
           {PORTAL_NAME}
         </Link>
-        <span className="text-sm text-tertiary" aria-hidden>
+        <span className="header-title__separator" aria-hidden>
           /
         </span>
         {isBurkeHome ? (
-          <span className="text-sm font-semibold text-primary">{title}</span>
+          <span className="header-title__current">{title}</span>
         ) : (
           <Link
             href={BURKE_HOME_PATH}
-            className="text-sm font-semibold text-primary hover:opacity-80"
+            className="header-title__link"
             aria-label={`${title} (home)`}
           >
             {title}
@@ -49,13 +46,15 @@ export function BurkeNav({ title = BURKE_TITLE }: BurkeNavProps) {
 
       <nav
         aria-label="Burke primary navigation"
-        className="flex flex-wrap items-center gap-4"
+        className="header-navigation"
       >
         <Link
           href={BURKE_HOME_PATH}
           className={[
-            "text-sm font-medium",
-            isBurkeHome ? "text-primary" : "text-secondary hover:text-primary",
+            "header-navigation__link",
+            isBurkeHome
+              ? "header-navigation__link--current"
+              : "header-navigation__link--inactive",
           ].join(" ")}
           aria-current={isBurkeHome ? "page" : undefined}
         >
@@ -64,10 +63,10 @@ export function BurkeNav({ title = BURKE_TITLE }: BurkeNavProps) {
         <Link
           href={BURKE_LOCATION_FINDER_PATH}
           className={[
-            "text-sm font-medium",
+            "header-navigation__link",
             isLocationFinder
-              ? "text-primary"
-              : "text-secondary hover:text-primary",
+              ? "header-navigation__link--current"
+              : "header-navigation__link--inactive",
           ].join(" ")}
           aria-current={isLocationFinder ? "page" : undefined}
         >

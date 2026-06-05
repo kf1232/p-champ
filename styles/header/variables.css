@@ -1,0 +1,37 @@
+/**
+ * Header color tokens — single source for viewport header chrome.
+ * Semantic tokens (`--app-text-*`, etc.): `styles/variables.css`.
+ */
+
+/* --- Release (light) --- */
+[data-app-theme="release"] {
+  --app-chrome-header-bg: #ffffff;
+
+  --app-border-header-top: transparent;
+  --app-border-header-side: transparent;
+  --app-border-header-bottom: rgb(0 0 0 / 0.1);
+  --app-border-header-inner: transparent;
+}
+
+/* --- Debug (light) --- */
+[data-app-theme="debug"] {
+  --app-chrome-header-bg: #dbeafe;
+
+  --app-border-header-top: #1d4ed8;
+  --app-border-header-side: #3b82f6;
+  --app-border-header-bottom: #1e40af;
+  --app-border-header-inner: #60a5fa;
+
+  --app-debug-outline-header-inner: #6366f1;
+}
+
+/* --- Dark + release --- */
+[data-color-scheme="dark"][data-app-theme="release"] {
+  --app-chrome-header-bg: #0f172a;
+  --app-border-header-bottom: var(--app-border-subtle);
+}
+
+/* --- Dark + debug --- */
+[data-color-scheme="dark"][data-app-theme="debug"] {
+  --app-chrome-header-bg: #1e3a5f;
+}

@@ -5,10 +5,9 @@ import { useLayoutEffect, type RefObject } from "react";
 const STICKY_TOP_FALLBACK_PX = 8;
 
 /**
- * Writes `--wow-cache-rail-top-in-viewport` on the rail element (px distance from the
- * viewport top to the rail’s top edge). Lookup CSS uses it so `max-height` is
- * `100svh - top - footer` while the rail sits below the header; when stuck, `top`
- * approaches the sticky offset (~0.5rem).
+ * Writes `--app-viewport-rail-top` on the rail element (px distance from the viewport
+ * top to the rail’s top edge). `app-chrome__viewport-rail` uses it for `max-height`;
+ * when stuck, `top` approaches the sticky offset (~0.5rem).
  */
 export function useWowCacheRailViewportInset<T extends HTMLElement>(
   railRef: RefObject<T | null>,
@@ -23,7 +22,7 @@ export function useWowCacheRailViewportInset<T extends HTMLElement>(
         raw < 0
           ? STICKY_TOP_FALLBACK_PX
           : Math.max(0, Math.round(raw * 10) / 10);
-      el.style.setProperty("--wow-cache-rail-top-in-viewport", `${px}px`);
+      el.style.setProperty("--app-viewport-rail-top", `${px}px`);
     };
 
     update();

@@ -1,6 +1,6 @@
 /**
  * Semantic Tailwind utilities — must be imported from `app/globals.css` (Tailwind pipeline).
- * Tokens: `semantic.css` + dark overrides in `colorScheme.css`.
+ * Tokens: `styles/variables.css`.
  */
 
 @utility text-primary {

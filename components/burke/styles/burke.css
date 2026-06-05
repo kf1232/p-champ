@@ -1,18 +1,13 @@
 /* Burke feature styles */
 
-/* Location Finder page slot padding: `.app-page--location-finder` in `appLayout.css` */
+/* Sticky bottom offset: `app-chrome__sticky-above-bottom` in `styles/footer/container.css` */
 
 .location-finder-search-actions {
-  position: sticky;
   z-index: 30;
   margin-top: 0.5rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   background-color: var(--app-chrome-body-bg, var(--app-surface));
-  bottom: calc(
-    var(--app-footer-h) + var(--burke-sticky-above-footer-gap, 1rem) +
-      env(safe-area-inset-bottom, 0px)
-  );
 }
 
 .location-finder-search-panel {

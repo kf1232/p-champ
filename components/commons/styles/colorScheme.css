@@ -1,130 +1,42 @@
 /**
- * User light/dark preference (`data-color-scheme` on `<html>`).
- * Layout debug paint: `data-app-theme` / `APP_THEME` env.
+
+ * Color-scheme behavior (`data-color-scheme` on `<html>`).
+
+ * Token values: `styles/variables.css`.
+
+ * Header/footer chrome: `styles/header/`, `styles/footer/`.
+
  */
 
+
+
 [data-color-scheme="dark"] {
-  --app-text-primary: #f1f5f9;
-  --app-text-secondary: #94a3b8;
-  --app-text-tertiary: #64748b;
-
-  --app-surface: #0f172a;
-  --app-surface-elevated: #1e293b;
-  --app-surface-muted: rgb(255 255 255 / 0.04);
-  --app-surface-overlay: rgb(15 23 42 / 0.85);
-
-  --app-border-subtle: rgb(255 255 255 / 0.1);
-  --app-border-default: rgb(255 255 255 / 0.15);
-  --app-border-strong: rgb(255 255 255 / 0.22);
-
-  --app-hover-surface: rgb(255 255 255 / 0.06);
-  --app-focus-ring: rgb(148 163 184 / 0.35);
-  --app-overlay-scrim: rgb(0 0 0 / 0.65);
 
   color-scheme: dark;
+
 }
 
-.app-color-scheme-toggle {
-  display: inline-flex;
-  flex-shrink: 0;
-  align-items: center;
-  gap: 0.375rem;
-  border-radius: 0.375rem;
-  border: 1px solid var(--app-color-scheme-toggle-border);
-  background-color: var(--app-color-scheme-toggle-bg);
-  padding: 0.375rem 0.625rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  line-height: 1;
-  color: var(--app-color-scheme-toggle-fg);
-  cursor: pointer;
-}
 
-.app-color-scheme-toggle:hover {
-  border-color: var(--app-color-scheme-toggle-border-hover);
-  background-color: var(--app-color-scheme-toggle-bg-hover);
-}
-
-.app-color-scheme-toggle:focus-visible {
-  outline: 2px solid var(--app-color-scheme-toggle-focus);
-  outline-offset: 2px;
-}
-
-.app-color-scheme-toggle__label {
-  display: none;
-}
-
-@media (min-width: 640px) {
-  .app-color-scheme-toggle__label {
-    display: inline;
-  }
-}
-
-.app-chrome__header-inner {
-  --app-color-scheme-toggle-border: var(--app-border-default);
-  --app-color-scheme-toggle-border-hover: var(--app-border-strong);
-  --app-color-scheme-toggle-bg: var(--app-surface-elevated);
-  --app-color-scheme-toggle-bg-hover: var(--app-surface);
-  --app-color-scheme-toggle-fg: var(--app-text-primary);
-  --app-color-scheme-toggle-focus: var(--app-focus-ring);
-}
-
-/* --- RELEASE shell (layout debug off) --- */
-[data-color-scheme="dark"][data-app-theme="release"] {
-  --app-chrome-header-bg: #0f172a;
-  --app-chrome-body-bg: #020617;
-  --app-chrome-footer-bg: #0f172a;
-  --app-border-header-bottom: var(--app-border-subtle);
-  --app-border-footer-top: var(--app-border-subtle);
-}
 
 [data-color-scheme="dark"][data-app-theme="release"] html,
+
 [data-color-scheme="dark"][data-app-theme="release"] body {
-  background-color: #020617;
+
+  background-color: var(--app-chrome-body-bg);
+
   color: var(--app-text-primary);
+
 }
 
-/* --- DEBUG shell (layout debug on) --- */
-[data-color-scheme="dark"][data-app-theme="debug"] {
-  --app-chrome-header-bg: #1e3a5f;
-  --app-chrome-body-bg: #422006;
-  --app-chrome-footer-bg: #4c0519;
-}
+
 
 [data-color-scheme="dark"][data-app-theme="debug"] html,
+
 [data-color-scheme="dark"][data-app-theme="debug"] body {
-  background-color: #422006;
-  color: #fef3c7;
+
+  background-color: var(--app-chrome-body-bg);
+
+  color: var(--app-debug-body-text);
+
 }
 
-[data-color-scheme="dark"][data-app-theme="debug"] {
-  --app-text-primary: #fef9c3;
-  --app-text-secondary: rgb(254 243 199 / 0.75);
-  --app-text-tertiary: rgb(254 243 199 / 0.5);
-}
-
-[data-color-scheme="dark"] .app-viewport-footer-bar {
-  color: var(--app-text-secondary);
-}
-
-[data-color-scheme="dark"] .app-viewport-footer-label {
-  color: var(--app-text-tertiary);
-}
-
-[data-color-scheme="dark"] .app-viewport-footer-value {
-  color: var(--app-text-primary);
-}
-
-[data-color-scheme="dark"] .app-viewport-footer-action {
-  color: var(--app-text-primary);
-  border-color: var(--app-border-default);
-  background-color: var(--app-surface-elevated);
-}
-
-[data-color-scheme="dark"] .app-viewport-footer-action:hover {
-  background-color: var(--app-hover-surface);
-}
-
-[data-color-scheme="dark"] .app-viewport-footer-divider {
-  color: var(--app-text-tertiary);
-}

@@ -23,6 +23,6 @@ export {
 } from "./colorSchemeCookie";
 export { colorSchemeBootstrapScript } from "./colorSchemeInitScript";
 
-/** CSS variable names for semantic colors (see `themes/semantic.css`). */
+/** CSS variable names for semantic colors (see `styles/variables.css`). */
 export const APP_TEXT_PRIMARY_VAR = "--app-text-primary" as const;
 export const APP_TEXT_SECONDARY_VAR = "--app-text-secondary" as const;

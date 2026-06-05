@@ -1,10 +1,10 @@
 @import "tailwindcss";
-@import "../components/commons/styles/themes/semantic.css";
+@import "../styles/variables.css";
 @import "../components/commons/styles/themes/semanticUtilities.css";
 
 @keyframes team-slot-flash {
   0% {
-    background-color: rgb(228 228 231 / 0.9);
+    background-color: var(--app-color-animation-team-slot-start);
   }
 
   100% {

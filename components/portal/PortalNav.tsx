@@ -20,13 +20,13 @@ export function PortalNav() {
 
   return (
     <>
-      <div className="flex min-w-0 flex-wrap items-center gap-x-2">
+      <div className="header-title">
         {isPortalHome ? (
-          <span className="text-sm font-semibold text-primary">{PORTAL_TITLE}</span>
+          <span className="header-title__current">{PORTAL_TITLE}</span>
         ) : (
           <Link
             href={PORTAL_HOME_PATH}
-            className="text-sm font-semibold text-primary hover:opacity-80"
+            className="header-title__link"
             aria-label={`${PORTAL_TITLE} (home)`}
           >
             {PORTAL_TITLE}
@@ -36,29 +36,29 @@ export function PortalNav() {
 
       <nav
         aria-label="Portal feature navigation"
-        className="flex flex-wrap items-center gap-4"
+        className="header-navigation"
       >
         <Link
           href={P_CHAMP_HOME_PATH}
-          className="text-sm font-medium text-secondary hover:text-primary"
+          className="header-navigation__link header-navigation__link--inactive"
         >
           P-Champ
         </Link>
         <Link
           href={PHOTOGRAPHY_HOME_PATH}
-          className="text-sm font-medium text-secondary hover:text-primary"
+          className="header-navigation__link header-navigation__link--inactive"
         >
           Photography
         </Link>
         <Link
           href={WOW_HOME_PATH}
-          className="text-sm font-medium text-secondary hover:text-primary"
+          className="header-navigation__link header-navigation__link--inactive"
         >
           WoW
         </Link>
         <Link
           href={BURKE_HOME_PATH}
-          className="text-sm font-medium text-secondary hover:text-primary"
+          className="header-navigation__link header-navigation__link--inactive"
         >
           Burke
         </Link>

@@ -1,44 +1,36 @@
 /**
- * DEBUG — high-visibility shell paint for layout boundaries (header / body / footer / page).
- * Activated when `APP_THEME=DEBUG` (see `lib/theme/appTheme.ts`).
+
+ * DEBUG — high-visibility shell paint for layout boundaries.
+
+ * Colors: `styles/variables.css` (+ chrome: `styles/header/variables.css`, `styles/footer/variables.css`).
+
  */
+
 [data-app-theme="debug"] {
-  --app-chrome-header-bg: #dbeafe;
-  --app-chrome-body-bg: #fef9c3;
-  --app-chrome-footer-bg: #fecdd3;
 
   --app-shell-border-width: 3px;
+
   --app-region-border-width: 3px;
+
   --app-inner-border-width: 3px;
+
   --app-page-border-width: 3px;
-  --app-header-divider-width: 3px;
-  --app-footer-divider-width: 3px;
 
-  --app-border-chrome: #7c3aed;
-  --app-border-body: #ca8a04;
-  --app-border-header-top: #1d4ed8;
-  --app-border-header-side: #3b82f6;
-  --app-border-header-bottom: #1e40af;
-  --app-border-header-inner: #60a5fa;
-  --app-border-footer-top: #be123c;
-  --app-border-footer-side: #f43f5e;
-  --app-border-footer-bottom: #9f1239;
-  --app-border-footer-inner: #fb7185;
-  --app-border-page-top: #15803d;
-  --app-border-page-right: #22c55e;
-  --app-border-page-bottom: #166534;
-  --app-border-page-left: #4ade80;
+  --app-margin-page-outline: 3px dashed var(--app-debug-outline-page);
 
-  --app-margin-page-outline: 3px dashed #a855f7;
-  --app-margin-header-inner-outline: 2px dashed #6366f1;
-  --app-margin-footer-inner-outline: 2px dashed #ec4899;
   --app-margin-column-outline-offset: 0.75rem;
 
-  --app-padding-inline-fill: rgb(147 197 253 / 0.4);
 }
 
+
+
 [data-app-theme="debug"] html,
+
 [data-app-theme="debug"] body {
-  background-color: #fef9c3;
-  color: #000000;
+
+  background-color: var(--app-chrome-body-bg);
+
+  color: var(--app-debug-body-text);
+
 }
+

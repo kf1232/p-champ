@@ -28,19 +28,19 @@ export function WowNav({ title = "WoW" }: WowNavProps) {
 
   return (
     <>
-      <div className="wow-nav-breadcrumb">
-        <Link href={PORTAL_HOME_PATH} className="wow-nav-link-muted">
+      <div className="header-title">
+        <Link href={PORTAL_HOME_PATH} className="header-title__parent-link">
           {PORTAL_NAME}
         </Link>
-        <span className="wow-nav-sep" aria-hidden>
+        <span className="header-title__separator" aria-hidden>
           /
         </span>
         {isWowHome ? (
-          <span className="wow-nav-title-current">{title}</span>
+          <span className="header-title__current">{title}</span>
         ) : (
           <Link
             href={WOW_HOME_PATH}
-            className="wow-nav-title-link"
+            className="header-title__link"
             aria-label={`${title} (home)`}
           >
             {title}
@@ -48,15 +48,15 @@ export function WowNav({ title = "WoW" }: WowNavProps) {
         )}
       </div>
 
-      <div className="wow-nav-actions">
-        <nav aria-label="WoW primary navigation" className="wow-nav-links">
+      <div className="header-navigation-toolbar">
+        <nav aria-label="WoW primary navigation" className="header-navigation">
           <Link
             href={WOW_HOME_PATH}
             className={[
-              "wow-nav-page-link",
+              "header-navigation__link",
               isWowHome
-                ? "wow-nav-page-link--current"
-                : "wow-nav-page-link--inactive",
+                ? "header-navigation__link--current"
+                : "header-navigation__link--inactive",
             ].join(" ")}
             aria-current={isWowHome ? "page" : undefined}
           >
@@ -65,10 +65,10 @@ export function WowNav({ title = "WoW" }: WowNavProps) {
           <Link
             href={WOW_CHARACTER_PATH}
             className={[
-              "wow-nav-page-link",
+              "header-navigation__link",
               isCharacter
-                ? "wow-nav-page-link--current"
-                : "wow-nav-page-link--inactive",
+                ? "header-navigation__link--current"
+                : "header-navigation__link--inactive",
             ].join(" ")}
             aria-current={isCharacter ? "page" : undefined}
           >
@@ -77,10 +77,10 @@ export function WowNav({ title = "WoW" }: WowNavProps) {
           <Link
             href={WOW_GUILD_PATH}
             className={[
-              "wow-nav-page-link",
+              "header-navigation__link",
               isGuild
-                ? "wow-nav-page-link--current"
-                : "wow-nav-page-link--inactive",
+                ? "header-navigation__link--current"
+                : "header-navigation__link--inactive",
             ].join(" ")}
             aria-current={isGuild ? "page" : undefined}
           >
@@ -88,15 +88,15 @@ export function WowNav({ title = "WoW" }: WowNavProps) {
           </Link>
         </nav>
 
-        <label className="wow-nav-debug-toggle">
+        <label className="header-toggle-selector">
           <input
             type="checkbox"
-            className="wow-nav-debug-toggle__input"
+            className="header-toggle-selector__control"
             checked={rawDebugEnabled}
             onChange={(e) => setRawDebugEnabled(e.target.checked)}
             aria-label="Show raw Battle.net API response panels for troubleshooting"
           />
-          <span className="wow-nav-debug-toggle__label">Raw API</span>
+          <span className="header-toggle-selector__label">Raw API</span>
         </label>
       </div>
     </>

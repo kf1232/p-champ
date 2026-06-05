@@ -1,0 +1,16 @@
+/**
+
+ * Central design stylesheet entry.
+
+ * Colors: `variables.css` (via `app/globals.css`); header/footer colors in `header/variables.css`, `footer/variables.css`.
+
+ * Header: `header/`. Footer: `footer/`.
+
+ */
+
+
+
+@import "./header/index.css";
+
+@import "./footer/index.css";
+

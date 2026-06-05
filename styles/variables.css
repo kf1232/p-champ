@@ -1,0 +1,98 @@
+/**
+ * Shared semantic color tokens.
+ * Header colors: `styles/header/variables.css`. Footer colors: `styles/footer/variables.css`.
+ */
+
+/* --- Semantic: light --- */
+:root,
+[data-color-scheme="light"] {
+  --app-text-primary: #0a0a0a;
+  --app-text-secondary: rgb(10 10 10 / 0.7);
+  --app-text-tertiary: rgb(10 10 10 / 0.45);
+
+  --app-surface: #ffffff;
+  --app-surface-elevated: rgb(255 255 255 / 0.85);
+  --app-surface-muted: rgb(0 0 0 / 0.03);
+  --app-surface-overlay: rgb(255 255 255 / 0.6);
+
+  --app-border-subtle: rgb(0 0 0 / 0.1);
+  --app-border-default: rgb(0 0 0 / 0.15);
+  --app-border-strong: rgb(0 0 0 / 0.25);
+
+  --app-hover-surface: rgb(0 0 0 / 0.04);
+  --app-focus-ring: rgb(0 0 0 / 0.1);
+  --app-overlay-scrim: rgb(0 0 0 / 0.4);
+}
+
+/* --- Semantic: dark --- */
+[data-color-scheme="dark"] {
+  --app-text-primary: #f1f5f9;
+  --app-text-secondary: #94a3b8;
+  --app-text-tertiary: #64748b;
+
+  --app-surface: #0f172a;
+  --app-surface-elevated: #1e293b;
+  --app-surface-muted: rgb(255 255 255 / 0.04);
+  --app-surface-overlay: rgb(15 23 42 / 0.85);
+
+  --app-border-subtle: rgb(255 255 255 / 0.1);
+  --app-border-default: rgb(255 255 255 / 0.15);
+  --app-border-strong: rgb(255 255 255 / 0.22);
+
+  --app-hover-surface: rgb(255 255 255 / 0.06);
+  --app-focus-ring: rgb(148 163 184 / 0.35);
+  --app-overlay-scrim: rgb(0 0 0 / 0.65);
+}
+
+/* --- Shell theme: release (light) --- */
+[data-app-theme="release"] {
+  --app-chrome-body-bg: #ffffff;
+
+  --app-border-chrome: transparent;
+  --app-border-body: transparent;
+  --app-border-page-top: transparent;
+  --app-border-page-right: transparent;
+  --app-border-page-bottom: transparent;
+  --app-border-page-left: transparent;
+
+  --app-padding-inline-fill: transparent;
+}
+
+/* --- Shell theme: debug (light) --- */
+[data-app-theme="debug"] {
+  --app-chrome-body-bg: #fef9c3;
+
+  --app-border-chrome: #7c3aed;
+  --app-border-body: #ca8a04;
+  --app-border-page-top: #15803d;
+  --app-border-page-right: #22c55e;
+  --app-border-page-bottom: #166534;
+  --app-border-page-left: #4ade80;
+
+  --app-debug-outline-page: #a855f7;
+  --app-debug-body-text: #000000;
+
+  --app-padding-inline-fill: rgb(147 197 253 / 0.4);
+}
+
+/* --- Shell: dark + release --- */
+[data-color-scheme="dark"][data-app-theme="release"] {
+  --app-chrome-body-bg: #020617;
+}
+
+/* --- Shell: dark + debug --- */
+[data-color-scheme="dark"][data-app-theme="debug"] {
+  --app-chrome-body-bg: #422006;
+  --app-debug-body-text: #fef3c7;
+
+  --app-text-primary: #fef9c3;
+  --app-text-secondary: rgb(254 243 199 / 0.75);
+  --app-text-tertiary: rgb(254 243 199 / 0.5);
+}
+
+/* --- Component / control accents --- */
+:root {
+  --app-color-control-accent: rgb(37 99 235);
+  --app-color-shadow-subtle: rgb(0 0 0 / 0.05);
+  --app-color-animation-team-slot-start: rgb(228 228 231 / 0.9);
+}

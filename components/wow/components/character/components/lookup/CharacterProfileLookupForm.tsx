@@ -831,7 +831,7 @@ export function CharacterProfileLookupForm() {
 
         <aside
           ref={cacheRailRef}
-          className="character-cache-rail"
+          className="character-cache-rail app-chrome__viewport-rail"
           aria-label="Lookup history: double-click a row to load that character"
         >
           <h2 className="character-lookup-history-heading">Lookup History</h2>
