@@ -20,11 +20,11 @@
   max-height: 14rem;
   overflow: auto;
   border-radius: 0.375rem;
-  border: 1px solid rgb(0 0 0 / 0.15);
+  border: 1px solid var(--app-border-default);
   background-color: var(--app-surface);
   box-shadow:
     0 4px 12px rgb(0 0 0 / 0.12),
-    0 1px 2px rgb(0 0 0 / 0.06);
+    0 1px 2px var(--app-color-shadow-subtle);
 }
 
 .wow-realm-picker-item {
@@ -43,7 +43,7 @@
   cursor: pointer;
   padding: 0.45rem 0.65rem;
   font: inherit;
-  color: rgb(15 23 42);
+  color: var(--app-text-primary);
 }
 
 .wow-realm-picker-option:hover,
@@ -72,5 +72,5 @@
 }
 
 .wow-realm-picker-meta--error {
-  color: rgb(153 27 27);
+  color: var(--app-text-danger);
 }

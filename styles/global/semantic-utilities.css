@@ -15,6 +15,10 @@
   color: var(--app-text-tertiary);
 }
 
+@utility text-danger {
+  color: var(--app-text-danger);
+}
+
 @utility bg-surface {
   background-color: var(--app-surface);
 }

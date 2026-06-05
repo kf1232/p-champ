@@ -109,13 +109,13 @@ export function LocationFinderGate({
             />
           </label>
           {error ? (
-            <p className="w-full max-w-sm text-sm text-red-700" role="alert">
+            <p className="w-full max-w-sm text-sm text-danger" role="alert">
               {error}
             </p>
           ) : null}
           <button
             type="submit"
-            className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white disabled:opacity-60"
+            className="app-btn app-btn--primary"
             disabled={submitting}
           >
             {submitting ? "Checking…" : "Continue"}

@@ -9,7 +9,7 @@
 
 .character-overview-segment {
   border-radius: 0.5rem;
-  border: 1px solid rgb(0 0 0 / 0.1);
+  border: 1px solid var(--app-border-subtle);
   background-color: var(--app-surface-elevated);
   padding: 1rem 1.1rem;
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
@@ -142,13 +142,13 @@
   letter-spacing: 0.04em;
   color: var(--app-text-tertiary);
   padding: 0.4rem 0.5rem 0.5rem 0;
-  border-bottom: 1px solid rgb(0 0 0 / 0.1);
+  border-bottom: 1px solid var(--app-border-subtle);
   white-space: nowrap;
 }
 
 .character-overview-table td {
   padding: 0.45rem 0.5rem 0.45rem 0;
-  border-bottom: 1px solid rgb(0 0 0 / 0.06);
+  border-bottom: 1px solid var(--app-border-subtle);
   vertical-align: top;
   color: var(--app-text-primary);
 }
@@ -261,7 +261,7 @@
   width: 0.65rem;
   height: 0.65rem;
   border-radius: 0.15rem;
-  border: 1px solid rgb(0 0 0 / 0.12);
+  border: 1px solid var(--app-border-default);
   flex-shrink: 0;
 }
 
@@ -273,7 +273,7 @@
 
 .character-overview-item-card {
   border-radius: 0.45rem;
-  border: 1px solid rgb(0 0 0 / 0.1);
+  border: 1px solid var(--app-border-subtle);
   background: rgb(252 252 253);
   padding: 0.85rem 1rem;
   display: flex;
