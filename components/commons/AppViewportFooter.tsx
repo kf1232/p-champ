@@ -76,42 +76,39 @@ function AppViewportStorageFooter({
   };
 
   return (
-    <ViewportLockedFooterBar
-      ariaLabel={config.ariaLabel}
-      className="app-viewport-footer-bar"
-    >
-      <div className="app-chrome__footer-inner">
-        <p className="app-viewport-footer-line">
-          <span className="app-viewport-footer-label">Cache : </span>
-          <span className="app-viewport-footer-value">
+    <ViewportLockedFooterBar ariaLabel={config.ariaLabel}>
+      <div className="footer-container__inner footer-storage-bar">
+        <p className="footer-storage-bar__line">
+          <span className="footer-storage-bar__label">Cache : </span>
+          <span className="footer-storage-bar__value">
             {formatFooterByteSize(config.cacheByteSize)}
           </span>
           <span className="sr-only"> for {config.serviceId}</span>
         </p>
-        <span className="app-viewport-footer-divider" aria-hidden>
+        <span className="footer-storage-bar__divider" aria-hidden>
           |
         </span>
-        <p className="app-viewport-footer-line">
-          <span className="app-viewport-footer-label">TTL : </span>
-          <span className="app-viewport-footer-value">{ttlLabel}</span>
+        <p className="footer-storage-bar__line">
+          <span className="footer-storage-bar__label">TTL : </span>
+          <span className="footer-storage-bar__value">{ttlLabel}</span>
         </p>
-        <span className="app-viewport-footer-divider" aria-hidden>
+        <span className="footer-storage-bar__divider" aria-hidden>
           |
         </span>
         <button
           type="button"
-          className="app-viewport-footer-action"
+          className="footer-storage-bar__action"
           onClick={config.onDownload}
           disabled={actionsDisabled}
         >
           Download cache
         </button>
-        <span className="app-viewport-footer-divider" aria-hidden>
+        <span className="footer-storage-bar__divider" aria-hidden>
           |
         </span>
         <button
           type="button"
-          className="app-viewport-footer-action app-viewport-footer-action--clear"
+          className="footer-storage-bar__action footer-storage-bar__action--clear"
           onClick={clearCache}
           disabled={actionsDisabled}
         >

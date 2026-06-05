@@ -1,0 +1,133 @@
+/**
+ * App shell — top-level containers (`.app-chrome*`, `.app-page*`).
+ * Footer band styles: `styles/footer/container.css`. Header: `styles/header/`.
+ * Feature CSS: use `.app-chrome__*` utilities here — not `--app-footer-*` or `.footer-*`.
+ */
+
+html,
+body {
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+  background-color: var(--app-chrome-body-bg, var(--app-surface));
+  color: var(--app-text-primary);
+}
+
+.app-chrome {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, min(var(--app-column-max, 64rem), 100%))
+    minmax(0, 1fr);
+  width: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: var(--app-shell-border-width, 0) solid var(--app-border-chrome, transparent);
+
+  --app-column-max: 64rem;
+  --app-page-padding-x: 1.5rem;
+  --app-page-padding-top: 2.5rem;
+  --app-page-padding-y-compact: 1.5rem;
+
+  /* Fixed footer clearance (band: `styles/footer/container.css`) */
+  --app-footer-h: 64px;
+  --app-main-footer-gap: 40px;
+  --app-sticky-above-footer-gap: 1rem;
+  padding-bottom: var(--app-footer-h);
+}
+
+.app-chrome__sticky-above-bottom {
+  position: sticky;
+  bottom: calc(
+    var(--app-footer-h) + var(--app-sticky-above-footer-gap) +
+      env(safe-area-inset-bottom, 0px)
+  );
+}
+
+.app-chrome__viewport-rail {
+  position: sticky;
+  top: 0.5rem;
+  align-self: start;
+  max-height: calc(
+    100svh - var(--app-viewport-rail-top, 12rem) - var(--app-footer-h) - 0.75rem -
+      env(safe-area-inset-bottom, 0px)
+  );
+}
+
+.app-chrome__content {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: subgrid;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  background-color: var(--app-chrome-body-bg, #ffffff);
+  border-width: var(--app-region-border-width, 0);
+  border-style: solid;
+  border-color: var(--app-border-body, transparent);
+}
+
+.app-chrome__content--clip {
+  overflow: hidden;
+}
+
+.app-page {
+  grid-column: 2;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding-inline: var(--app-page-padding-x);
+  padding-top: var(--app-page-padding-top);
+  outline: var(--app-margin-page-outline, none);
+  outline-offset: var(--app-margin-column-outline-offset, 0);
+  box-shadow:
+    inset var(--app-page-padding-x) 0 0 0 var(--app-padding-inline-fill, transparent),
+    inset calc(-1 * var(--app-page-padding-x)) 0 0 0
+      var(--app-padding-inline-fill, transparent);
+  border-style: solid;
+  border-width: var(--app-page-border-width, 0);
+  border-top-color: var(--app-border-page-top, transparent);
+  border-right-color: var(--app-border-page-right, transparent);
+  border-bottom-color: var(--app-border-page-bottom, transparent);
+  border-left-color: var(--app-border-page-left, transparent);
+}
+
+.app-page--max-5xl,
+.app-page--max-7xl {
+  /* Width tier: `--app-column-max` on `.app-chrome` */
+}
+
+.app-page--scroll,
+.app-page--portal {
+  padding-bottom: var(--app-main-footer-gap);
+}
+
+.app-page--location-finder {
+  align-self: stretch;
+  min-height: 0;
+  --app-page-sticky-action-band-min-h: 7.5rem;
+  --app-page-padding-bottom-sticky: calc(
+    var(--app-sticky-above-footer-gap) + env(safe-area-inset-bottom, 0px) +
+      var(--app-page-sticky-action-band-min-h)
+  );
+  --app-page-padding-bottom-effective: calc(
+    var(--app-main-footer-gap) + var(--app-page-padding-bottom-sticky)
+  );
+  padding-bottom: var(--app-page-padding-bottom-effective);
+  scroll-padding-bottom: var(--app-page-padding-bottom-effective);
+}
+
+.app-page--viewport {
+  align-self: stretch;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-top: var(--app-page-padding-y-compact);
+  padding-bottom: 0;
+}

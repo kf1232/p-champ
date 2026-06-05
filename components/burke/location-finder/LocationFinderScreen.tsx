@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 
+import { AppPageIntro } from "@/components/commons";
 import {
   BURKE_LOCATION_FINDER_ACCESS_PATH,
   BURKE_REVOKE_LOCATION_FINDER_ACCESS_PATH,
@@ -85,9 +86,7 @@ export function LocationFinderScreen({
   return (
     <LocationFinderStorageProvider>
       <LocationFinderStorageFooterRegistration />
-      <h1 className="text-3xl font-semibold tracking-tight text-primary">
-        {LOCATION_FINDER_TITLE}
-      </h1>
+      <AppPageIntro title={LOCATION_FINDER_TITLE} />
 
       <GeocodeLookupProvider onUnauthorized={denyAccess}>
         <LocationFinderFormWithStorageReset onUnauthorized={denyAccess} />

@@ -1,0 +1,185 @@
+/**
+ * Lookup tool layout — main column + sticky cache rail (WoW guild/character).
+ */
+
+.app-lookup {
+  margin-top: 1.5rem;
+}
+
+.app-lookup-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(13rem, 19rem);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+@media (max-width: 52rem) {
+  .app-lookup-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .app-cache-rail {
+    position: static;
+  }
+}
+
+.app-lookup-main {
+  min-width: 0;
+}
+
+/* Viewport rail cap: `app-chrome__viewport-rail` in `styles/global/shell.css` */
+
+.app-cache-rail {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid var(--app-border-subtle);
+  background-color: var(--app-surface-overlay);
+  padding: 0.75rem 0.85rem;
+}
+
+.app-lookup-history-heading {
+  margin: 0 0 0.5rem;
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--app-text-tertiary);
+}
+
+.app-cache-rail-summaries-strip {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  margin: 0;
+  overflow: hidden;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.app-cache-rail-summaries-strip--bordered {
+  margin: 0 0 0.65rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--app-border-subtle);
+}
+
+.app-cache-rail-summaries-strip-empty {
+  margin: 0;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--app-text-tertiary);
+}
+
+.app-cache-rail-summaries-strip-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.35rem;
+  overflow-y: auto;
+}
+
+.app-cache-rail-summaries-strip-item {
+  margin: 0;
+}
+
+.app-lookup-history-record {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+  border-radius: 0.35rem;
+  border: 1px solid var(--app-border-subtle);
+  background: var(--app-surface-muted);
+  padding: 0.5rem 0.55rem;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 0.04);
+  cursor: pointer;
+  outline: none;
+  transition:
+    border-color 0.12s ease,
+    background-color 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.app-lookup-history-record:hover {
+  border-color: var(--app-border-default);
+  background: var(--app-surface);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.08);
+}
+
+.app-lookup-history-name {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--app-text-primary);
+  word-break: break-word;
+  line-height: 1.25;
+}
+
+.app-lookup-history-meta {
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--app-text-tertiary);
+}
+
+.app-lookup-history-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.1rem;
+}
+
+.app-lookup-history-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  border-radius: 0.25rem;
+  padding: 0.15rem;
+  transition:
+    color 0.12s ease,
+    background-color 0.12s ease;
+}
+
+.app-lookup-history-icon--active {
+  color: rgb(22 101 52);
+  background: rgb(240 253 244 / 0.95);
+}
+
+.app-lookup-history-icon--active-info {
+  color: rgb(37 99 235);
+  background: rgb(239 246 255 / 0.9);
+}
+
+.app-lookup-history-icon--muted {
+  color: var(--app-text-tertiary);
+  background: var(--app-surface-muted);
+}
+
+.app-lookup-history-icon-svg {
+  display: block;
+}
+
+.app-cache-rail-note {
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--app-border-subtle);
+}
+
+.app-cache-rail-note-body {
+  margin: 0.35rem 0 0;
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  color: var(--app-text-tertiary);
+}

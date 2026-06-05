@@ -480,11 +480,11 @@ export function LocationFinderForm({
         onCollapsedChange={setSecondariesCollapseOverride}
       />
 
-      <div className="location-finder-search-actions flex flex-col gap-2">
+      <div className="location-finder-search-actions app-chrome__sticky-above-bottom flex flex-col gap-2">
         <div className="location-finder-search-panel">
           {overSecondaryLimit ? (
             <p
-              className="location-finder-search-panel-alert text-sm text-red-700"
+              className="location-finder-search-panel-alert text-sm text-danger"
               role="alert"
             >
               At most {LOCATION_FINDER_MAX_SECONDARY_LOCATIONS} distinct locations
@@ -501,7 +501,7 @@ export function LocationFinderForm({
             <button
               type="submit"
               disabled={!canSubmit}
-              className="location-finder-submit-btn"
+              className="app-btn app-btn--primary ms-auto shrink-0"
             >
               {submitting ? "Finding…" : "Find locations"}
             </button>
@@ -510,7 +510,7 @@ export function LocationFinderForm({
       </div>
 
       {activeError ? (
-        <p className="text-sm text-red-700" role="alert">
+        <p className="text-sm text-danger" role="alert">
           {activeError}
         </p>
       ) : null}

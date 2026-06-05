@@ -117,7 +117,7 @@ export function GatedGalleryLink({
 
       {modalOpen ? (
         <div
-          className="photography-modal-backdrop"
+          className="app-modal-backdrop"
           role="presentation"
           onMouseDown={(ev) => {
             if (ev.target === ev.currentTarget) handleClose();
@@ -128,17 +128,17 @@ export function GatedGalleryLink({
             aria-modal="true"
             aria-labelledby={dialogTitleId}
             aria-describedby={dialogDescId}
-            className="photography-modal-dialog"
+            className="app-modal-dialog"
           >
-            <h2 id={dialogTitleId} className="photography-modal-title">
+            <h2 id={dialogTitleId} className="app-modal-title">
               Lightroom album
             </h2>
-            <p id={dialogDescId} className="photography-modal-description">
+            <p id={dialogDescId} className="app-modal-description">
               Enter the gallery password to open the full share on Adobe
               Lightroom in a new tab.
             </p>
-            <form onSubmit={handleSubmit} className="photography-modal-form">
-              <label className="photography-modal-label">
+            <form onSubmit={handleSubmit} className="app-modal-form">
+              <label className="app-modal-label">
                 Password
                 <input
                   ref={passwordInputRef}
@@ -147,20 +147,20 @@ export function GatedGalleryLink({
                   autoComplete="current-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="photography-modal-input"
+                  className="app-modal-input"
                   disabled={submitting}
                   required
                 />
               </label>
               {error ? (
-                <p className="photography-modal-error" role="alert">
+                <p className="app-modal-error" role="alert">
                   {error}
                 </p>
               ) : null}
-              <div className="photography-modal-actions">
+              <div className="app-modal-actions">
                 <button
                   type="button"
-                  className="photography-modal-btn-cancel"
+                  className="app-modal-btn-cancel"
                   onClick={handleClose}
                   disabled={submitting}
                 >
@@ -168,7 +168,7 @@ export function GatedGalleryLink({
                 </button>
                 <button
                   type="submit"
-                  className="photography-modal-btn-submit"
+                  className="app-modal-btn-submit"
                   disabled={submitting}
                 >
                   {submitting ? "Checking…" : "Open album"}

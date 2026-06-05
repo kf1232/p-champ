@@ -1,0 +1,37 @@
+/**
+ * Footer color tokens. Theme layout: `styles/global/theme-*.css`.
+ * Semantic tokens (`--app-text-*`, etc.): `styles/global/variables.css`.
+ */
+
+/* --- Release (light) --- */
+[data-app-theme="release"] {
+  --app-chrome-footer-bg: #ffffff;
+  --app-border-footer-top: rgb(0 0 0 / 0.1);
+}
+
+/* --- Debug (light) --- */
+[data-app-theme="debug"] {
+  --app-chrome-footer-bg: #fecdd3;
+  --app-border-footer-top: #be123c;
+  --app-border-footer-side: #f43f5e;
+  --app-border-footer-bottom: #9f1239;
+  --app-border-footer-inner: #fb7185;
+  --app-debug-outline-footer-inner: #ec4899;
+}
+
+/* --- Dark + release --- */
+[data-color-scheme="dark"][data-app-theme="release"] {
+  --app-chrome-footer-bg: #0f172a;
+  --app-border-footer-top: var(--app-border-subtle);
+}
+
+/* --- Dark + debug --- */
+[data-color-scheme="dark"][data-app-theme="debug"] {
+  --app-chrome-footer-bg: #4c0519;
+}
+
+/* --- Footer control accents --- */
+:root {
+  --app-color-footer-action-clear-border: rgb(185 28 28 / 0.35);
+  --app-color-footer-action-clear-text: rgb(248 113 113);
+}

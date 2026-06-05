@@ -92,7 +92,7 @@ function buildGuildQueryParams(
 function GuildLookupHistoryIconRoster() {
   return (
     <svg
-      className="guild-lookup-history-icon-svg"
+      className="app-lookup-history-icon-svg"
       viewBox="0 0 20 20"
       width={18}
       height={18}
@@ -123,23 +123,23 @@ function GuildLookupHistoryStripRecord({
   const meta = [realmDisplay, factionName].filter(Boolean).join(" · ");
   return (
     <div
-      className="guild-lookup-history-record"
+      className="app-lookup-history-record"
       title="Double-click to load in the form and submit"
       onDoubleClick={(e) => {
         e.preventDefault();
         onDoubleClickPick();
       }}
     >
-      <div className="guild-lookup-history-name">{name}</div>
+      <div className="app-lookup-history-name">{name}</div>
       {meta ? (
-        <div className="guild-lookup-history-meta">{meta}</div>
+        <div className="app-lookup-history-meta">{meta}</div>
       ) : null}
-      <div className="guild-lookup-history-icons" role="group" aria-label="Cached payloads">
+      <div className="app-lookup-history-icons" role="group" aria-label="Cached payloads">
         <span
           className={
             rosterCached
-              ? "guild-lookup-history-icon guild-lookup-history-icon--active"
-              : "guild-lookup-history-icon guild-lookup-history-icon--muted"
+              ? "app-lookup-history-icon app-lookup-history-icon--active"
+              : "app-lookup-history-icon app-lookup-history-icon--muted"
           }
           title={
             rosterCached
@@ -421,22 +421,22 @@ export function GuildLookupForm() {
     "No roster in cache for this lookup yet. Use “Refresh from Battle.net” to fetch both.";
 
   return (
-    <div className="guild-lookup">
-      <div className="guild-lookup-layout">
-        <div className="guild-lookup-main">
+    <div className="app-lookup">
+      <div className="app-lookup-layout">
+        <div className="app-lookup-main">
           <form
             ref={formRef}
-            className="guild-form"
+            className="app-form"
             onSubmit={onSubmit}
           >
-            <div className="guild-form-grid">
-              <div className="guild-form-field">
-                <label className="guild-label" htmlFor="wow-guild-region">
+            <div className="app-form-grid app-form-grid--cols-3">
+              <div className="app-form-field">
+                <label className="app-label" htmlFor="wow-guild-region">
                   Region
                 </label>
                 <select
                   id="wow-guild-region"
-                  className="guild-select"
+                  className="app-select"
                   name={GUILD_QUERY.region}
                   value={region}
                   onChange={(e) =>
@@ -452,8 +452,8 @@ export function GuildLookupForm() {
                 </select>
               </div>
 
-              <div className="guild-form-field">
-                <label className="guild-label" htmlFor="wow-guild-realm">
+              <div className="app-form-field">
+                <label className="app-label" htmlFor="wow-guild-realm">
                   Realm
                 </label>
                 <RealmSlugPicker
@@ -462,18 +462,18 @@ export function GuildLookupForm() {
                   region={region}
                   value={realmSlug}
                   onChange={setRealmSlug}
-                  inputClassName="guild-input"
+                  inputClassName="app-input"
                   required
                 />
               </div>
 
-              <div className="guild-form-field">
-                <label className="guild-label" htmlFor="wow-guild-name">
+              <div className="app-form-field">
+                <label className="app-label" htmlFor="wow-guild-name">
                   Guild Name
                 </label>
                 <input
                   id="wow-guild-name"
-                  className="guild-input"
+                  className="app-input"
                   name={GUILD_QUERY.nameSlug}
                   type="text"
                   autoComplete="off"
@@ -486,12 +486,12 @@ export function GuildLookupForm() {
               </div>
             </div>
 
-            <div className="guild-form-actions">
-              <button className="guild-submit" type="submit" disabled={loading}>
+            <div className="app-form-actions">
+              <button className="app-btn app-btn--primary" type="submit" disabled={loading}>
                 {loading ? "Loading…" : "Lookup"}
               </button>
               <button
-                className="guild-submit-secondary"
+                className="app-btn app-btn--secondary"
                 type="button"
                 disabled={loading}
                 onClick={onForceRemote}
@@ -501,7 +501,7 @@ export function GuildLookupForm() {
             </div>
           </form>
 
-          {error ? <p className="guild-form-error">{error}</p> : null}
+          {error ? <p className="app-form-error">{error}</p> : null}
 
           {view.kind === "not-found" ? (
             <WowRawJsonDataPanel
@@ -568,23 +568,23 @@ export function GuildLookupForm() {
 
         <aside
           ref={cacheRailRef}
-          className="guild-cache-rail"
+          className="app-cache-rail app-chrome__viewport-rail"
           aria-label="Lookup history: double-click a row to load that guild"
         >
-          <h2 className="guild-lookup-history-heading">Lookup History</h2>
+          <h2 className="app-lookup-history-heading">Lookup History</h2>
           <div
-            className="guild-cache-rail-summaries-strip"
+            className="app-cache-rail-summaries-strip"
             title="Guild profiles saved in this browser. Double-click a row to load."
           >
             {guildProfileSummaryStripRecords.length === 0 ? (
-              <p className="guild-cache-rail-summaries-strip-empty">(none)</p>
+              <p className="app-cache-rail-summaries-strip-empty">(none)</p>
             ) : (
-              <ul className="guild-cache-rail-summaries-strip-list">
+              <ul className="app-cache-rail-summaries-strip-list">
                 {guildProfileSummaryStripRecords.map(
                   ({ storageId, payload }) => (
                     <li
                       key={storageId}
-                      className="guild-cache-rail-summaries-strip-item"
+                      className="app-cache-rail-summaries-strip-item"
                     >
                       <GuildLookupHistoryStripRecord
                         data={data}
@@ -600,10 +600,10 @@ export function GuildLookupForm() {
             )}
           </div>
           <div
-            className="guild-cache-rail-summaries-strip guild-cache-rail-roster-note"
+            className="app-cache-rail-summaries-strip app-cache-rail-summaries-strip--bordered app-cache-rail-note"
             title="Roster payloads are stored under the guild id from the same lookup as the profile. A lit roster icon in a row above means that guild’s roster is cached."
           >
-            <p className="guild-cache-rail-roster-note-body">
+            <p className="app-cache-rail-note-body">
               Roster icon: cached for that guild.
             </p>
           </div>

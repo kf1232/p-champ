@@ -1,0 +1,213 @@
+/**
+ * Shared form layout and controls — lookup tools, modals, Burke inputs.
+ */
+
+.app-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.app-form-grid {
+  display: grid;
+  gap: 0.75rem 1rem;
+  align-items: start;
+}
+
+.app-form-grid--cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.app-form-grid > .app-form-field {
+  min-width: 0;
+}
+
+.app-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.app-form-field--span-2 {
+  grid-column: span 2;
+}
+
+@media (max-width: 42rem) {
+  .app-form-grid--cols-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .app-form-field--span-2 {
+    grid-column: auto;
+  }
+}
+
+.app-label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--app-text-primary);
+}
+
+.app-hint {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: var(--app-text-tertiary);
+}
+
+.app-hint-code {
+  font-size: 0.6875rem;
+  padding: 0.08em 0.3em;
+  border-radius: 0.25rem;
+  background-color: var(--app-hover-surface);
+  color: var(--app-text-secondary);
+}
+
+.app-input,
+.app-select {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-radius: 0.375rem;
+  border: 1px solid var(--app-border-default);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--app-text-primary);
+  background-color: var(--app-surface);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.app-input--max-sm {
+  max-width: 24rem;
+}
+
+.app-input--width-fixed {
+  width: 7rem;
+}
+
+.app-input--auto-width,
+.app-select--auto-width {
+  width: auto;
+  max-width: none;
+}
+
+.app-btn--compact {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+
+.app-input:focus,
+.app-select:focus {
+  border-color: var(--app-text-tertiary);
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--app-surface),
+    0 0 0 4px rgb(0 0 0 / 0.08);
+}
+
+.app-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.app-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.app-btn--primary {
+  border: none;
+  background-color: var(--app-text-primary);
+  color: var(--app-surface);
+}
+
+.app-btn--primary:hover:not(:disabled) {
+  background-color: rgb(0 0 0 / 0.88);
+}
+
+.app-btn--secondary {
+  background-color: var(--app-surface);
+  color: var(--app-text-primary);
+  border: 1px solid var(--app-border-default);
+}
+
+.app-btn--secondary:hover:not(:disabled) {
+  background-color: var(--app-hover-surface);
+}
+
+.app-btn--ghost {
+  border: 1px solid var(--app-border-default);
+  background-color: var(--app-surface);
+  padding: 0.5rem 0.75rem;
+  font-weight: 500;
+  color: var(--app-text-primary);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.app-btn--ghost:hover:not(:disabled) {
+  border-color: var(--app-border-strong);
+  background-color: var(--app-hover-surface);
+}
+
+.app-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.app-form-error {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.35rem;
+  color: var(--app-text-danger, rgb(185 28 28));
+}
+
+.app-gated-link--text {
+  display: inline;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--app-text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--app-text-tertiary);
+  text-underline-offset: 2px;
+}
+
+.app-gated-link--thumb {
+  display: block;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  text-align: left;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.app-gated-link--thumb:focus {
+  outline: none;
+}
+
+.app-gated-link--thumb:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px rgb(0 0 0 / 0.35);
+}

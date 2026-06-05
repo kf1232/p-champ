@@ -20,22 +20,19 @@ export function PhotographyNav({ title = "Photography" }: PhotographyNavProps) {
 
   return (
     <>
-      <div className="flex min-w-0 flex-wrap items-center gap-x-2">
-        <Link
-          href={PORTAL_HOME_PATH}
-          className="text-sm font-medium text-secondary hover:text-primary"
-        >
+      <div className="header-title">
+        <Link href={PORTAL_HOME_PATH} className="header-title__parent-link">
           {PORTAL_NAME}
         </Link>
-        <span className="text-sm text-tertiary" aria-hidden>
+        <span className="header-title__separator" aria-hidden>
           /
         </span>
         {isPhotographyHome ? (
-          <span className="text-sm font-semibold text-primary">{title}</span>
+          <span className="header-title__current">{title}</span>
         ) : (
           <Link
             href={PHOTOGRAPHY_HOME_PATH}
-            className="text-sm font-semibold text-primary hover:opacity-80"
+            className="header-title__link"
             aria-label={`${title} (home)`}
           >
             {title}
@@ -45,15 +42,15 @@ export function PhotographyNav({ title = "Photography" }: PhotographyNavProps) {
 
       <nav
         aria-label="Photography primary navigation"
-        className="flex flex-wrap items-center gap-4"
+        className="header-navigation"
       >
         <Link
           href={PHOTOGRAPHY_HOME_PATH}
           className={[
-            "text-sm font-medium",
+            "header-navigation__link",
             isPhotographyHome
-              ? "text-primary"
-              : "text-secondary hover:text-primary",
+              ? "header-navigation__link--current"
+              : "header-navigation__link--inactive",
           ].join(" ")}
           aria-current={isPhotographyHome ? "page" : undefined}
         >

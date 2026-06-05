@@ -1,0 +1,22 @@
+/**
+ * DEBUG — high-visibility shell paint for layout boundaries.
+ * Colors: `styles/global/variables.css` (+ chrome header/footer variables).
+ */
+
+[data-app-theme="debug"] {
+  --app-shell-border-width: 3px;
+  --app-region-border-width: 3px;
+  --app-inner-border-width: 3px;
+  --app-page-border-width: 3px;
+  --app-margin-page-outline: 3px dashed var(--app-debug-outline-page);
+  --app-margin-column-outline-offset: 0.75rem;
+  --app-chrome-divider-width: 3px;
+  --app-margin-header-inner-outline: 2px dashed var(--app-debug-outline-header-inner);
+  --app-margin-footer-inner-outline: 2px dashed var(--app-debug-outline-footer-inner);
+}
+
+[data-app-theme="debug"] html,
+[data-app-theme="debug"] body {
+  background-color: var(--app-chrome-body-bg);
+  color: var(--app-debug-body-text);
+}

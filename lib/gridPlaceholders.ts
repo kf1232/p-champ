@@ -38,3 +38,22 @@ export function trailingPlaceholderCellCount(
 
   return incompleteRowPaddingCellCount(filledCellCount, cols) + cols;
 }
+
+/** Default column count for `AppTileGrid` (3-column square tiles). */
+export const APP_TILE_GRID_COLS = 3;
+
+/**
+ * Total cells for a 3-column feature-home tile grid:
+ * Pad the last row of filled tiles to `cols` cells when it is partial.
+ * Does not append an extra empty row below.
+ */
+export function tileGridTotalCellCount(
+  filledCellCount: number,
+  cols: number = APP_TILE_GRID_COLS,
+): number {
+  if (cols <= 0 || filledCellCount === 0) {
+    return 0;
+  }
+
+  return filledCellCount + incompleteRowPaddingCellCount(filledCellCount, cols);
+}

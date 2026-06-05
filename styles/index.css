@@ -1,0 +1,11 @@
+/**
+ * Central design stylesheet entry.
+ * Global: `global/`. Header: `header/`. Footer: `footer/`.
+ * Components: `components/` (shared body patterns). Features: `features/`.
+ */
+
+@import "./global/index.css";
+@import "./header/index.css";
+@import "./footer/index.css";
+@import "./components/index.css";
+@import "./features/index.css";

@@ -1,0 +1,39 @@
+/**
+ * Page body intro — title + optional description below viewport header.
+ */
+
+.app-page-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.app-page-intro__title {
+  margin: 0;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--app-text-primary);
+}
+
+.app-page-intro__desc {
+  margin: 0;
+  max-width: 65ch;
+  color: var(--app-text-secondary);
+}
+
+.app-page-intro--center {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .app-page-intro--center {
+    margin-bottom: 3rem;
+  }
+}
+
+.app-page-intro--center .app-page-intro__desc {
+  margin-inline: auto;
+}

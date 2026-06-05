@@ -39,24 +39,37 @@ function MoonIcon() {
   );
 }
 
+const TOGGLE_BY_SCHEME = {
+  dark: {
+    Icon: SunIcon,
+    label: "Light",
+    ariaLabel: "Switch to light mode",
+    title: "Light mode",
+  },
+  light: {
+    Icon: MoonIcon,
+    label: "Dark",
+    ariaLabel: "Switch to dark mode",
+    title: "Dark mode",
+  },
+} as const;
+
 /** Header control — switches `data-color-scheme` on `<html>`. */
 export function ColorSchemeToggle() {
   const { scheme, toggleScheme } = useColorScheme();
-  const isDark = scheme === "dark";
+  const { Icon, label, ariaLabel, title } = TOGGLE_BY_SCHEME[scheme];
 
   return (
     <button
       type="button"
-      className="app-color-scheme-toggle"
+      className="header-light-dark-toggle"
       suppressHydrationWarning
       onClick={toggleScheme}
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      title={isDark ? "Light mode" : "Dark mode"}
+      aria-label={ariaLabel}
+      title={title}
     >
-      {isDark ? <SunIcon /> : <MoonIcon />}
-      <span className="app-color-scheme-toggle__label">
-        {isDark ? "Light" : "Dark"}
-      </span>
+      <Icon />
+      <span className="header-light-dark-toggle__label">{label}</span>
     </button>
   );
 }

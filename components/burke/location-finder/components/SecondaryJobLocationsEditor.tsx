@@ -24,7 +24,7 @@ import {
   nextSecondaryRowId,
 } from "@/lib/burke";
 
-import { LOCATION_FINDER_ACTION_BUTTON_CLASS } from "../configs/locationFinderStyles";
+const LOCATION_FINDER_ACTION_BUTTON_CLASS = "app-btn app-btn--ghost app-btn--compact";
 import {
   createInitialSecondaryRows,
   type SecondaryLocationRow,

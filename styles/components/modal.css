@@ -1,0 +1,112 @@
+/**
+ * Shared modal dialog — password gates, confirmations, etc.
+ */
+
+.app-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--app-overlay-scrim);
+  padding: 1rem;
+}
+
+.app-modal-dialog {
+  width: 100%;
+  max-width: 24rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--app-border-subtle);
+  background-color: var(--app-surface);
+  padding: 1.25rem;
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.app-modal-title {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--app-text-primary);
+}
+
+.app-modal-description {
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--app-text-secondary);
+}
+
+.app-modal-form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.app-modal-label {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--app-text-primary);
+}
+
+.app-modal-input {
+  margin-top: 0.375rem;
+  width: 100%;
+}
+
+.app-modal-error {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--app-text-danger, rgb(185 28 28));
+}
+
+.app-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding-top: 0.25rem;
+}
+
+.app-modal-btn-cancel {
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--app-text-secondary);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.app-modal-btn-cancel:hover {
+  background-color: var(--app-hover-surface);
+}
+
+.app-modal-btn-submit {
+  border-radius: 0.375rem;
+  border: none;
+  background-color: var(--app-text-primary);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--app-surface);
+  cursor: pointer;
+}
+
+.app-modal-btn-submit:hover:not(:disabled) {
+  background-color: rgb(0 0 0 / 0.9);
+}
+
+.app-modal-btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -25,21 +25,15 @@ export function AppViewportHeader({
   const wide = registered?.wide ?? defaultWide;
   const ariaLabel =
     registered?.ariaLabel ?? VIEWPORT_DEFAULT_HEADER_ARIA[defaultVariant];
-  const innerClass = [
-    "app-chrome__header-inner",
-    wide ? "app-chrome__header-inner--wide" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
 
   const content =
     registered?.content ??
-    renderDefaultAppHeaderContent(defaultVariant, defaultWide);
+    renderDefaultAppHeaderContent(defaultVariant, wide);
 
   return (
-    <header className="app-chrome__header" aria-label={ariaLabel}>
-      <div className={innerClass}>
-        <div className="app-chrome__header-main">{content}</div>
+    <header className="header-container" aria-label={ariaLabel}>
+      <div className="header-container__inner">
+        <div className="header-container__main">{content}</div>
         <ColorSchemeToggle />
       </div>
     </header>

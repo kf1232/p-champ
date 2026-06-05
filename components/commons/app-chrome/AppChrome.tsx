@@ -4,10 +4,6 @@ import { usePathname } from "next/navigation";
 import type { CSSProperties, ReactNode } from "react";
 
 import { resolveAppChrome } from "@/lib/appChrome";
-import {
-  MAIN_SPACER_ABOVE_VIEWPORT_FOOTER_PX,
-  VIEWPORT_LOCKED_FOOTER_H_PX,
-} from "@/lib/viewportFooterChrome";
 
 import { AppFooter } from "./AppFooter";
 import { AppHeader } from "./AppHeader";
@@ -16,14 +12,9 @@ type AppChromeProps = {
   children: ReactNode;
 };
 
-const chromeLayoutVars = {
-  "--app-footer-h": `${VIEWPORT_LOCKED_FOOTER_H_PX}px`,
-  "--app-main-footer-gap": `${MAIN_SPACER_ABOVE_VIEWPORT_FOOTER_PX}px`,
-} as CSSProperties;
-
 /**
  * Root UI shell: header, page slot, fixed footer (always mounted).
- * Layout rules live in `components/commons/styles/appLayout.css`.
+ * Layout rules: `styles/global/shell.css` (header/footer: `styles/header/`, `styles/footer/`).
  */
 export function AppChrome({ children }: AppChromeProps) {
   const pathname = usePathname() ?? "";
@@ -36,7 +27,6 @@ export function AppChrome({ children }: AppChromeProps) {
   const columnMax = chrome.pageClass.includes("max-7xl") ? "80rem" : "64rem";
 
   const chromeStyle = {
-    ...chromeLayoutVars,
     "--app-column-max": columnMax,
   } as CSSProperties;
 
@@ -53,3 +43,4 @@ export function AppChrome({ children }: AppChromeProps) {
     </div>
   );
 }
+

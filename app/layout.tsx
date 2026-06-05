@@ -15,14 +15,7 @@ import { resolveColorSchemeFromRequestCookies } from "@/lib/theme/colorSchemeCoo
 import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 
 import "./globals.css";
-import "@/components/commons/styles/colorScheme.css";
-import "@/components/commons/styles/themes/release.css";
-import "@/components/commons/styles/themes/debug.css";
-import "@/components/commons/styles/appLayout.css";
-import "@/components/commons/styles/appViewportFooter.css";
-import "@/components/photography/styles/photography.css";
-import "@/components/wow/styles/wow.css";
-import "@/components/burke/styles/burke.css";
+import "@/styles/index.css";
 
 export const metadata: Metadata = {
   title: {

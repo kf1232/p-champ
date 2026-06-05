@@ -2,8 +2,6 @@
 
 import { useWowDebugRawPanels } from "@/components/wow/components/providers/WowDebugRawPanelsContext";
 
-import "./styles/wowRawJsonDataPanel.css";
-
 export type WowRawDataFreshness = "live" | "cache" | "error";
 
 export type WowRawJsonDataPanelProps = {

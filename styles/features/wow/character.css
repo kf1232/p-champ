@@ -1,0 +1,6 @@
+/**
+ * WoW Character UI — overview segments only.
+ * Shared forms + lookup layout: `styles/components/`.
+ */
+
+@import "./character-overview.css";

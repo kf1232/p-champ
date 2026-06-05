@@ -25,22 +25,19 @@ export default function Navigation({ title = SITE_NAME, wide: _wide = false }) {
 
   return (
     <>
-      <div className="flex min-w-0 flex-wrap items-center gap-x-2">
-        <Link
-          href={PORTAL_HOME_PATH}
-          className="text-sm font-medium text-secondary hover:text-primary"
-        >
+      <div className="header-title">
+        <Link href={PORTAL_HOME_PATH} className="header-title__parent-link">
           {PORTAL_NAME}
         </Link>
-        <span className="text-sm text-tertiary" aria-hidden>
+        <span className="header-title__separator" aria-hidden>
           /
         </span>
         {isHome ? (
-          <span className="text-sm font-semibold text-primary">{title}</span>
+          <span className="header-title__current">{title}</span>
         ) : (
           <Link
             href={P_CHAMP_HOME_PATH}
-            className="text-sm font-semibold text-primary hover:opacity-80"
+            className="header-title__link"
             aria-label={`${title} (home)`}
           >
             {title}
@@ -48,13 +45,15 @@ export default function Navigation({ title = SITE_NAME, wide: _wide = false }) {
         )}
       </div>
 
-      <div className="flex flex-wrap items-center gap-4">
-        <nav aria-label="Primary navigation" className="flex items-center gap-4">
+      <div className="header-navigation-toolbar">
+        <nav aria-label="Primary navigation" className="header-navigation">
           <Link
             href={P_CHAMP_HOME_PATH}
             className={[
-              "text-sm font-medium",
-              isHome ? "text-primary" : "text-secondary hover:text-primary",
+              "header-navigation__link",
+              isHome
+                ? "header-navigation__link--current"
+                : "header-navigation__link--inactive",
             ].join(" ")}
             aria-current={isHome ? "page" : undefined}
           >
@@ -63,8 +62,10 @@ export default function Navigation({ title = SITE_NAME, wide: _wide = false }) {
           <Link
             href={P_CHAMP_DEX_PATH}
             className={[
-              "text-sm font-medium",
-              isDex ? "text-primary" : "text-secondary hover:text-primary",
+              "header-navigation__link",
+              isDex
+                ? "header-navigation__link--current"
+                : "header-navigation__link--inactive",
             ].join(" ")}
             aria-current={isDex ? "page" : undefined}
           >
@@ -73,8 +74,10 @@ export default function Navigation({ title = SITE_NAME, wide: _wide = false }) {
           <Link
             href={P_CHAMP_TEAM_BUILDER_PATH}
             className={[
-              "text-sm font-medium",
-              isTeamBuilder ? "text-primary" : "text-secondary hover:text-primary",
+              "header-navigation__link",
+              isTeamBuilder
+                ? "header-navigation__link--current"
+                : "header-navigation__link--inactive",
             ].join(" ")}
             aria-current={isTeamBuilder ? "page" : undefined}
           >
@@ -82,10 +85,10 @@ export default function Navigation({ title = SITE_NAME, wide: _wide = false }) {
           </Link>
         </nav>
 
-        <label className="flex items-center gap-2 text-sm text-secondary">
-          <span className="font-medium text-primary">Game</span>
+        <label className="header-dropdown-selector">
+          <span className="header-dropdown-selector__label">Game</span>
           <select
-            className="rounded-md border border-border-default bg-surface px-2 py-1.5 text-sm font-medium text-primary shadow-sm focus:border-border-strong focus:outline-none focus:ring-2 focus:ring-[var(--app-focus-ring)]"
+            className="header-dropdown-selector__control"
             value={selectedGameId}
             onChange={(e) => {
               const v = e.target.value;

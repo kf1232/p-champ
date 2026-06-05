@@ -1,0 +1,52 @@
+/**
+ * Semantic Tailwind utilities — import from `app/globals.css` (Tailwind pipeline).
+ * Tokens: `styles/global/variables.css`.
+ */
+
+@utility text-primary {
+  color: var(--app-text-primary);
+}
+
+@utility text-secondary {
+  color: var(--app-text-secondary);
+}
+
+@utility text-tertiary {
+  color: var(--app-text-tertiary);
+}
+
+@utility text-danger {
+  color: var(--app-text-danger);
+}
+
+@utility bg-surface {
+  background-color: var(--app-surface);
+}
+
+@utility bg-surface-elevated {
+  background-color: var(--app-surface-elevated);
+}
+
+@utility bg-surface-muted {
+  background-color: var(--app-surface-muted);
+}
+
+@utility bg-surface-overlay {
+  background-color: var(--app-surface-overlay);
+}
+
+@utility bg-hover {
+  background-color: var(--app-hover-surface);
+}
+
+@utility border-border-subtle {
+  border-color: var(--app-border-subtle);
+}
+
+@utility border-border-default {
+  border-color: var(--app-border-default);
+}
+
+@utility border-border-strong {
+  border-color: var(--app-border-strong);
+}

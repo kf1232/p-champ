@@ -1,7 +1,5 @@
 import type { DistanceThreshold, DistanceUnit } from "@/lib/burke";
 
-import { LOCATION_FINDER_CONTROL_CLASS } from "../configs/locationFinderStyles";
-
 type DistanceThresholdControlProps = {
   value: DistanceThreshold;
   onChange: (next: DistanceThreshold) => void;
@@ -22,7 +20,7 @@ function ThresholdInputs({
     <>
       <input
         id="location-finder-threshold-value"
-        className={`${LOCATION_FINDER_CONTROL_CLASS} w-28`}
+        className="app-input app-input--auto-width w-28"
         type="number"
         min={0}
         step={0.1}
@@ -39,7 +37,7 @@ function ThresholdInputs({
       />
       <select
         id="location-finder-threshold-unit"
-        className={LOCATION_FINDER_CONTROL_CLASS}
+        className="app-select app-select--auto-width"
         value={value.unit}
         onChange={(e) =>
           onChange({

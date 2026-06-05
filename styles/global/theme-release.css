@@ -1,0 +1,22 @@
+/**
+ * RELEASE — production shell layout (no layout debug paint).
+ * Colors: `styles/global/variables.css` (+ chrome header/footer variables).
+ */
+
+[data-app-theme="release"] {
+  --app-shell-border-width: 0;
+  --app-region-border-width: 0;
+  --app-inner-border-width: 0;
+  --app-page-border-width: 0;
+  --app-margin-page-outline: none;
+  --app-margin-column-outline-offset: 0;
+  --app-chrome-divider-width: 1px;
+  --app-margin-header-inner-outline: none;
+  --app-margin-footer-inner-outline: none;
+}
+
+[data-app-theme="release"] html,
+[data-app-theme="release"] body {
+  background-color: var(--app-chrome-body-bg);
+  color: var(--app-text-primary);
+}

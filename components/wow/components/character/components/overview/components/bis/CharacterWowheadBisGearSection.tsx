@@ -67,13 +67,13 @@ export function CharacterWowheadBisGearSection({
       aria-labelledby="character-overview-bis-heading"
     >
       <div className="character-overview-bis-row">
-        <div className="character-form-field character-overview-bis-field">
-          <label className="character-label" htmlFor={bisSpecSelectId}>
+        <div className="app-form-field character-overview-bis-field">
+          <label className="app-label" htmlFor={bisSpecSelectId}>
             Specialization
           </label>
           <select
             id={bisSpecSelectId}
-            className="character-select"
+            className="app-select"
             value={bisSpecId ?? bisOptions[0]!.specId}
             onChange={(e) => {
               setBisSpecId(Number(e.target.value));
@@ -88,7 +88,7 @@ export function CharacterWowheadBisGearSection({
         </div>
         <div className="character-overview-bis-actions">
           <a
-            className="character-submit-secondary"
+            className="app-btn app-btn--secondary"
             href={bisGuideUrl}
             target="_blank"
             rel="noopener noreferrer"
