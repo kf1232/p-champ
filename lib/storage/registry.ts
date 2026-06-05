@@ -25,7 +25,11 @@ export function registerAppStorageClient(
 }
 
 const BASE_CLIENTS: Record<
-  Exclude<AppStorageKey, typeof APP_STORAGE_KEYS.burkeLocationFinder>,
+  Exclude<
+    AppStorageKey,
+    | typeof APP_STORAGE_KEYS.burkeLocationFinder
+    | typeof APP_STORAGE_KEYS.scheduler
+  >,
   AppStorageClient
 > = {
   [APP_STORAGE_KEYS.colorScheme]: createRawStringStorageClient(
@@ -55,6 +59,9 @@ function resolveClient(key: AppStorageKey): AppStorageClient | undefined {
 
 export function appLocalStorage(
   key: typeof APP_STORAGE_KEYS.burkeLocationFinder,
+): EnvelopeStorageClient;
+export function appLocalStorage(
+  key: typeof APP_STORAGE_KEYS.scheduler,
 ): EnvelopeStorageClient;
 export function appLocalStorage(
   key: typeof APP_STORAGE_KEYS.colorScheme,

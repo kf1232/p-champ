@@ -15,6 +15,11 @@ export {
 
 export { PHOTOGRAPHY_HOME_PATH } from "./photography/paths";
 
+export {
+  SCHEDULER_CALENDAR_PATH,
+  SCHEDULER_HOME_PATH,
+} from "./scheduler/paths";
+
 export { BURKE_HOME_PATH, BURKE_LOCATION_FINDER_PATH } from "./burke/paths";
 
 export {

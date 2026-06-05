@@ -4,6 +4,7 @@ import { BurkeNav } from "@/components/burke/BurkeNavHeader";
 import Navigation from "@/components/p-champ/Navigation";
 import { PhotographyNav } from "@/components/photography/PhotographyNavHeader";
 import { PortalNav } from "@/components/portal/PortalNav";
+import { SchedulerNav } from "@/components/scheduler/SchedulerNav";
 import { WowNav } from "@/components/wow/components/chrome/WowNavHeader";
 import type { AppHeaderVariant } from "@/lib/appChrome";
 
@@ -21,6 +22,8 @@ export function renderDefaultAppHeaderContent(
       return <BurkeNav />;
     case "photography":
       return <PhotographyNav />;
+    case "scheduler":
+      return <SchedulerNav />;
     case "wow":
       return <WowNav />;
     default: {
