@@ -51,7 +51,7 @@ export function CharacterInformationSection({
           <div className="character-overview-segment-header-actions">
             <Link
               href={guildHref}
-              className="character-submit-secondary"
+              className="app-btn app-btn--secondary"
               prefetch={false}
             >
               View Guild

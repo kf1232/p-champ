@@ -108,7 +108,7 @@ function buildCharacterProfileQueryParams(
 function LookupHistoryIconMythic() {
   return (
     <svg
-      className="character-lookup-history-icon-svg"
+      className="app-lookup-history-icon-svg"
       viewBox="0 0 20 20"
       width={18}
       height={18}
@@ -125,7 +125,7 @@ function LookupHistoryIconMythic() {
 function LookupHistoryIconEquipment() {
   return (
     <svg
-      className="character-lookup-history-icon-svg"
+      className="app-lookup-history-icon-svg"
       viewBox="0 0 20 20"
       width={18}
       height={18}
@@ -142,7 +142,7 @@ function LookupHistoryIconEquipment() {
 function LookupHistoryIconSeason() {
   return (
     <svg
-      className="character-lookup-history-icon-svg"
+      className="app-lookup-history-icon-svg"
       viewBox="0 0 20 20"
       width={18}
       height={18}
@@ -184,23 +184,23 @@ function CharacterLookupHistoryStripRecord({
     );
   return (
     <div
-      className="character-lookup-history-record"
+      className="app-lookup-history-record"
       title="Double-click to load in the form and submit"
       onDoubleClick={(e) => {
         e.preventDefault();
         onDoubleClickPick();
       }}
     >
-      <div className="character-lookup-history-name">{name}</div>
-      <div className="character-lookup-history-meta">
+      <div className="app-lookup-history-name">{name}</div>
+      <div className="app-lookup-history-meta">
         {characterClassName} - Level {level}
       </div>
-      <div className="character-lookup-history-icons" role="group" aria-label="Cached payloads">
+      <div className="app-lookup-history-icons" role="group" aria-label="Cached payloads">
         <span
           className={
             mythicCached
-              ? "character-lookup-history-icon character-lookup-history-icon--active"
-              : "character-lookup-history-icon character-lookup-history-icon--muted"
+              ? "app-lookup-history-icon app-lookup-history-icon--active-info"
+              : "app-lookup-history-icon app-lookup-history-icon--muted"
           }
           title={
             mythicCached
@@ -213,8 +213,8 @@ function CharacterLookupHistoryStripRecord({
         <span
           className={
             equipmentCached
-              ? "character-lookup-history-icon character-lookup-history-icon--active"
-              : "character-lookup-history-icon character-lookup-history-icon--muted"
+              ? "app-lookup-history-icon app-lookup-history-icon--active-info"
+              : "app-lookup-history-icon app-lookup-history-icon--muted"
           }
           title={
             equipmentCached
@@ -227,8 +227,8 @@ function CharacterLookupHistoryStripRecord({
         <span
           className={
             seasonCached
-              ? "character-lookup-history-icon character-lookup-history-icon--active"
-              : "character-lookup-history-icon character-lookup-history-icon--muted"
+              ? "app-lookup-history-icon app-lookup-history-icon--active-info"
+              : "app-lookup-history-icon app-lookup-history-icon--muted"
           }
           title={
             seasonCached
@@ -618,22 +618,22 @@ export function CharacterProfileLookupForm() {
     "No equipment payload in cache for this lookup yet. Use “Refresh from Battle.net” to fetch.";
 
   return (
-    <div className="character-lookup">
-      <div className="character-lookup-layout">
-        <div className="character-lookup-main">
+    <div className="app-lookup">
+      <div className="app-lookup-layout">
+        <div className="app-lookup-main">
           <form
             ref={formRef}
-            className="character-form"
+            className="app-form"
             onSubmit={onSubmit}
           >
-        <div className="character-form-grid">
-          <div className="character-form-field">
-            <label className="character-label" htmlFor="wow-character-region">
+        <div className="app-form-grid app-form-grid--cols-3">
+          <div className="app-form-field">
+            <label className="app-label" htmlFor="wow-character-region">
               Region
             </label>
             <select
               id="wow-character-region"
-              className="character-select"
+              className="app-select"
               name={CHARACTER_PROFILE_SUMMARY_QUERY.region}
               value={region}
               onChange={(e) =>
@@ -649,8 +649,8 @@ export function CharacterProfileLookupForm() {
             </select>
           </div>
 
-          <div className="character-form-field">
-            <label className="character-label" htmlFor="wow-character-realm">
+          <div className="app-form-field">
+            <label className="app-label" htmlFor="wow-character-realm">
               Realm
             </label>
             <RealmSlugPicker
@@ -659,18 +659,18 @@ export function CharacterProfileLookupForm() {
               region={region}
               value={realmSlug}
               onChange={setRealmSlug}
-              inputClassName="character-input"
+              inputClassName="app-input"
               required
             />
           </div>
 
-          <div className="character-form-field">
-            <label className="character-label" htmlFor="wow-character-name">
+          <div className="app-form-field">
+            <label className="app-label" htmlFor="wow-character-name">
               Character name
             </label>
             <input
               id="wow-character-name"
-              className="character-input"
+              className="app-input"
               name={CHARACTER_PROFILE_SUMMARY_QUERY.characterName}
               type="text"
               autoComplete="off"
@@ -683,16 +683,16 @@ export function CharacterProfileLookupForm() {
           </div>
         </div>
 
-        <div className="character-form-actions">
+        <div className="app-form-actions">
           <button
-            className="character-submit"
+            className="app-btn app-btn--primary"
             type="submit"
             disabled={loading}
           >
             {loading ? "Loading…" : "Lookup"}
           </button>
           <button
-            className="character-submit-secondary"
+            className="app-btn app-btn--secondary"
             type="button"
             disabled={loading}
             onClick={onForceRemote}
@@ -702,7 +702,7 @@ export function CharacterProfileLookupForm() {
         </div>
       </form>
 
-      {error ? <p className="character-form-error">{error}</p> : null}
+      {error ? <p className="app-form-error">{error}</p> : null}
 
       {view.kind === "success-remote" || view.kind === "success-local" ? (
         <CharacterOverviewSegments
@@ -829,25 +829,25 @@ export function CharacterProfileLookupForm() {
 
         <aside
           ref={cacheRailRef}
-          className="character-cache-rail app-chrome__viewport-rail"
+          className="app-cache-rail app-chrome__viewport-rail"
           aria-label="Lookup history: double-click a row to load that character"
         >
-          <h2 className="character-lookup-history-heading">Lookup History</h2>
+          <h2 className="app-lookup-history-heading">Lookup History</h2>
           <div
-            className="character-cache-rail-summaries-strip"
+            className="app-cache-rail-summaries-strip"
             title="Character profiles saved in this browser. Double-click a row to load."
           >
             {characterProfileSummaryStripRecords.length === 0 ? (
-              <p className="character-cache-rail-summaries-strip-empty">
+              <p className="app-cache-rail-summaries-strip-empty">
                 (none)
               </p>
             ) : (
-              <ul className="character-cache-rail-summaries-strip-list">
+              <ul className="app-cache-rail-summaries-strip-list">
                 {characterProfileSummaryStripRecords.map(
                   ({ storageId, payload }) => (
                     <li
                       key={storageId}
-                      className="character-cache-rail-summaries-strip-item"
+                      className="app-cache-rail-summaries-strip-item"
                     >
                       <CharacterLookupHistoryStripRecord
                         data={data}

@@ -20,7 +20,7 @@
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: rgb(15 23 42);
+  color: var(--app-text-primary);
 }
 
 .character-overview-segment-header {
@@ -42,7 +42,7 @@
   flex: 0 0 auto;
 }
 
-.character-overview-segment-header-actions .character-submit-secondary {
+.character-overview-segment-header-actions .app-btn--secondary {
   text-decoration: none;
   text-align: center;
   box-sizing: border-box;
@@ -117,7 +117,7 @@
   margin: 0;
   font-size: 0.875rem;
   line-height: 1.4;
-  color: rgb(15 23 42);
+  color: var(--app-text-primary);
   word-break: break-word;
 }
 
@@ -150,7 +150,7 @@
   padding: 0.45rem 0.5rem 0.45rem 0;
   border-bottom: 1px solid rgb(0 0 0 / 0.06);
   vertical-align: top;
-  color: rgb(15 23 42);
+  color: var(--app-text-primary);
 }
 
 .character-overview-table tbody tr:last-child td {
@@ -219,7 +219,7 @@
   margin: 0 0 0.5rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: rgb(15 23 42);
+  color: var(--app-text-primary);
 }
 
 .character-overview-mythic-kv {
@@ -246,7 +246,7 @@
 }
 
 .character-overview-mythic-v {
-  color: rgb(15 23 42);
+  color: var(--app-text-primary);
 }
 
 .character-overview-mythic-rating {
@@ -314,6 +314,6 @@
 }
 
 .character-overview-item-card__value {
-  color: rgb(15 23 42);
+  color: var(--app-text-primary);
   word-break: break-word;
 }
