@@ -11,7 +11,6 @@ import {
 
 import { BURKE_VERIFY_LOCATION_FINDER_PASSWORD_PATH } from "@/lib/burke";
 
-import { LOCATION_FINDER_INPUT_CLASS } from "../configs/locationFinderStyles";
 import { LOCATION_FINDER_TITLE } from "../configs/locationFinderCopy";
 
 type LocationFinderGateProps = {
@@ -102,7 +101,7 @@ export function LocationFinderGate({
               type="password"
               name="location-finder-password"
               autoComplete="current-password"
-              className={`${LOCATION_FINDER_INPUT_CLASS} max-w-sm`}
+              className="app-input app-input--max-sm"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               disabled={submitting}

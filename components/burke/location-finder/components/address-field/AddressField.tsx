@@ -4,7 +4,6 @@ import { effectiveAddressFieldStatus } from "@/lib/burke";
 import type { AddressFieldStatus, AddressFieldValue } from "@/lib/burke";
 
 import { ADDRESS_FIELD_STATUS_ARIA } from "../../configs/addressFieldCopy";
-import { LOCATION_FINDER_INPUT_CLASS } from "../../configs/locationFinderStyles";
 import { AddressStatusGlyph } from "../AddressStatusGlyph";
 import { AddressFieldSuggestions } from "./components/AddressFieldSuggestions";
 import { useAddressFieldController } from "./hooks/useAddressFieldController";
@@ -76,7 +75,7 @@ export function AddressField({
               id,
               name,
               required,
-              className: LOCATION_FINDER_INPUT_CLASS,
+              className: "app-input",
               autoComplete: "off",
               spellCheck: false,
               placeholder: "Street, city, state, postal code",
