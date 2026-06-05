@@ -5,6 +5,7 @@ export const VIEWPORT_DEFAULT_HEADER_ARIA: Record<AppHeaderVariant, string> = {
   portal: "Fink Social portal",
   pChamp: "P-Champ",
   photography: "Photography",
+  scheduler: "Scheduler",
   burke: "Burke",
   wow: "WoW",
 } as const;
