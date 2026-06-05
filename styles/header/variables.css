@@ -1,6 +1,6 @@
 /**
- * Header color tokens — single source for viewport header chrome.
- * Semantic tokens (`--app-text-*`, etc.): `styles/variables.css`.
+ * Header color tokens. Theme layout: `styles/global/theme-*.css`.
+ * Semantic tokens (`--app-text-*`, etc.): `styles/global/variables.css`.
  */
 
 /* --- Release (light) --- */

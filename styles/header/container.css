@@ -14,7 +14,7 @@
   border-top-width: var(--app-region-border-width, 0);
   border-right-width: var(--app-region-border-width, 0);
   border-bottom-width: var(
-    --app-header-divider-width,
+    --app-chrome-divider-width,
     var(--app-region-border-width, 0)
   );
   border-left-width: var(--app-region-border-width, 0);

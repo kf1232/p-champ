@@ -12,7 +12,7 @@ export type AppHeaderVariant =
   | "photography"
   | "wow";
 
-/** CSS class list for the page slot wrapped around route children (see `appLayout.css`). */
+/** CSS class list for the page slot wrapped around route children (see `styles/global/shell.css`). */
 export type AppPageSlotClass =
   | "app-page app-page--max-5xl app-page--portal"
   | "app-page app-page--max-5xl app-page--scroll"

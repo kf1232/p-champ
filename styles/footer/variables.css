@@ -1,14 +1,12 @@
 /**
- * Footer tokens — colors and theme layout.
- * Semantic tokens (`--app-text-*`, etc.): `styles/variables.css`.
+ * Footer color tokens. Theme layout: `styles/global/theme-*.css`.
+ * Semantic tokens (`--app-text-*`, etc.): `styles/global/variables.css`.
  */
 
 /* --- Release (light) --- */
 [data-app-theme="release"] {
   --app-chrome-footer-bg: #ffffff;
   --app-border-footer-top: rgb(0 0 0 / 0.1);
-  --app-footer-divider-width: 1px;
-  --app-margin-footer-inner-outline: none;
 }
 
 /* --- Debug (light) --- */
@@ -19,8 +17,6 @@
   --app-border-footer-bottom: #9f1239;
   --app-border-footer-inner: #fb7185;
   --app-debug-outline-footer-inner: #ec4899;
-  --app-footer-divider-width: 3px;
-  --app-margin-footer-inner-outline: 2px dashed var(--app-debug-outline-footer-inner);
 }
 
 /* --- Dark + release --- */

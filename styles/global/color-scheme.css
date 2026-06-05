@@ -1,42 +1,20 @@
 /**
-
  * Color-scheme behavior (`data-color-scheme` on `<html>`).
-
- * Token values: `styles/variables.css`.
-
- * Header/footer chrome: `styles/header/`, `styles/footer/`.
-
+ * Tokens: `styles/global/variables.css`. Chrome: `styles/header/`, `styles/footer/`.
  */
 
-
-
 [data-color-scheme="dark"] {
-
   color-scheme: dark;
-
 }
-
-
 
 [data-color-scheme="dark"][data-app-theme="release"] html,
-
 [data-color-scheme="dark"][data-app-theme="release"] body {
-
   background-color: var(--app-chrome-body-bg);
-
   color: var(--app-text-primary);
-
 }
-
-
 
 [data-color-scheme="dark"][data-app-theme="debug"] html,
-
 [data-color-scheme="dark"][data-app-theme="debug"] body {
-
   background-color: var(--app-chrome-body-bg);
-
   color: var(--app-debug-body-text);
-
 }
-

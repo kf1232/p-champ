@@ -1,3 +1,9 @@
+/**
+ * App shell — top-level containers (`.app-chrome*`, `.app-page*`).
+ * Footer band styles: `styles/footer/container.css`. Header: `styles/header/`.
+ * Feature CSS: use `.app-chrome__*` utilities here — not `--app-footer-*` or `.footer-*`.
+ */
+
 html,
 body {
   height: 100dvh;
@@ -7,14 +13,6 @@ body {
   color: var(--app-text-primary);
 }
 
-/**
- * App shell layout — grid shell and scroll/fill content.
- * Viewport header: `styles/header/`. Viewport footer: `styles/footer/`.
- * Layout dimensions: `--app-column-max` on `.app-chrome`; footer clearance in `styles/footer/container.css`.
- * Color tokens: `styles/variables.css` (+ chrome: `styles/header/variables.css`, `styles/footer/variables.css`). Theme layout: `themes/{release,debug}.css`.
- */
-
-/* --- Shell --- */
 .app-chrome {
   display: grid;
   grid-template-rows: auto 1fr;
@@ -28,6 +26,35 @@ body {
   overflow: hidden;
   box-sizing: border-box;
   border: var(--app-shell-border-width, 0) solid var(--app-border-chrome, transparent);
+
+  --app-column-max: 64rem;
+  --app-page-padding-x: 1.5rem;
+  --app-page-padding-top: 2.5rem;
+  --app-page-padding-y-compact: 1.5rem;
+
+  /* Fixed footer clearance (band: `styles/footer/container.css`) */
+  --app-footer-h: 64px;
+  --app-main-footer-gap: 40px;
+  --app-sticky-above-footer-gap: 1rem;
+  padding-bottom: var(--app-footer-h);
+}
+
+.app-chrome__sticky-above-bottom {
+  position: sticky;
+  bottom: calc(
+    var(--app-footer-h) + var(--app-sticky-above-footer-gap) +
+      env(safe-area-inset-bottom, 0px)
+  );
+}
+
+.app-chrome__viewport-rail {
+  position: sticky;
+  top: 0.5rem;
+  align-self: start;
+  max-height: calc(
+    100svh - var(--app-viewport-rail-top, 12rem) - var(--app-footer-h) - 0.75rem -
+      env(safe-area-inset-bottom, 0px)
+  );
 }
 
 .app-chrome__content {
@@ -49,7 +76,6 @@ body {
   overflow: hidden;
 }
 
-/* --- Page column (center grid track) --- */
 .app-page {
   grid-column: 2;
   box-sizing: border-box;
@@ -76,6 +102,26 @@ body {
   /* Width tier: `--app-column-max` on `.app-chrome` */
 }
 
+.app-page--scroll,
+.app-page--portal {
+  padding-bottom: var(--app-main-footer-gap);
+}
+
+.app-page--location-finder {
+  align-self: stretch;
+  min-height: 0;
+  --app-page-sticky-action-band-min-h: 7.5rem;
+  --app-page-padding-bottom-sticky: calc(
+    var(--app-sticky-above-footer-gap) + env(safe-area-inset-bottom, 0px) +
+      var(--app-page-sticky-action-band-min-h)
+  );
+  --app-page-padding-bottom-effective: calc(
+    var(--app-main-footer-gap) + var(--app-page-padding-bottom-sticky)
+  );
+  padding-bottom: var(--app-page-padding-bottom-effective);
+  scroll-padding-bottom: var(--app-page-padding-bottom-effective);
+}
+
 .app-page--viewport {
   align-self: stretch;
   min-height: 0;
@@ -84,12 +130,4 @@ body {
   overflow: hidden;
   padding-top: var(--app-page-padding-y-compact);
   padding-bottom: 0;
-}
-
-/* Layout dimensions (not theme-specific) */
-.app-chrome {
-  --app-column-max: 64rem;
-  --app-page-padding-x: 1.5rem;
-  --app-page-padding-top: 2.5rem;
-  --app-page-padding-y-compact: 1.5rem;
 }

@@ -1,6 +1,6 @@
 /**
  * Viewport footer aria labels and route keys (`AppViewportFooter`).
- * Layout dimensions: `styles/footer/container.css`.
+ * Layout dimensions: `styles/global/shell.css`.
  */
 
 /** `aria-label` for blank footers — portal, P-Champ, photography, Burke. */

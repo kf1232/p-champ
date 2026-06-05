@@ -28,7 +28,7 @@
   min-width: 0;
 }
 
-/* Viewport rail cap: `app-chrome__viewport-rail` in `styles/footer/container.css` */
+/* Viewport rail cap: `app-chrome__viewport-rail` in `styles/global/shell.css` */
 
 .character-cache-rail {
   display: flex;

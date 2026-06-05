@@ -1,17 +1,17 @@
-@import "tailwindcss";
-@import "../styles/variables.css";
-@import "../components/commons/styles/themes/semanticUtilities.css";
-
-@keyframes team-slot-flash {
-  0% {
-    background-color: var(--app-color-animation-team-slot-start);
-  }
-
-  100% {
-    background-color: var(--app-surface-overlay);
-  }
-}
-
-.animate-team-slot-flash {
-  animation: team-slot-flash 0.55s ease-out forwards;
-}
+@import "tailwindcss";
+@import "../styles/global/variables.css";
+@import "../styles/global/semantic-utilities.css";
+
+@keyframes team-slot-flash {
+  0% {
+    background-color: var(--app-color-animation-team-slot-start);
+  }
+
+  100% {
+    background-color: var(--app-surface-overlay);
+  }
+}
+
+.animate-team-slot-flash {
+  animation: team-slot-flash 0.55s ease-out forwards;
+}

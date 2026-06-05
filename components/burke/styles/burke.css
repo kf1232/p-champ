@@ -1,6 +1,6 @@
 /* Burke feature styles */
 
-/* Sticky bottom offset: `app-chrome__sticky-above-bottom` in `styles/footer/container.css` */
+/* Sticky bottom offset: `app-chrome__sticky-above-bottom` in `styles/global/shell.css` */
 
 .location-finder-search-actions {
   z-index: 30;

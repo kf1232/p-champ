@@ -1,52 +1,7 @@
 /**
- * Footer shell, page clearance, and bottom-chrome utilities.
- * Feature CSS must not reference `--app-footer-*` or `.footer-*` — use utilities here.
+ * Viewport footer shell — `.footer-container*` (`ViewportLockedFooterBar`).
+ * Shell clearance and utilities: `styles/global/shell.css`.
  */
-
-.app-chrome {
-  --app-footer-h: 64px;
-  --app-main-footer-gap: 40px;
-  --app-sticky-above-footer-gap: 1rem;
-  padding-bottom: var(--app-footer-h);
-}
-
-.app-chrome__sticky-above-bottom {
-  position: sticky;
-  bottom: calc(
-    var(--app-footer-h) + var(--app-sticky-above-footer-gap) +
-      env(safe-area-inset-bottom, 0px)
-  );
-}
-
-.app-chrome__viewport-rail {
-  position: sticky;
-  top: 0.5rem;
-  align-self: start;
-  max-height: calc(
-    100svh - var(--app-viewport-rail-top, 12rem) - var(--app-footer-h) - 0.75rem -
-      env(safe-area-inset-bottom, 0px)
-  );
-}
-
-.app-page--scroll,
-.app-page--portal {
-  padding-bottom: var(--app-main-footer-gap);
-}
-
-.app-page--location-finder {
-  align-self: stretch;
-  min-height: 0;
-  --app-page-sticky-action-band-min-h: 7.5rem;
-  --app-page-padding-bottom-sticky: calc(
-    var(--app-sticky-above-footer-gap) + env(safe-area-inset-bottom, 0px) +
-      var(--app-page-sticky-action-band-min-h)
-  );
-  --app-page-padding-bottom-effective: calc(
-    var(--app-main-footer-gap) + var(--app-page-padding-bottom-sticky)
-  );
-  padding-bottom: var(--app-page-padding-bottom-effective);
-  scroll-padding-bottom: var(--app-page-padding-bottom-effective);
-}
 
 .footer-container {
   position: fixed;
@@ -61,7 +16,7 @@
   background-color: var(--app-chrome-footer-bg);
   border-style: solid;
   border-top-width: var(
-    --app-footer-divider-width,
+    --app-chrome-divider-width,
     var(--app-region-border-width, 0)
   );
   border-right-width: var(--app-region-border-width, 0);
