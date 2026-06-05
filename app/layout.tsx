@@ -16,9 +16,6 @@ import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 
 import "./globals.css";
 import "@/styles/index.css";
-import "@/components/photography/styles/photography.css";
-import "@/components/wow/styles/wow.css";
-import "@/components/burke/styles/burke.css";
 
 export const metadata: Metadata = {
   title: {

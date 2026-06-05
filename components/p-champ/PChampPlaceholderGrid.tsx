@@ -1,18 +1,11 @@
-import Link from "next/link";
-
+import { AppTileGrid } from "@/components/commons";
 import {
   P_CHAMP_DEX_PATH,
   P_CHAMP_TEAM_BUILDER_PATH,
 } from "@/lib/site";
 
-type PChampPlaceholderGridProps = {
-  count?: number;
-};
-
-type GridLink = { href: string; label: string; ariaLabel: string };
-
 /** Dex + Team Builder tiles; remaining cells are inactive placeholders. */
-const GRID_LINKS: (GridLink | null)[] = [
+const GRID_LINKS = [
   { href: P_CHAMP_DEX_PATH, label: "Dex", ariaLabel: "Go to Dex" },
   {
     href: P_CHAMP_TEAM_BUILDER_PATH,
@@ -21,36 +14,8 @@ const GRID_LINKS: (GridLink | null)[] = [
   },
 ];
 
-export function PChampPlaceholderGrid({
-  count = 9,
-}: PChampPlaceholderGridProps) {
+export function PChampPlaceholderGrid() {
   return (
-    <section aria-label="P-Champ feature grid" className="mt-8">
-      <div className="grid grid-cols-3 gap-3 sm:gap-4">
-        {Array.from({ length: count }).map((_, i) => {
-          const link = GRID_LINKS[i] ?? null;
-          const isActive = link !== null;
-          const href = link?.href ?? "#";
-          const label = link?.label ?? `Placeholder ${i + 1}`;
-          const ariaLabel = link?.ariaLabel ?? `Placeholder ${i + 1}`;
-
-          return (
-            <Link
-              key={i}
-              href={href}
-              aria-label={ariaLabel}
-              className={[
-                "flex aspect-square items-center justify-center rounded-lg border border-border-subtle bg-surface-overlay text-sm font-medium",
-                isActive
-                  ? "text-primary hover:bg-surface-elevated hover:border-border-default"
-                  : "pointer-events-none text-tertiary",
-              ].join(" ")}
-            >
-              {label}
-            </Link>
-          );
-        })}
-      </div>
-    </section>
+    <AppTileGrid ariaLabel="P-Champ feature grid" links={GRID_LINKS} />
   );
 }

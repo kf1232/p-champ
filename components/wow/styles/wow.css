@@ -1,9 +1,0 @@
-/**
- * WoW feature — plain CSS (no Tailwind @apply).
- * Loaded via `app/layout.tsx`. Prefix `wow-` avoids clashes.
- * Home intro + grid: `../components/home/styles/wow-home.css`.
- */
-
-@import "../components/home/styles/wow-home.css";
-
-/* WoW header nav: `header-*` classes from `styles/header/` via `AppViewportHeader`. */

@@ -1,14 +1,14 @@
 import { Suspense } from "react";
 
+import { AppPageIntro } from "@/components/commons";
+
 import { CharacterProfileLookupForm } from "./components/lookup";
 
 /** WoW `/wow/character` — character tools entry (profile summary lookup). */
 export function CharacterPlaceholderScreen() {
   return (
     <>
-      <div className="character-service-intro">
-        <h1 className="character-service-title">Character</h1>
-      </div>
+      <AppPageIntro title="Character" />
 
       <Suspense fallback={null}>
         <CharacterProfileLookupForm />

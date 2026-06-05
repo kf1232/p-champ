@@ -1,7 +1,5 @@
 "use client";
 
-import "./character-lookup.css";
-
 import {
   useCallback,
   useEffect,

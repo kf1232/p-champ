@@ -1,26 +1,7 @@
 /**
- * WoW Guild UI — plain CSS. Loaded from `Guild.tsx`.
+ * WoW Guild UI — plain CSS. Loaded via `styles/features/wow/index.css`.
  * Prefix `guild-` avoids clashes; rhythm matches character tools.
  */
-
-.guild-service-intro {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.guild-service-title {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  color: var(--app-text-primary);
-}
-
-.guild-service-desc {
-  max-width: 65ch;
-  color: var(--app-text-secondary);
-}
 
 .guild-lookup {
   margin-top: 1.5rem;

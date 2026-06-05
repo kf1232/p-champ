@@ -1,5 +1,7 @@
 "use client";
 
+import { AppPageIntro } from "@/components/commons";
+
 import { DexRecordGrid } from "./components/DexRecordGrid";
 import { useDexDisplayEntriesForSelectedGame } from "./useDexDisplayEntriesForSelectedGame";
 
@@ -12,13 +14,7 @@ export function DexScreen() {
 
   return (
     <>
-      <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-semibold tracking-tight text-primary">
-          {DEX_TITLE}
-        </h1>
-        <p className="max-w-prose text-secondary">{DEX_DESCRIPTION}</p>
-      </div>
-
+      <AppPageIntro title={DEX_TITLE} description={DEX_DESCRIPTION} />
       <DexRecordGrid records={records} />
     </>
   );

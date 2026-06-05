@@ -1,7 +1,5 @@
 "use client";
 
-import "./styles/realmSlugPicker.css";
-
 import {
   useCallback,
   useEffect,

@@ -1,6 +1,6 @@
 /**
  * Profile lookup + cache rail only. Form control tokens (`.character-form-*`, etc.)
- * stay in `../../styles/character.css` for reuse in overview.
+ * stay in `character.css` for reuse in overview.
  */
 
 .character-lookup {

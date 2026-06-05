@@ -1,6 +1,8 @@
-/* Burke feature styles */
-
-/* Sticky bottom offset: `app-chrome__sticky-above-bottom` in `styles/global/shell.css` */
+/**
+ * Burke feature — Location Finder and related UI.
+ * Loaded via `styles/index.css`.
+ * Sticky bottom offset: `app-chrome__sticky-above-bottom` in `styles/global/shell.css`.
+ */
 
 .location-finder-search-actions {
   z-index: 30;

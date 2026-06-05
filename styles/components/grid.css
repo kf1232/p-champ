@@ -1,0 +1,80 @@
+/**
+ * Shared body grids — tile nav, content rows, placeholders.
+ * Features compose these; no feature-prefixed grid classes.
+ */
+
+.app-grid-section {
+  margin-top: 2rem;
+}
+
+.app-grid {
+  display: grid;
+  min-width: 0;
+  width: 100%;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .app-grid {
+    gap: 1rem;
+  }
+}
+
+.app-grid--cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.app-grid--cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Square nav / feature tile */
+.app-grid-cell {
+  display: flex;
+  aspect-ratio: 1 / 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 1px solid var(--app-border-subtle);
+  background-color: var(--app-surface-overlay);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: inherit;
+}
+
+.app-grid-cell--active {
+  color: var(--app-text-primary);
+}
+
+.app-grid-cell--active:hover {
+  border-color: var(--app-border-default);
+  background-color: var(--app-surface-elevated);
+}
+
+.app-grid-cell--inactive {
+  pointer-events: none;
+  color: var(--app-text-tertiary);
+}
+
+/* Empty padding slot (dashed) */
+.app-grid-placeholder {
+  display: flex;
+  aspect-ratio: 1 / 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  border: 1px dashed var(--app-border-default);
+  background-color: var(--app-surface-muted);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--app-text-tertiary);
+}
+
+/* Wide row placeholder (1-col content grids) */
+.app-grid-placeholder--row {
+  aspect-ratio: 3 / 1;
+  width: 100%;
+}

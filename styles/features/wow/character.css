@@ -1,29 +1,9 @@
 /**
- * WoW Character UI — shared tokens + forms. Route intro lives here; lookup layout
- * + cache rail live in `components/lookup/character-lookup.css`.
- * Overview segment styles: `../components/overview/styles/character-overview.css`.
+ * WoW Character UI — shared tokens + forms. Lookup layout + cache rail:
+ * `character-lookup.css`. Overview segments: `character-overview.css`.
  */
 
-@import "../components/overview/styles/character-overview.css";
-
-.character-service-intro {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.character-service-title {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  color: var(--app-text-primary);
-}
-
-.character-service-desc {
-  max-width: 65ch;
-  color: var(--app-text-secondary);
-}
+@import "./character-overview.css";
 
 .character-form {
   display: flex;

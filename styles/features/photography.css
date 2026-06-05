@@ -1,23 +1,8 @@
 /**
  * Photography feature — plain CSS (no Tailwind @apply).
- * Loaded via `app/layout.tsx`. Prefix `photography-` avoids clashes.
- * Screen chrome (header / main) uses Tailwind to match P-Champ / WoW.
+ * Loaded via `styles/index.css`. Prefix `photography-` avoids clashes.
+ * Grids / page intro: `styles/components/`.
  */
-
-.photography-grid-placeholder-row {
-  display: flex;
-  width: 100%;
-  aspect-ratio: 3 / 1;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.5rem;
-  border: 1px dashed rgb(0 0 0 / 0.15);
-  background-color: var(--app-surface-muted);
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 500;
-  color: var(--app-text-tertiary);
-}
 
 /* PhotographyEntryRow */
 .photography-entry-article {

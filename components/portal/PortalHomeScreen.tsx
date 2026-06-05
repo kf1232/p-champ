@@ -1,6 +1,4 @@
-import Link from "next/link";
-
-import { incompleteRowPaddingCellCount } from "@/lib/gridPlaceholders";
+import { AppPageIntro, AppTileGrid } from "@/components/commons";
 import {
   BURKE_HOME_PATH,
   P_CHAMP_HOME_PATH,
@@ -13,70 +11,27 @@ import {
   PORTAL_TITLE,
 } from "./portalHomeCopy";
 
-type FeatureLink = {
-  href: string;
-  label: string;
-  active?: boolean;
-};
-
-const FEATURE_LINKS: FeatureLink[] = [
-  { href: P_CHAMP_HOME_PATH, label: "P-Champ", active: true },
-  { href: PHOTOGRAPHY_HOME_PATH, label: "Photography", active: true },
-  { href: WOW_HOME_PATH, label: "WoW", active: true },
-  { href: BURKE_HOME_PATH, label: "Burke", active: true },
+const PORTAL_FEATURE_LINKS = [
+  { href: P_CHAMP_HOME_PATH, label: "P-Champ" },
+  { href: PHOTOGRAPHY_HOME_PATH, label: "Photography" },
+  { href: WOW_HOME_PATH, label: "WoW" },
+  { href: BURKE_HOME_PATH, label: "Burke" },
 ];
 
-const PORTAL_GRID_COLS = 3;
-
-const activeTileClass =
-  "flex aspect-square items-center justify-center rounded-lg border border-border-subtle bg-surface-overlay text-sm font-medium text-primary shadow-sm hover:border-border-default hover:bg-surface-elevated";
-
-const placeholderCellClassName =
-  "flex aspect-square items-center justify-center rounded-lg border border-dashed border-border-default bg-surface-muted text-sm font-medium text-tertiary";
-
 export function PortalHomeScreen() {
-  const placeholderCount = incompleteRowPaddingCellCount(
-    FEATURE_LINKS.length,
-    PORTAL_GRID_COLS,
-  );
-
   return (
     <>
-      <header className="mb-10 text-center sm:mb-12">
-        <h1 className="text-3xl font-semibold tracking-tight text-primary">
-          {PORTAL_TITLE}
-        </h1>
-        <p className="mx-auto mt-3 max-w-prose text-secondary">
-          {PORTAL_DESCRIPTION}
-        </p>
-      </header>
+      <AppPageIntro
+        title={PORTAL_TITLE}
+        description={PORTAL_DESCRIPTION}
+        centered
+      />
 
-      <section aria-label="Features" className="mx-auto w-full max-w-3xl">
-        <div className="grid grid-cols-3 gap-3 sm:gap-4">
-          {FEATURE_LINKS.map((item) =>
-            item.active ? (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={activeTileClass}
-              >
-                {item.label}
-              </Link>
-            ) : (
-              <div key={item.label} className={placeholderCellClassName}>
-                {item.label}
-              </div>
-            ),
-          )}
-          {Array.from({ length: placeholderCount }, (_, i) => (
-            <div
-              key={`portal-grid-placeholder-${i}`}
-              className={placeholderCellClassName}
-              aria-hidden
-            />
-          ))}
-        </div>
-      </section>
+      <AppTileGrid
+        ariaLabel="Features"
+        links={PORTAL_FEATURE_LINKS}
+        sectionClassName="mx-auto mt-0 w-full max-w-3xl"
+      />
     </>
   );
 }

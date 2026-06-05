@@ -12,6 +12,7 @@ import {
 import { DexRecordDetailModal } from "../dex/components/DexRecordDetailModal";
 import { useDexDisplayEntriesForSelectedGame } from "../dex/useDexDisplayEntriesForSelectedGame";
 import { useGameSelection } from "../GameSelectionProvider";
+import { AppPageIntro } from "@/components/commons";
 import {
   NATIONAL_VIEW_ID,
   TYPE_NAMES,
@@ -398,14 +399,11 @@ export function TeamBuilderScreen() {
 
   return (
     <>
-        <div className="shrink-0">
-          <h1 className="text-3xl font-semibold tracking-tight text-primary">
-            {TEAM_BUILDER_TITLE}
-          </h1>
-          <p className="mt-1 max-w-prose text-secondary">
-            {TEAM_BUILDER_DESCRIPTION}
-          </p>
-        </div>
+        <AppPageIntro
+          className="shrink-0"
+          title={TEAM_BUILDER_TITLE}
+          description={TEAM_BUILDER_DESCRIPTION}
+        />
 
         <div className="mt-6 flex min-h-0 flex-1 flex-col gap-0 overflow-hidden rounded-xl border border-border-strong bg-surface-overlay lg:mt-8">
           {/* Workspace status strip (always visible; not part of the site header) */}

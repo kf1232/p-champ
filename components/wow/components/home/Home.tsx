@@ -1,3 +1,5 @@
+import { AppPageIntro } from "@/components/commons";
+
 import { WOW_HOME_DESCRIPTION } from "./configs/wowHomeCopy";
 import { WowPlaceholderGrid } from "./components/WowPlaceholderGrid";
 
@@ -5,11 +7,7 @@ import { WowPlaceholderGrid } from "./components/WowPlaceholderGrid";
 export function Home() {
   return (
     <>
-      <div className="wow-home-intro">
-        <h1 className="wow-home-title">WoW</h1>
-        <p className="wow-home-desc">{WOW_HOME_DESCRIPTION}</p>
-      </div>
-
+      <AppPageIntro title="WoW" description={WOW_HOME_DESCRIPTION} />
       <WowPlaceholderGrid />
     </>
   );

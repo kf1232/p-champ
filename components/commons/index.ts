@@ -7,6 +7,7 @@
  */
 
 export { AppChrome, AppFooter, AppHeader } from "./app-chrome";
+export { AppPageIntro, AppTileGrid, type AppTileGridLink } from "./content";
 export { ColorSchemeProvider, useColorScheme } from "./ColorSchemeProvider";
 export { ColorSchemeToggle } from "./ColorSchemeToggle";
 export { AppHeaderProvider } from "./AppHeaderContext";
