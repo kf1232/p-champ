@@ -39,17 +39,17 @@ export function PhotographyEntryRow({
 
   return (
     <article
-      className="photography-entry-article"
+      className="app-content-row"
       aria-label={`Photography entry: ${name}`}
     >
-      <section aria-label="Information" className="photography-entry-info">
-        <h2 className="photography-entry-title">{name}</h2>
-        <p className="photography-entry-date">{dateLabel}</p>
+      <section aria-label="Information" className="app-content-row__info">
+        <h2 className="app-content-row__title">{name}</h2>
+        <p className="app-content-row__meta">{dateLabel}</p>
         {gated ? (
-          <p className="photography-entry-gated-link-wrap">
+          <p className="app-content-row__link-wrap">
             <GatedGalleryLink
               albumId={albumId}
-              className="photography-gated-link--text"
+              className="app-gated-link--text"
               ariaLabel="Open album on Adobe Lightroom"
             >
               Open album on Lightroom
@@ -58,15 +58,15 @@ export function PhotographyEntryRow({
         ) : null}
       </section>
 
-      <section className="photography-entry-detail-section">
-        <div className="photography-entry-detail-grid" role="presentation">
+      <section className="app-content-row__detail">
+        <div className="app-content-row__thumb-grid" role="presentation">
           {Array.from({ length: DETAIL_GRID_SLOTS }, (_, i) => {
             const src = detailImageSrcs[i] ?? null;
             if (!src) {
               return (
                 <div
                   key={i}
-                  className="photography-entry-slot-empty"
+                  className="app-content-row__slot-empty"
                   aria-hidden
                 />
               );
@@ -79,19 +79,19 @@ export function PhotographyEntryRow({
                 alt={`${name} — photo ${i + 1} (hosted by Adobe Lightroom)`}
                 loading="lazy"
                 decoding="async"
-                className="photography-entry-detail-img"
+                className="app-content-row__thumb-img"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             );
             return (
               <div
                 key={`detail-${i}`}
-                className="photography-entry-detail-thumb-wrap"
+                className="app-content-row__thumb-wrap"
               >
                 {gated ? (
                   <GatedGalleryLink
                     albumId={albumId}
-                    className="photography-gated-link--thumb"
+                    className="app-gated-link--thumb"
                     ariaLabel={`Open ${name} on Adobe Lightroom (photo ${i + 1})`}
                   >
                     {img}

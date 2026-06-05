@@ -3,6 +3,6 @@
  * Loaded via `styles/index.css`. Prefixes avoid cross-feature clashes.
  */
 
-@import "./photography.css";
 @import "./burke.css";
+@import "./p-champ.css";
 @import "./wow/index.css";
