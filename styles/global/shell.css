@@ -122,6 +122,18 @@ body {
   scroll-padding-bottom: var(--app-page-padding-bottom-effective);
 }
 
+.app-page--apizza {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 0;
+  box-shadow: none;
+}
+
+.app-chrome:has(.app-page--apizza) {
+  padding-bottom: 0;
+}
+
 .app-page--viewport {
   align-self: stretch;
   min-height: 0;
