@@ -13,6 +13,17 @@ export {
   P_CHAMP_TEAM_BUILDER_PATH,
 } from "./p-champ/paths";
 
+export {
+  APIZZA_ABOUT_PATH,
+  APIZZA_APIZZZA_PATH,
+  APIZZA_HOME_PATH,
+  APIZZA_INGREDIENTS_PATH,
+  APIZZA_LOCATIONS_PATH,
+  APIZZA_LOVING_CUP_PATH,
+  APIZZA_ORDER_PATH,
+  APIZZA_WELCOME_PATH,
+} from "./apizza/paths";
+
 export { PHOTOGRAPHY_HOME_PATH } from "./photography/paths";
 
 export {

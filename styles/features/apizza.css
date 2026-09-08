@@ -1,0 +1,777 @@
+/* APizza feature styles — see components/apizza/designLanguage.ts */
+.apizza-site {
+  --apizza-red: #f03841;
+  --apizza-ink: rgb(40, 41, 54);
+  --apizza-cream: #fff8f6;
+  --apizza-bp-medium: 600px;
+  --apizza-header-height: 5.25rem;
+  --apizza-page-inline: 1.75rem;
+  --apizza-body-max: 46rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100%;
+  color: var(--apizza-ink);
+  background: #fff;
+  font-family: var(--apizza-font-nav), sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.16px;
+  line-height: 19.2px;
+}
+
+.apizza-site-header {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: "brand nav order";
+  align-items: center;
+  column-gap: 1.5rem;
+  box-sizing: border-box;
+  height: var(--apizza-header-height);
+  min-height: var(--apizza-header-height);
+  padding: 0 var(--apizza-page-inline);
+  background: #fff;
+  color: var(--apizza-ink);
+  border-bottom: 1px solid rgb(0 0 0 / 0.08);
+}
+
+.apizza-site-header__brand {
+  grid-area: brand;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.apizza-site-header__nav {
+  grid-area: nav;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 1.35rem;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.apizza-site-header__nav::-webkit-scrollbar {
+  display: none;
+}
+
+.apizza-site-header__spacer {
+  display: none;
+}
+
+.apizza-site-header__order {
+  grid-area: order;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 2.4rem;
+  padding: 0 1.15rem;
+  border: 0;
+  background: rgb(196, 196, 196);
+  color: rgb(255 255 255 / 0.92);
+  font-family: var(--apizza-font-nav), sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+.apizza-site-header__order:disabled {
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+.apizza-site-header__link {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 2.25rem;
+  padding: 0;
+  border-bottom: 2px solid transparent;
+  color: var(--apizza-ink);
+  font-family: var(--apizza-font-nav), sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.apizza-site-header__link:hover {
+  color: var(--apizza-red);
+}
+
+.apizza-site-header__link:focus-visible {
+  outline: 2px solid var(--apizza-red);
+  outline-offset: 4px;
+}
+
+.apizza-site-header__link--current {
+  color: var(--apizza-red);
+  border-bottom-color: var(--apizza-red);
+}
+
+.apizza-site-header__logo {
+  display: block;
+  height: 3.1rem;
+  width: auto;
+}
+
+.apizza-site-header__brand:focus-visible {
+  outline: 2px solid var(--apizza-red);
+  outline-offset: 4px;
+}
+
+@media (min-width: 600px) {
+  .apizza-site {
+    --apizza-page-inline: 2rem;
+  }
+
+  .apizza-site-header {
+    grid-template-columns: auto auto 1fr auto;
+    grid-template-areas: "brand nav spacer order";
+    padding-inline: var(--apizza-page-inline);
+  }
+
+  .apizza-site-header__spacer {
+    display: block;
+    grid-area: spacer;
+    min-width: 1.25rem;
+  }
+}
+
+@media (max-width: 599px) {
+  .apizza-site-header {
+    column-gap: 1rem;
+    padding-inline: 1.25rem;
+  }
+}
+
+.apizza-brand-banner {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 1.25rem var(--apizza-page-inline) 1.5rem;
+  background: #fff;
+  color: var(--apizza-ink);
+}
+
+.apizza-brand-banner__text {
+  margin: 0;
+  max-width: var(--apizza-body-max);
+  text-align: center;
+  font-family: var(--apizza-font-nav), sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.apizza-brand-banner__text--secondary {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+@media (min-width: 600px) {
+  .apizza-brand-banner {
+    padding-inline: var(--apizza-page-inline);
+  }
+}
+
+.apizza-body {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--apizza-body-max);
+  margin-inline: auto;
+  padding: 2.75rem var(--apizza-page-inline) 3.5rem;
+}
+
+.apizza-body + .apizza-body {
+  padding-top: 0;
+}
+
+.apizza-site-main {
+  display: block;
+  flex: 1 1 auto;
+}
+
+.apizza-hero,
+.apizza-about,
+.apizza-footer,
+.apizza-image-page {
+  scroll-margin-top: 0.75rem;
+}
+
+.apizza-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  background: #fff;
+  color: var(--apizza-ink);
+}
+
+@media (min-width: 600px) {
+  .apizza-hero--split {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .apizza-hero--split .apizza-hero__media {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .apizza-hero--split .apizza-hero__content {
+    justify-content: center;
+  }
+}
+
+.apizza-hero__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: rgb(40, 41, 54);
+}
+
+.apizza-hero__photo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.apizza-hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  background: #fff;
+  color: var(--apizza-ink);
+}
+
+.apizza-hero__opening {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 28rem;
+  text-align: center;
+}
+
+.apizza-hero__title {
+  margin: 0;
+  color: var(--apizza-red);
+  font-family: var(--apizza-font-nav), sans-serif;
+  font-size: 43px;
+  font-weight: 700;
+  letter-spacing: 0.43px;
+  line-height: 55.9px;
+  text-transform: none;
+}
+
+.apizza-hero__tagline {
+  margin: 0;
+  color: var(--apizza-ink);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+.apizza-location {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.apizza-location--hero {
+  align-items: center;
+  margin-top: 0.25rem;
+  text-align: center;
+}
+
+.apizza-location--prose {
+  align-items: flex-start;
+  margin-top: 0.5rem;
+  text-align: start;
+}
+
+.apizza-location__address {
+  margin: 0;
+  color: var(--apizza-ink);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.apizza-location__directions {
+  color: var(--apizza-red);
+  font-family: var(--apizza-font-nav), sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: lowercase;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.15rem;
+  transition: opacity 0.15s ease;
+}
+
+.apizza-location__directions:hover {
+  opacity: 0.75;
+}
+
+.apizza-location__directions:focus-visible {
+  outline: 2px solid var(--apizza-red);
+  outline-offset: 4px;
+}
+
+.apizza-location__hours {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.apizza-location__hours-label {
+  margin: 0;
+  color: var(--apizza-ink);
+  font-family: var(--apizza-font-nav), sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: lowercase;
+}
+
+.apizza-location__hours-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.apizza-location__hours-row {
+  display: grid;
+  grid-template-columns: 4.75rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.apizza-location__hours-day,
+.apizza-location__hours-time {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.apizza-location__hours-day {
+  text-transform: lowercase;
+}
+
+.apizza-locations-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .apizza-locations-split {
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 1.75rem;
+  }
+}
+
+.apizza-locations-split__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.apizza-locations-split__copy .apizza-location--prose {
+  margin-top: 0.5rem;
+}
+
+.apizza-locations-split .apizza-location-map {
+  margin-top: 0;
+  aspect-ratio: auto;
+  min-height: 16rem;
+  height: 100%;
+}
+
+.apizza-locations-split .apizza-location-map__frame {
+  min-height: 16rem;
+  height: 100%;
+}
+
+.apizza-location-map {
+  display: block;
+  width: 100%;
+  margin-top: 1.75rem;
+  overflow: hidden;
+  background: rgb(0 0 0 / 0.04);
+  aspect-ratio: 16 / 9;
+}
+
+.apizza-location-map__frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.apizza-hero--stack {
+  grid-template-columns: 1fr;
+}
+
+.apizza-hero--inset {
+  grid-template-columns: 1fr;
+  place-items: center;
+}
+
+.apizza-hero--inset .apizza-hero__media {
+  position: absolute;
+  inset: 0;
+  aspect-ratio: auto;
+  height: 100%;
+}
+
+.apizza-hero--inset .apizza-hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 32rem;
+  margin: 2.5rem 1.25rem;
+  padding: 1.75rem 1.5rem;
+}
+
+.apizza-about {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  background: #fff;
+  color: var(--apizza-ink);
+}
+
+@media (min-width: 600px) {
+  .apizza-about {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .apizza-about__media {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 0;
+  }
+}
+
+.apizza-about__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.apizza-about__heading {
+  margin: 0 0 0.5rem;
+  color: var(--apizza-red);
+  font-family: var(--apizza-font-nav), sans-serif;
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: 0.68px;
+  line-height: 44.2px;
+}
+
+.apizza-about__p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.16px;
+  line-height: 19.2px;
+}
+
+.apizza-about__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.apizza-about__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  display: block;
+}
+
+.apizza-footer {
+  flex-shrink: 0;
+  margin-top: auto;
+  border-top: 1px solid rgb(0 0 0 / 0.08);
+  background: #fff;
+  color: var(--apizza-ink);
+}
+
+.apizza-footer__inner {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem var(--apizza-page-inline) 1.15rem;
+}
+
+.apizza-footer__logo-link {
+  flex-shrink: 0;
+  display: inline-block;
+  line-height: 0;
+}
+
+.apizza-footer__logo {
+  display: block;
+  height: 2rem;
+  width: auto;
+}
+
+.apizza-footer__end {
+  display: flex;
+  flex-shrink: 1;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.85rem 1rem;
+  min-width: 0;
+}
+
+.apizza-footer__copy {
+  margin: 0;
+  font-family: var(--apizza-font-nav), sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: right;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+.apizza-social {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.apizza-social__link {
+  display: block;
+  line-height: 0;
+}
+
+.apizza-prose {
+  box-sizing: border-box;
+}
+
+.apizza-prose__title,
+.apizza-prose__sub {
+  color: var(--apizza-red);
+  font-family: var(--apizza-font-nav), sans-serif;
+}
+
+.apizza-prose__title {
+  margin: 0 0 1.25rem;
+  font-size: 34px;
+  font-weight: 600;
+  letter-spacing: 0.68px;
+  line-height: 44.2px;
+}
+
+.apizza-prose__title--in-copy {
+  margin-top: 0;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: 0.42px;
+  line-height: 1.15;
+}
+
+@media (min-width: 600px) {
+  .apizza-prose__title--in-copy {
+    font-size: 23px;
+    letter-spacing: 0.46px;
+  }
+}
+
+.apizza-prose__sub {
+  margin: 1.75rem 0 0.5rem;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.72px;
+  line-height: 19.8px;
+  text-transform: lowercase;
+}
+
+.apizza-prose__p {
+  margin: 0 0 0.85rem;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.16px;
+  line-height: 19.2px;
+}
+
+.apizza-prose__link {
+  color: var(--apizza-red);
+}
+
+.apizza-prose__menu {
+  margin: 0 0 1.5rem;
+}
+
+.apizza-prose__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.apizza-prose__menu-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.apizza-social__icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.apizza-image-page {
+  display: flex;
+  justify-content: center;
+  background: #fff;
+}
+
+.apizza-image-page__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: 50% 50%;
+}
+
+.apizza-gate {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 22rem;
+  margin: 0 auto;
+  padding: 3rem var(--apizza-page-inline) 2.5rem;
+  color: var(--apizza-ink);
+  font-family: var(--apizza-font-nav), sans-serif;
+}
+
+.apizza-gate__title {
+  margin: 0;
+  color: var(--apizza-red);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+.apizza-gate__form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.apizza-gate__label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: lowercase;
+}
+
+.apizza-gate__input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border: 1px solid rgb(0 0 0 / 0.15);
+  border-radius: 0;
+  background: #fff;
+  color: var(--apizza-ink);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.apizza-gate__input:focus-visible {
+  outline: 2px solid var(--apizza-red);
+  outline-offset: 2px;
+}
+
+.apizza-gate__error {
+  margin: 0;
+  color: var(--apizza-red);
+  font-size: 0.875rem;
+  line-height: 1.3;
+}
+
+.apizza-gate__submit {
+  align-self: center;
+  height: 2.4rem;
+  padding: 0 1.15rem;
+  border: 0;
+  background: var(--apizza-red);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: lowercase;
+  cursor: pointer;
+}
+
+.apizza-gate__submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}

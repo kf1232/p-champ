@@ -1,5 +1,6 @@
 "use client";
 
+import { ApizzaNav } from "@/components/apizza/ApizzaNav";
 import { BurkeNav } from "@/components/burke/BurkeNavHeader";
 import Navigation from "@/components/p-champ/Navigation";
 import { PhotographyNav } from "@/components/photography/PhotographyNavHeader";
@@ -18,6 +19,8 @@ export function renderDefaultAppHeaderContent(
       return <PortalNav />;
     case "pChamp":
       return <Navigation wide={wide} />;
+    case "apizza":
+      return <ApizzaNav />;
     case "burke":
       return <BurkeNav />;
     case "photography":

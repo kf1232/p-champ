@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import {
+  APIZZA_HOME_PATH,
   BURKE_HOME_PATH,
   P_CHAMP_HOME_PATH,
   PHOTOGRAPHY_HOME_PATH,
@@ -61,6 +62,12 @@ export function PortalNav() {
           className="header-navigation__link header-navigation__link--inactive"
         >
           Burke
+        </Link>
+        <Link
+          href={APIZZA_HOME_PATH}
+          className="header-navigation__link header-navigation__link--inactive"
+        >
+          APizza Austin
         </Link>
       </nav>
     </>

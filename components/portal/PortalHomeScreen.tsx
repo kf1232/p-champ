@@ -1,5 +1,6 @@
 import { AppPageIntro, AppTileGrid } from "@/components/commons";
 import {
+  APIZZA_HOME_PATH,
   BURKE_HOME_PATH,
   P_CHAMP_HOME_PATH,
   PHOTOGRAPHY_HOME_PATH,
@@ -18,6 +19,7 @@ const PORTAL_FEATURE_LINKS = [
   { href: SCHEDULER_HOME_PATH, label: "Scheduler" },
   { href: WOW_HOME_PATH, label: "WoW" },
   { href: BURKE_HOME_PATH, label: "Burke" },
+  { href: APIZZA_HOME_PATH, label: "APizza Austin" },
 ];
 
 export function PortalHomeScreen() {

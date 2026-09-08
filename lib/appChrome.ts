@@ -1,4 +1,5 @@
 import {
+  APIZZA_HOME_PATH,
   BURKE_LOCATION_FINDER_PATH,
   P_CHAMP_TEAM_BUILDER_PATH,
   PORTAL_HOME_PATH,
@@ -8,6 +9,7 @@ import type { ViewportBlankFooterKey } from "@/lib/viewportFooterChrome";
 export type AppHeaderVariant =
   | "portal"
   | "pChamp"
+  | "apizza"
   | "burke"
   | "photography"
   | "scheduler"
@@ -19,7 +21,8 @@ export type AppPageSlotClass =
   | "app-page app-page--max-5xl app-page--scroll"
   | "app-page app-page--max-7xl app-page--scroll"
   | "app-page app-page--max-7xl app-page--viewport"
-  | "app-page app-page--max-5xl app-page--location-finder";
+  | "app-page app-page--max-5xl app-page--location-finder"
+  | "app-page app-page--max-5xl app-page--apizza";
 
 export type AppChromeConfig = {
   /** Route-default header inner content (`AppViewportHeader`). */
@@ -63,6 +66,16 @@ export function resolveAppChrome(pathname: string): AppChromeConfig {
       pageClass: wide
         ? "app-page app-page--max-7xl app-page--scroll"
         : "app-page app-page--max-5xl app-page--scroll",
+    };
+  }
+
+  if (pathname.startsWith(APIZZA_HOME_PATH)) {
+    return {
+      header: "apizza",
+      headerWide: false,
+      blankFooter: undefined,
+      contentClass: "",
+      pageClass: "app-page app-page--max-5xl app-page--apizza",
     };
   }
 

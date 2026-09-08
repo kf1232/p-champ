@@ -4,6 +4,7 @@ import type { AppHeaderVariant } from "@/lib/appChrome";
 export const VIEWPORT_DEFAULT_HEADER_ARIA: Record<AppHeaderVariant, string> = {
   portal: "Fink Social portal",
   pChamp: "P-Champ",
+  apizza: "APizza Austin",
   photography: "Photography",
   scheduler: "Scheduler",
   burke: "Burke",
